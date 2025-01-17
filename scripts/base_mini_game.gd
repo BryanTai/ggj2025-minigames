@@ -72,7 +72,8 @@ func process_state_machine(delta: float) -> void:
 			_process_lose_state(delta)
 
 ### STATE SPECIFIC FUNCTIONS
-## These are intended to be overridden!
+# All the functions below this line will handle the different state events
+# They are intended to be overridden by new MiniGame scripts!
 
 ## PREPARE STATE
 
