@@ -66,8 +66,11 @@ func _process(delta: float) -> void:
 		update_timer()
 	
 func update_timer() -> void:
-	timer_label.text = "TIME: " + str((mini_game_timer.time_left + 1) as int)
-	
+	set_timer_text(str((mini_game_timer.time_left + 1) as int))
+
+func set_timer_text(time_text: String) -> void:
+	timer_label.text = "TIME: " + time_text 
+
 func pick_next_mini_game_name() -> String:
 	#TODO Once we have more minigames, create a buffer Queue to reduce chances of repeats
 	var next_index = rng.randi_range(0, all_mini_game_count - 1)
@@ -95,6 +98,7 @@ func start_current_mini_game() -> void:
 	mini_game_timer.wait_time = TIME_LIMIT
 	mini_game_timer.start()
 
+## Manages
 func set_manager_state(new_state: ManagerStates) -> void:
 	if(current_manager_state == new_state):
 		return
@@ -105,17 +109,22 @@ func set_manager_state(new_state: ManagerStates) -> void:
 	## On Start State
 	match current_manager_state:
 		ManagerStates.TRANSITIONING:
+			timer_label.visible = false
 			load_next_mini_game()
 			animation_player.play(ANIM_TRANSITION)
 		ManagerStates.PREPARING:
+			set_timer_text(str(TIME_LIMIT as int))
+			timer_label.visible = true
 			create_next_mini_game()
 			overlay_mini_game.visible = true
 			animation_player.play(ANIM_INSTRUCTION)
 		ManagerStates.PLAYING:
 			start_current_mini_game()
+		ManagerStates.ENDING:
+			animation_player.play(ANIM_END)
 
 func _on_animation_player_finished(anim_name: StringName) -> void:
-	#On End State
+	## On End State
 	match anim_name:
 		ANIM_TRANSITION:
 			set_manager_state(ManagerStates.PREPARING)
@@ -126,16 +135,15 @@ func _on_animation_player_finished(anim_name: StringName) -> void:
 
 ## The current minigame will either end when time runs out ...
 func _on_mini_game_timer_timeout() -> void:
-	timer_label.text = "TIME: OUT"
-	current_mini_game.trigger_game_lose()
+	set_timer_text("OUT")
+	current_mini_game._on_timeout()
 
 ## ... or when the current_mini_game signals the Manager that the player reached a Win/Lose state
 func _on_mini_game_finished(is_win: bool) -> void:
 	mini_game_timer.stop()
-	var new_banner_text: String
+	# TODO: Track wins and loses here!
 	if (is_win == true):
-		new_banner_text = "WINNER!"
+		instruction_label.text = "WINNER!"
 	else:
-		new_banner_text = "LOSER!"
-	instruction_label.text = new_banner_text
-	animation_player.play(ANIM_END)
+		instruction_label.text = "LOSER!"
+	set_manager_state(ManagerStates.ENDING)

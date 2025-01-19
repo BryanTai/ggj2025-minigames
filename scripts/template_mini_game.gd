@@ -30,9 +30,13 @@
 
 ## TRIGGERING WIN/LOSE
 # There are two custom functions that will signal to the Manager that the game is over:
-# 	trigger_game_lose()
-# 	trigger_game_win()
-## Add these 
+#	trigger_game_lose()
+#	trigger_game_win()
+## You need to add these functions into your minigame script for the game to end properly
+# Additionally, the MiniGameManager will signal the MiniGame when the Timer runs out using this function:
+#	_on_time_out()
+# By default, this will trigger the LOSE state
+## You can override this function if the MiniGame makes a check for win/lose at timeout
 
 extends BaseMiniGame
 
@@ -47,7 +51,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super(delta) ## This line will process the State machine! DO NOT REMOVE
 	## Use this _process function for things that don't care about the state
-	
+
+
+# A signal from the MiniGameManager that time has run out
+## TODO: Override this function if your MiniGame checks the win condition on TimeOut
+#func _on_timeout() -> void:
+#	trigger_game_lose()
+
+
 ### STATE SPECIFIC FUNCTIONS
 # Add your game logic to these functions! See README at the top of this file for more info
 # You probably won't need all of them so feel free to delete unused ones

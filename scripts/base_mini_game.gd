@@ -25,12 +25,19 @@ func _process(delta: float) -> void:
 func start_playing_game() -> void:
 	set_mini_game_state(MiniGameState.PLAYING)
 
+### ENDING THE GAME
+
+# A signal from the MiniGameManager that time has run out
+# Can be overridden if the MiniGame has different criteria
+func _on_timeout() -> void:
+	trigger_game_lose()
+
 # Call when win condition is met! Signals the Game Manager
 func trigger_game_win() -> void:
 	game_finished.emit(true)
 	set_mini_game_state(MiniGameState.WIN)
 
-#Call when lose condition is met. Signals Game Manager
+#Call when lose condition is met. Signals the Game Manager
 func trigger_game_lose() -> void:
 	game_finished.emit(false)
 	set_mini_game_state(MiniGameState.LOSE)
