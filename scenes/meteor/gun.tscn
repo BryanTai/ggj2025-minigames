@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce4qnob3pbwo1"]
+
+[ext_resource type="Texture2D" uid="uid://kma1b8es8iqy" path="res://sprites/meteor/gun.png" id="1_2urep"]
+[ext_resource type="Script" path="res://scripts/meteor/gun.gd" id="1_5iplv"]
+[ext_resource type="AudioStream" uid="uid://mdj2ax05itiv" path="res://audio/350914__cabled_mess__zap_c_06.wav" id="3_yibtm"]
+
+[node name="Gun" type="Node2D"]
+position = Vector2(589, 542)
+script = ExtResource("1_5iplv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-15, 30)
+scale = Vector2(0.372529, 0.372529)
+texture = ExtResource("1_2urep")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yibtm")

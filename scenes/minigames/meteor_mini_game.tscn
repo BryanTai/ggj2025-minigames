@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck26t85ajm2r2"]
+
+[ext_resource type="Script" path="res://scripts/meteor_mini_game.gd" id="1_xb775"]
+[ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://sprites/blank.png" id="2_3m15i"]
+[ext_resource type="PackedScene" uid="uid://iwyiwjyubrvo" path="res://scenes/meteor/meteor.tscn" id="3_13vih"]
+[ext_resource type="PackedScene" uid="uid://ce4qnob3pbwo1" path="res://scenes/meteor/gun.tscn" id="4_x7ttd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8n48"]
+
+[node name="MeteorMiniGame" type="Node2D"]
+process_mode = 1
+position = Vector2(0, -2)
+script = ExtResource("1_xb775")
+
+[node name="Space" type="TextureRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 1189.0
+offset_bottom = 690.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3m15i")
+metadata/_edit_lock_ = true
+
+[node name="Blank" type="Sprite2D" parent="Space"]
+position = Vector2(402, 241)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank2" type="Sprite2D" parent="Space"]
+position = Vector2(231, 376)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank3" type="Sprite2D" parent="Space"]
+position = Vector2(771, 137)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank4" type="Sprite2D" parent="Space"]
+position = Vector2(150, 163)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank5" type="Sprite2D" parent="Space"]
+position = Vector2(769, 410)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank6" type="Sprite2D" parent="Space"]
+position = Vector2(1007, 272)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank7" type="Sprite2D" parent="Space"]
+position = Vector2(557, 407)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank8" type="Sprite2D" parent="Space"]
+position = Vector2(510, 109)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank9" type="Sprite2D" parent="Space"]
+position = Vector2(1076, 103)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank10" type="Sprite2D" parent="Space"]
+position = Vector2(1015, 479)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank11" type="Sprite2D" parent="Space"]
+position = Vector2(120, 472)
+texture = ExtResource("2_3m15i")
+
+[node name="Ground" type="TextureRect" parent="."]
+self_modulate = Color(1.56425e-07, 0.449459, 0.174083, 1)
+offset_left = -18.0
+offset_top = 559.0
+offset_right = 22.0
+offset_bottom = 599.0
+scale = Vector2(30.8375, 3.38461)
+texture = ExtResource("2_3m15i")
+
+[node name="Area2D" type="Area2D" parent="Ground"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Area2D"]
+position = Vector2(18.0624, 46.3864)
+scale = Vector2(-3.18054, 4.60115)
+shape = SubResource("RectangleShape2D_y8n48")
+
+[node name="Meteor" parent="." instance=ExtResource("3_13vih")]
+position = Vector2(83, -403)
+
+[node name="Meteor2" parent="." instance=ExtResource("3_13vih")]
+position = Vector2(561, -187)
+
+[node name="Meteor3" parent="." instance=ExtResource("3_13vih")]
+position = Vector2(1081, -40)
+
+[node name="Gun" parent="." instance=ExtResource("4_x7ttd")]
+
+[connection signal="area_entered" from="Ground/Area2D" to="." method="_on_collision"]

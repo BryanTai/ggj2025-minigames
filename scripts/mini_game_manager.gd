@@ -75,6 +75,7 @@ func pick_next_mini_game_name() -> String:
 	#TODO Once we have more minigames, create a buffer Queue to reduce chances of repeats
 	var next_index = rng.randi_range(0, all_mini_game_count - 1)
 	return all_mini_game_names[next_index]
+	#return "meteor_mini_game.tscn"
 
 ## Loads up the next randomly picked minigame in the background
 func load_next_mini_game() -> void:

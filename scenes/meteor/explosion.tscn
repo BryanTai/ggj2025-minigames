@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://coej0i7b5qc4v"]
+
+[ext_resource type="Script" path="res://scripts/meteor/explosion.gd" id="1_m8k05"]
+[ext_resource type="Texture2D" uid="uid://cy1tsssvohhps" path="res://sprites/meteor/explosion_sprites.png" id="1_wijlx"]
+[ext_resource type="AudioStream" uid="uid://b2bh0pa3htud4" path="res://audio/218721__bareform__boom-bang.wav" id="3_fvwu2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u2a3"]
+atlas = ExtResource("1_wijlx")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jrwn"]
+atlas = ExtResource("1_wijlx")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_itdgc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4u2a3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jrwn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Explosion" type="Node2D"]
+script = ExtResource("1_m8k05")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.314357, 0.314357)
+sprite_frames = SubResource("SpriteFrames_itdgc")
+autoplay = "default"
+frame_progress = 0.106677
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fvwu2")
+autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
