@@ -24,9 +24,12 @@ enum MiniGameState {
 ## The current state of the minigame. This will always start with [code]PREPARING[/code].
 var current_state: MiniGameState = MiniGameState.PREPARING
 
-## Called when the node enters the scene tree for the first time.
+## Set this flag to "false" in your MiniGame if you don't want everything disabled outside of the PLAYING state
+var disable_minigame_during_intro_and_outro = true
+
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	_on_start_preparing_state()
 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -98,6 +101,13 @@ func process_state_machine(delta: float) -> void:
 
 # PREPARE STATE
 
+## Called once when entering the PREPARING state (e.g. once the minigame is loaded)
+## almost equivalent to _ready()
+func _on_start_preparing_state() -> void:
+	# This disables every Node in the mini game
+	if(disable_minigame_during_intro_and_outro):
+		process_mode = Node.PROCESS_MODE_DISABLED
+
 ## Called every frame while minigame is in the PREPARING state. This method should
 ## contain any special code beyond the default instructions BEFORE the game starts.
 ## [br]
@@ -110,7 +120,9 @@ func _process_preparing_state(delta: float) -> void:
 ## [br]
 ## e.g. a gun firing off and then disappearing.
 func _on_end_preparing_state() -> void:
-	pass
+	# Once the instruction banner goes away, enable all the nodes in the game
+	if(disable_minigame_during_intro_and_outro):
+		process_mode = Node.PROCESS_MODE_INHERIT
 
 # PLAYING STATE
 
@@ -128,7 +140,9 @@ func _process_playing_state(delta: float) -> void:
 ## [br]
 ## e.g. your running character screeches to a halt over a short distance.
 func _on_end_playing_state() -> void:
-	pass
+	# Disables every Node in the mini game on Win or Lose
+	if(disable_minigame_during_intro_and_outro):
+		process_mode = Node.PROCESS_MODE_DISABLED
 
 # WIN STATE
 

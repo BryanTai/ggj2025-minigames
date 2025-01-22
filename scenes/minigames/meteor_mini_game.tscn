@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ck26t85ajm2r2"]
 
-[ext_resource type="Script" path="res://scripts/meteor_mini_game.gd" id="1_xb775"]
+[ext_resource type="Script" path="res://scripts/meteor/meteor_mini_game.gd" id="1_xb775"]
 [ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://sprites/blank.png" id="2_3m15i"]
 [ext_resource type="PackedScene" uid="uid://iwyiwjyubrvo" path="res://scenes/meteor/meteor.tscn" id="3_13vih"]
 [ext_resource type="PackedScene" uid="uid://ce4qnob3pbwo1" path="res://scenes/meteor/gun.tscn" id="4_x7ttd"]

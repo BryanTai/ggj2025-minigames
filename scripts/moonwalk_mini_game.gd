@@ -8,6 +8,7 @@ const SLOW_SPEED: int = -50
 const FINISH_LINE_X_POS: int = 270
 
 func _ready() -> void:
+	disable_minigame_during_intro_and_outro = false
 	super()
 	instruction_text = "Moonwalk!"
 	## Put any logic you'd like to happen at the beginning of your minigame here!
