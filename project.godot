@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="minigames"
-run/main_scene="res://scenes/mini_game_manager.tscn"
+run/main_scene="res://game_manager/mini_game_manager.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://sprites/icon.svg"
+config/icon="res://assets/sprites/icon.svg"
 
 [display]
 

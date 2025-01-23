@@ -1,0 +1,187 @@
+[gd_scene load_steps=9 format=3 uid="uid://dkfi11o6yoyvt"]
+
+[ext_resource type="Script" path="res://assets/game_manager/scripts/mini_game_manager.gd" id="1_r0ho1"]
+[ext_resource type="Animation" uid="uid://dlylawv2xg63i" path="res://assets/game_manager/animations/intro_manager.res" id="2_s3k0j"]
+[ext_resource type="Animation" uid="uid://c60mvn7pt2t66" path="res://assets/game_manager/animations/transition_mini_game.res" id="3_maxh3"]
+[ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="4_ayn3l"]
+
+[sub_resource type="Animation" id="Animation_1icvy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/TransitionLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1172, 192)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/IntroLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(144, 169)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MiniGameOverlay/InstructionBanner:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mtku8"]
+resource_name = "show_end_banner"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MiniGameOverlay/InstructionBanner:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_iqiqk"]
+resource_name = "show_instruction_banner"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MiniGameOverlay/InstructionBanner:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p322v"]
+_data = {
+"RESET": SubResource("Animation_1icvy"),
+"intro_manager": ExtResource("2_s3k0j"),
+"show_end_banner": SubResource("Animation_mtku8"),
+"show_instruction_banner": SubResource("Animation_iqiqk"),
+"transition_mini_game": ExtResource("3_maxh3")
+}
+
+[node name="MiniGameManager" type="Node2D"]
+script = ExtResource("1_r0ho1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p322v")
+}
+autoplay = "intro_manager"
+
+[node name="IntroLabel" type="Label" parent="AnimationPlayer"]
+offset_left = 144.0
+offset_top = 169.0
+offset_right = 1016.0
+offset_bottom = 306.0
+theme_override_font_sizes/font_size = 100
+text = "Cool Introduction!"
+
+[node name="TransitionLabel" type="Label" parent="AnimationPlayer"]
+offset_left = 1172.0
+offset_top = 192.0
+offset_right = 1535.0
+offset_bottom = 259.0
+theme_override_font_sizes/font_size = 48
+text = "Cool Transition!"
+
+[node name="MiniGameTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="MiniGameOverlay" type="CanvasLayer" parent="."]
+
+[node name="Credits" type="Label" parent="MiniGameOverlay"]
+offset_left = 15.0
+offset_top = 10.0
+offset_right = 356.0
+offset_bottom = 99.0
+text = "Credits!"
+
+[node name="Lives" type="Label" parent="MiniGameOverlay"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -78.0
+offset_top = 13.0
+offset_right = -12.0
+offset_bottom = 36.0
+grow_horizontal = 0
+text = "Lives: 88"
+horizontal_alignment = 2
+
+[node name="InstructionBanner" type="Control" parent="MiniGameOverlay"]
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="MiniGameOverlay/InstructionBanner"]
+modulate = Color(1, 1, 1, 0.109804)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_ayn3l")
+
+[node name="InstructionLabel" type="Label" parent="MiniGameOverlay/InstructionBanner"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -41.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Win the game!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="MiniGameOverlay"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -21.5
+offset_top = -23.0
+offset_right = 21.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "TIME: 5"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_finished"]
+[connection signal="timeout" from="MiniGameTimer" to="." method="_on_mini_game_timer_timeout"]
