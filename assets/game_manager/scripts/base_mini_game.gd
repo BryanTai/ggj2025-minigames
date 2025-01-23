@@ -30,9 +30,13 @@ var current_state: MiniGameState = MiniGameState.PREPARING
 ## Set this flag to "false" in your MiniGame if you don't want everything disabled outside of the PLAYING state
 var disable_minigame_during_intro_and_outro = true
 
+## This will automatically be disabled by the mini_game_manager
+var run_testing_mode = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_on_start_preparing_state()
+	start_testing_timer()
 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -42,6 +46,16 @@ func _process(delta: float) -> void:
 ## [code]PLAYING[/code] state.
 func start_playing_game() -> void:
 	set_mini_game_state(MiniGameState.PLAYING)
+
+## Creates a timer to mimic the Introduction animation ending
+## This happens if the MiniGame is run without the manager
+func start_testing_timer() -> void:
+	if(run_testing_mode):
+		var test_timer = Timer.new()
+		test_timer.wait_time = 1
+		test_timer.timeout.connect(start_playing_game)
+		add_child(test_timer)
+		test_timer.start()
 
 # ENDING THE GAME
 

@@ -88,6 +88,7 @@ func load_next_mini_game() -> void:
 ## Instantiates the loaded minigame, and adds it to the manager
 func create_next_mini_game() -> void:
 	current_mini_game = current_mini_game_resource.instantiate() as BaseMiniGame
+	current_mini_game.run_testing_mode = false
 	add_child(current_mini_game)
 	current_mini_game.game_finished.connect(_on_mini_game_finished)
 	instruction_label.text = current_mini_game.instruction_text

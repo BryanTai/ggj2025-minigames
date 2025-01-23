@@ -4,16 +4,12 @@ extends BaseMiniGame
 
 func _ready() -> void:
 	instruction_text = "SHOOT METEORS!"
-	# This disables every Node in the Meteor mini game
-	process_mode = Node.PROCESS_MODE_DISABLED
-	
-func _on_end_preparing_state() -> void:
-	# Once the instruction banner goes away, enable all the nodes in the game
-	process_mode = Node.PROCESS_MODE_INHERIT
 
+# If we make it to the Timeout, we win
 func _on_timeout() -> void:
 	trigger_game_win()
 
+# If a Meteor collides with the Ground, we lose
 func _on_collision(area: Area2D) -> void:
 	trigger_game_lose()
 	
