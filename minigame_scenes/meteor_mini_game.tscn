@@ -87,7 +87,7 @@ scale = Vector2(-3.18054, 4.60115)
 shape = SubResource("RectangleShape2D_y8n48")
 
 [node name="Meteor" parent="." instance=ExtResource("3_13vih")]
-position = Vector2(232, -482)
+position = Vector2(338, -437)
 
 [node name="Meteor2" parent="." instance=ExtResource("3_13vih")]
 position = Vector2(582, 52)
@@ -96,10 +96,10 @@ position = Vector2(582, 52)
 position = Vector2(1110, -180)
 
 [node name="Meteor4" parent="." instance=ExtResource("3_13vih")]
-position = Vector2(888, -930)
+position = Vector2(849, -104)
 
 [node name="Meteor5" parent="." instance=ExtResource("3_13vih")]
-position = Vector2(559, -1166)
+position = Vector2(634, -525)
 
 [node name="Gun" parent="." instance=ExtResource("4_x7ttd")]
 

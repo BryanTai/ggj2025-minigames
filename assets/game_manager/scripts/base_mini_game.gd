@@ -51,9 +51,11 @@ func start_playing_game() -> void:
 ## This happens if the MiniGame is run without the manager
 func start_testing_timer() -> void:
 	if(run_testing_mode):
+		print("Creating a test timer!")
 		var test_timer = Timer.new()
 		test_timer.wait_time = 1
 		test_timer.timeout.connect(start_playing_game)
+		test_timer.process_mode = Node.PROCESS_MODE_ALWAYS
 		add_child(test_timer)
 		test_timer.start()
 

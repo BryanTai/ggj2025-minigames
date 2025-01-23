@@ -3,6 +3,7 @@ extends BaseMiniGame
 @onready var gun: Node2D = $Gun
 
 func _ready() -> void:
+	super()
 	instruction_text = "SHOOT METEORS!"
 
 # If we make it to the Timeout, we win
