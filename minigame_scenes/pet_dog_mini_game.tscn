@@ -1,0 +1,136 @@
+[gd_scene load_steps=16 format=3 uid="uid://bxbsq3nj0h10e"]
+
+[ext_resource type="Script" path="res://assets/pet_dog_minigame/pet_dog_mini_game.gd" id="1_fj8nd"]
+[ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="2_xttkd"]
+[ext_resource type="Texture2D" uid="uid://beri4vjxwykjs" path="res://assets/pet_dog_minigame/sprites/grass1.png" id="3_qp8lh"]
+[ext_resource type="Texture2D" uid="uid://dllqy47gb6qmo" path="res://assets/pet_dog_minigame/sprites/grass2.png" id="4_5a300"]
+[ext_resource type="Texture2D" uid="uid://dyj7fbinjbp64" path="res://assets/pet_dog_minigame/sprites/player_glove.png" id="5_gymck"]
+[ext_resource type="Texture2D" uid="uid://fuh5e00ldekf" path="res://assets/pet_dog_minigame/sprites/dog_kirby.png" id="6_hy361"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r15xs"]
+radius = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6f0np"]
+radius = 87.023
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbxp5"]
+atlas = ExtResource("6_hy361")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wq0yn"]
+atlas = ExtResource("6_hy361")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c14tw"]
+atlas = ExtResource("6_hy361")
+region = Rect2(0, 500, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5n1y"]
+atlas = ExtResource("6_hy361")
+region = Rect2(500, 500, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r3c4"]
+atlas = ExtResource("6_hy361")
+region = Rect2(0, 1000, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ifge"]
+atlas = ExtResource("6_hy361")
+region = Rect2(500, 1000, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xywjn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbxp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wq0yn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c14tw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5n1y")
+}],
+"loop": true,
+"name": &"pet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1r3c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ifge")
+}],
+"loop": true,
+"name": &"sad",
+"speed": 5.0
+}]
+
+[node name="PetDogMiniGame" type="Node2D"]
+script = ExtResource("1_fj8nd")
+
+[node name="GrassBackground" type="TextureRect" parent="."]
+self_modulate = Color(0.214265, 0.49355, 0.159922, 1)
+offset_left = -11.0
+offset_top = -9.0
+offset_right = 29.0
+offset_bottom = 31.0
+scale = Vector2(29.5271, 16.8032)
+texture = ExtResource("2_xttkd")
+
+[node name="Grass" type="Node" parent="."]
+
+[node name="Grass1" type="Sprite2D" parent="Grass"]
+position = Vector2(227, 547.5)
+texture = ExtResource("3_qp8lh")
+
+[node name="Grass2" type="Sprite2D" parent="Grass"]
+position = Vector2(891, 216.5)
+texture = ExtResource("4_5a300")
+
+[node name="Grass3" type="Sprite2D" parent="Grass"]
+position = Vector2(489, 146.5)
+texture = ExtResource("3_qp8lh")
+
+[node name="Grass4" type="Sprite2D" parent="Grass"]
+position = Vector2(139, 324.5)
+texture = ExtResource("4_5a300")
+
+[node name="Grass5" type="Sprite2D" parent="Grass"]
+position = Vector2(813, 577.5)
+texture = ExtResource("3_qp8lh")
+
+[node name="Grass6" type="Sprite2D" parent="Grass"]
+position = Vector2(607, 400.5)
+texture = ExtResource("4_5a300")
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2(196, 135)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_r15xs")
+
+[node name="HandSprite" type="Sprite2D" parent="Player"]
+z_index = 5
+scale = Vector2(0.302336, 0.302336)
+texture = ExtResource("5_gymck")
+
+[node name="Goal" type="Area2D" parent="."]
+position = Vector2(995, 456)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+shape = SubResource("CircleShape2D_6f0np")
+
+[node name="DogSprite" type="AnimatedSprite2D" parent="Goal"]
+position = Vector2(11, -10)
+scale = Vector2(0.391908, 0.391908)
+sprite_frames = SubResource("SpriteFrames_xywjn")
+animation = &"idle"
+autoplay = "idle"
