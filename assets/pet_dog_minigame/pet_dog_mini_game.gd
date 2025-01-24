@@ -7,10 +7,9 @@ extends BaseMiniGame
 
 @export var player_speed: int = 200
 
-func _ready() -> void:
+func _on_start_preparing_state() -> void:
 	goal.area_entered.connect(on_goal_collided)
 	disable_minigame_during_intro_and_outro = false
-	super()
 	instruction_text = "Pet!"
 	dog_sprite.play("idle")
 

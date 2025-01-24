@@ -7,18 +7,6 @@ const SPEED: int = -200
 const SLOW_SPEED: int = -50
 const FINISH_LINE_X_POS: int = 270
 
-func _ready() -> void:
-	disable_minigame_during_intro_and_outro = false
-	super()
-	instruction_text = "Moonwalk!"
-	## Put any logic you'd like to happen at the beginning of your minigame here!
-	finish_line.play("intact")
-	runner.play("lose")
-
-func _process(delta: float) -> void:
-	super(delta) ## This line will process the State machine!
-	## Use this _process function for things that don't care about the state
-	
 func move_runner(speed_delta: float) -> void:
 	var old_pos = runner.position
 	runner.set_position(Vector2(old_pos.x + speed_delta, old_pos.y))
@@ -29,7 +17,11 @@ func move_runner(speed_delta: float) -> void:
 
 ## PREPARE STATE
 
-# Didn't need them!
+func _on_start_preparing_state() -> void:
+	disable_minigame_during_intro_and_outro = false
+	instruction_text = "Moonwalk!"
+	finish_line.play("intact")
+	runner.play("lose")
 
 ## PLAYING STATE
 
