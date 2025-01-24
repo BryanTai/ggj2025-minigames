@@ -37,7 +37,11 @@ func _on_start_preparing_state() -> void:
 	var ds: Array = dirt_spots.get_children()
 	for _n in 3:
 		var i = randi_range(0, ds.size()-1)
-		ds[i].visible = true
+		var spot: Area2D = ds[i]
+		
+		spot.visible = true
+		spot.monitoring = true
+		
 		ds.pop_at(i)
 
 # Called every frame while minigame is in the PREPARING state
