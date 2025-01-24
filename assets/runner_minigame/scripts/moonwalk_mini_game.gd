@@ -3,7 +3,7 @@ extends BaseMiniGame
 @onready var finish_line: AnimatedSprite2D = $FinishLine
 @onready var runner: AnimatedSprite2D = $Runner
 
-const SPEED: int = -200
+const SPEED: int = -180
 const SLOW_SPEED: int = -50
 const FINISH_LINE_X_POS: int = 270
 
@@ -29,7 +29,7 @@ func _on_start_playing_state() -> void:
 	runner.play("idle")
 
 func _process_playing_state(delta: float) -> void:
-	if(Input.get_action_strength("move_left") > 0):
+	if(Input.get_action_strength("move_left") > 0 or Input.get_action_strength("fire") > 0):
 		move_runner(SPEED * delta)
 		runner.play("running")
 	else:
