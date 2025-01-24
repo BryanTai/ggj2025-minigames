@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkfi11o6yoyvt"]
+[gd_scene load_steps=10 format=3 uid="uid://dkfi11o6yoyvt"]
 
 [ext_resource type="Script" path="res://assets/game_manager/scripts/mini_game_manager.gd" id="1_r0ho1"]
 [ext_resource type="Animation" uid="uid://dlylawv2xg63i" path="res://assets/game_manager/animations/intro_manager.res" id="2_s3k0j"]
 [ext_resource type="Animation" uid="uid://c60mvn7pt2t66" path="res://assets/game_manager/animations/transition_mini_game.res" id="3_maxh3"]
 [ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="4_ayn3l"]
+[ext_resource type="FontFile" uid="uid://blbfoi2bjrbw1" path="res://assets/fonts/SuperFrog-Yqy1q.ttf" id="5_jmnhc"]
 
 [sub_resource type="Animation" id="Animation_1icvy"]
 length = 0.001
@@ -144,7 +145,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="MiniGameOverlay/InstructionBanner"]
-modulate = Color(0.0352941, 0.482353, 0.792157, 1)
+modulate = Color(0.0316, 0.474, 0.79, 0.423529)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -164,6 +165,14 @@ offset_top = -41.5
 offset_bottom = 41.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.921569, 0.784314, 0.309804, 1)
+theme_override_colors/font_shadow_color = Color(0.0352941, 0.482353, 0.792157, 1)
+theme_override_colors/font_outline_color = Color(0.588235, 0.709804, 0.792157, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 11
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/font = ExtResource("5_jmnhc")
 theme_override_font_sizes/font_size = 60
 text = "Win the game!"
 horizontal_alignment = 1
