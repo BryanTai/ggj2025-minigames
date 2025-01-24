@@ -55,8 +55,8 @@ extends BaseMiniGame
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	super() ## Do not remove this super() call!
 	instruction_text = "Replace me with instructions!" # This text will display during the PREPARING phase
+	super() ## Do not remove this super() call!
 	## Put any logic you'd like to happen at the beginning of your minigame here!
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

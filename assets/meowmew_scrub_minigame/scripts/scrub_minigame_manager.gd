@@ -12,8 +12,8 @@ var score := 0
 
 
 func _ready() -> void:
-	super() 
 	instruction_text = "Clean Bubs! He's filthy!" 
+	super()
 	scrubber.dirt_spot_cleared.connect(_increment_score)
 
 func _process(delta: float) -> void:
