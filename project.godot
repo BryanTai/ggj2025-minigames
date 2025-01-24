@@ -17,6 +17,8 @@ config/icon="res://assets/sprites/icon.svg"
 
 [display]
 
+window/size/viewport_width=1000
+window/size/viewport_height=1000
 window/stretch/mode="viewport"
 
 [input]
