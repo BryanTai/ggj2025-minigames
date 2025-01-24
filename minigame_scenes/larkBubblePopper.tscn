@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlbrb8rkyoydd"]
+
+[ext_resource type="Script" path="res://assets/larkBubblePopper/scripts/lark_bubble_popper.gd" id="1_1jim0"]
+[ext_resource type="PackedScene" uid="uid://x5w5lpuq8u4y" path="res://assets/larkBubblePopper/scenes/lark_bubble.tscn" id="2_83ys0"]
+
+[node name="larkBubblePopper" type="Node2D"]
+script = ExtResource("1_1jim0")
+
+[node name="larkBubble" parent="." instance=ExtResource("2_83ys0")]
+position = Vector2(584, 645)
