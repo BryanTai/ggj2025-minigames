@@ -173,8 +173,8 @@ theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 11
 theme_override_constants/shadow_outline_size = 20
 theme_override_fonts/font = ExtResource("5_jmnhc")
-theme_override_font_sizes/font_size = 60
-text = "Win the game!"
+theme_override_font_sizes/font_size = 72
+text = "WINNER!"
 horizontal_alignment = 1
 vertical_alignment = 1
 

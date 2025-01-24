@@ -8,13 +8,18 @@ const SPEED = 300.0
 
 var is_scrubbing := false
 var hovered_spot: Area2D
+var target_pos: Vector2
 
 func _ready() -> void:
 	for spot: Area2D in dirt_spots.get_children():
 		spot.body_entered.connect(_on_dirt_spot_entered.bind(spot))
 		spot.body_exited.connect(_on_dirt_spot_exited)
 
-func _physics_process(_delta: float) -> void:
+func _input(event):
+	if event is InputEventMouseMotion:
+		target_pos = event.position
+
+func _physics_process(delta: float) -> void:
 	if is_scrubbing:
 		return
 
@@ -23,13 +28,16 @@ func _physics_process(_delta: float) -> void:
 
 	var direction := Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
 	
-	if direction and not is_scrubbing:
-		velocity = direction * SPEED
+	if target_pos and not is_scrubbing:
+		global_position = global_position.move_toward(target_pos/2, SPEED * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED/2)
-		velocity.y = move_toward(velocity.y, 0, SPEED/2)
+		if direction and not is_scrubbing:
+			velocity = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED/2)
+			velocity.y = move_toward(velocity.y, 0, SPEED/2)
 
-	move_and_slide()
+		move_and_slide()
 
 func _do_scrubbing_action() -> void: 
 	if hovered_spot:
