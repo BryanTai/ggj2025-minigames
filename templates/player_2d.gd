@@ -21,3 +21,8 @@ func _process(delta: float) -> void:
 		var old_pos = position
 		var new_y = old_pos.y + (vertical_direction * player_speed * delta);
 		set_position(Vector2(old_pos.x, new_y))
+
+## Match the player to the mouse if mouse movement is detected
+func _input(event):
+	if event is InputEventMouseMotion:
+		set_position(event.position)
