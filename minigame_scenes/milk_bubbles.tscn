@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://gle416ithogk"]
+
+[ext_resource type="Script" path="res://minigame_scenes/milk_bubbles.gd" id="1_1h2on"]
+[ext_resource type="Texture2D" uid="uid://5gstey4ffbnf" path="res://assets/milk_bubbles_minigame/cup.png" id="2_0cvxp"]
+[ext_resource type="Texture2D" uid="uid://btwdl3dng8fkk" path="res://assets/milk_bubbles_minigame/straw.png" id="3_1c3xa"]
+[ext_resource type="Texture2D" uid="uid://b6373w7ovlnpo" path="res://assets/milk_bubbles_minigame/cup_mask.png" id="3_g0eaq"]
+[ext_resource type="Texture2D" uid="uid://br8xpt0vycyoq" path="res://assets/milk_bubbles_minigame/bubbles.png" id="4_drhhm"]
+[ext_resource type="Texture2D" uid="uid://c7xpa7ia61wmv" path="res://assets/milk_bubbles_minigame/cup_mask_bottom.png" id="4_e7od7"]
+[ext_resource type="Texture2D" uid="uid://c1qltqjt7i2g5" path="res://assets/milk_bubbles_minigame/milk.png" id="5_pnktf"]
+
+[node name="MilkBubbles" type="Node2D"]
+script = ExtResource("1_1h2on")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 377.0
+offset_top = 86.0
+offset_right = 591.0
+offset_bottom = 218.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Cup" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(505, 601)
+texture = ExtResource("2_0cvxp")
+
+[node name="CupMask" type="Sprite2D" parent="Cup"]
+position = Vector2(-6, -105)
+texture = ExtResource("3_g0eaq")
+
+[node name="CupMaskBottom" type="Sprite2D" parent="Cup"]
+position = Vector2(-4, 472)
+texture = ExtResource("4_e7od7")
+
+[node name="Straw" type="Sprite2D" parent="."]
+position = Vector2(365, 545)
+texture = ExtResource("3_1c3xa")
+
+[node name="Bubbles" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(490, 682)
+texture = ExtResource("4_drhhm")
+
+[node name="Milk" type="Sprite2D" parent="."]
+position = Vector2(492, 919)
+texture = ExtResource("5_pnktf")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 105.0
+offset_top = 338.0
+offset_right = 401.0
+offset_bottom = 432.0
+text = "cute bubs goes here
+with lips on straw"

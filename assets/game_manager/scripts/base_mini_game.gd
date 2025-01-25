@@ -165,7 +165,7 @@ func _on_start_preparing_state() -> void:
 ## contain any special code beyond the default instructions BEFORE the game starts.
 ## [br]
 ## e.g. Kirby crashing into the stage on his shooting star.
-func _process_preparing_state(delta: float) -> void:
+func _process_preparing_state(_delta: float) -> void:
 	pass
 
 ## Called once when the PREPARING state ends. Could be used to trigger some animation
@@ -185,7 +185,7 @@ func _on_start_playing_state() -> void:
 
 ## Called every frame while minigame is in the PLAYING state. This is where the 
 ## meat of the mini-game should be!
-func _process_playing_state(delta: float) -> void:
+func _process_playing_state(_delta: float) -> void:
 	pass
 
 ## Called once when the PLAYING state ends. You could trigger any number of things
@@ -204,7 +204,7 @@ func _on_start_win_state() -> void:
 	pass
 
 ## Called every frame while minigame is in the WIN state.
-func _process_win_state(delta: float) -> void:
+func _process_win_state(_delta: float) -> void:
 	pass
 
 # LOSE STATE
@@ -214,5 +214,5 @@ func _on_start_lose_state() -> void:
 	pass
 
 ## Called every frame while minigame is in the LOSE state.
-func _process_lose_state(delta: float) -> void:
+func _process_lose_state(_delta: float) -> void:
 	pass
