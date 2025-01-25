@@ -44,12 +44,26 @@ signal mini_game_timeout
 func cache_all_mini_game_names() -> void:
 	var dir = DirAccess.open(MINI_GAME_FOLDER_PATH)
 	if dir:
-		all_mini_game_names = dir.get_files()
+		all_mini_game_names = filter_mini_game_names(dir.get_files())
 		all_mini_game_count = all_mini_game_names.size()
 		#for str in all_mini_game_names:
 		#	print(str)
 	else:
 		print("ERROR: Cannot find MiniGame folder!")
+
+# Filters out any non-scene files from the Minigames folder
+func filter_mini_game_names(names: PackedStringArray) -> PackedStringArray:
+	var bad_indexes: Array[int]
+	var index = 0
+	for filename in names:
+		var filetype = filename.get_slice(".",1)
+		if(filetype != "tscn"):
+			print("Removing " +filename)
+			bad_indexes.append(index)
+		index += 1
+	for bad_index in bad_indexes:
+		names.remove_at(bad_index)
+	return names
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
