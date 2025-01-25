@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dli3m33ylt1gw"]
+
+[ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="1_sh8ai"]
+[ext_resource type="PackedScene" uid="uid://dki2osks6amsv" path="res://assets/gozi_bubblewrap_minigame/scenes/gozi_cursor.tscn" id="2_irc2s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7qiti"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.514448, 0.726878, 0.893422, 1)
+z_index = -1
+offset_left = -4.0
+offset_top = -6.0
+offset_right = 1012.0
+offset_bottom = 1014.0
+texture = ExtResource("1_sh8ai")
+metadata/_edit_lock_ = true
+
+[node name="Player2D" parent="." instance=ExtResource("2_irc2s")]
+position = Vector2(-4, -6)
+
+[node name="Option A" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Option A"]
+shape = SubResource("CircleShape2D_7qiti")
