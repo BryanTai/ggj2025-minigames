@@ -13,6 +13,7 @@ extends BaseMiniGame
 
 func _ready() -> void:
 	instruction_text = "RELAX!" 
+	disable_minigame_during_intro_and_outro = false # This will allow the music and animations to play in the intro/outro
 	super()
 
 # this sets the poppable bubbles to be whole.
@@ -32,5 +33,5 @@ func _process_playing_state(delta: float) -> void:
 	if $"Bubbles/2/AnimatedSprite2D".animation == "popped2" and $"Bubbles/8/AnimatedSprite2D".animation == "popped2" and $"Bubbles/10/AnimatedSprite2D".animation == "popped2" and $"Bubbles/16/AnimatedSprite2D".animation == "popped2" and $"Bubbles/22/AnimatedSprite2D".animation == "popped2":
 		trigger_game_win()
 		
-	
-	
+func _on_end_playing_state():
+	cursor.movement_enabled = false

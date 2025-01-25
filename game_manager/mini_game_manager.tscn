@@ -1,10 +1,257 @@
-[gd_scene load_steps=10 format=3 uid="uid://dkfi11o6yoyvt"]
+[gd_scene load_steps=30 format=3 uid="uid://dkfi11o6yoyvt"]
 
 [ext_resource type="Script" path="res://assets/game_manager/scripts/mini_game_manager.gd" id="1_r0ho1"]
+[ext_resource type="Texture2D" uid="uid://b4xw4ybhjdfs2" path="res://assets/game_manager/bubs_yeah_no_transitions/BubNO0001.png" id="2_qcany"]
 [ext_resource type="Animation" uid="uid://dlylawv2xg63i" path="res://assets/game_manager/animations/intro_manager.res" id="2_s3k0j"]
+[ext_resource type="Texture2D" uid="uid://dc7g2rpoihs2q" path="res://assets/game_manager/bubs_yeah_no_transitions/BubNO0002.png" id="3_8uaqb"]
 [ext_resource type="Animation" uid="uid://c60mvn7pt2t66" path="res://assets/game_manager/animations/transition_mini_game.res" id="3_maxh3"]
 [ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="4_ayn3l"]
+[ext_resource type="Texture2D" uid="uid://dc8bi564068j0" path="res://assets/game_manager/bubs_yeah_no_transitions/BubNO0003.png" id="4_k4cif"]
 [ext_resource type="FontFile" uid="uid://blbfoi2bjrbw1" path="res://assets/fonts/SuperFrog-Yqy1q.ttf" id="5_jmnhc"]
+[ext_resource type="Texture2D" uid="uid://gu8ijcp2qalm" path="res://assets/game_manager/bubs_yeah_no_transitions/BubNO0004.png" id="5_rcblu"]
+[ext_resource type="Texture2D" uid="uid://dq0e0vbe5alef" path="res://assets/game_manager/bubs_yeah_no_transitions/BubNO0005.png" id="6_vmt14"]
+[ext_resource type="Texture2D" uid="uid://e0btsw8dp2aw" path="res://assets/game_manager/bubs_yeah_no_transitions/BubNO0006.png" id="7_vnr20"]
+[ext_resource type="Texture2D" uid="uid://c2g2cpq3obpis" path="res://assets/game_manager/bubs_yeah_no_transitions/BubNO0007.png" id="8_5lde0"]
+[ext_resource type="Texture2D" uid="uid://jfehorwhsr1l" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0001.png" id="9_2v4tq"]
+[ext_resource type="Texture2D" uid="uid://d0cu3ieql30r0" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0002.png" id="10_8ovg2"]
+[ext_resource type="Texture2D" uid="uid://biff68gpw2o75" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0003.png" id="11_xy5k0"]
+[ext_resource type="Texture2D" uid="uid://oybesirxur43" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0004.png" id="12_skiyt"]
+[ext_resource type="Texture2D" uid="uid://ct4kcoeh2uros" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0005.png" id="13_4jnqg"]
+[ext_resource type="Texture2D" uid="uid://caaou0wdfhsqg" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0006.png" id="14_l6ed7"]
+[ext_resource type="Texture2D" uid="uid://87mql3gjm5b2" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0007.png" id="15_vgg8q"]
+[ext_resource type="Texture2D" uid="uid://cf8wru0vl54l6" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0008.png" id="16_5hv5f"]
+[ext_resource type="Texture2D" uid="uid://b6ekvqqnfabf3" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0009.png" id="17_n5l0v"]
+[ext_resource type="Texture2D" uid="uid://u2cufodo4a5m" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0010.png" id="18_lv2kq"]
+[ext_resource type="Texture2D" uid="uid://dbbf1spmmuc6k" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0011.png" id="19_w8oat"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxhkx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qcany")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8uaqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qcany")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8uaqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qcany")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8uaqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qcany")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8uaqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qcany")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8uaqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qcany")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8uaqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_k4cif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rcblu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmt14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vnr20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5lde0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmt14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vnr20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5lde0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmt14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vnr20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5lde0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmt14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vnr20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5lde0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmt14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vnr20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5lde0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmt14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vnr20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5lde0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmt14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vnr20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5lde0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vmt14")
+}],
+"loop": false,
+"name": &"bubs_no",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_8ovg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2v4tq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8ovg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xy5k0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_skiyt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_4jnqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_l6ed7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_vgg8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5hv5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_n5l0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_lv2kq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_w8oat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5hv5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_n5l0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_lv2kq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_w8oat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5hv5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_n5l0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_lv2kq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_w8oat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5hv5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_n5l0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_lv2kq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_w8oat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5hv5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_n5l0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_lv2kq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_w8oat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5hv5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_n5l0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_lv2kq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_w8oat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5hv5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_n5l0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_lv2kq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_w8oat")
+}],
+"loop": false,
+"name": &"bubs_yeah",
+"speed": 24.0
+}]
 
 [sub_resource type="Animation" id="Animation_1icvy"]
 length = 0.001
@@ -44,6 +291,34 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TransitionAnimatedSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_oajnb"]
+resource_name = "bubs_yeah"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionAnimatedSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
 
 [sub_resource type="Animation" id="Animation_mtku8"]
 resource_name = "show_end_banner"
@@ -78,6 +353,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p322v"]
 _data = {
 "RESET": SubResource("Animation_1icvy"),
+"bubs_yeah": SubResource("Animation_oajnb"),
 "intro_manager": ExtResource("2_s3k0j"),
 "show_end_banner": SubResource("Animation_mtku8"),
 "show_instruction_banner": SubResource("Animation_iqiqk"),
@@ -86,6 +362,13 @@ _data = {
 
 [node name="MiniGameManager" type="Node2D"]
 script = ExtResource("1_r0ho1")
+
+[node name="TransitionAnimatedSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(500, 500)
+sprite_frames = SubResource("SpriteFrames_uxhkx")
+animation = &"bubs_no"
+frame = 35
+frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

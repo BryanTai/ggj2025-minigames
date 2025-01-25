@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://gle416ithogk"]
+[gd_scene load_steps=12 format=3 uid="uid://gle416ithogk"]
 
 [ext_resource type="Script" path="res://assets/milk_bubbles_minigame/milk_bubbles.gd" id="1_1h2on"]
 [ext_resource type="Texture2D" uid="uid://5gstey4ffbnf" path="res://assets/milk_bubbles_minigame/cup.png" id="2_0cvxp"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://c7xpa7ia61wmv" path="res://assets/milk_bubbles_minigame/cup_mask_bottom.png" id="4_e7od7"]
 [ext_resource type="Texture2D" uid="uid://c1qltqjt7i2g5" path="res://assets/milk_bubbles_minigame/milk.png" id="5_pnktf"]
 [ext_resource type="AudioStream" uid="uid://cdbjmbwk8531w" path="res://assets/milk_bubbles_minigame/blowing-bubbles-6.wav" id="8_ukotn"]
+[ext_resource type="Texture2D" uid="uid://bkcpndbpkf2es" path="res://assets/milk_bubbles_minigame/bubs-neutral.png" id="9_c71cg"]
+[ext_resource type="Texture2D" uid="uid://b7p6lrciuh76l" path="res://assets/milk_bubbles_minigame/bubs-win.png" id="10_mtsht"]
+[ext_resource type="Texture2D" uid="uid://bkd4od183c7gd" path="res://assets/milk_bubbles_minigame/bubs-lose.png" id="11_efyyn"]
 
 [node name="MilkBubbles" type="Node2D"]
 script = ExtResource("1_1h2on")
@@ -47,13 +50,22 @@ texture = ExtResource("4_drhhm")
 position = Vector2(492, 919)
 texture = ExtResource("5_pnktf")
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 105.0
-offset_top = 338.0
-offset_right = 401.0
-offset_bottom = 432.0
-text = "cute bubs goes here
-with lips on straw"
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_ukotn")
+
+[node name="BubsNeutral" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(196, 336)
+texture = ExtResource("9_c71cg")
+
+[node name="BubsWin" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(196, 336)
+texture = ExtResource("10_mtsht")
+
+[node name="BubsLose" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(196, 336)
+texture = ExtResource("11_efyyn")

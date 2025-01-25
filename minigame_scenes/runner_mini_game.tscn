@@ -1,9 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://cymx4ud3awath"]
+[gd_scene load_steps=25 format=3 uid="uid://cymx4ud3awath"]
 
 [ext_resource type="Script" path="res://assets/runner_minigame/scripts/runner_mini_game.gd" id="1_3qc1h"]
 [ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="2_6vrve"]
 [ext_resource type="Texture2D" uid="uid://b3xfof151s1un" path="res://assets/runner_minigame/RunnerSprites.png" id="3_pb7it"]
 [ext_resource type="Texture2D" uid="uid://csjdsw14v0whg" path="res://assets/runner_minigame/finishline.png" id="3_qyrvt"]
+[ext_resource type="AudioStream" uid="uid://b7bbekqqsmqsr" path="res://assets/runner_minigame/audio/running_game_loop_125BPM.wav" id="5_pfq46"]
+[ext_resource type="AudioStream" uid="uid://b0ig6iykmfmkl" path="res://assets/runner_minigame/audio/running_game_win.wav" id="6_82bde"]
+[ext_resource type="AudioStream" uid="uid://bbykuvne7bsfv" path="res://assets/runner_minigame/audio/running_game_lose.wav" id="7_skg66"]
 
 [sub_resource type="Theme" id="Theme_3f26n"]
 
@@ -175,3 +178,13 @@ scale = Vector2(0.42681, 0.42681)
 sprite_frames = SubResource("SpriteFrames_pfg4d")
 animation = &"idle"
 frame_progress = 0.415994
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_pfq46")
+autoplay = true
+
+[node name="WinSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_82bde")
+
+[node name="LoseSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_skg66")

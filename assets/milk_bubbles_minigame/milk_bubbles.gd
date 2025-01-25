@@ -45,12 +45,13 @@
 
 extends BaseMiniGame
 
-var label: Label
-var cup: Node2D
-var straw: Node2D
-var bubbles: Node2D
-var milk: Node2D
-var audio: AudioStreamPlayer
+@onready var label = $Label
+@onready var bubbles = $Bubbles
+@onready var milk = $Milk
+@onready var audio = $AudioStreamPlayer
+@onready var bubs_neutral = $BubsNeutral
+@onready var bubs_win = $BubsWin
+@onready var bubs_lose= $BubsLose
 
 var bubbles_initial_pos: Vector2
 var milk_initial_pos: Vector2
@@ -70,19 +71,10 @@ func _ready() -> void:
 	instruction_text = "Froth!" # This text will display during the PREPARING phase
 	super() ## Do not remove this super() call!
 	
-	label = find_child("Label")
-	cup = find_child("Cup")
-	straw = find_child("Straw") 
-	bubbles = find_child("Bubbles")
-	milk = find_child("Milk")
-	audio = find_child("AudioStreamPlayer")
-	
 	bubbles_initial_pos = bubbles.position
 	milk_initial_pos = milk.position
 	bubbles_target_pos = bubbles.position - Vector2(0, MILK_MOVE_AMOUNT)
 	milk_target_pos = milk.position - Vector2(0, MILK_MOVE_AMOUNT)
-	
-	print(bubbles_initial_pos, milk_initial_pos, bubbles_target_pos, milk_target_pos)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -160,8 +152,10 @@ func _on_end_preparing_state() -> void:
 ## WIN STATE
 
 # Called once when entering the WIN state
-#func _on_start_win_state() -> void:
-#	pass
+func _on_start_win_state() -> void:
+	bubs_neutral.visible = false
+	bubs_lose.visible = false
+	bubs_win.visible = true
 
 # Called every frame while minigame is in the WIN state
 #func _process_win_state(delta: float) -> void:
@@ -170,8 +164,10 @@ func _on_end_preparing_state() -> void:
 ## LOSE STATE
 
 # Called once when entering the LOSE state
-#func _on_start_lose_state() -> void:
-#	pass
+func _on_start_lose_state() -> void:
+	bubs_neutral.visible = false
+	bubs_lose.visible = true
+	bubs_win.visible = false
 
 # Called every frame while minigame is in the LOSE state
 #func _process_lose_state(delta: float) -> void:
