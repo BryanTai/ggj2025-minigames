@@ -45,15 +45,13 @@
 
 extends BaseMiniGame
 
-var label: Label
-var cup: Node2D
-var straw: Node2D
-var bubbles: Node2D
-var milk: Node2D
-var audio: AudioStreamPlayer
-var bubs_neutral: Node2D
-var bubs_win: Node2D
-var bubs_lose: Node2D
+@onready var label = $Label
+@onready var bubbles = $Bubbles
+@onready var milk = $Milk
+@onready var audio = $AudioStreamPlayer
+@onready var bubs_neutral = $BubsNeutral
+@onready var bubs_win = $BubsWin
+@onready var bubs_lose= $BubsLose
 
 var bubbles_initial_pos: Vector2
 var milk_initial_pos: Vector2
@@ -72,16 +70,6 @@ const MILK_MOVE_AMOUNT: float = 250.0
 func _ready() -> void:
 	instruction_text = "Froth!" # This text will display during the PREPARING phase
 	super() ## Do not remove this super() call!
-	
-	label = find_child("Label")
-	cup = find_child("Cup")
-	straw = find_child("Straw") 
-	bubbles = find_child("Bubbles")
-	milk = find_child("Milk")
-	audio = find_child("AudioStreamPlayer")
-	bubs_neutral = find_child("BubsNeutral")
-	bubs_win = find_child("BubsWin")
-	bubs_lose = find_child("BubsLose")
 	
 	bubbles_initial_pos = bubbles.position
 	milk_initial_pos = milk.position
