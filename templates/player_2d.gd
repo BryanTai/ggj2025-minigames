@@ -23,7 +23,6 @@ func _process(delta: float) -> void:
 		var new_x = old_pos.x + (horizontal_direction * player_speed * delta);
 		set_position(Vector2(new_x, old_pos.y))
 		mouse_priority = false
-		print("MOVE H")
 	
 	# This handles Vertical movement
 	var vertical_direction := Input.get_axis("move_up", "move_down")
@@ -32,7 +31,6 @@ func _process(delta: float) -> void:
 		var new_y = old_pos.y + (vertical_direction * player_speed * delta);
 		set_position(Vector2(old_pos.x, new_y))
 		mouse_priority = false
-		print("MOVE V")
 	
 	# This will move the character player towards the mouse cursor
 	# ATTENTION: Replace "player_speed" with whatever speed you have in your minigame!
@@ -48,4 +46,3 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		target_pos = event.position
 		mouse_priority = true
-		print("MOVE M")
