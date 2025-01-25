@@ -19,15 +19,10 @@ func _process(delta: float) -> void:
 # this sets the poppable bubbles to be whole.
 func _process_preparing_state(delta: float) -> void:
 	$"Bubbles/2/AnimatedSprite2D".animation = "whole1"
-	#$"Bubbles/2/AnimatedSprite2D/Area2D/CollisionShape2D".set_process(true)
 	$"Bubbles/8/AnimatedSprite2D".animation = "whole1"
-	#$"Bubbles/8/CollisionShape2D".disabled = false
 	$"Bubbles/10/AnimatedSprite2D".animation = "whole1"
-	#$"Bubbles/10/CollisionShape2D".disabled = false
 	$"Bubbles/16/AnimatedSprite2D".animation = "whole1"
-	#$"Bubbles/16/CollisionShape2D".disabled = false
 	$"Bubbles/22/AnimatedSprite2D".animation = "whole1"
-	#$"Bubbles/22/CollisionShape2D".disabled = false
 
 # manually check every frame if all of the bubbles are popped LOLOLOL
 func _process_playing_state(delta: float) -> void:
