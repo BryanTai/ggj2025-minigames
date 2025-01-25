@@ -1,0 +1,163 @@
+[gd_scene load_steps=16 format=3 uid="uid://dtwnp25eawyq3"]
+
+[ext_resource type="Script" path="res://assets/dating_minigame/dating_minigame_manager.gd" id="1_32dxk"]
+[ext_resource type="Script" path="res://assets/dating_minigame/dating_minigame_cursor.gd" id="3_85xio"]
+[ext_resource type="Texture2D" uid="uid://kgo06s1qixoo" path="res://assets/gozi_bubblewrap_minigame/sprites/gozi_cursor.png" id="4_pbnjt"]
+[ext_resource type="Texture2D" uid="uid://c08t50rwxjfaa" path="res://assets/dating_minigame/sketch1737779810051.png" id="5_8l75t"]
+[ext_resource type="Texture2D" uid="uid://cln5gxrfeio4a" path="res://assets/dating_minigame/Asset 3.png" id="6_s5l2v"]
+[ext_resource type="Texture2D" uid="uid://c6yrkmd42jgqq" path="res://assets/dating_minigame/Asset 2.png" id="7_1obdc"]
+[ext_resource type="Texture2D" uid="uid://c15oh5m0ofkyr" path="res://assets/dating_minigame/hearto_spritesheet.png" id="7_yp3ec"]
+[ext_resource type="Texture2D" uid="uid://cqqodoi02yi2d" path="res://assets/dating_minigame/Asset 4.png" id="8_3o760"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8cjjh"]
+radius = 21.0238
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xtrp"]
+atlas = ExtResource("4_pbnjt")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rywng"]
+atlas = ExtResource("4_pbnjt")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kr4uw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xtrp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rywng")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rkcnj"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mdm41"]
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 388.2
+orbit_velocity_min = -0.448
+orbit_velocity_max = 0.552
+radial_velocity_min = -31.19
+radial_velocity_max = 21.5
+gravity = Vector3(0, 0, 0)
+damping_min = 0.25
+damping_max = 0.25
+scale_max = 2.0
+hue_variation_min = -0.02
+hue_variation_max = 0.02
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8y2lh"]
+radius = 61.0
+height = 144.0
+
+[node name="Dating_Minigame" type="Node2D"]
+script = ExtResource("1_32dxk")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.619608, 0.619608, 1, 1)
+
+[node name="Character" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="Sprite" type="Sprite2D" parent="Character"]
+scale = Vector2(0.835, 0.835)
+texture = ExtResource("5_8l75t")
+offset = Vector2(600, 600)
+
+[node name="Hand_Cursor" type="CharacterBody2D" parent="."]
+z_index = 1
+texture_filter = 1
+position = Vector2(867, 697)
+scale = Vector2(2, 2)
+motion_mode = 1
+script = ExtResource("3_85xio")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hand_Cursor"]
+position = Vector2(-2, -3)
+scale = Vector2(1.08, 1.08)
+shape = SubResource("CircleShape2D_8cjjh")
+
+[node name="PawCursor_AnimatedSprite2D" type="AnimatedSprite2D" parent="Hand_Cursor"]
+position = Vector2(-34, -32)
+scale = Vector2(0.255, 0.255)
+sprite_frames = SubResource("SpriteFrames_kr4uw")
+autoplay = "default"
+centered = false
+
+[node name="Heart_Emitter" type="GPUParticles2D" parent="Hand_Cursor"]
+material = SubResource("CanvasItemMaterial_rkcnj")
+position = Vector2(-2.5, 1)
+emitting = false
+amount = 10
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_mdm41")
+texture = ExtResource("7_yp3ec")
+lifetime = 0.5
+randomness = 1.0
+
+[node name="Selectable_Options" type="Node2D" parent="."]
+
+[node name="Option_1" type="Area2D" parent="Selectable_Options"]
+position = Vector2(500, 500)
+scale = Vector2(2, 2)
+
+[node name="Sprite" type="Sprite2D" parent="Selectable_Options/Option_1"]
+position = Vector2(167.5, 0)
+texture = ExtResource("6_s5l2v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Selectable_Options/Option_1"]
+position = Vector2(167.5, 0)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_8y2lh")
+
+[node name="Option_2" type="Area2D" parent="Selectable_Options"]
+position = Vector2(500, 500)
+scale = Vector2(2, 2)
+
+[node name="Sprite" type="Sprite2D" parent="Selectable_Options/Option_2"]
+position = Vector2(158.5, 0)
+texture = ExtResource("7_1obdc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Selectable_Options/Option_2"]
+position = Vector2(158.5, 0)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_8y2lh")
+
+[node name="Option_3" type="Area2D" parent="Selectable_Options"]
+position = Vector2(500, 500)
+scale = Vector2(2, 2)
+
+[node name="Sprite" type="Sprite2D" parent="Selectable_Options/Option_3"]
+position = Vector2(149, 0)
+texture = ExtResource("8_3o760")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Selectable_Options/Option_3"]
+position = Vector2(149, 0)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_8y2lh")
