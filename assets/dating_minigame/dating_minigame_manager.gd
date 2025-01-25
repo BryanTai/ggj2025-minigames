@@ -11,6 +11,7 @@ const bubs_chan_lose 	= preload("res://assets/dating_minigame/notveryuwu.png")
 
 var rng = RandomNumberGenerator.new()
 var rotation_direction = [1, -1].pick_random()
+var option_rotation_speed = rng.randf_range(30.0, 60.0)
 
 
 func _ready() -> void:
@@ -82,7 +83,7 @@ func _process_playing_state(delta: float) -> void:
 	
 	
 	# Rotate options in a circle
-	var _rotation_speed = 10 * delta * rotation_direction
+	var _rotation_speed = option_rotation_speed * delta * rotation_direction
 	for _child in selectable_options.get_children():
 		_rotate_option(_child, _rotation_speed)
 		

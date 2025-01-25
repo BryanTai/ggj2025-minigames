@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/dating_minigame/dating_minigame_manager.gd" id="1_32dxk"]
 [ext_resource type="Script" path="res://assets/dating_minigame/dating_minigame_cursor.gd" id="3_85xio"]
-[ext_resource type="Texture2D" uid="uid://kgo06s1qixoo" path="res://assets/gozi_bubblewrap_minigame/sprites/gozi_cursor.png" id="4_pbnjt"]
+[ext_resource type="Texture2D" uid="uid://dnuxiuw28p7rx" path="res://assets/gozi_bubblewrap_minigame/sprites/gozi_cursor.png" id="4_pbnjt"]
 [ext_resource type="Texture2D" uid="uid://c08t50rwxjfaa" path="res://assets/dating_minigame/sketch1737779810051.png" id="5_8l75t"]
 [ext_resource type="Texture2D" uid="uid://cln5gxrfeio4a" path="res://assets/dating_minigame/Asset 3.png" id="6_s5l2v"]
 [ext_resource type="Texture2D" uid="uid://c6yrkmd42jgqq" path="res://assets/dating_minigame/Asset 2.png" id="7_1obdc"]
