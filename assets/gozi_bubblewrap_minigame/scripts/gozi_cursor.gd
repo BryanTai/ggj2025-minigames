@@ -1,9 +1,7 @@
 extends Player2D
 var is_hovering = false
 
-## Defines a target_pos variable to match the mouse cursor's position if mouse
-## movement is detected.
-func _input(event):
+func _process(event):
 	super(event)
 
 	if Input.is_action_pressed("fire"):
