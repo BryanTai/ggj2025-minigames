@@ -39,6 +39,8 @@ var current_mini_game_resource: Resource # Next minigames are loaded during the 
 var all_mini_game_names: PackedStringArray
 var all_mini_game_count: int
 
+var minigame_name_override: String = "" #replace with a full name e.g. "meteor_mini_game.tscn"
+
 var show_good_transition: bool = true
 
 ## Fired if the mini_game_timer runs out before the current_mini_game responds
@@ -56,6 +58,9 @@ func cache_all_mini_game_names() -> void:
 
 # Filters out any non-scene files from the Minigames folder
 func filter_mini_game_names(names: PackedStringArray) -> PackedStringArray:
+	if minigame_name_override != "":
+		return PackedStringArray([minigame_name_override])
+	
 	var bad_indexes: Array[int]
 	var index = 0
 	for filename in names:
