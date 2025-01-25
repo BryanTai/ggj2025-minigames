@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://6pyc2et2hpr6"]
 
-[ext_resource type="Script" path="res://character_body_2d.gd" id="1_0xghc"]
-[ext_resource type="Texture2D" uid="uid://m38f6nrh8ylu" path="res://Assets/Dev Art Spaceman.png" id="2_sjjap"]
+[ext_resource type="Script" path="res://assets/spaceman-football/character_body_2d.gd" id="1_0xghc"]
+[ext_resource type="Texture2D" uid="uid://m38f6nrh8ylu" path="res://assets/spaceman-football/Assets/Dev Art Spaceman.png" id="2_sjjap"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_021ec"]
 atlas = ExtResource("2_sjjap")
@@ -64,11 +64,13 @@ position = Vector2(151, 610)
 script = ExtResource("1_0xghc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-151.004, -618.3)
 scale = Vector2(0.37397, 0.37397)
 sprite_frames = SubResource("SpriteFrames_rdpbm")
 animation = &"run"
 autoplay = "run"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(8, 77)
-polygon = PackedVector2Array(77, 27, 11, -61, 17, -123, -8, -142, -28, -142, -47, -129, -48, -111, -39, 25)
+position = Vector2(-143.004, -541.3)
+scale = Vector2(1.03028, 1.00253)
+polygon = PackedVector2Array(77, 27, 11, -61, 17, -123, 9.71022, -136.355, 0.974715, -141.343, -7.76079, -143.338, -16.4963, -143.338, -28, -142, -37.8498, -138.35, -47, -129, -48, -111, -39, 25)

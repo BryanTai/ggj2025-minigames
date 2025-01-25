@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m38f6nrh8ylu"
-path="res://.godot/imported/Dev Art Spaceman.png-5eab0cc68fa4f7f5b431aaed9a5e9f09.ctex"
+uid="uid://csa3atlupqwak"
+path="res://.godot/imported/End Zone.png-349bdc64eef1d925405fed9515be853b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Dev Art Spaceman.png"
-dest_files=["res://.godot/imported/Dev Art Spaceman.png-5eab0cc68fa4f7f5b431aaed9a5e9f09.ctex"]
+source_file="res://assets/spaceman-football/Assets/End Zone.png"
+dest_files=["res://.godot/imported/End Zone.png-349bdc64eef1d925405fed9515be853b.ctex"]
 
 [params]
 
