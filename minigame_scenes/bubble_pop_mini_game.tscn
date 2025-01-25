@@ -1,11 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2wmcjdj0gqja"]
+[gd_scene load_steps=5 format=3 uid="uid://d2wmcjdj0gqja"]
 
 [ext_resource type="Script" path="res://assets/bubble_pop_mini_game/Scripts/bubble_pop_mini_game.gd" id="1_uis2h"]
-[ext_resource type="Texture2D" uid="uid://iv1tv5f3kgxi" path="res://assets/sprites/icon.svg" id="2_53ntp"]
+[ext_resource type="Texture2D" uid="uid://btog62p7b7c18" path="res://assets/bubble_pop_mini_game/Sprites/BubbleGum.png" id="2_4k6uw"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bo2ej"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rki6w"]
+noise = SubResource("FastNoiseLite_bo2ej")
 
 [node name="bubble_pop_mini_game" type="Node2D"]
 script = ExtResource("1_uis2h")
 
+[node name="Bubs" type="Sprite2D" parent="."]
+position = Vector2(524, 703)
+scale = Vector2(0.487305, 0.694336)
+texture = SubResource("NoiseTexture2D_rki6w")
+
 [node name="Bubble" type="Sprite2D" parent="."]
 position = Vector2(521, 490)
-texture = ExtResource("2_53ntp")
+scale = Vector2(0.362244, 0.362244)
+texture = ExtResource("2_4k6uw")

@@ -49,12 +49,17 @@
 extends BaseMiniGame
 
 @onready var bubble: Sprite2D = $Bubble
+@onready var bubs: Sprite2D = $Bubs
+
+func _init() -> void:
+	disable_minigame_during_intro_and_outro = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	instruction_text = "Blow!" # This text will display during the PREPARING phase
 	super() ## Do not remove this super() call!
 	## Put any logic you'd like to happen at the beginning of your minigame here!
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -73,7 +78,7 @@ func _process(delta: float) -> void:
 ## TODO: Override this function if your MiniGame checks the win condition on TimeOut
 func _on_timeout() -> void:
 	print(bubble.scale.x)
-	if bubble.scale.x > 2.5:
+	if bubble.scale.x > 1:
 		trigger_game_win()
 	else:
 		trigger_game_lose()
@@ -120,11 +125,16 @@ func _process_playing_state(delta: float) -> void:
 
 # Called once when entering the WIN state
 #func _on_start_win_state() -> void:
-#	pass
+	#pass
+
+var float_speed = 500
 
 # Called every frame while minigame is in the WIN state
-#func _process_win_state(delta: float) -> void:
-#	pass
+func _process_win_state(delta: float) -> void:
+	bubble.position.y -= float_speed * delta
+	bubs.position.y -= float_speed * delta
+	float_speed += 1000 * delta
+	pass
 
 ## LOSE STATE
 
@@ -134,4 +144,4 @@ func _process_playing_state(delta: float) -> void:
 
 # Called every frame while minigame is in the LOSE state
 #func _process_lose_state(delta: float) -> void:
-#	pass
+	#pass
