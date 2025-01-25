@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=3 uid="uid://dpex23wfr4epm"]
+
+[ext_resource type="Script" path="res://assets/bubble_tea_minigame/bubble_tea_minigame.gd" id="1_kx8rs"]
+[ext_resource type="Texture2D" uid="uid://cq0pkt04o62u6" path="res://assets/bubble_tea_minigame/sprites/straw.png" id="2_1v5ug"]
+[ext_resource type="Script" path="res://assets/bubble_tea_minigame/straw_controller.gd" id="2_p87lq"]
+[ext_resource type="Texture2D" uid="uid://d4k22k27tgcuy" path="res://assets/bubble_tea_minigame/sprites/straw_shadow.png" id="3_1j1tc"]
+[ext_resource type="Texture2D" uid="uid://bctgkieryg735" path="res://assets/bubble_tea_minigame/sprites/bubble_cup.png" id="4_au8d0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcs0o"]
+size = Vector2(9, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bf6ie"]
+size = Vector2(5, 13)
+
+[sub_resource type="Animation" id="Animation_338ym"]
+resource_name = "STAB"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TheStraw/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8),
+"transitions": PackedFloat32Array(0.3, 1, 1),
+"update": 0,
+"values": [Vector2(0, -448), Vector2(0, -500), Vector2(0, -248)]
+}
+
+[sub_resource type="Animation" id="Animation_25o5s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TheStraw/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -448)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kub2j"]
+_data = {
+"RESET": SubResource("Animation_25o5s"),
+"STAB": SubResource("Animation_338ym")
+}
+
+[node name="BubbleTeaMinigame" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_kx8rs")
+
+[node name="TheStraw" type="CharacterBody2D" parent="."]
+z_index = 1
+position = Vector2(256, 358)
+script = ExtResource("2_p87lq")
+
+[node name="StrawCollider" type="CollisionShape2D" parent="TheStraw"]
+shape = SubResource("RectangleShape2D_pcs0o")
+
+[node name="StrawShadow" type="Sprite2D" parent="TheStraw"]
+texture = ExtResource("3_1j1tc")
+
+[node name="Sprite" type="Sprite2D" parent="TheStraw"]
+position = Vector2(0, -448)
+texture = ExtResource("2_1v5ug")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+
+[node name="BubbleCup" type="Sprite2D" parent="."]
+position = Vector2(248, 424)
+texture = ExtResource("4_au8d0")
+
+[node name="Area2D" type="Area2D" parent="BubbleCup"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BubbleCup/Area2D"]
+position = Vector2(1, -43)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_bf6ie")
+
+[node name="CoverCollider" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CoverCollider"]
+polygon = PackedVector2Array(245, 348, 341, 354, 418, 373, 418, 394, 345, 413, 165, 414, 78, 392, 78, 373, 167, 352, 245, 348, 245, 332, 43, 331, 43, 447, 461, 447, 461, 331, 245, 332)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kub2j")
+}
+
+[connection signal="body_entered" from="BubbleCup/Area2D" to="TheStraw" method="_on_straw_detected" binds= [true]]
+[connection signal="body_exited" from="BubbleCup/Area2D" to="TheStraw" method="_on_straw_detected" binds= [false]]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
