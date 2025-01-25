@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://de4t4qun8vndl"]
+[gd_scene load_steps=5 format=3 uid="uid://de4t4qun8vndl"]
 
 [ext_resource type="Script" path="res://assets/gozi_bubblewrap_minigame/scripts/gozi_bubblewrap.gd" id="1_qi1y3"]
 [ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="2_ou43r"]
 [ext_resource type="PackedScene" uid="uid://dki2osks6amsv" path="res://assets/gozi_bubblewrap_minigame/scenes/gozi_cursor.tscn" id="2_q8uq6"]
 [ext_resource type="PackedScene" uid="uid://c7ynph8jjsloo" path="res://assets/gozi_bubblewrap_minigame/scenes/gozi_bubblewrap_bubble.tscn" id="3_diu7g"]
-[ext_resource type="AudioStream" uid="uid://4nwpa46ba34e" path="res://assets/gozi_bubblewrap_minigame/audio/Game Jam (BubbleWare) - Bubblers.wav" id="5_ltawf"]
 
 [node name="Bubblewrap" type="Node2D"]
 position = Vector2(-4, -4)
@@ -140,8 +139,3 @@ offset_right = 1012.0
 offset_bottom = 1014.0
 texture = ExtResource("2_ou43r")
 metadata/_edit_lock_ = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_ltawf")
-autoplay = true
-bus = &"Music"

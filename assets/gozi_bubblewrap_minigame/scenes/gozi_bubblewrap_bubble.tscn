@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7ynph8jjsloo"]
+[gd_scene load_steps=10 format=3 uid="uid://c7ynph8jjsloo"]
 
 [ext_resource type="Script" path="res://assets/gozi_bubblewrap_minigame/scripts/gozi_bubblewrap_bubble.gd" id="1_j2o03"]
 [ext_resource type="Texture2D" uid="uid://b2mj1vrbmejn7" path="res://assets/gozi_bubblewrap_minigame/sprites/gozi_bubblewrap_bubbles.png" id="1_ke3vg"]
+[ext_resource type="AudioStream" uid="uid://caqrvvca1illw" path="res://assets/gozi_bubblewrap_minigame/audio/pop.ogg" id="3_mjkas"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_377ps"]
 atlas = ExtResource("1_ke3vg")
@@ -11,11 +12,11 @@ region = Rect2(0, 200, 200, 200)
 atlas = ExtResource("1_ke3vg")
 region = Rect2(200, 200, 200, 200)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nfyob"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_85n8e"]
 atlas = ExtResource("1_ke3vg")
 region = Rect2(0, 0, 200, 200)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_umf2c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxkcl"]
 atlas = ExtResource("1_ke3vg")
 region = Rect2(200, 0, 200, 200)
 
@@ -39,18 +40,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nfyob")
+"texture": SubResource("AtlasTexture_85n8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxkcl")
 }],
 "loop": true,
 "name": &"whole1",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_umf2c")
-}],
-"loop": true,
-"name": &"whole2",
 "speed": 5.0
 }]
 
@@ -62,7 +58,7 @@ script = ExtResource("1_j2o03")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b5lnd")
-animation = &"popped2"
+animation = &"whole1"
 autoplay = "popped1"
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
@@ -71,5 +67,10 @@ autoplay = "popped1"
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_yy472")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mjkas")
+bus = &"SFX"
+
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="area_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="input_event" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_input_event"]

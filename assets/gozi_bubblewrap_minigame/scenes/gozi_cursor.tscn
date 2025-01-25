@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://dki2osks6amsv"]
+
+[ext_resource type="Script" path="res://assets/gozi_bubblewrap_minigame/scripts/gozi_cursor.gd" id="1_ap1dx"]
+[ext_resource type="Texture2D" uid="uid://kgo06s1qixoo" path="res://assets/gozi_bubblewrap_minigame/sprites/gozi_cursor.png" id="1_krde5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tiyoh"]
+radius = 68.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xtrp"]
+atlas = ExtResource("1_krde5")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rywng"]
+atlas = ExtResource("1_krde5")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l0enf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xtrp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rywng")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}]
+
+[node name="Player2D" type="Area2D"]
+script = ExtResource("1_ap1dx")
+player_speed = 700
+
+[node name="PawCursor_CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(2, 48)
+shape = SubResource("CircleShape2D_tiyoh")
+
+[node name="PawCursor_AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-73, -54)
+scale = Vector2(0.66, 0.66)
+sprite_frames = SubResource("SpriteFrames_l0enf")
+animation = &"pressed"
+autoplay = "default"
+centered = false
+metadata/_edit_lock_ = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
