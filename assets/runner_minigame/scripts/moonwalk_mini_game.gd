@@ -5,7 +5,7 @@ extends BaseMiniGame
 
 const SPEED: int = -180
 const SLOW_SPEED: int = -50
-const FINISH_LINE_X_POS: int = 270
+const FINISH_LINE_X_POS: int = 240
 
 func move_runner(speed_delta: float) -> void:
 	var old_pos = runner.position
