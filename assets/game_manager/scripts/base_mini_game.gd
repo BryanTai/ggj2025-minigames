@@ -32,11 +32,14 @@ var disable_minigame_during_intro_and_outro = true
 
 ## This will automatically be disabled by the mini_game_manager
 var run_testing_mode = true
+var test_label : Label
+var test_playing_timer : Timer
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_on_start_preparing_state()
-	start_testing_timer()
+	start_test_intro_timer()
 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -47,17 +50,44 @@ func _process(delta: float) -> void:
 func start_playing_game() -> void:
 	set_mini_game_state(MiniGameState.PLAYING)
 
-## Creates a timer to mimic the Introduction animation ending
-## This happens if the MiniGame is run without the manager
-func start_testing_timer() -> void:
+## TESTING FUNCTIONS
+# These will only work if the MiniGame is tested individually without the MiniGameManager
+
+## Creates a Label and Timer to mimic the Introduction sequence
+func start_test_intro_timer() -> void:
 	if(run_testing_mode):
 		print("Creating a test timer!")
-		var test_timer = Timer.new()
-		test_timer.wait_time = 1
-		test_timer.timeout.connect(start_playing_game)
-		test_timer.process_mode = Node.PROCESS_MODE_ALWAYS
-		add_child(test_timer)
-		test_timer.start()
+		test_label = Label.new()
+		test_label.text = instruction_text
+		test_label.scale = Vector2(10, 10)
+		add_child(test_label)
+
+		var test_intro_timer = Timer.new()
+		test_intro_timer.wait_time = 1
+		test_intro_timer.timeout.connect(start_playing_game)
+		test_intro_timer.one_shot = true
+		test_intro_timer.process_mode = Node.PROCESS_MODE_ALWAYS
+		add_child(test_intro_timer)
+		test_intro_timer.start()
+
+## Creates a timer to mimic the PLAYING countdown
+func start_test_playing_timer() -> void:
+	if(run_testing_mode):
+		test_playing_timer = Timer.new()
+		test_playing_timer.wait_time = 5
+		test_playing_timer.one_shot = true
+		test_playing_timer.timeout.connect(start_playing_game)
+		add_child(test_playing_timer)
+		test_playing_timer.start()
+
+## Update the test label with the current time
+func process_test_playing_timer() -> void:
+	if(run_testing_mode):
+		if(test_playing_timer.is_stopped()):
+			test_label.text = "0"
+		else:
+			var display_seconds = (test_playing_timer.time_left + 1) as int
+			test_label.text = str(display_seconds)
 
 # ENDING THE GAME
 
@@ -95,6 +125,7 @@ func set_mini_game_state(new_state: MiniGameState) -> void:
 	
 	match current_state:
 		MiniGameState.PLAYING:
+			start_test_playing_timer()
 			_on_start_playing_state()
 		MiniGameState.WIN:
 			_on_start_win_state()
@@ -107,11 +138,14 @@ func process_state_machine(delta: float) -> void:
 		MiniGameState.PREPARING:
 			_process_preparing_state(delta)
 		MiniGameState.PLAYING:
+			process_test_playing_timer()
 			_process_playing_state(delta)
 		MiniGameState.WIN:
 			_process_win_state(delta)
 		MiniGameState.LOSE:
 			_process_lose_state(delta)
+
+
 
 # STATE SPECIFIC FUNCTIONS
 #

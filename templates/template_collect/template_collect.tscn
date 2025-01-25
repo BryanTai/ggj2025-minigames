@@ -1,25 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://6pkq021mk0hc"]
+[gd_scene load_steps=5 format=3 uid="uid://6pkq021mk0hc"]
 
 [ext_resource type="Script" path="res://templates/template_collect/template_collect.gd" id="1_m70rd"]
-[ext_resource type="Texture2D" uid="uid://iv1tv5f3kgxi" path="res://assets/sprites/icon.svg" id="2_kgspx"]
 [ext_resource type="PackedScene" uid="uid://bfhc4cut4xjca" path="res://templates/template_collect/collectable.tscn" id="3_afrui"]
+[ext_resource type="PackedScene" uid="uid://dpxwtxunvlmyf" path="res://templates/player_2d.tscn" id="4_ji4t6"]
 [ext_resource type="AudioStream" uid="uid://il1o04iom285" path="res://assets/audio/515643__mashedtatoes2__ding2.wav" id="4_m8mcs"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_rkfee"]
-radius = 54.0093
 
 [node name="template_collect" type="Node2D"]
 script = ExtResource("1_m70rd")
-
-[node name="Player" type="Area2D" parent="."]
-z_index = 5
-position = Vector2(577, 289)
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("2_kgspx")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CircleShape2D_rkfee")
 
 [node name="CollectablesParentNode" type="Node" parent="."]
 
@@ -34,3 +21,6 @@ position = Vector2(764, 156)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_m8mcs")
+
+[node name="Player2D" parent="." instance=ExtResource("4_ji4t6")]
+position = Vector2(551, 314)

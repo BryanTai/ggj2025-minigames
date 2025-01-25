@@ -153,7 +153,7 @@ anchor_bottom = 1.0
 offset_left = -5.0
 offset_top = -5.0
 offset_right = 1159.0
-offset_bottom = 661.0
+offset_bottom = 1095.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -162,7 +162,7 @@ theme = SubResource("Theme_3f26n")
 texture = ExtResource("2_6vrve")
 
 [node name="FinishLine" type="AnimatedSprite2D" parent="."]
-position = Vector2(984, 290)
+position = Vector2(838, 497)
 scale = Vector2(0.72, 0.72)
 sprite_frames = SubResource("SpriteFrames_cdjqx")
 animation = &"broken"
@@ -170,7 +170,7 @@ autoplay = "intact"
 frame_progress = 0.427099
 
 [node name="Runner" type="AnimatedSprite2D" parent="."]
-position = Vector2(207, 313)
+position = Vector2(127.263, 509.32)
 scale = Vector2(0.42681, 0.42681)
 sprite_frames = SubResource("SpriteFrames_pfg4d")
 animation = &"idle"

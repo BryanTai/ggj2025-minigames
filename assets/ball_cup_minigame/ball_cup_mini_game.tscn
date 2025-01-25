@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cagtsb40t1ygf"]
+
+[ext_resource type="Script" path="res://assets/ball_cup_minigame/ball_cup_mini_game.gd" id="1_q15iu"]
+[ext_resource type="Texture2D" uid="uid://5kjdlnt2flew" path="res://assets/ball_cup_minigame/table.png" id="2_prrn3"]
+[ext_resource type="Texture2D" uid="uid://bdgy5h00480ab" path="res://assets/ball_cup_minigame/hand.png" id="3_ba1x3"]
+[ext_resource type="PackedScene" uid="uid://d1puk4bdx210x" path="res://assets/ball_cup_minigame/cup.tscn" id="4_nrms2"]
+[ext_resource type="Texture2D" uid="uid://bwo23tynkk5dg" path="res://assets/ball_cup_minigame/ball.png" id="5_wf2i0"]
+
+[node name="BallCupMiniGame" type="Node2D"]
+script = ExtResource("1_q15iu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1000.0
+offset_bottom = 1000.0
+texture = ExtResource("2_prrn3")
+
+[node name="Hand" type="Sprite2D" parent="."]
+position = Vector2(545, 725)
+scale = Vector2(0.623258, 0.623258)
+texture = ExtResource("3_ba1x3")
+
+[node name="Cups" type="Node" parent="."]
+
+[node name="Cup" parent="Cups" instance=ExtResource("4_nrms2")]
+visible = false
+position = Vector2(270, 270)
+
+[node name="Cup2" parent="Cups" instance=ExtResource("4_nrms2")]
+visible = false
+position = Vector2(545, 370)
+
+[node name="Cup3" parent="Cups" instance=ExtResource("4_nrms2")]
+visible = false
+position = Vector2(820, 270)
+
+[node name="Ball" type="Sprite2D" parent="."]
+position = Vector2(500, 335)
+scale = Vector2(0.248272, 0.248272)
+texture = ExtResource("5_wf2i0")
+
+[node name="SwappingTimer" type="Timer" parent="."]
+wait_time = 2.0

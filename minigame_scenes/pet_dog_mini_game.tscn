@@ -5,10 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://beri4vjxwykjs" path="res://assets/pet_dog_minigame/sprites/grass1.png" id="3_qp8lh"]
 [ext_resource type="Texture2D" uid="uid://dllqy47gb6qmo" path="res://assets/pet_dog_minigame/sprites/grass2.png" id="4_5a300"]
 [ext_resource type="Texture2D" uid="uid://dyj7fbinjbp64" path="res://assets/pet_dog_minigame/sprites/player_glove.png" id="5_gymck"]
+[ext_resource type="PackedScene" uid="uid://dpxwtxunvlmyf" path="res://templates/player_2d.tscn" id="5_lh2mh"]
 [ext_resource type="Texture2D" uid="uid://fuh5e00ldekf" path="res://assets/pet_dog_minigame/sprites/dog_kirby.png" id="6_hy361"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_r15xs"]
-radius = 40.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6f0np"]
 radius = 87.023
@@ -82,7 +80,7 @@ offset_left = -11.0
 offset_top = -9.0
 offset_right = 29.0
 offset_bottom = 31.0
-scale = Vector2(29.5271, 16.8032)
+scale = Vector2(26.1272, 25.8733)
 texture = ExtResource("2_xttkd")
 
 [node name="Grass" type="Node" parent="."]
@@ -111,19 +109,31 @@ texture = ExtResource("3_qp8lh")
 position = Vector2(607, 400.5)
 texture = ExtResource("4_5a300")
 
-[node name="Player" type="Area2D" parent="."]
-position = Vector2(196, 135)
+[node name="Grass7" type="Sprite2D" parent="Grass"]
+position = Vector2(104, 779)
+texture = ExtResource("4_5a300")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CircleShape2D_r15xs")
+[node name="Grass8" type="Sprite2D" parent="Grass"]
+position = Vector2(543, 668)
+texture = ExtResource("3_qp8lh")
 
-[node name="HandSprite" type="Sprite2D" parent="Player"]
-z_index = 5
-scale = Vector2(0.302336, 0.302336)
+[node name="Grass9" type="Sprite2D" parent="Grass"]
+position = Vector2(420, 916)
+texture = ExtResource("4_5a300")
+
+[node name="Grass10" type="Sprite2D" parent="Grass"]
+position = Vector2(943, 948)
+texture = ExtResource("3_qp8lh")
+
+[node name="Player2D" parent="." instance=ExtResource("5_lh2mh")]
+position = Vector2(103, 70)
+
+[node name="Sprite2D" parent="Player2D" index="0"]
+scale = Vector2(0.274067, 0.274067)
 texture = ExtResource("5_gymck")
 
 [node name="Goal" type="Area2D" parent="."]
-position = Vector2(995, 456)
+position = Vector2(826, 807)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
 shape = SubResource("CircleShape2D_6f0np")
@@ -134,3 +144,5 @@ scale = Vector2(0.391908, 0.391908)
 sprite_frames = SubResource("SpriteFrames_xywjn")
 animation = &"idle"
 autoplay = "idle"
+
+[editable path="Player2D"]

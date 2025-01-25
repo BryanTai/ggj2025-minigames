@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2wmcjdj0gqja"]
+
+[ext_resource type="Script" path="res://assets/bubble_pop_mini_game/Scripts/bubble_pop_mini_game.gd" id="1_uis2h"]
+[ext_resource type="Texture2D" uid="uid://iv1tv5f3kgxi" path="res://assets/sprites/icon.svg" id="2_53ntp"]
+
+[node name="bubble_pop_mini_game" type="Node2D"]
+script = ExtResource("1_uis2h")
+
+[node name="Bubble" type="Sprite2D" parent="."]
+position = Vector2(521, 490)
+texture = ExtResource("2_53ntp")

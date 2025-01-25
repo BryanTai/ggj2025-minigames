@@ -20,11 +20,55 @@ anchor_bottom = 1.0
 offset_left = -5.0
 offset_top = -5.0
 offset_right = 1189.0
-offset_bottom = 690.0
+offset_bottom = 1195.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_3m15i")
 metadata/_edit_lock_ = true
+
+[node name="Blank12" type="Sprite2D" parent="Space"]
+position = Vector2(375, 737)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank13" type="Sprite2D" parent="Space"]
+position = Vector2(204, 872)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank14" type="Sprite2D" parent="Space"]
+position = Vector2(744, 633)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank15" type="Sprite2D" parent="Space"]
+position = Vector2(123, 659)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank16" type="Sprite2D" parent="Space"]
+position = Vector2(742, 906)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank17" type="Sprite2D" parent="Space"]
+position = Vector2(980, 768)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank18" type="Sprite2D" parent="Space"]
+position = Vector2(530, 903)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank19" type="Sprite2D" parent="Space"]
+position = Vector2(483, 605)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank20" type="Sprite2D" parent="Space"]
+position = Vector2(1049, 599)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank21" type="Sprite2D" parent="Space"]
+position = Vector2(988, 975)
+texture = ExtResource("2_3m15i")
+
+[node name="Blank22" type="Sprite2D" parent="Space"]
+position = Vector2(93, 968)
+texture = ExtResource("2_3m15i")
 
 [node name="Blank" type="Sprite2D" parent="Space"]
 position = Vector2(402, 241)
@@ -72,10 +116,10 @@ texture = ExtResource("2_3m15i")
 
 [node name="Ground" type="TextureRect" parent="."]
 self_modulate = Color(1.56425e-07, 0.449459, 0.174083, 1)
-offset_left = -18.0
-offset_top = 559.0
-offset_right = 22.0
-offset_bottom = 599.0
+offset_left = -45.0
+offset_top = 886.0
+offset_right = -5.0
+offset_bottom = 926.0
 scale = Vector2(30.8375, 3.38461)
 texture = ExtResource("2_3m15i")
 
@@ -87,20 +131,21 @@ scale = Vector2(-3.18054, 4.60115)
 shape = SubResource("RectangleShape2D_y8n48")
 
 [node name="Meteor" parent="." instance=ExtResource("3_13vih")]
-position = Vector2(338, -437)
+position = Vector2(112, -451)
 
 [node name="Meteor2" parent="." instance=ExtResource("3_13vih")]
-position = Vector2(582, 52)
+position = Vector2(459, 53)
 
 [node name="Meteor3" parent="." instance=ExtResource("3_13vih")]
-position = Vector2(1110, -180)
+position = Vector2(887, -181)
 
 [node name="Meteor4" parent="." instance=ExtResource("3_13vih")]
-position = Vector2(849, -104)
+position = Vector2(688, -100)
 
 [node name="Meteor5" parent="." instance=ExtResource("3_13vih")]
-position = Vector2(634, -525)
+position = Vector2(367, -559)
 
 [node name="Gun" parent="." instance=ExtResource("4_x7ttd")]
+position = Vector2(589, 835)
 
 [connection signal="area_entered" from="Ground/Area2D" to="." method="_on_collision"]

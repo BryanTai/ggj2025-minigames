@@ -27,3 +27,9 @@ func _process(delta: float) -> void:
 		meteor_mini_game.add_child(bullet_instance)
 		bullet_instance.set_position(global_position)
 		audio_stream_player.play()
+
+## Match the player to the mouse if mouse movement is detected
+func _input(event):
+	if event is InputEventMouseMotion:
+		var new_position = Vector2(event.position.x, position.y)
+		set_position(new_position)

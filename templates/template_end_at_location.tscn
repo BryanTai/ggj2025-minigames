@@ -2,29 +2,19 @@
 
 [ext_resource type="Script" path="res://templates/template_end_at_location.gd" id="1_b3yjt"]
 [ext_resource type="Texture2D" uid="uid://iv1tv5f3kgxi" path="res://assets/sprites/icon.svg" id="2_eu353"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_b0i5r"]
-radius = 71.0
+[ext_resource type="PackedScene" uid="uid://dpxwtxunvlmyf" path="res://templates/player_2d.tscn" id="2_l5sld"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x5e17"]
 radius = 38.0
 
 [node name="TemplateEndAtLocation" type="Node2D"]
 script = ExtResource("1_b3yjt")
-player_speed = 500
 
-[node name="Player" type="Area2D" parent="."]
-z_index = 5
-position = Vector2(188, 486)
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("2_eu353")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CircleShape2D_b0i5r")
+[node name="Player2D" parent="." instance=ExtResource("2_l5sld")]
+position = Vector2(242, 478)
 
 [node name="Goal" type="Area2D" parent="."]
-position = Vector2(1017, 191)
+position = Vector2(848, 170)
 
 [node name="Sprite2D" type="Sprite2D" parent="Goal"]
 rotation = -3.14159
