@@ -1,5 +1,4 @@
 extends Player2D
-
 var is_hovering = false
 
 ## Defines a target_pos variable to match the mouse cursor's position if mouse
@@ -12,9 +11,3 @@ func _input(event):
 		$PawCursor_AnimatedSprite2D.animation = "pressed"
 	else:
 		$PawCursor_AnimatedSprite2D.animation = "default"
-
-func _on_area_entered(area):
-	is_hovering = true
-
-func _on_area_exited(area):
-	is_hovering = false

@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://c7ynph8jjsloo"]
 
 [ext_resource type="Script" path="res://assets/gozi_bubblewrap_minigame/scripts/gozi_bubblewrap_bubble.gd" id="1_j2o03"]
-[ext_resource type="Texture2D" uid="uid://b2mj1vrbmejn7" path="res://assets/gozi_bubblewrap_minigame/sprites/gozi_bubblewrap_bubbles.png" id="1_ke3vg"]
-[ext_resource type="AudioStream" uid="uid://caqrvvca1illw" path="res://assets/gozi_bubblewrap_minigame/audio/pop.ogg" id="3_mjkas"]
+[ext_resource type="Texture2D" uid="uid://bxuhvjwqbv5em" path="res://assets/gozi_bubblewrap_minigame/sprites/gozi_bubblewrap_bubbles.png" id="1_ke3vg"]
+[ext_resource type="AudioStream" uid="uid://cmmvyh0jysy33" path="res://assets/gozi_bubblewrap_minigame/audio/pop.ogg" id="3_mjkas"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_377ps"]
 atlas = ExtResource("1_ke3vg")
@@ -72,5 +72,6 @@ stream = ExtResource("3_mjkas")
 bus = &"SFX"
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
-[connection signal="area_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="AnimatedSprite2D/Area2D" to="." method="_on_area_exited"]
 [connection signal="input_event" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_input_event"]
