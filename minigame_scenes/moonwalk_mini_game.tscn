@@ -1,9 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://bqcsxlk25a5r4"]
+[gd_scene load_steps=25 format=3 uid="uid://bqcsxlk25a5r4"]
 
-[ext_resource type="Script" path="res://assets/runner_minigame/scripts/moonwalk_mini_game.gd" id="1_7mi5s"]
+[ext_resource type="Script" path="res://assets/runner_minigame/scripts/runner_mini_game.gd" id="1_u46mr"]
 [ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="2_0y0yl"]
 [ext_resource type="Texture2D" uid="uid://csjdsw14v0whg" path="res://assets/runner_minigame/finishline.png" id="3_vvysr"]
 [ext_resource type="Texture2D" uid="uid://b3xfof151s1un" path="res://assets/runner_minigame/RunnerSprites.png" id="4_tlm4s"]
+[ext_resource type="AudioStream" uid="uid://tc5onmxnm3i3" path="res://assets/runner_minigame/audio/running_game_loop_reverse_125BPM.wav" id="5_4r3oo"]
+[ext_resource type="AudioStream" uid="uid://b0ig6iykmfmkl" path="res://assets/runner_minigame/audio/running_game_win.wav" id="6_pluoo"]
+[ext_resource type="AudioStream" uid="uid://bbykuvne7bsfv" path="res://assets/runner_minigame/audio/running_game_lose.wav" id="7_h4w7e"]
 
 [sub_resource type="Theme" id="Theme_vmxhs"]
 
@@ -142,7 +145,12 @@ animations = [{
 }]
 
 [node name="MoonwalkMiniGame" type="Node2D"]
-script = ExtResource("1_7mi5s")
+script = ExtResource("1_u46mr")
+SPEED = -180
+SLOW_SPEED = -50
+FINISH_LINE_X_POS = 240
+instruction = "Moonwalk!"
+direction_input = "move_left"
 
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color(0.560745, 0.392817, 0, 1)
@@ -172,3 +180,13 @@ position = Vector2(884.32, 567.32)
 scale = Vector2(0.42681, 0.42681)
 sprite_frames = SubResource("SpriteFrames_l6qs3")
 animation = &"idle"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_4r3oo")
+autoplay = true
+
+[node name="WinSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_pluoo")
+
+[node name="LoseSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_h4w7e")
