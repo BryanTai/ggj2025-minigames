@@ -50,15 +50,17 @@ var cup: Node2D
 var straw: Node2D
 var bubbles: Node2D
 var milk: Node2D
+var audio: AudioStreamPlayer
 
 var bubbles_initial_pos: Vector2
 var milk_initial_pos: Vector2
 var bubbles_target_pos: Vector2
 var milk_target_pos: Vector2
+var last_audio_position: float = 0.0
 
 var filled_amount: float = 0.0
 
-const FILL_RATE: float = 50.0
+const FILL_RATE: float = 30.0
 const DRAIN_RATE: float = 15.0
 const REQUIRED_FILL_TO_WIN: float = 100.0
 const MILK_MOVE_AMOUNT: float = 250.0
@@ -73,6 +75,7 @@ func _ready() -> void:
 	straw = find_child("Straw") 
 	bubbles = find_child("Bubbles")
 	milk = find_child("Milk")
+	audio = find_child("AudioStreamPlayer")
 	
 	bubbles_initial_pos = bubbles.position
 	milk_initial_pos = milk.position
@@ -92,9 +95,14 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("fire"):
 		bubbles.visible = true
 		filled_amount += FILL_RATE * delta
+		if not audio.playing:
+			audio.play(last_audio_position)
 	else:
 		bubbles.visible = false
 		filled_amount -= DRAIN_RATE * delta
+		if audio.playing:
+			last_audio_position = audio.get_playback_position()
+			audio.stop()
 
 	if filled_amount <= 0:
 		filled_amount = 0
