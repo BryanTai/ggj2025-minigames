@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://4rfim341ajc"]
+
+[ext_resource type="Texture2D" uid="uid://cuh6sfwmqs5yy" path="res://assets/bubble_chomp/hoshi_sprites/HoshiRun_01.png" id="1_46yu7"]
+[ext_resource type="Texture2D" uid="uid://dxvn808kgjull" path="res://assets/bubble_chomp/hoshi_sprites/HoshiRun_02.png" id="2_thfnj"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_46yu7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_thfnj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
