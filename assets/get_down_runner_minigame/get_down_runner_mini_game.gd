@@ -2,6 +2,7 @@ extends BaseMiniGame
 
 @onready var finish_line: AnimatedSprite2D = $FinishLine
 @onready var runner: AnimatedSprite2D = $Runner
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 const SPEED: int = 180
 const SLOW_SPEED: int = 50
@@ -19,14 +20,12 @@ func move_runner(speed_delta: float) -> void:
 
 func _on_start_preparing_state() -> void:
 	disable_minigame_during_intro_and_outro = false
-	instruction_text = "Run!"
+	instruction_text = "GET DOWN AND RUN!"
 	finish_line.play("intact")
 	runner.play("idle")
+	audio_stream_player.play()
 
 ## PLAYING STATE
-
-func _on_start_playing_state() -> void:
-	runner.play("idle")
 
 func _process_playing_state(delta: float) -> void:
 	if(Input.get_action_strength("move_right") > 0 or Input.get_action_strength("fire") > 0):
