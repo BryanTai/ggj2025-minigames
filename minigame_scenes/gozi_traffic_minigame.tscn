@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx4jaq5v2ei40"]
+
+[ext_resource type="Script" path="res://assets/gozi_traffic_minigame/scripts/gozi_traffic_minigame.gd" id="1_7xnaa"]
+[ext_resource type="Texture2D" uid="uid://cj3srdpgkeflt" path="res://assets/gozi_traffic_minigame/sprites/background_TEMP.png" id="1_o0uq3"]
+[ext_resource type="PackedScene" uid="uid://crq0fv08ly02p" path="res://assets/gozi_traffic_minigame/scenes/gozi_traffic_player.tscn" id="2_r8pwn"]
+
+[node name="Traffic Minigame" type="Node2D"]
+script = ExtResource("1_7xnaa")
+
+[node name="Player" parent="." instance=ExtResource("2_r8pwn")]
+position = Vector2(700, 675)
+player_speed = 800
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(500, 500)
+texture = ExtResource("1_o0uq3")
+metadata/_edit_lock_ = true
