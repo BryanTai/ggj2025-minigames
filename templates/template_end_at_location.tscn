@@ -14,7 +14,7 @@ script = ExtResource("1_b3yjt")
 position = Vector2(242, 478)
 
 [node name="Goal" type="Area2D" parent="."]
-position = Vector2(1017, 191)
+position = Vector2(848, 170)
 
 [node name="Sprite2D" type="Sprite2D" parent="Goal"]
 rotation = -3.14159

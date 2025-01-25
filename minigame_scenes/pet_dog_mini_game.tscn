@@ -80,7 +80,7 @@ offset_left = -11.0
 offset_top = -9.0
 offset_right = 29.0
 offset_bottom = 31.0
-scale = Vector2(29.5271, 16.8032)
+scale = Vector2(26.1272, 25.8733)
 texture = ExtResource("2_xttkd")
 
 [node name="Grass" type="Node" parent="."]
@@ -109,6 +109,22 @@ texture = ExtResource("3_qp8lh")
 position = Vector2(607, 400.5)
 texture = ExtResource("4_5a300")
 
+[node name="Grass7" type="Sprite2D" parent="Grass"]
+position = Vector2(104, 779)
+texture = ExtResource("4_5a300")
+
+[node name="Grass8" type="Sprite2D" parent="Grass"]
+position = Vector2(543, 668)
+texture = ExtResource("3_qp8lh")
+
+[node name="Grass9" type="Sprite2D" parent="Grass"]
+position = Vector2(420, 916)
+texture = ExtResource("4_5a300")
+
+[node name="Grass10" type="Sprite2D" parent="Grass"]
+position = Vector2(943, 948)
+texture = ExtResource("3_qp8lh")
+
 [node name="Player2D" parent="." instance=ExtResource("5_lh2mh")]
 position = Vector2(103, 70)
 
@@ -117,7 +133,7 @@ scale = Vector2(0.274067, 0.274067)
 texture = ExtResource("5_gymck")
 
 [node name="Goal" type="Area2D" parent="."]
-position = Vector2(995, 456)
+position = Vector2(826, 807)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
 shape = SubResource("CircleShape2D_6f0np")
