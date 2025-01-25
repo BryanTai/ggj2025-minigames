@@ -70,12 +70,12 @@ func _process(delta: float) -> void:
 	currentFrame += 1
 	# Bouncy: Tell me. For whom do you fight? Hmph! How very glib. And do you believe in Eorzea? Eorzea's unity is forged of falsehoods. Its city-states are built on deceit. And its faith is an instrument of deception. It is naught but a cobweb of lies. To believe in Eorzea is to believe in nothing. In Eorzea, the beast tribes often summon gods to fight in their stead--though your comrades only rarely respond in kind. Which is strange, is it not? Are the "Twelve" otherwise engaged? I was given to understand
 	# Gogozi: they were your protectors. If you truly believe them your guardians, why do you not repeat the trick that served you so well at Carteneau, and call them down? They will answer--so long as you lavish them with crystals and gorge them on aether. Your gods are no different than those of the beasts--eikons every one. Accept but this, and you will see how Eorzea's faith is bleeding the land dry. Nor is this unknown to your masters. Which prompts the question: Why do they cling to these false deities
-	if(currentFrame % 100) == 0:
-		for i in 5:
+	if(currentFrame % 50) == 0:
+		for i in 4:
 			# demonknighz: creemdom
 			var bubbleinstance = larkBubble.instantiate() as Area2D
 			$".".add_child(bubbleinstance)
-			var randomPos = Vector2(randi_range(1,1000),645)
+			var randomPos = Vector2(randi_range(200,800),800)
 			bubbleinstance.set_position(randomPos)
 			print(currentFrame)
 	
@@ -91,7 +91,8 @@ func _process(delta: float) -> void:
 func bubbleWasPopped() -> void:
 	bubblesPopped += 1
 	print(bubblesPopped)
-	if(bubblesPopped > 5):
+	if(bubblesPopped > 4):
+		# vongoyyt - https://archive.org/stream/bee-movie-2007_202405/Bee%20Movie%20Script_djvu.txt
 		trigger_game_win()
 	
 

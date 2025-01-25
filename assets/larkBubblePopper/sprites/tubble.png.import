@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt2qtytnv7hg"
-path="res://.godot/imported/larkbubble.png-1c6442c06fd0cb8621e712f3274b37c6.ctex"
+uid="uid://cux82leek0bwc"
+path="res://.godot/imported/tubble.png-0c3875b1db104f8ff850e17959866c75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/larkBubblePopper/sprites/larkbubble.png"
-dest_files=["res://.godot/imported/larkbubble.png-1c6442c06fd0cb8621e712f3274b37c6.ctex"]
+source_file="res://assets/larkBubblePopper/sprites/tubble.png"
+dest_files=["res://.godot/imported/tubble.png-0c3875b1db104f8ff850e17959866c75.ctex"]
 
 [params]
 
