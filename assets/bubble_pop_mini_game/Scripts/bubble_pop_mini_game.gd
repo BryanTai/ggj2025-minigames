@@ -50,6 +50,7 @@ extends BaseMiniGame
 
 @onready var bubble: Sprite2D = $Bubble
 @onready var bubs: Sprite2D = $Bubs
+@onready var popped_particle: GPUParticles2D = $PoppedParticle
 
 func _init() -> void:
 	disable_minigame_during_intro_and_outro = false
@@ -125,6 +126,10 @@ func _process_playing_state(delta: float) -> void:
 	# Pop the bubble if it's too big.
 	if (bubble.scale.x > max_bubble_scale):
 		print('Bubble Popped.')
+		popped_particle.position = bubble.position
+		popped_particle.modulate = Color.ORANGE
+		popped_particle.emitting = true
+		bubble.visible = false
 		trigger_game_lose()
 
 # Called once when the PLAYING state ends (e.g. Win or Lose)
@@ -152,6 +157,10 @@ func _process_win_state(delta: float) -> void:
 #func _on_start_lose_state() -> void:
 #	pass
 
+var lose_modulate_timer: float = 0
 # Called every frame while minigame is in the LOSE state
-#func _process_lose_state(delta: float) -> void:
-	#pass
+func _process_lose_state(delta: float) -> void:
+	lose_modulate_timer += delta
+	popped_particle.modulate = lerp(Color.ORANGE, Color.WHITE, sqrt(lose_modulate_timer))
+	bubble.scale *= pow(0.2, delta)
+	pass
