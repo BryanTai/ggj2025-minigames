@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dtwnp25eawyq3"]
+[gd_scene load_steps=18 format=3 uid="uid://dtwnp25eawyq3"]
 
 [ext_resource type="Script" path="res://assets/dating_minigame/dating_minigame_manager.gd" id="1_32dxk"]
 [ext_resource type="Script" path="res://assets/dating_minigame/dating_minigame_cursor.gd" id="3_85xio"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://c6yrkmd42jgqq" path="res://assets/dating_minigame/Asset 2.png" id="7_1obdc"]
 [ext_resource type="Texture2D" uid="uid://c15oh5m0ofkyr" path="res://assets/dating_minigame/hearto_spritesheet.png" id="7_yp3ec"]
 [ext_resource type="Texture2D" uid="uid://cqqodoi02yi2d" path="res://assets/dating_minigame/Asset 4.png" id="8_3o760"]
+[ext_resource type="AudioStream" uid="uid://bjt48817ig3ta" path="res://assets/dating_minigame/KAWAII DESU.wav" id="9_wqd73"]
+[ext_resource type="AudioStream" uid="uid://dmu0qlxv52fk1" path="res://assets/dating_minigame/NOT KAWAII DESU.wav" id="10_vrn32"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8cjjh"]
 radius = 21.0238
@@ -161,3 +163,9 @@ texture = ExtResource("8_3o760")
 position = Vector2(149, 0)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_8y2lh")
+
+[node name="AudioWin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_wqd73")
+
+[node name="AudioLose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_vrn32")
