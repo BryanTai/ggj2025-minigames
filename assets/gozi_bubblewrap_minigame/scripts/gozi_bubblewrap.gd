@@ -9,20 +9,23 @@
 # i tried really hard to do the randomness thing but i gotta get something out the door. U_U
 
 extends BaseMiniGame
+@onready var cursor: Player2D = $Cursor
 
 func _ready() -> void:
 	instruction_text = "RELAX!" 
-
-func _process(delta: float) -> void:
-	super(delta) ## This line will process the State machine! DO NOT REMOVE
+	super()
 
 # this sets the poppable bubbles to be whole.
-func _process_preparing_state(delta: float) -> void:
+func _on_start_preparing_state() -> void:
+	cursor.movement_enabled = false
 	$"Bubbles/2/AnimatedSprite2D".animation = "whole1"
 	$"Bubbles/8/AnimatedSprite2D".animation = "whole1"
 	$"Bubbles/10/AnimatedSprite2D".animation = "whole1"
 	$"Bubbles/16/AnimatedSprite2D".animation = "whole1"
 	$"Bubbles/22/AnimatedSprite2D".animation = "whole1"
+	
+func _on_start_playing_state():
+	cursor.movement_enabled = true
 
 # manually check every frame if all of the bubbles are popped LOLOLOL
 func _process_playing_state(delta: float) -> void:
