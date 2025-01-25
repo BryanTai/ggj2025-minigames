@@ -53,13 +53,15 @@ var milk: Node2D
 
 var bubbles_initial_pos: Vector2
 var milk_initial_pos: Vector2
+var bubbles_target_pos: Vector2
+var milk_target_pos: Vector2
 
 var filled_amount: float = 0.0
 
 const FILL_RATE: float = 50.0
 const DRAIN_RATE: float = 15.0
 const REQUIRED_FILL_TO_WIN: float = 100.0
-const MILK_MOVE_RATE: float = 550.0
+const MILK_MOVE_AMOUNT: float = 250.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -74,6 +76,10 @@ func _ready() -> void:
 	
 	bubbles_initial_pos = bubbles.position
 	milk_initial_pos = milk.position
+	bubbles_target_pos = bubbles.position - Vector2(0, MILK_MOVE_AMOUNT)
+	milk_target_pos = milk.position - Vector2(0, MILK_MOVE_AMOUNT)
+	
+	print(bubbles_initial_pos, milk_initial_pos, bubbles_target_pos, milk_target_pos)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -95,9 +101,9 @@ func _process(delta: float) -> void:
 	elif filled_amount >= REQUIRED_FILL_TO_WIN:
 		filled_amount = REQUIRED_FILL_TO_WIN
 	
-	var offset = Vector2(0, - MILK_MOVE_RATE * delta * filled_amount)
-	milk.position = milk_initial_pos + offset
-	bubbles.position = bubbles_initial_pos + offset
+	var alpha = filled_amount / REQUIRED_FILL_TO_WIN
+	milk.position = milk_initial_pos.lerp(milk_target_pos, alpha)
+	bubbles.position = bubbles_initial_pos.lerp(bubbles_target_pos, alpha)  
 	
 	label.text = "%f" % filled_amount
 	
