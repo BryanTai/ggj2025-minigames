@@ -50,14 +50,6 @@ texture = ExtResource("4_drhhm")
 position = Vector2(492, 919)
 texture = ExtResource("5_pnktf")
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 105.0
-offset_top = 338.0
-offset_right = 401.0
-offset_bottom = 432.0
-text = "cute bubs goes here
-with lips on straw"
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_ukotn")
 
