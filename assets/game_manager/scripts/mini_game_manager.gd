@@ -6,7 +6,7 @@ const PREPARE_TIME: float = 1.0
 const MINI_GAME_FOLDER_PATH: String = "res://minigame_scenes/"
 
 const ANIM_INTRO = "intro_manager"
-const ANIM_TRANSITION = "transition_mini_game"
+const ANIM_TRANSITION = "bubs_yeah"
 const ANIM_INSTRUCTION = "show_instruction_banner"
 const ANIM_END = "show_end_banner"
 
@@ -23,6 +23,7 @@ var current_manager_state: ManagerStates = ManagerStates.INTRO
 @onready var mini_game_timer: Timer = $MiniGameTimer
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var transition_animated_sprite: AnimatedSprite2D = $TransitionAnimatedSprite
 
 ## Overlay UI elements
 @onready var overlay_mini_game: CanvasLayer = $MiniGameOverlay
@@ -39,6 +40,8 @@ var all_mini_game_names: PackedStringArray
 var all_mini_game_count: int
 
 var minigame_name_override: String = "" #replace with a full name e.g. "meteor_mini_game.tscn"
+
+var show_good_transition: bool = true
 
 ## Fired if the mini_game_timer runs out before the current_mini_game responds
 signal mini_game_timeout
@@ -76,6 +79,7 @@ func _ready() -> void:
 	mini_game_timer.wait_time = TIME_LIMIT
 	overlay_mini_game.visible = false
 	instruction_banner.visible = false
+	transition_animated_sprite.visible = false
 	cache_all_mini_game_names()
 	animation_player.play(ANIM_INTRO) # Start the Intro
 
@@ -94,8 +98,10 @@ func pick_next_mini_game_name() -> String:
 	#TODO Once we have more minigames, create a buffer Queue to reduce chances of repeats
 	var next_index = rng.randi_range(0, all_mini_game_count - 1)
 	return all_mini_game_names[next_index]
-	#return "meteor_mini_game.tscn"
-
+	#if(next_index % 2 == 1):
+		#return "runner_mini_game.tscn"
+	#else:
+	#	return "moonwalk_mini_game.tscn"
 ## Loads up the next randomly picked minigame in the background
 func load_next_mini_game() -> void:
 	if(current_mini_game != null):
@@ -132,6 +138,7 @@ func set_manager_state(new_state: ManagerStates) -> void:
 		ManagerStates.TRANSITIONING:
 			timer_label.visible = false
 			load_next_mini_game()
+			play_transition_sprites(show_good_transition)
 			animation_player.play(ANIM_TRANSITION)
 		ManagerStates.PREPARING:
 			set_timer_text(str(TIME_LIMIT as int))
@@ -144,10 +151,18 @@ func set_manager_state(new_state: ManagerStates) -> void:
 		ManagerStates.ENDING:
 			animation_player.play(ANIM_END)
 
+func play_transition_sprites(show_good: bool) -> void:
+	transition_animated_sprite.visible = true
+	if(show_good):
+		transition_animated_sprite.play("bubs_yeah")
+	else:
+		transition_animated_sprite.play("bubs_no")
+
 func _on_animation_player_finished(anim_name: StringName) -> void:
 	## On End State
 	match anim_name:
 		ANIM_TRANSITION:
+			transition_animated_sprite.visible = false
 			set_manager_state(ManagerStates.PREPARING)
 		ANIM_INTRO,	ANIM_END:
 			set_manager_state(ManagerStates.TRANSITIONING)
@@ -163,6 +178,7 @@ func _on_mini_game_timer_timeout() -> void:
 func _on_mini_game_finished(is_win: bool) -> void:
 	mini_game_timer.stop()
 	# TODO: Track wins and loses here!
+	show_good_transition = is_win
 	if (is_win == true):
 		instruction_label.text = "WINNER!"
 	else:
