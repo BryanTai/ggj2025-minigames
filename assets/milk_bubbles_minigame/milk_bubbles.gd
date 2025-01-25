@@ -75,8 +75,6 @@ func _ready() -> void:
 	milk_initial_pos = milk.position
 	bubbles_target_pos = bubbles.position - Vector2(0, MILK_MOVE_AMOUNT)
 	milk_target_pos = milk.position - Vector2(0, MILK_MOVE_AMOUNT)
-	
-	print(bubbles_initial_pos, milk_initial_pos, bubbles_target_pos, milk_target_pos)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
