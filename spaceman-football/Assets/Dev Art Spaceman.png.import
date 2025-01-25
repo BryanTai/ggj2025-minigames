@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxuhvjwqbv5em"
-path="res://.godot/imported/gozi_bubblewrap_bubbles.png-7f81971cb4e59e7e99275d3f17c558a2.ctex"
+uid="uid://m38f6nrh8ylu"
+path="res://.godot/imported/Dev Art Spaceman.png-5eab0cc68fa4f7f5b431aaed9a5e9f09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gozi_bubblewrap_minigame/sprites/gozi_bubblewrap_bubbles.png"
-dest_files=["res://.godot/imported/gozi_bubblewrap_bubbles.png-7f81971cb4e59e7e99275d3f17c558a2.ctex"]
+source_file="res://Assets/Dev Art Spaceman.png"
+dest_files=["res://.godot/imported/Dev Art Spaceman.png-5eab0cc68fa4f7f5b431aaed9a5e9f09.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b155x45xvsu4l"
-path="res://.godot/imported/cursor.png-cb7a3076e41fa61fc584026e452612e5.ctex"
+uid="uid://bv1lorljgkywq"
+path="res://.godot/imported/cup.png-f6581d76b44a538ab132ba401e7da402.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gozi_bubblewrap_minigame/sprites/cursor.png"
-dest_files=["res://.godot/imported/cursor.png-cb7a3076e41fa61fc584026e452612e5.ctex"]
+source_file="res://assets/ball_cup_minigame/cup.png"
+dest_files=["res://.godot/imported/cup.png-f6581d76b44a538ab132ba401e7da402.ctex"]
 
 [params]
 

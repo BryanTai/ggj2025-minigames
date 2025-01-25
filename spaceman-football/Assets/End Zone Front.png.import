@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v41y2tqmkwe5"
-path="res://.godot/imported/bubblewrap_bubbles.png-742583a832ff1b0d3310cb31130bd6ec.ctex"
+uid="uid://deiy4lxon5jds"
+path="res://.godot/imported/End Zone Front.png-1b536672f4f8baff3aa4530dd7d4719f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bubblewrap_minigame/sprites/bubblewrap_bubbles.png"
-dest_files=["res://.godot/imported/bubblewrap_bubbles.png-742583a832ff1b0d3310cb31130bd6ec.ctex"]
+source_file="res://Assets/End Zone Front.png"
+dest_files=["res://.godot/imported/End Zone Front.png-1b536672f4f8baff3aa4530dd7d4719f.ctex"]
 
 [params]
 

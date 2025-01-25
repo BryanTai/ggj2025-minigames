@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxuhvjwqbv5em"
-path="res://.godot/imported/gozi_bubblewrap_bubbles.png-7f81971cb4e59e7e99275d3f17c558a2.ctex"
+uid="uid://dbe3mrlpy2nn2"
+path="res://.godot/imported/buuuubbbllleee.png-c53a1898827ca13c5e8c072c9f084f75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gozi_bubblewrap_minigame/sprites/gozi_bubblewrap_bubbles.png"
-dest_files=["res://.godot/imported/gozi_bubblewrap_bubbles.png-7f81971cb4e59e7e99275d3f17c558a2.ctex"]
+source_file="res://assets/larkBubblePopper/sprites/buuuubbbllleee.png"
+dest_files=["res://.godot/imported/buuuubbbllleee.png-c53a1898827ca13c5e8c072c9f084f75.ctex"]
 
 [params]
 

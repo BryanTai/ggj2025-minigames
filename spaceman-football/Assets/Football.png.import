@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fdpucbbhmbwj"
-path="res://.godot/imported/blank.png-47b4622a5089fb03a24f9686c3b46778.ctex"
+uid="uid://d4gxqsmigvw8s"
+path="res://.godot/imported/Football.png-65dcfd4446d52580e5be9aefd6512e5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bubblewrap_minigame/sprites/blank.png"
-dest_files=["res://.godot/imported/blank.png-47b4622a5089fb03a24f9686c3b46778.ctex"]
+source_file="res://Assets/Football.png"
+dest_files=["res://.godot/imported/Football.png-65dcfd4446d52580e5be9aefd6512e5b.ctex"]
 
 [params]
 
