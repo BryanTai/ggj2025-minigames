@@ -14,8 +14,8 @@ func _process(delta: float) -> void:
 
 # A signal from the MiniGameManager that time has run out
 ## TODO: Override this function if your MiniGame checks the win condition on TimeOut
-#func _on_timeout() -> void:
-#	trigger_game_lose()
+func _on_timeout() -> void:
+	trigger_game_win()
 
 
 ### STATE SPECIFIC FUNCTIONS
@@ -65,8 +65,8 @@ func _process(delta: float) -> void:
 ## LOSE STATE
 
 # Called once when entering the LOSE state
-func _on_start_lose_state() -> void:
-	trigger_game_win()
+#func _on_start_lose_state() -> void:
+#	pass
 
 # Called every frame while minigame is in the LOSE state
 #func _process_lose_state(delta: float) -> void:
