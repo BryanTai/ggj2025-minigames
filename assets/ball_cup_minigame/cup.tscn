@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1puk4bdx210x"]
+
+[ext_resource type="Texture2D" uid="uid://bv1lorljgkywq" path="res://assets/ball_cup_minigame/cup.png" id="1_1x7kp"]
+[ext_resource type="Script" path="res://assets/ball_cup_minigame/cup.gd" id="1_w7cui"]
+
+[sub_resource type="Animation" id="Animation_gilgh"]
+resource_name = "raise_cup"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -232)]
+}
+
+[sub_resource type="Animation" id="Animation_p5q6k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_epok5"]
+resource_name = "lower_cup"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -270), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jrtrs"]
+_data = {
+"RESET": SubResource("Animation_p5q6k"),
+"lower_cup": SubResource("Animation_epok5"),
+"raise_cup": SubResource("Animation_gilgh")
+}
+
+[node name="Cup" type="Node2D"]
+position = Vector2(252, 337)
+script = ExtResource("1_w7cui")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jrtrs")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 3
+texture = ExtResource("1_1x7kp")
+
+[node name="CountdownToGuess" type="Timer" parent="."]
+wait_time = 2.0
