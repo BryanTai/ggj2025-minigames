@@ -110,12 +110,22 @@ func _on_timeout() -> void:
 #func _on_start_playing_state() -> void:
 #	pass
 
+const max_bubble_scale: float = 3.0
 # Called every frame while minigame is in the PLAYING state
 func _process_playing_state(delta: float) -> void:
 	if Input.is_action_just_pressed("fire"):
 		bubble.scale *= 1.2
 	else:
 		bubble.scale *= pow(0.7, delta) # Make this Frame independent.
+	
+	# Modulate the bubble color as it get closer to the targeted value.
+	var size_difference: float = 1 - clamp(max_bubble_scale - bubble.scale.x, 0, 1)
+	bubble.modulate = lerp(Color.WHITE, Color.ORANGE, pow(size_difference, 1.5))
+	
+	# Pop the bubble if it's too big.
+	if (bubble.scale.x > max_bubble_scale):
+		print('Bubble Popped.')
+		trigger_game_lose()
 
 # Called once when the PLAYING state ends (e.g. Win or Lose)
 #func _on_end_playing_state() -> void:
