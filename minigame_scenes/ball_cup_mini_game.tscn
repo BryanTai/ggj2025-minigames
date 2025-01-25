@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cagtsb40t1ygf"]
+[gd_scene load_steps=13 format=3 uid="uid://cagtsb40t1ygf"]
 
 [ext_resource type="Script" path="res://assets/ball_cup_minigame/ball_cup_mini_game.gd" id="1_q15iu"]
 [ext_resource type="Texture2D" uid="uid://5kjdlnt2flew" path="res://assets/ball_cup_minigame/table.png" id="2_prrn3"]
@@ -56,10 +56,49 @@ tracks/3/keys = {
 "update": 1,
 "values": [3]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Ball:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(544, 440)]
+}
+
+[sub_resource type="Animation" id="Animation_m38sg"]
+resource_name = "intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cups/Cup1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(545, 370), Vector2(545, 170), Vector2(545, 170), Vector2(545, 370)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ball:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.466667, 0.533333, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(544, 440), Vector2(544, 440), Vector2(505.805, 440), Vector2(581.825, 440), Vector2(544, 440), Vector2(544, 440)]
+}
 
 [sub_resource type="Animation" id="Animation_7bjgh"]
 resource_name = "swap_all_cups"
-length = 0.5
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -67,7 +106,7 @@ tracks/0/path = NodePath("Cups/Cup:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(300, 270), Vector2(545, 370)]
@@ -79,7 +118,7 @@ tracks/1/path = NodePath("Cups/Cup1:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(545, 370), Vector2(780, 270)]
@@ -91,7 +130,7 @@ tracks/2/path = NodePath("Cups/Cup2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(780, 270), Vector2(300, 270)]
@@ -103,7 +142,7 @@ tracks/3/path = NodePath("Cups/Cup2:z_index")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [2, 2]
@@ -111,7 +150,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_7ywpp"]
 resource_name = "swap_cups_0_1"
-length = 0.5
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -119,7 +158,7 @@ tracks/0/path = NodePath("Cups/Cup:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(300, 270), Vector2(545, 370)]
@@ -131,7 +170,7 @@ tracks/1/path = NodePath("Cups/Cup1:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(545, 370), Vector2(300, 270)]
@@ -143,7 +182,7 @@ tracks/2/path = NodePath("Cups/Cup2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(780, 270), Vector2(780, 270)]
@@ -151,7 +190,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_7rr58"]
 resource_name = "swap_cups_0_2"
-length = 0.5
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -159,7 +198,7 @@ tracks/0/path = NodePath("Cups/Cup:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(300, 270), Vector2(780, 270)]
@@ -171,7 +210,7 @@ tracks/1/path = NodePath("Cups/Cup2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(780, 270), Vector2(300, 270)]
@@ -183,7 +222,7 @@ tracks/2/path = NodePath("Cups/Cup1:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(545, 370), Vector2(545, 370)]
@@ -191,7 +230,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_myqx4"]
 resource_name = "swap_cups_1_2"
-length = 0.5
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -199,7 +238,7 @@ tracks/0/path = NodePath("Cups/Cup1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(545, 370), Vector2(780, 270)]
@@ -211,7 +250,7 @@ tracks/1/path = NodePath("Cups/Cup2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(780, 270), Vector2(545, 370)]
@@ -223,7 +262,7 @@ tracks/2/path = NodePath("Cups/Cup:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(300, 270), Vector2(300, 270)]
@@ -232,6 +271,7 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_odi65"]
 _data = {
 "RESET": SubResource("Animation_4b7qi"),
+"intro": SubResource("Animation_m38sg"),
 "swap_all_cups": SubResource("Animation_7bjgh"),
 "swap_cups_0_1": SubResource("Animation_7ywpp"),
 "swap_cups_0_2": SubResource("Animation_7rr58"),
@@ -246,7 +286,7 @@ libraries = {
 "": SubResource("AnimationLibrary_odi65")
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 offset_right = 1000.0
 offset_bottom = 1000.0
 texture = ExtResource("2_prrn3")
@@ -278,5 +318,3 @@ wait_time = 2.0
 one_shot = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-
-[editable path="Cups/Cup1"]
