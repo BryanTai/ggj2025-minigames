@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcqoraqhttwnj"
-path="res://.godot/imported/r.png-227f60c5b6d214c89bcd7fdf4972e14e.ctex"
+uid="uid://pjjy8edp6ui4"
+path="res://.godot/imported/bubbles-corner.png-fe62908d862e29c023feadefcd7eb0bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game_manager/r.png"
-dest_files=["res://.godot/imported/r.png-227f60c5b6d214c89bcd7fdf4972e14e.ctex"]
+source_file="res://assets/game_manager/Sprites/bubbles-corner.png"
+dest_files=["res://.godot/imported/bubbles-corner.png-fe62908d862e29c023feadefcd7eb0bc.ctex"]
 
 [params]
 
