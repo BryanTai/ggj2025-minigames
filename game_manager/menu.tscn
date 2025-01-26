@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dli3m33ylt1gw"]
+[gd_scene load_steps=27 format=3 uid="uid://d0bi4ye0gwyva"]
 
 [ext_resource type="Script" path="res://assets/game_manager/scripts/menu.gd" id="1_5rt6y"]
 [ext_resource type="Texture2D" uid="uid://dsm7ltmwlrnk3" path="res://assets/game_manager/Sprites/coverart.png" id="2_l5ndu"]
