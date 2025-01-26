@@ -1,9 +1,106 @@
-[gd_scene load_steps=2 format=3 uid="uid://7camhqrckwm6"]
+[gd_scene load_steps=18 format=3 uid="uid://7camhqrckwm6"]
 
 [ext_resource type="Script" path="res://templates/template_timed_press.gd" id="1_w10my"]
+[ext_resource type="Texture2D" uid="uid://dxbuqbxus3ag2" path="res://assets/heist_bubble_minigame/loss.png" id="2_mh7mk"]
+[ext_resource type="Texture2D" uid="uid://dh51ns13677h8" path="res://assets/heist_bubble_minigame/Shake1.png" id="3_4l72w"]
+[ext_resource type="Texture2D" uid="uid://cme4wt1wtfsgf" path="res://assets/heist_bubble_minigame/win.png" id="3_qk5b3"]
+[ext_resource type="Texture2D" uid="uid://cd34jeriom2i3" path="res://assets/heist_bubble_minigame/bg.png" id="4_5qcss"]
+[ext_resource type="Texture2D" uid="uid://bs4n08kyokiri" path="res://assets/heist_bubble_minigame/Shake2.png" id="4_qprry"]
+[ext_resource type="Texture2D" uid="uid://ccpqkkgvomuqv" path="res://assets/heist_bubble_minigame/Shake3.png" id="5_ma5xt"]
+[ext_resource type="PackedScene" uid="uid://dx0l072o54u81" path="res://assets/heist_bubble_minigame/bubdiana_cursor.tscn" id="5_o7wf4"]
+[ext_resource type="Texture2D" uid="uid://68cloj2rvohn" path="res://assets/heist_bubble_minigame/Shake4.png" id="6_sr2vw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urae4"]
+atlas = ExtResource("2_mh7mk")
+region = Rect2(0, 0, 1200, 1200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wvsj"]
+atlas = ExtResource("3_4l72w")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aagea"]
+atlas = ExtResource("4_qprry")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrh0x"]
+atlas = ExtResource("5_ma5xt")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug7xl"]
+atlas = ExtResource("6_sr2vw")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrady"]
+atlas = ExtResource("3_qk5b3")
+region = Rect2(0, 0, 1200, 1200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lner"]
+atlas = ExtResource("4_5qcss")
+region = Rect2(0, 0, 1200, 1200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fe6m7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urae4")
+}],
+"loop": true,
+"name": &"Loss",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wvsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aagea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wvsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrh0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ug7xl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrh0x")
+}],
+"loop": true,
+"name": &"Shake",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrady")
+}],
+"loop": true,
+"name": &"Win",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lner")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="TemplateTimedPress" type="Node2D"]
 script = ExtResource("1_w10my")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background"]
+position = Vector2(500, 500.5)
+scale = Vector2(0.833333, 0.830833)
+sprite_frames = SubResource("SpriteFrames_fe6m7")
+animation = &"Shake"
+autoplay = "default"
+frame = 4
+frame_progress = 0.301406
 
 [node name="WaitingTimer" type="Timer" parent="."]
 one_shot = true
@@ -19,3 +116,11 @@ offset_right = 416.0
 offset_bottom = 269.0
 theme_override_font_sizes/font_size = 100
 text = "Wait for it..."
+
+[node name="Player2D" parent="." instance=ExtResource("5_o7wf4")]
+position = Vector2(654, 809)
+
+[node name="PawCursor_CollisionShape2D" parent="Player2D" index="0"]
+position = Vector2(-656, -808)
+
+[editable path="Player2D"]

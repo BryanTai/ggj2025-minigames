@@ -8,6 +8,12 @@ signal play_button_pressed
 
 var already_pressed = false
 
+func _on_area_entered(_area: Area2D) -> void:
+	is_hovering = true
+
+func _on_area_exited(_area: Area2D) -> void:
+	is_hovering = false
+
 func _on_body_entered(_body: Node2D) -> void:
 	is_hovering = true
 
@@ -16,7 +22,7 @@ func _on_body_exited(_body: Node2D) -> void:
 
 func _process(_delta:float):
 #Animate the Button
-	if (not already_pressed and is_hovering==true and Input.is_action_pressed("fire")):
+	if (not already_pressed and is_hovering==true and Input.is_action_just_pressed("fire")):
 		animated_sprite_2d.animation=("click")
 		play_button_pressed.emit()
 		print ("click! bubbleware")

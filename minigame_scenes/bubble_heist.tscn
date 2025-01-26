@@ -1,0 +1,128 @@
+[gd_scene load_steps=19 format=3 uid="uid://qjqu56f6heob"]
+
+[ext_resource type="Script" path="res://assets/heist_bubble_minigame/bubble_heist.gd" id="1_aop8y"]
+[ext_resource type="Texture2D" uid="uid://s2v02s008osr" path="res://assets/heist_bubble_minigame/Loss 1000.png" id="2_ygfdr"]
+[ext_resource type="Texture2D" uid="uid://dh51ns13677h8" path="res://assets/heist_bubble_minigame/Shake1.png" id="3_d17hq"]
+[ext_resource type="Texture2D" uid="uid://bs4n08kyokiri" path="res://assets/heist_bubble_minigame/Shake2.png" id="4_trg05"]
+[ext_resource type="Texture2D" uid="uid://ccpqkkgvomuqv" path="res://assets/heist_bubble_minigame/Shake3.png" id="5_avwcc"]
+[ext_resource type="Texture2D" uid="uid://68cloj2rvohn" path="res://assets/heist_bubble_minigame/Shake4.png" id="6_y0odv"]
+[ext_resource type="Texture2D" uid="uid://j2hhktk7usgc" path="res://assets/heist_bubble_minigame/win 1000.png" id="7_faogt"]
+[ext_resource type="Texture2D" uid="uid://4b23x5judnyg" path="res://assets/heist_bubble_minigame/bg 1000.png" id="8_sv8vr"]
+[ext_resource type="PackedScene" uid="uid://dx0l072o54u81" path="res://assets/heist_bubble_minigame/bubdiana_cursor.tscn" id="9_yfmtj"]
+[ext_resource type="AudioStream" uid="uid://crn4srh2e56ob" path="res://assets/heist_bubble_minigame/earth-rumble-6953.mp3" id="10_5lmpl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufcl2"]
+atlas = ExtResource("2_ygfdr")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wvsj"]
+atlas = ExtResource("3_d17hq")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aagea"]
+atlas = ExtResource("4_trg05")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrh0x"]
+atlas = ExtResource("5_avwcc")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug7xl"]
+atlas = ExtResource("6_y0odv")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ybf"]
+atlas = ExtResource("7_faogt")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vxde"]
+atlas = ExtResource("8_sv8vr")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ioqii"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufcl2")
+}],
+"loop": true,
+"name": &"Loss",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wvsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aagea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wvsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrh0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ug7xl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrh0x")
+}],
+"loop": true,
+"name": &"Shake",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ybf")
+}],
+"loop": true,
+"name": &"Win",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vxde")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bubble_Heist" type="Node2D"]
+script = ExtResource("1_aop8y")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background"]
+position = Vector2(499, 502)
+scale = Vector2(0.996, 0.998)
+sprite_frames = SubResource("SpriteFrames_ioqii")
+animation = &"Win"
+autoplay = "default"
+
+[node name="WaitingTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="WindowTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 326.0
+offset_top = 246.0
+offset_right = 416.0
+offset_bottom = 269.0
+theme_override_font_sizes/font_size = 100
+text = "Steal the Idol"
+
+[node name="Player2D" parent="." instance=ExtResource("9_yfmtj")]
+position = Vector2(654, 809)
+
+[node name="PawCursor_CollisionShape2D" parent="Player2D" index="0"]
+position = Vector2(-656, -808)
+
+[node name="RockRumbleSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_5lmpl")
+
+[editable path="Player2D"]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://dul6ywxfmt60s"]
+
+[ext_resource type="Script" path="res://assets/game_manager/scripts/option select.gd" id="1_2letf"]
+[ext_resource type="Texture2D" uid="uid://b68rifcdey8yi" path="res://assets/game_manager/start-button-press.png" id="2_jv4gf"]
+[ext_resource type="Texture2D" uid="uid://dr5iej3pi8agr" path="res://assets/game_manager/start-button-normal.png" id="3_fdl5p"]
+[ext_resource type="Texture2D" uid="uid://dedx3gx80j45h" path="res://assets/game_manager/start-button-mouseover.png" id="4_d4a3w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4nta3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jv4gf")
+}],
+"loop": true,
+"name": &"click",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fdl5p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_d4a3w")
+}],
+"loop": true,
+"name": &"hover",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bisf"]
+size = Vector2(160.682, 161.216)
+
+[node name="Play Button" type="Area2D"]
+position = Vector2(239, 271)
+script = ExtResource("1_2letf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-59.5, -9)
+sprite_frames = SubResource("SpriteFrames_4nta3")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.72601, -0.333008)
+rotation = 1.43761
+shape = SubResource("RectangleShape2D_6bisf")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

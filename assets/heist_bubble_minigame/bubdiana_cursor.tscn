@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://dx0l072o54u81"]
+
+[ext_resource type="Script" path="res://assets/gozi_bubblewrap_minigame/scripts/gozi_cursor.gd" id="1_ap1dx"]
+[ext_resource type="Texture2D" uid="uid://dmffnu67ake3r" path="res://assets/heist_bubble_minigame/hand.png" id="2_kjxw5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tiyoh"]
+radius = 68.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imqq2"]
+atlas = ExtResource("2_kjxw5")
+region = Rect2(0, 0, 1200, 1200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqlk3"]
+atlas = ExtResource("2_kjxw5")
+region = Rect2(0, 0, 240, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l0enf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imqq2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqlk3")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}]
+
+[node name="Player2D" type="Area2D"]
+script = ExtResource("1_ap1dx")
+player_speed = 700
+
+[node name="PawCursor_CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(2, 48)
+shape = SubResource("CircleShape2D_tiyoh")
+
+[node name="PawCursor_AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-73, -54)
+scale = Vector2(0.66, 0.66)
+sprite_frames = SubResource("SpriteFrames_l0enf")
+animation = &"pressed"
+autoplay = "default"
+centered = false
+metadata/_edit_lock_ = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
