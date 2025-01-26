@@ -4,6 +4,10 @@ extends BaseMiniGame
 @onready var waiting_timer: Timer = $WaitingTimer
 @onready var window_timer: Timer = $WindowTimer
 @onready var label: Label = $Label
+@onready var animated_sprite_2d: AnimatedSprite2D = $Background/AnimatedSprite2D
+@onready var player_2d: Area2D = $Player2D
+
+
 
 const MIN_WAIT_SEC: float = 2.0
 const MAX_WAIT_SEC: float = 4.0
@@ -32,14 +36,19 @@ func _process(delta: float) -> void:
 	# Pressing the button outside of the timing window will lose the game
 	if(Input.is_action_just_pressed("fire")):
 		if(window_timer.is_stopped()):
+			animated_sprite_2d.play("Loss")
+			player_2d.queue_free()
 			label.text = "Missed!"
 			trigger_game_lose()
 		else:
+			player_2d.queue_free()
+			animated_sprite_2d.play("Win")
 			label.text = "You win!"
 			trigger_game_win()
 
 func start_window_timer() -> void:
 	label.text = "NOW!"
+	animated_sprite_2d.play("Shake")
 	window_timer.start()
 	
 func on_window_timeout() -> void:

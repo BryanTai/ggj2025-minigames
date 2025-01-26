@@ -31,6 +31,7 @@ var current_manager_state: ManagerStates = ManagerStates.INTRO
 @onready var timer_label: Label = $MiniGameOverlay/TimerLabel
 @onready var instruction_label: Label = $MiniGameOverlay/InstructionBanner/InstructionLabel
 @onready var instruction_banner: Control = $MiniGameOverlay/InstructionBanner
+@onready var instructions_image: TextureRect = $AnimationPlayer/Instructions
 
 ## Sounds and music
 @onready var audio_mini_game_result: 	AudioStreamPlayer = $Audio_MiniGameResult
@@ -63,7 +64,6 @@ var all_mini_game_count: int
 var unplayed_mini_game_indexes: Array
 
 var lives: int
-var wins: int
 
 @export
 var minigame_name_override: String = "" #replace with a full name e.g. "meteor_mini_game.tscn"
@@ -144,14 +144,21 @@ func _ready() -> void:
 	overlay_mini_game.visible = false
 	instruction_banner.visible = false
 	transition_animated_sprite.visible = false
+	instructions_image.visible = true
 	lives = 5
-	wins = 0
+	ScoreKeeper.wins = 0
 	cache_all_mini_game_names()
 	cache_all_bubbleware_clips()
-	animation_player.play(ANIM_INTRO) # Start the Intro
+	
+	#animation_player.play(ANIM_INTRO) # Start the Intro
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if(current_manager_state == ManagerStates.INTRO):
+		if(Input.is_action_just_pressed("fire")):
+			#The animation player isn't actually playing here
+			_on_animation_player_finished(ANIM_INTRO)
+	
 	if(current_manager_state == ManagerStates.PLAYING):
 		update_timer()
 		overlay_mini_game.adjust_time_bar_length(mini_game_timer.time_left)
@@ -211,6 +218,7 @@ func set_manager_state(new_state: ManagerStates) -> void:
 	## On Start State
 	match current_manager_state:
 		ManagerStates.TRANSITIONING:
+			instructions_image.visible = false
 			timer_label.visible = false
 			load_next_mini_game()
 			play_transition_sprites(show_good_transition)
@@ -228,13 +236,16 @@ func set_manager_state(new_state: ManagerStates) -> void:
 		ManagerStates.PLAYING:
 			start_current_mini_game()
 		ManagerStates.ENDING:
-			animation_player.play(ANIM_END)
+			if(lives > 0):
+				animation_player.play(ANIM_END)
+			else:
+				end_the_game()
+	
 
 func play_transition_sprites(show_good: bool) -> void:
 	transition_animated_sprite.visible = true
 	if(show_good):
 		transition_animated_sprite.play("bubs_yeah")
-		# TODO: show wins here
 		# Need to check if the lose>win jingle is playing, and it to play rather than the transition on top of it
 		audio_transition.stream = audio_transition_win.pick_random()
 		audio_transition.play()
@@ -266,7 +277,7 @@ func _on_mini_game_finished(is_win: bool) -> void:
 	overlay_mini_game.stop_bubble_popper_timer()
 	show_good_transition = is_win
 	if (is_win == true):
-		wins += 1
+		ScoreKeeper.wins += 1
 		instruction_label.text = "WINNER!"
 	else:
 		lose_life()
@@ -276,8 +287,10 @@ func _on_mini_game_finished(is_win: bool) -> void:
 func lose_life() -> void:
 	lives -= 1
 	overlay_mini_game.remove_a_life()
-	if lives <= 0:
-		print("GAME OVER!")
+
+## All lives lost, create the new GameOver scene
+func end_the_game() -> void:
+	get_tree().change_scene_to_file("res://game_manager/game_over_screen.tscn")
 
 # Plays a jingle when a game ends
 func _on_jingle_result (jingle) -> void:
@@ -290,8 +303,6 @@ func _on_jingle_result (jingle) -> void:
 	if jingle != null:
 		audio_mini_game_result.stream = jingle
 		audio_mini_game_result.play()
-	
-	pass
 
 func play_music(music) -> void:
 	
@@ -299,5 +310,3 @@ func play_music(music) -> void:
 		audio_mini_game_music.stop()
 		audio_mini_game_music.stream = music
 		audio_mini_game_music.play()
-	
-	pass

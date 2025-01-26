@@ -8,6 +8,8 @@ const JUMP_VELOCITY = -400.0
 # This represents the player's inertia.
 var push_force = 80.0
 
+var mouse_priority: bool = false
+var target_pos: Vector2
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -18,7 +20,15 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	var direction := Input.get_axis("move_left", "move_right")
+	var direction: float
+	
+	if mouse_priority:
+		if target_pos.x < position.x:
+			direction = -1
+		else:
+			direction = 1
+	else:
+		direction = Input.get_axis("move_left", "move_right")
 
 	#Animate the Space man
 	if direction >0:
@@ -49,3 +59,8 @@ func _physics_process(delta: float) -> void:
 		var c = get_slide_collision(i)
 		if c.get_collider() is RigidBody2D:
 			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		target_pos = event.position
+		mouse_priority = true

@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=3 uid="uid://66h0po0030v2"]
+
+[ext_resource type="Script" path="res://assets/game_manager/scripts/game_over_screen.gd" id="1_6etbs"]
+[ext_resource type="Texture2D" uid="uid://3xm36t3yy5js" path="res://assets/game_manager/bubs_death_sprites/BubsDeath_0000.png" id="2_bbyv6"]
+[ext_resource type="Texture2D" uid="uid://cemml18n73dc5" path="res://assets/game_manager/bubs_death_sprites/BubsDeath_0001.png" id="3_f6mmb"]
+[ext_resource type="FontFile" uid="uid://blbfoi2bjrbw1" path="res://assets/fonts/SuperFrog-Yqy1q.ttf" id="4_m8nsx"]
+[ext_resource type="Texture2D" uid="uid://cb6ulgevuov4q" path="res://assets/game_manager/bubs_death_sprites/BubsDeath_0002.png" id="4_ro2dd"]
+[ext_resource type="Texture2D" uid="uid://d274fwkwa15od" path="res://assets/game_manager/bubs_death_sprites/BubsDeath_0003.png" id="5_1vi0j"]
+[ext_resource type="PackedScene" uid="uid://dul6ywxfmt60s" path="res://assets/game_manager/Scenes/play_button.tscn" id="5_j26cv"]
+[ext_resource type="PackedScene" uid="uid://dki2osks6amsv" path="res://assets/gozi_bubblewrap_minigame/scenes/gozi_cursor.tscn" id="6_cgcjf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jajcq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bbyv6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f6mmb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ro2dd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1vi0j")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 24.0
+}]
+
+[node name="GameOverScreen" type="Node2D"]
+script = ExtResource("1_6etbs")
+
+[node name="BackgroundAnimated" type="AnimatedSprite2D" parent="."]
+position = Vector2(498, 501)
+scale = Vector2(0.714592, 0.714592)
+sprite_frames = SubResource("SpriteFrames_jajcq")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.0720751
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = 248.0
+offset_right = 517.0
+offset_bottom = 438.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.921569, 0.784314, 0.309804, 1)
+theme_override_colors/font_shadow_color = Color(0.0352941, 0.482353, 0.792157, 1)
+theme_override_colors/font_outline_color = Color(0.588235, 0.709804, 0.792157, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 11
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/font = ExtResource("4_m8nsx")
+theme_override_font_sizes/font_size = 72
+text = "Score:"
+vertical_alignment = 1
+
+[node name="ScoreNumber" type="Label" parent="ScoreLabel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 254.0
+offset_top = -100.0
+offset_right = 125.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.921569, 0.784314, 0.309804, 1)
+theme_override_colors/font_shadow_color = Color(0.0352941, 0.482353, 0.792157, 1)
+theme_override_colors/font_outline_color = Color(0.588235, 0.709804, 0.792157, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 11
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/font = ExtResource("4_m8nsx")
+theme_override_font_sizes/font_size = 192
+text = "888"
+vertical_alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 30.0
+offset_top = 22.0
+offset_right = 980.0
+offset_bottom = 212.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.921569, 0.784314, 0.309804, 1)
+theme_override_colors/font_shadow_color = Color(0.0352941, 0.482353, 0.792157, 1)
+theme_override_colors/font_outline_color = Color(0.588235, 0.709804, 0.792157, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 11
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/font = ExtResource("4_m8nsx")
+theme_override_font_sizes/font_size = 132
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play Button" parent="." instance=ExtResource("5_j26cv")]
+position = Vector2(750, 325)
+
+[node name="Cursor" parent="." instance=ExtResource("6_cgcjf")]
+position = Vector2(82, 65)
+
+[connection signal="play_button_pressed" from="Play Button" to="." method="_on_play_button_pressed"]
