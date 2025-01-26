@@ -1,6 +1,14 @@
 extends Node2D
 
 @onready var menu_music: AudioStreamPlayer = $MenuMusic
+@onready var credits_background: TextureRect = $Credits
+
+func _ready() -> void:
+	credits_background.visible = false
+	
+func _process(delta: float) -> void:
+	if(Input.is_action_just_pressed("fire")):
+		credits_background.visible = false
 
 func _on_play_button_pressed() -> void:
 	print("LOAD GAME")
@@ -8,3 +16,7 @@ func _on_play_button_pressed() -> void:
 
 func _on_bubble_ware_voices_finished() -> void:
 	menu_music.play()
+
+func _on_credits_button_pressed() -> void:
+	if not credits_background.visible:
+		credits_background.visible = true

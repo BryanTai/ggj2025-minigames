@@ -1,8 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://d0bi4ye0gwyva"]
+[gd_scene load_steps=47 format=3 uid="uid://d0bi4ye0gwyva"]
 
 [ext_resource type="Script" path="res://assets/game_manager/scripts/menu.gd" id="1_5rt6y"]
 [ext_resource type="Texture2D" uid="uid://dsm7ltmwlrnk3" path="res://assets/game_manager/Sprites/coverart.png" id="2_l5ndu"]
-[ext_resource type="PackedScene" path="res://assets/game_manager/Scenes/play_button.tscn" id="3_0y1my"]
+[ext_resource type="PackedScene" uid="uid://dul6ywxfmt60s" path="res://assets/game_manager/Scenes/play_button.tscn" id="3_0y1my"]
 [ext_resource type="Texture2D" uid="uid://pjjy8edp6ui4" path="res://assets/game_manager/Sprites/bubbles-corner.png" id="3_5p4ew"]
 [ext_resource type="Script" path="res://assets/game_manager/scripts/menucursor.gd" id="7_b46p4"]
 [ext_resource type="Texture2D" uid="uid://cqdp5x2dgb40t" path="res://assets/game_manager/animations/gozi_cursor.png" id="8_kuwba"]
@@ -15,10 +15,28 @@
 [ext_resource type="Texture2D" uid="uid://bcqoraqhttwnj" path="res://assets/game_manager/Sprites/r.png" id="15_lgft4"]
 [ext_resource type="AudioStream" uid="uid://bu8ck5ri0iwke" path="res://assets/audio/Bubbleware Collab.wav" id="16_nqigu"]
 [ext_resource type="Texture2D" uid="uid://c7bhx2coyxd5g" path="res://assets/game_manager/Sprites/volume_button_press.png" id="17_0fv2p"]
+[ext_resource type="Texture2D" uid="uid://c6walexcolfxf" path="res://assets/game_manager/Sprites/credits_button.png" id="17_5o815"]
 [ext_resource type="AudioStream" uid="uid://dy471hcu6ecl1" path="res://assets/audio/Main Menu - Bubs!.wav" id="17_nyvre"]
-[ext_resource type="PackedScene" uid="uid://dv0fmgdc8q6bc" path="res://game_manager/sound_controls.tscn" id="18_0d1dl"]
+[ext_resource type="PackedScene" path="res://game_manager/sound_controls.tscn" id="18_0d1dl"]
 [ext_resource type="Texture2D" uid="uid://bl5obygomgsr8" path="res://assets/game_manager/Sprites/volume_button_hover.png" id="18_c6gim"]
+[ext_resource type="Texture2D" uid="uid://ckj81fx6ouig2" path="res://assets/game_manager/Sprites/credits_button_hover.png" id="18_qr1un"]
 [ext_resource type="Texture2D" uid="uid://cjkr33ip3jtpx" path="res://assets/game_manager/Sprites/volume_button.png" id="19_6fdhp"]
+[ext_resource type="Texture2D" uid="uid://dgm37o6n1ix64" path="res://assets/game_manager/Sprites/credits.png" id="22_0dsv6"]
+[ext_resource type="Texture2D" uid="uid://d188at00ys72u" path="res://assets/game_manager/credits_bubsonas/BouncyBubsona.png" id="23_gx572"]
+[ext_resource type="Texture2D" uid="uid://b3iwxmdukuhmi" path="res://assets/game_manager/credits_bubsonas/Bubbs_in_Space_Petrichor.png" id="24_8fxnv"]
+[ext_resource type="Texture2D" uid="uid://brxe15ukdqdc3" path="res://assets/game_manager/credits_bubsonas/Bubsona-rayflower.png" id="25_o14nh"]
+[ext_resource type="Texture2D" uid="uid://cfu8fqcgd2pkm" path="res://assets/game_manager/credits_bubsonas/CapsuleCrush_Bubsona.png" id="26_db51a"]
+[ext_resource type="Texture2D" uid="uid://blnipnecddtdy" path="res://assets/game_manager/credits_bubsonas/Gibbtall_Bubsona.png" id="27_ia24v"]
+[ext_resource type="Texture2D" uid="uid://dk5by2qqck680" path="res://assets/game_manager/credits_bubsonas/gozibubs.png" id="28_ltqdu"]
+[ext_resource type="Texture2D" uid="uid://dmpith2t3nfxc" path="res://assets/game_manager/credits_bubsonas/havlark_bubsona.png" id="29_ldihy"]
+[ext_resource type="Texture2D" uid="uid://em27125chucw" path="res://assets/game_manager/credits_bubsonas/hellawack_bubs.png" id="30_ogm2e"]
+[ext_resource type="Texture2D" uid="uid://dalno2eg8qfj7" path="res://assets/game_manager/credits_bubsonas/Meowmew_bubs.png" id="31_3hjfn"]
+[ext_resource type="Texture2D" uid="uid://bi1peb6c5bmaq" path="res://assets/game_manager/credits_bubsonas/Rukat.png" id="32_tgg06"]
+[ext_resource type="Texture2D" uid="uid://dofar0uxsk488" path="res://assets/game_manager/credits_bubsonas/slivers_bubsona.png" id="33_mllnq"]
+[ext_resource type="Texture2D" uid="uid://bexvlx5t0lb5a" path="res://assets/game_manager/credits_bubsonas/suchipi_bubsona.png" id="34_yve5t"]
+[ext_resource type="Texture2D" uid="uid://5mu2vl6d2lgb" path="res://assets/game_manager/credits_bubsonas/TinyZilla_Bubs.png" id="35_cwob5"]
+[ext_resource type="Texture2D" uid="uid://7h45e5soq5yn" path="res://assets/game_manager/credits_bubsonas/VamtaroBubbsona_500px.png" id="36_fj7h7"]
+[ext_resource type="Texture2D" uid="uid://bgdt7nw507q7i" path="res://assets/game_manager/credits_bubsonas/AndrewBubs.png" id="37_haoia"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_diiml"]
 atlas = ExtResource("8_kuwba")
@@ -60,6 +78,59 @@ normal = Vector2(0.999967, -0.00812981)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wax61"]
 normal = Vector2(-1, -0.000935453)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3i50o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_gx572")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_8fxnv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_o14nh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_db51a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ia24v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_ltqdu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_ldihy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_ogm2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_3hjfn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_tgg06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_mllnq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_yve5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_cwob5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_fj7h7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_haoia")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [node name="Main Menu" type="Node2D"]
 script = ExtResource("1_5rt6y")
@@ -198,6 +269,15 @@ bus = &"Music"
 
 [node name="SoundControls" parent="." instance=ExtResource("18_0d1dl")]
 
+[node name="CreditButton" type="TextureButton" parent="."]
+offset_left = 753.0
+offset_top = 639.0
+offset_right = 896.0
+offset_bottom = 693.0
+scale = Vector2(1.51505, 1.51505)
+texture_normal = ExtResource("17_5o815")
+texture_hover = ExtResource("18_qr1un")
+
 [node name="TextureButton" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(100, 100)
 offset_left = 564.0
@@ -214,8 +294,25 @@ texture_focused = ExtResource("19_6fdhp")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="Credits" type="TextureRect" parent="."]
+visible = false
+z_index = 10
+offset_left = 79.0
+offset_top = 68.0
+offset_right = 913.0
+offset_bottom = 902.0
+texture = ExtResource("22_0dsv6")
+
+[node name="Bubsonas" type="AnimatedSprite2D" parent="Credits"]
+position = Vector2(658, 551)
+scale = Vector2(0.622, 0.622)
+sprite_frames = SubResource("SpriteFrames_3i50o")
+autoplay = "default"
+frame_progress = 0.949859
+
 [connection signal="play_button_pressed" from="Play Button" to="." method="_on_play_button_pressed"]
 [connection signal="finished" from="BubbleWareVoices" to="." method="_on_bubble_ware_voices_finished"]
+[connection signal="pressed" from="CreditButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="TextureButton" to="SoundControls" method="slide_in"]
 
 [editable path="Bubbleware/U"]

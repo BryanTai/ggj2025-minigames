@@ -15,6 +15,7 @@
 script = ExtResource("1_jlp17")
 
 [node name="Credits" type="Label" parent="."]
+visible = false
 offset_left = 15.0
 offset_top = 10.0
 offset_right = 356.0
