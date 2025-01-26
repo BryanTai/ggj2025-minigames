@@ -26,3 +26,9 @@ bus = &"SFX"
 
 [node name="Player2D" parent="." instance=ExtResource("4_600vh")]
 position = Vector2(673, 630)
+
+[node name="BubbleSpawnCountdown" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[connection signal="timeout" from="BubbleSpawnCountdown" to="." method="_on_bubble_spawn_countdown_timeout"]
