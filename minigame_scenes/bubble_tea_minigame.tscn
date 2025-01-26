@@ -163,22 +163,6 @@ tracks/9/keys = {
 "values": [Vector2(158.785, -20.8901)]
 }
 
-[sub_resource type="Animation" id="Animation_338ym"]
-resource_name = "STAB"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TheStraw/Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7, 0.8),
-"transitions": PackedFloat32Array(0.3, 1, 1),
-"update": 0,
-"values": [Vector2(0, -448), Vector2(0, -500), Vector2(0, -248)]
-}
-
 [sub_resource type="Animation" id="Animation_0a8bi"]
 resource_name = "SPILL"
 length = 2.0
@@ -291,6 +275,22 @@ tracks/8/keys = {
 "values": [Vector2(158.785, -20.8901), Vector2(178, -10)]
 }
 
+[sub_resource type="Animation" id="Animation_338ym"]
+resource_name = "STAB"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TheStraw/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8),
+"transitions": PackedFloat32Array(0.3, 1, 1),
+"update": 0,
+"values": [Vector2(0, -448), Vector2(0, -500), Vector2(0, -248)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kub2j"]
 _data = {
 "RESET": SubResource("Animation_25o5s"),
@@ -335,7 +335,7 @@ shape = SubResource("RectangleShape2D_bf6ie")
 
 [node name="TeaDropEmitter" type="GPUParticles2D" parent="BubbleCup"]
 z_index = 3
-position = Vector2(1, -43)
+position = Vector2(-33, -17)
 emitting = false
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_2orvt")

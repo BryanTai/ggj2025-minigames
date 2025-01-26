@@ -1,0 +1,193 @@
+[gd_scene load_steps=10 format=3 uid="uid://duxk37of61njc"]
+
+[ext_resource type="Script" path="res://assets/game_manager/scripts/overlay_controller.gd" id="1_jlp17"]
+[ext_resource type="FontFile" uid="uid://blbfoi2bjrbw1" path="res://assets/fonts/SuperFrog-Yqy1q.ttf" id="1_x5n1t"]
+[ext_resource type="Texture2D" uid="uid://bwo23tynkk5dg" path="res://assets/ball_cup_minigame/ball.png" id="2_womy3"]
+[ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="3_pnuir"]
+[ext_resource type="Texture2D" uid="uid://dd6r85yh7ixjm" path="res://assets/game_manager/Sprites/time_bar_bg.png" id="5_hb1v0"]
+[ext_resource type="Texture2D" uid="uid://bghaxxtd8xc1n" path="res://assets/game_manager/Sprites/time_bar_glow.png" id="6_0vv1m"]
+[ext_resource type="Texture2D" uid="uid://bamcwlhtl8pht" path="res://assets/game_manager/Sprites/time_bar.png" id="7_cldms"]
+[ext_resource type="Texture2D" uid="uid://do7dfuxtec1hb" path="res://assets/game_manager/Sprites/timer_bubble.png" id="8_xajih"]
+[ext_resource type="AudioStream" uid="uid://bb8882iygehxq" path="res://assets/bubble_chomp/Sounds/PopSFX2.mp3" id="9_2y7e0"]
+
+[node name="MiniGameOverlay" type="CanvasLayer"]
+script = ExtResource("1_jlp17")
+
+[node name="Credits" type="Label" parent="."]
+offset_left = 15.0
+offset_top = 10.0
+offset_right = 356.0
+offset_bottom = 99.0
+text = "Credits!"
+
+[node name="Lives" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -155.0
+offset_top = 13.0
+offset_right = -22.0
+offset_bottom = 67.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.921569, 0.784314, 0.309804, 1)
+theme_override_colors/font_shadow_color = Color(0.0352941, 0.482353, 0.792157, 1)
+theme_override_colors/font_outline_color = Color(0.588235, 0.709804, 0.792157, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 11
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/font = ExtResource("1_x5n1t")
+theme_override_font_sizes/font_size = 50
+text = "LIVES"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Lives"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Lives"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_top = 68.865
+offset_bottom = 108.865
+grow_horizontal = 0
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Lives/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_womy3")
+
+[node name="InstructionBanner" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="InstructionBanner"]
+modulate = Color(0.0316, 0.474, 0.79, 0.423529)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_pnuir")
+
+[node name="InstructionLabel" type="Label" parent="InstructionBanner"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -41.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.921569, 0.784314, 0.309804, 1)
+theme_override_colors/font_shadow_color = Color(0.0352941, 0.482353, 0.792157, 1)
+theme_override_colors/font_outline_color = Color(0.588235, 0.709804, 0.792157, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 11
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/font = ExtResource("1_x5n1t")
+theme_override_font_sizes/font_size = 72
+text = "WINNER!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.5
+offset_top = -145.0
+offset_right = 110.5
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.921569, 0.784314, 0.309804, 1)
+theme_override_colors/font_shadow_color = Color(0.0352941, 0.482353, 0.792157, 1)
+theme_override_colors/font_outline_color = Color(0.588235, 0.709804, 0.792157, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 13
+theme_override_constants/shadow_outline_size = 13
+theme_override_fonts/font = ExtResource("1_x5n1t")
+theme_override_font_sizes/font_size = 48
+text = "TIME: 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeBar" type="TextureProgressBar" parent="TimerLabel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -337.0
+offset_top = -8.0
+offset_right = 337.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 20.0
+texture_under = ExtResource("5_hb1v0")
+texture_over = ExtResource("6_0vv1m")
+texture_progress = ExtResource("7_cldms")
+
+[node name="TimerBubbles" type="Control" parent="TimerLabel"]
+anchors_preset = 0
+offset_top = 7.0
+offset_right = 40.0
+offset_bottom = 47.0
+
+[node name="Bubble1" type="TextureRect" parent="TimerLabel/TimerBubbles"]
+layout_mode = 0
+offset_left = 276.5
+offset_top = 65.0
+offset_right = 346.5
+offset_bottom = 135.0
+texture = ExtResource("8_xajih")
+
+[node name="Bubble2" type="TextureRect" parent="TimerLabel/TimerBubbles"]
+offset_left = 142.5
+offset_top = 65.0
+offset_right = 212.5
+offset_bottom = 135.0
+texture = ExtResource("8_xajih")
+
+[node name="Bubble3" type="TextureRect" parent="TimerLabel/TimerBubbles"]
+offset_left = 6.5
+offset_top = 65.0
+offset_right = 76.5
+offset_bottom = 135.0
+texture = ExtResource("8_xajih")
+
+[node name="Bubble4" type="TextureRect" parent="TimerLabel/TimerBubbles"]
+offset_left = -127.5
+offset_top = 65.0
+offset_right = -57.5
+offset_bottom = 135.0
+texture = ExtResource("8_xajih")
+
+[node name="BubbleTimer" type="Timer" parent="TimerLabel/TimerBubbles"]
+
+[node name="BubblePop" type="AudioStreamPlayer" parent="TimerLabel"]
+stream = ExtResource("9_2y7e0")
+pitch_scale = 0.6
+bus = &"SFX"
+
+[connection signal="timeout" from="TimerLabel/TimerBubbles/BubbleTimer" to="." method="_on_bubble_timer_timeout"]

@@ -139,6 +139,7 @@ func sanitize_filename(filename: String) -> String:
 func _ready() -> void:
 	## Manager starts in the INTRO state
 	mini_game_timer.wait_time = TIME_LIMIT
+	overlay_mini_game.max_time = TIME_LIMIT
 	overlay_mini_game.visible = false
 	instruction_banner.visible = false
 	transition_animated_sprite.visible = false
@@ -152,6 +153,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if(current_manager_state == ManagerStates.PLAYING):
 		update_timer()
+		overlay_mini_game.adjust_time_bar_length(mini_game_timer.time_left)
 	
 func update_timer() -> void:
 	set_timer_text(str((mini_game_timer.time_left + 1) as int))
@@ -181,6 +183,7 @@ func load_next_mini_game() -> void:
 func create_next_mini_game() -> void:
 	current_mini_game = current_mini_game_resource.instantiate() as BaseMiniGame
 	current_mini_game.run_testing_mode = false
+	overlay_mini_game.reset_time_bar()
 	add_child(current_mini_game)
 	current_mini_game.game_finished.connect(_on_mini_game_finished)
 	current_mini_game.result_jingle.connect(_on_jingle_result)
@@ -193,6 +196,7 @@ func start_current_mini_game() -> void:
 	current_mini_game.start_playing_game()
 	mini_game_timer.wait_time = TIME_LIMIT
 	mini_game_timer.start()
+	overlay_mini_game.start_bubble_popper_timer()
 
 ## Manages
 func set_manager_state(new_state: ManagerStates) -> void:
@@ -257,6 +261,7 @@ func _on_mini_game_timer_timeout() -> void:
 ## ... or when the current_mini_game signals the Manager that the player reached a Win/Lose state
 func _on_mini_game_finished(is_win: bool) -> void:
 	mini_game_timer.stop()
+	overlay_mini_game.stop_bubble_popper_timer()
 	show_good_transition = is_win
 	if (is_win == true):
 		wins += 1
