@@ -31,6 +31,7 @@ var current_manager_state: ManagerStates = ManagerStates.INTRO
 @onready var timer_label: Label = $MiniGameOverlay/TimerLabel
 @onready var instruction_label: Label = $MiniGameOverlay/InstructionBanner/InstructionLabel
 @onready var instruction_banner: Control = $MiniGameOverlay/InstructionBanner
+@onready var instructions_image: TextureRect = $AnimationPlayer/Instructions
 
 ## Sounds and music
 @onready var audio_mini_game_result: 	AudioStreamPlayer = $Audio_MiniGameResult
@@ -143,14 +144,21 @@ func _ready() -> void:
 	overlay_mini_game.visible = false
 	instruction_banner.visible = false
 	transition_animated_sprite.visible = false
+	instructions_image.visible = true
 	lives = 5
 	ScoreKeeper.wins = 0
 	cache_all_mini_game_names()
 	cache_all_bubbleware_clips()
-	animation_player.play(ANIM_INTRO) # Start the Intro
+	
+	#animation_player.play(ANIM_INTRO) # Start the Intro
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if(current_manager_state == ManagerStates.INTRO):
+		if(Input.is_action_just_pressed("fire")):
+			#The animation player isn't actually playing here
+			_on_animation_player_finished(ANIM_INTRO)
+	
 	if(current_manager_state == ManagerStates.PLAYING):
 		update_timer()
 		overlay_mini_game.adjust_time_bar_length(mini_game_timer.time_left)
@@ -210,6 +218,7 @@ func set_manager_state(new_state: ManagerStates) -> void:
 	## On Start State
 	match current_manager_state:
 		ManagerStates.TRANSITIONING:
+			instructions_image.visible = false
 			timer_label.visible = false
 			load_next_mini_game()
 			play_transition_sprites(show_good_transition)

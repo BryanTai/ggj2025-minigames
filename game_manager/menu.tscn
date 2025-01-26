@@ -64,7 +64,6 @@ normal = Vector2(-1, -0.000935453)
 script = ExtResource("1_5rt6y")
 
 [node name="Background" type="Sprite2D" parent="."]
-modulate = Color(0.514448, 0.726878, 0.893422, 1)
 z_index = -1
 position = Vector2(500, 500)
 texture = ExtResource("2_l5ndu")

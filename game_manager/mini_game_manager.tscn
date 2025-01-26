@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dkfi11o6yoyvt"]
+[gd_scene load_steps=30 format=3 uid="uid://dkfi11o6yoyvt"]
 
 [ext_resource type="Script" path="res://assets/game_manager/scripts/mini_game_manager.gd" id="1_r0ho1"]
 [ext_resource type="Texture2D" uid="uid://b4xw4ybhjdfs2" path="res://assets/game_manager/bubs_yeah_no_transitions/BubNO0001.png" id="2_qcany"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://b6ekvqqnfabf3" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0009.png" id="17_n5l0v"]
 [ext_resource type="Texture2D" uid="uid://u2cufodo4a5m" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0010.png" id="18_lv2kq"]
 [ext_resource type="Texture2D" uid="uid://dbbf1spmmuc6k" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0011.png" id="19_w8oat"]
+[ext_resource type="Texture2D" uid="uid://br4kebgjf288r" path="res://assets/game_manager/instructions.png" id="22_mjmct"]
 [ext_resource type="PackedScene" uid="uid://duxk37of61njc" path="res://game_manager/mini_game_overlay.tscn" id="22_qy411"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uxhkx"]
@@ -269,34 +270,22 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/IntroLabel:position")
+tracks/1/path = NodePath("MiniGameOverlay/InstructionBanner:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(144, 169)]
+"update": 1,
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MiniGameOverlay/InstructionBanner:visible")
+tracks/2/path = NodePath("TransitionAnimatedSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("TransitionAnimatedSprite:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -376,14 +365,6 @@ libraries = {
 }
 autoplay = "intro_manager"
 
-[node name="IntroLabel" type="Label" parent="AnimationPlayer"]
-offset_left = 144.0
-offset_top = 169.0
-offset_right = 1016.0
-offset_bottom = 306.0
-theme_override_font_sizes/font_size = 100
-text = "Cool Introduction!"
-
 [node name="TransitionLabel" type="Label" parent="AnimationPlayer"]
 offset_left = 1172.0
 offset_top = 192.0
@@ -391,6 +372,12 @@ offset_right = 1535.0
 offset_bottom = 259.0
 theme_override_font_sizes/font_size = 48
 text = "Cool Transition!"
+
+[node name="Instructions" type="TextureRect" parent="AnimationPlayer"]
+z_index = 6
+offset_right = 999.0
+offset_bottom = 999.0
+texture = ExtResource("22_mjmct")
 
 [node name="MiniGameTimer" type="Timer" parent="."]
 wait_time = 5.0
