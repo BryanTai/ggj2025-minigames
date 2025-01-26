@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://gle416ithogk"]
+[gd_scene load_steps=18 format=3 uid="uid://gle416ithogk"]
 
 [ext_resource type="Script" path="res://assets/milk_bubbles_minigame/milk_bubbles.gd" id="1_1h2on"]
 [ext_resource type="Texture2D" uid="uid://5gstey4ffbnf" path="res://assets/milk_bubbles_minigame/cup.png" id="2_0cvxp"]
@@ -6,12 +6,38 @@
 [ext_resource type="Texture2D" uid="uid://b6373w7ovlnpo" path="res://assets/milk_bubbles_minigame/cup_mask.png" id="3_g0eaq"]
 [ext_resource type="Texture2D" uid="uid://cr1gucbwnfdvy" path="res://assets/milk_bubbles_minigame/straw-top.png" id="4_e54sh"]
 [ext_resource type="Texture2D" uid="uid://c1qltqjt7i2g5" path="res://assets/milk_bubbles_minigame/milk.png" id="5_pnktf"]
+[ext_resource type="Texture2D" uid="uid://sxedau77rtw0" path="res://assets/milk_bubbles_minigame/TEMP_bubble_spritesheet.png" id="6_7qwgk"]
 [ext_resource type="AudioStream" uid="uid://cdbjmbwk8531w" path="res://assets/milk_bubbles_minigame/blowing-bubbles-6.wav" id="8_ukotn"]
 [ext_resource type="Texture2D" uid="uid://bkcpndbpkf2es" path="res://assets/milk_bubbles_minigame/bubs-neutral.png" id="9_c71cg"]
 [ext_resource type="Texture2D" uid="uid://b7p6lrciuh76l" path="res://assets/milk_bubbles_minigame/bubs-win.png" id="10_mtsht"]
 [ext_resource type="Texture2D" uid="uid://bj3x62vtwhkk5" path="res://assets/milk_bubbles_minigame/background.png" id="11_0g3h1"]
 [ext_resource type="Texture2D" uid="uid://bkd4od183c7gd" path="res://assets/milk_bubbles_minigame/bubs-lose.png" id="11_efyyn"]
 [ext_resource type="Texture2D" uid="uid://bv51uv35ldb8w" path="res://assets/milk_bubbles_minigame/hand_OL.png" id="12_d225n"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cap1f"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_01fgg"]
+_data = [Vector2(0, 0.0181499), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8bvy8"]
+curve = SubResource("Curve_01fgg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3x8d2"]
+lifetime_randomness = 0.15
+particle_flag_disable_z = true
+direction = Vector3(0.33, -1, 0)
+spread = 58.352
+initial_velocity_max = 115.6
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_8bvy8")
+anim_speed_min = 0.72
+anim_speed_max = 0.72
 
 [node name="MilkBubbles" type="Node2D"]
 script = ExtResource("1_1h2on")
@@ -43,6 +69,18 @@ texture = ExtResource("4_e54sh")
 z_index = -5
 position = Vector2(602, 967)
 texture = ExtResource("5_pnktf")
+
+[node name="BubbleEmitter" type="GPUParticles2D" parent="."]
+z_index = -5
+material = SubResource("CanvasItemMaterial_cap1f")
+position = Vector2(565, 764)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_3x8d2")
+texture = ExtResource("6_7qwgk")
+lifetime = 1.4
+speed_scale = 2.37
+randomness = 0.05
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_ukotn")
