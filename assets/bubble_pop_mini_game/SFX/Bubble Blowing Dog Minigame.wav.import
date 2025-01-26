@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dr4tu88k5n2cw"
+path="res://.godot/imported/Bubble Blowing Dog Minigame.wav-4386698b5773245457d3380f557fcc7a.sample"
+
+[deps]
+
+source_file="res://assets/bubble_pop_mini_game/SFX/Bubble Blowing Dog Minigame.wav"
+dest_files=["res://.godot/imported/Bubble Blowing Dog Minigame.wav-4386698b5773245457d3380f557fcc7a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

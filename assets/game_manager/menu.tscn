@@ -1,15 +1,44 @@
-[gd_scene load_steps=12 format=3 uid="uid://dli3m33ylt1gw"]
+[gd_scene load_steps=17 format=3 uid="uid://dli3m33ylt1gw"]
 
 [ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="1_jp5rh"]
 [ext_resource type="PackedScene" uid="uid://dki2osks6amsv" path="res://assets/gozi_bubblewrap_minigame/scenes/gozi_cursor.tscn" id="2_3diy3"]
-[ext_resource type="Script" path="res://assets/game_manager/option select.gd" id="3_ojbqg"]
+[ext_resource type="Script" path="res://assets/game_manager/menucursor.gd" id="2_55bup"]
+[ext_resource type="Texture2D" uid="uid://cqdp5x2dgb40t" path="res://assets/game_manager/animations/gozi_cursor.png" id="3_kquf5"]
+[ext_resource type="Script" path="res://assets/game_manager/scripts/option select.gd" id="3_ojbqg"]
 [ext_resource type="Texture2D" uid="uid://dr5iej3pi8agr" path="res://assets/game_manager/start-button-normal.png" id="3_uj565"]
 [ext_resource type="Texture2D" uid="uid://b68rifcdey8yi" path="res://assets/game_manager/start-button-press.png" id="4_g0bll"]
 [ext_resource type="Texture2D" uid="uid://dedx3gx80j45h" path="res://assets/game_manager/start-button-mouseover.png" id="6_qrwpx"]
 [ext_resource type="Texture2D" uid="uid://cikk8qxs5fdfm" path="res://assets/game_manager/b.png" id="7_38itm"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_280nt"]
-radius = 67.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_diiml"]
+atlas = ExtResource("3_kquf5")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kvjb"]
+atlas = ExtResource("3_kquf5")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_37y6f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_diiml")
+}],
+"loop": true,
+"name": &"click",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kvjb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5i8d4"]
+radius = 58.0775
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4nta3"]
 animations = [{
@@ -56,14 +85,25 @@ offset_bottom = 1014.0
 texture = ExtResource("1_jp5rh")
 metadata/_edit_lock_ = true
 
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+visible = false
+position = Vector2(-4, -6)
+gravity_scale = 0.0
+script = ExtResource("2_55bup")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
+scale = Vector2(0.63644, 0.63644)
+sprite_frames = SubResource("SpriteFrames_37y6f")
+animation = &"click"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-14, 6)
+shape = SubResource("CircleShape2D_5i8d4")
+
 [node name="Cursor" parent="." instance=ExtResource("2_3diy3")]
 position = Vector2(-4, -6)
-
-[node name="RigidBody2D" type="RigidBody2D" parent="Cursor"]
-position = Vector2(0, 49)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor/RigidBody2D"]
-shape = SubResource("CircleShape2D_280nt")
+disable_mode = 2
+collision_mask = 3
 
 [node name="Option A" type="Area2D" parent="."]
 script = ExtResource("3_ojbqg")
@@ -72,7 +112,6 @@ script = ExtResource("3_ojbqg")
 position = Vector2(505, 544)
 sprite_frames = SubResource("SpriteFrames_4nta3")
 autoplay = "default"
-frame_progress = 0.187867
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Option A"]
 position = Vector2(566.226, 552.667)
@@ -83,6 +122,8 @@ shape = SubResource("RectangleShape2D_6bisf")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="BUBBLEWARE"]
 position = Vector2(269, 126)
+collision_layer = 3
+collision_mask = 3
 gravity_scale = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="BUBBLEWARE/RigidBody2D"]
@@ -90,3 +131,20 @@ texture = ExtResource("7_38itm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BUBBLEWARE/RigidBody2D"]
 shape = SubResource("CircleShape2D_1fsj3")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="BUBBLEWARE"]
+position = Vector2(238, 405)
+collision_layer = 3
+collision_mask = 3
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="BUBBLEWARE/RigidBody2D2"]
+texture = ExtResource("7_38itm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BUBBLEWARE/RigidBody2D2"]
+shape = SubResource("CircleShape2D_1fsj3")
+
+[connection signal="area_entered" from="Option A" to="Option A" method="_on_area_entered"]
+[connection signal="area_exited" from="Option A" to="Option A" method="_on_area_exited"]
+
+[editable path="Cursor"]

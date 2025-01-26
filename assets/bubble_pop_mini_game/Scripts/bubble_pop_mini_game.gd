@@ -49,6 +49,14 @@
 extends BaseMiniGame
 
 @onready var bubble: Sprite2D = $Bubble
+@onready var bubs: Sprite2D = $Bubs
+@onready var popped_particle: GPUParticles2D = $PoppedParticle
+@onready var balloon_blow_sfx: AudioStreamPlayer = $BalloonBlow
+@onready var balloon_pop_sfx: AudioStreamPlayer = $BalloonPop
+@onready var air_leak_sfx: AudioStreamPlayer = $AirLeak
+
+func _init() -> void:
+	disable_minigame_during_intro_and_outro = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -72,8 +80,7 @@ func _process(delta: float) -> void:
 # A signal from the MiniGameManager that time has run out
 ## TODO: Override this function if your MiniGame checks the win condition on TimeOut
 func _on_timeout() -> void:
-	print(bubble.scale.x)
-	if bubble.scale.x > 2.5:
+	if bubble.scale.x > 1:
 		trigger_game_win()
 	else:
 		trigger_game_lose()
@@ -102,36 +109,78 @@ func _on_timeout() -> void:
 ## PLAYING STATE
 
 # Called once when entering the PLAYING state (e.g. once the player gains control)
-#func _on_start_playing_state() -> void:
-#	pass
+func _on_start_playing_state() -> void:
+	air_leak_sfx.play()
+	pass
 
+var mouth_timer_counter: float = 0
+const MOUTH_MAX_TIME: float = 0.25
+const max_bubble_scale: float = 3.0
 # Called every frame while minigame is in the PLAYING state
 func _process_playing_state(delta: float) -> void:
 	if Input.is_action_just_pressed("fire"):
+		bubs.frame = 1
+		mouth_timer_counter = MOUTH_MAX_TIME
 		bubble.scale *= 1.2
+		balloon_blow_sfx.pitch_scale = lerp(0.8, 1.2, bubble.scale.x / max_bubble_scale)
+		balloon_blow_sfx.play()
 	else:
 		bubble.scale *= pow(0.7, delta) # Make this Frame independent.
+	
+	if mouth_timer_counter > 0:
+		mouth_timer_counter -= delta
+		if mouth_timer_counter <= 0:
+			bubs.frame = 0
+	
+	# Modulate the bubble color as it get closer to the targeted value.
+	var size_difference: float = 1 - clamp(max_bubble_scale - bubble.scale.x, 0, 1)
+	bubble.modulate = lerp(Color.WHITE, Color.ORANGE, pow(size_difference, 1.5))
+	
+	# Pop the bubble if it's too big.
+	if (bubble.scale.x > max_bubble_scale):
+		balloon_pop_sfx.play()
+		air_leak_sfx.stop()
+		popped_particle.position = bubble.position
+		popped_particle.modulate = Color.ORANGE
+		popped_particle.emitting = true
+		bubble.visible = false
+		trigger_game_lose()
 
 # Called once when the PLAYING state ends (e.g. Win or Lose)
-#func _on_end_playing_state() -> void:
-#	pass
+func _on_end_playing_state() -> void:
+	bubs.frame = 0
+	pass
 
 ## WIN STATE
 
 # Called once when entering the WIN state
-#func _on_start_win_state() -> void:
-#	pass
+func _on_start_win_state() -> void:
+	air_leak_sfx.stop()
+	pass
+
+var float_speed = 500
 
 # Called every frame while minigame is in the WIN state
-#func _process_win_state(delta: float) -> void:
-#	pass
+func _process_win_state(delta: float) -> void:
+	bubble.position.y -= float_speed * delta
+	bubs.position.y -= float_speed * delta
+	float_speed += 1000 * delta
+	pass
 
 ## LOSE STATE
 
 # Called once when entering the LOSE state
-#func _on_start_lose_state() -> void:
-#	pass
+func _on_start_lose_state() -> void:
+	bubs.frame = 2 if bubble.visible else 3
+	bubble.position = Vector2(528, 700)
+	pass
 
+var lose_modulate_timer: float = 0
 # Called every frame while minigame is in the LOSE state
-#func _process_lose_state(delta: float) -> void:
-#	pass
+func _process_lose_state(delta: float) -> void:
+	lose_modulate_timer += delta
+	popped_particle.modulate = lerp(Color.ORANGE, Color.WHITE, sqrt(lose_modulate_timer))
+	air_leak_sfx.volume_db = 5
+	air_leak_sfx.pitch_scale = 1.2
+	bubble.scale *= pow(0.1, delta)
+	pass
