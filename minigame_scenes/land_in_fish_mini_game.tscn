@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://dgt0xohvxog05"]
 
 [ext_resource type="Script" path="res://assets/land_in_fish_mini_game/Scripts/land_in_fish_mini_game.gd" id="1_pojm1"]
-[ext_resource type="Texture2D" uid="uid://bjlelmiai6ymt" path="res://assets/bubble_pop_mini_game/Animations/BubsIdle.png" id="2_asgnj"]
 [ext_resource type="Texture2D" uid="uid://b4c7jkwk18lq8" path="res://assets/land_in_fish_mini_game/Sprites/Bucket.png" id="2_tq28u"]
+[ext_resource type="Texture2D" uid="uid://d4j1fcl3kdkku" path="res://assets/land_in_fish_mini_game/Sprites/BubsFishHunt.png" id="3_y7lo2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qeyl5"]
 
@@ -70,7 +70,7 @@ position = Vector2(503, 46)
 
 [node name="BubsSprite" type="Sprite2D" parent="Bubs"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_asgnj")
+texture = ExtResource("3_y7lo2")
 hframes = 2
 vframes = 2
 

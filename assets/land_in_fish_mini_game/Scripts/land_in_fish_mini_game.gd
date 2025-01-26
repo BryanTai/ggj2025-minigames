@@ -170,7 +170,7 @@ func _process_playing_state(delta: float) -> void:
 
  #Called once when entering the WIN state
 func _on_start_win_state() -> void:
-	$Bubs/BubsSprite.frame = 1
+	$Bubs/BubsSprite.frame = 2
 	pass
 
 # Called every frame while minigame is in the WIN state
@@ -181,7 +181,7 @@ func _on_start_win_state() -> void:
 
 # Called once when entering the LOSE state
 func _on_start_lose_state() -> void:
-	$Bubs/BubsSprite.frame = 2
+	$Bubs/BubsSprite.frame = 1
 	pass
 
 # Called every frame while minigame is in the LOSE state
