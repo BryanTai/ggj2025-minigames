@@ -1,11 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://b454m7v44683q"]
+[gd_scene load_steps=25 format=3 uid="uid://d0bi4ye0gwyva"]
 
 [ext_resource type="Script" path="res://assets/game_manager/scripts/menu.gd" id="1_5rt6y"]
 [ext_resource type="Texture2D" uid="uid://dsm7ltmwlrnk3" path="res://assets/game_manager/Sprites/coverart.png" id="2_l5ndu"]
-[ext_resource type="Script" path="res://assets/game_manager/scripts/option select.gd" id="3_kprwm"]
-[ext_resource type="Texture2D" uid="uid://b68rifcdey8yi" path="res://assets/game_manager/start-button-press.png" id="4_gonqc"]
-[ext_resource type="Texture2D" uid="uid://dr5iej3pi8agr" path="res://assets/game_manager/start-button-normal.png" id="5_bciqh"]
-[ext_resource type="Texture2D" uid="uid://dedx3gx80j45h" path="res://assets/game_manager/start-button-mouseover.png" id="6_pq2cp"]
+[ext_resource type="PackedScene" uid="uid://dul6ywxfmt60s" path="res://assets/game_manager/Scenes/play_button.tscn" id="3_0y1my"]
 [ext_resource type="Script" path="res://assets/game_manager/scripts/menucursor.gd" id="7_b46p4"]
 [ext_resource type="Texture2D" uid="uid://cqdp5x2dgb40t" path="res://assets/game_manager/animations/gozi_cursor.png" id="8_kuwba"]
 [ext_resource type="PackedScene" uid="uid://ced8tygwinyqc" path="res://assets/game_manager/Scenes/Letter.tscn" id="9_ve6p2"]
@@ -17,38 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://bcqoraqhttwnj" path="res://assets/game_manager/Sprites/r.png" id="15_lgft4"]
 [ext_resource type="AudioStream" uid="uid://bu8ck5ri0iwke" path="res://assets/audio/Bubbleware Collab.wav" id="16_nqigu"]
 [ext_resource type="AudioStream" uid="uid://dy471hcu6ecl1" path="res://assets/audio/Main Menu - Bubs!.wav" id="17_nyvre"]
-[ext_resource type="PackedScene" uid="uid://dv0fmgdc8q6bc" path="res://game_manager/sound_controls.tscn" id="18_0d1dl"]
+[ext_resource type="PackedScene" path="res://game_manager/sound_controls.tscn" id="18_0d1dl"]
 [ext_resource type="Texture2D" uid="uid://cjkr33ip3jtpx" path="res://assets/game_manager/Sprites/volume_button.png" id="19_6fdhp"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4nta3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_gonqc")
-}],
-"loop": true,
-"name": &"click",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_bciqh")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_pq2cp")
-}],
-"loop": true,
-"name": &"hover",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bisf"]
-size = Vector2(160.682, 161.216)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_diiml"]
 atlas = ExtResource("8_kuwba")
@@ -100,19 +67,8 @@ z_index = -1
 position = Vector2(500, 500)
 texture = ExtResource("2_l5ndu")
 
-[node name="Play Button" type="Area2D" parent="."]
-position = Vector2(239, 271)
-script = ExtResource("3_kprwm")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Play Button"]
-position = Vector2(505, 544)
-sprite_frames = SubResource("SpriteFrames_4nta3")
-autoplay = "default"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Play Button"]
-position = Vector2(566.226, 552.667)
-rotation = 1.43761
-shape = SubResource("RectangleShape2D_6bisf")
+[node name="Play Button" parent="." instance=ExtResource("3_0y1my")]
+position = Vector2(879, 870)
 
 [node name="BUBBLEWARE" type="Node" parent="."]
 
@@ -230,10 +186,6 @@ texture_focused = ExtResource("19_6fdhp")
 ignore_texture_size = true
 stretch_mode = 0
 
-[connection signal="area_entered" from="Play Button" to="Play Button" method="_on_area_entered"]
-[connection signal="area_exited" from="Play Button" to="Play Button" method="_on_area_exited"]
-[connection signal="body_entered" from="Play Button" to="Play Button" method="_on_body_entered"]
-[connection signal="body_exited" from="Play Button" to="Play Button" method="_on_body_exited"]
 [connection signal="play_button_pressed" from="Play Button" to="." method="_on_play_button_pressed"]
 [connection signal="finished" from="BubbleWareVoices" to="." method="_on_bubble_ware_voices_finished"]
 [connection signal="pressed" from="TextureButton" to="SoundControls" method="slide_in"]
