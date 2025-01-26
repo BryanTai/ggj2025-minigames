@@ -31,6 +31,7 @@ var current_manager_state: ManagerStates = ManagerStates.INTRO
 @onready var timer_label: Label = $MiniGameOverlay/TimerLabel
 @onready var instruction_label: Label = $MiniGameOverlay/InstructionBanner/InstructionLabel
 @onready var instruction_banner: Control = $MiniGameOverlay/InstructionBanner
+@onready var lives_label: Label = $MiniGameOverlay/Lives
 
 ## Sounds and music
 @onready var audio_mini_game_result: 	AudioStreamPlayer = $Audio_MiniGameResult
@@ -60,6 +61,8 @@ var current_mini_game_resource: Resource # Next minigames are loaded during the 
 
 var all_mini_game_names: PackedStringArray
 var all_mini_game_count: int
+
+var lives: int
 
 var minigame_name_override: String = "" #replace with a full name e.g. "meteor_mini_game.tscn"
 
@@ -124,6 +127,7 @@ func _ready() -> void:
 	overlay_mini_game.visible = false
 	instruction_banner.visible = false
 	transition_animated_sprite.visible = false
+	lives = 5 ## TODO Set the lives from the Menu scene!
 	cache_all_mini_game_names()
 	cache_all_bubbleware_clips()
 	animation_player.play(ANIM_INTRO) # Start the Intro
@@ -240,8 +244,14 @@ func _on_mini_game_finished(is_win: bool) -> void:
 	if (is_win == true):
 		instruction_label.text = "WINNER!"
 	else:
+		lose_life()
 		instruction_label.text = "LOSER!"
 	set_manager_state(ManagerStates.ENDING)
+
+func lose_life() -> void:
+	lives -= 1
+	if lives <= 0:
+		print("GAME OVER!")
 
 # Plays a jingle when a game ends
 func _on_jingle_result (jingle) -> void:

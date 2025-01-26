@@ -387,9 +387,9 @@ text = "Cool Introduction!"
 
 [node name="TransitionLabel" type="Label" parent="AnimationPlayer"]
 offset_left = 1172.0
-offset_top = 190.0
+offset_top = 192.0
 offset_right = 1535.0
-offset_bottom = 257.0
+offset_bottom = 259.0
 theme_override_font_sizes/font_size = 48
 text = "Cool Transition!"
 
