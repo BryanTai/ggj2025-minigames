@@ -82,7 +82,7 @@ func cache_all_bubbleware_clips() -> void:
 	
 	var dir = DirAccess.open(BUBBLEWARE_VOICE_CLIPS_PATH)
 	if dir:
-		audio_bubbleware_list = Array(dir.get_files())
+		audio_bubbleware_list = Array(filter_bubbleware_voice_names(dir.get_files()))
 		print("Bubbleare voice clips: ")
 		print(audio_bubbleware_list)
 	else:
@@ -105,6 +105,17 @@ func filter_mini_game_names(names: PackedStringArray) -> PackedStringArray:
 	for bad_index in bad_indexes:
 		names.remove_at(bad_index)
 	return names
+
+# Filters out any non-scene files from the Minigames folder
+func filter_bubbleware_voice_names(names: PackedStringArray) -> PackedStringArray:
+	
+	var good_names: Array[String]
+	for filename in names:
+		var filetype = filename.split(".")
+		if(filetype[filetype.size()-1] == "wav"):
+			print("Adding " + filename)
+			good_names.append(filename)
+	return good_names
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -152,7 +163,7 @@ func create_next_mini_game() -> void:
 	add_child(current_mini_game)
 	current_mini_game.game_finished.connect(_on_mini_game_finished)
 	current_mini_game.result_jingle.connect(_on_jingle_result)
-	current_mini_game.minigame_music_signal.connect(_on_music)
+	play_music(current_mini_game.minigame_music.pick_random())
 	instruction_label.text = current_mini_game.instruction_text
 
 ## Gives control to the Player
@@ -237,6 +248,7 @@ func _on_jingle_result (jingle) -> void:
 	
 	# Cancel any currently playing result
 	audio_mini_game_result.stop()
+	audio_mini_game_music.stop()
 	
 	# Play jingle on result
 	if jingle != null:
@@ -245,7 +257,7 @@ func _on_jingle_result (jingle) -> void:
 	
 	pass
 
-func _on_music(music) -> void:
+func play_music(music) -> void:
 	
 	if music != null:
 		audio_mini_game_music.stop()

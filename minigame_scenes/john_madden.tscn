@@ -1,15 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://crf4b46m42yce"]
+[gd_scene load_steps=17 format=3 uid="uid://kbwn2tk0b8dh"]
 
 [ext_resource type="Script" path="res://assets/spaceman-football/john_madden.gd" id="1_knw8r"]
 [ext_resource type="Texture2D" uid="uid://bjqq1w0y6u53k" path="res://assets/spaceman-football/Assets/Blank.png" id="2_24p4v"]
+[ext_resource type="AudioStream" uid="uid://cf3xydm8tk6s8" path="res://assets/spaceman-football/Assets/jon-madden-made-with-Voicemod.wav" id="2_asbpu"]
 [ext_resource type="Texture2D" uid="uid://dca32v73nyg5q" path="res://assets/spaceman-football/Assets/Earth.png" id="3_7iwmk"]
+[ext_resource type="AudioStream" uid="uid://wgr38mrl0our" path="res://assets/spaceman-football/Assets/DECtalk_-_Daisy_Bell.wav" id="3_qf50f"]
 [ext_resource type="Texture2D" uid="uid://ctltorcumbrya" path="res://assets/spaceman-football/Assets/Moon.png" id="4_ba2rj"]
 [ext_resource type="Texture2D" uid="uid://csa3atlupqwak" path="res://assets/spaceman-football/Assets/End Zone.png" id="5_20wie"]
 [ext_resource type="Script" path="res://assets/spaceman-football/end_zone.gd" id="6_f7mwa"]
-[ext_resource type="AudioStream" uid="uid://ktayu5ggknm7" path="res://assets/spaceman-football/Assets/jon-madden-made-with-Voicemod.mp3" id="7_mplhx"]
 [ext_resource type="PackedScene" uid="uid://6pyc2et2hpr6" path="res://assets/spaceman-football/spaceman.tscn" id="8_53fnv"]
 [ext_resource type="PackedScene" uid="uid://bt3akspj7jvwu" path="res://assets/spaceman-football/football.tscn" id="9_4bns3"]
-[ext_resource type="AudioStream" uid="uid://ci0lxjtjkb6ro" path="res://assets/spaceman-football/Assets/DECtalk_-_Daisy_Bell.mp3" id="10_bigu8"]
 [ext_resource type="Texture2D" uid="uid://deiy4lxon5jds" path="res://assets/spaceman-football/Assets/End Zone Front.png" id="11_uh25t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_etjn0"]
@@ -32,6 +32,8 @@ normal = Vector2(-0.0099995, 0.99995)
 
 [node name="JohnMadden" type="Node2D"]
 script = ExtResource("1_knw8r")
+minigame_sfx_win = Array[AudioStreamWAV]([ExtResource("2_asbpu")])
+minigame_music = Array[AudioStreamWAV]([ExtResource("3_qf50f")])
 
 [node name="Space" type="Node2D" parent="."]
 position = Vector2(6, 13)
@@ -147,10 +149,6 @@ rotation = -0.0982233
 scale = Vector2(0.999999, 1)
 shape = SubResource("RectangleShape2D_etjn0")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Moon/EndZone/Area2D/CollisionShape2D"]
-stream = ExtResource("7_mplhx")
-volume_db = 5.0
-
 [node name="Floor" type="CollisionShape2D" parent="Moon"]
 position = Vector2(77, 1)
 shape = SubResource("WorldBoundaryShape2D_dbwyp")
@@ -172,11 +170,6 @@ position = Vector2(1014, 1202)
 [node name="Football" parent="." instance=ExtResource("9_4bns3")]
 position = Vector2(525, 300)
 rotation = -0.344493
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_bigu8")
-volume_db = 5.0
-autoplay = true
 
 [node name="EndZoneFront" type="Sprite2D" parent="."]
 position = Vector2(76, 193)

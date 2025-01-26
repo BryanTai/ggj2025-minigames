@@ -8,14 +8,6 @@ extends BaseMiniGame
 @onready var bubs_chan_win 			= preload("res://assets/dating_minigame/yay.png")
 @onready var bubs_chan_lose 		= preload("res://assets/dating_minigame/notveryuwu.png")
 
-@onready var audio_win				= $AudioWin
-@onready var audio_lose				= $AudioLose
-
-#@onready var minigame_sound_win 	= preload("res://assets/dating_minigame/KAWAII DESU.wav")
-#@onready var minigame_sound_lose 	= preload("res://assets/dating_minigame/NOT KAWAII DESU.wav")
-#@onready var minigame_music			= null
-#@onready var minigame_sound_lose_then_win = null
-
 var rng = RandomNumberGenerator.new()
 var rotation_direction = [1, -1].pick_random()
 var option_rotation_speed = rng.randf_range(30.0, 60.0)
@@ -144,7 +136,6 @@ func _on_start_win_state() -> void:
 	sprite.texture = bubs_chan_win
 	selectable_options.visible = false
 	hand_cursor.get_node("Heart_Emitter").emitting = true
-	audio_win.play()
 
 # Called every frame while minigame is in the WIN state
 #func _process_win_state(delta: float) -> void:
@@ -159,7 +150,6 @@ func _on_start_lose_state() -> void:
 	super()
 	sprite.texture = bubs_chan_lose
 	selectable_options.visible = false
-	audio_lose.play()
 	pass
 
 # Called every frame while minigame is in the LOSE state

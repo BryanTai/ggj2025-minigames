@@ -1,10 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://dpbdll3soyqyy"]
+[gd_scene load_steps=25 format=3 uid="uid://bg5xagwixr4ar"]
 
 [ext_resource type="Script" path="res://assets/get_down_runner_minigame/get_down_runner_mini_game.gd" id="1_xotw8"]
+[ext_resource type="AudioStream" uid="uid://dftguphn65yej" path="res://assets/get_down_runner_minigame/getdown.wav" id="2_roib1"]
 [ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="2_vluux"]
 [ext_resource type="Texture2D" uid="uid://csjdsw14v0whg" path="res://assets/runner_minigame/finishline.png" id="3_tu1cd"]
 [ext_resource type="Texture2D" uid="uid://chp006ormjrfq" path="res://assets/get_down_runner_minigame/get_down_spritesheet.png" id="4_mdvrr"]
-[ext_resource type="AudioStream" uid="uid://48101hif8cg2" path="res://assets/get_down_runner_minigame/getdown.mp3" id="5_oxlu1"]
 
 [sub_resource type="Theme" id="Theme_3f26n"]
 
@@ -158,6 +158,7 @@ animations = [{
 
 [node name="RunnerMiniGame" type="Node2D"]
 script = ExtResource("1_xotw8")
+minigame_music = Array[AudioStreamWAV]([ExtResource("2_roib1")])
 
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color(2.47873e-06, 0.473586, 0.142933, 1)
@@ -189,7 +190,3 @@ scale = Vector2(0.42681, 0.42681)
 sprite_frames = SubResource("SpriteFrames_pfg4d")
 animation = &"idle"
 frame_progress = 0.0971911
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_oxlu1")
-volume_db = -30.912

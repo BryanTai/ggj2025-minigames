@@ -9,6 +9,7 @@
 [node name="Bubblewrap" type="Node2D"]
 position = Vector2(-4, -4)
 script = ExtResource("1_qi1y3")
+minigame_music = Array[AudioStreamWAV]([ExtResource("5_ltawf")])
 
 [node name="Cursor" parent="." instance=ExtResource("2_q8uq6")]
 position = Vector2(712, 378)
@@ -140,8 +141,3 @@ offset_right = 1012.0
 offset_bottom = 1014.0
 texture = ExtResource("2_ou43r")
 metadata/_edit_lock_ = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_ltawf")
-autoplay = true
-bus = &"Music"

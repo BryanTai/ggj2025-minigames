@@ -3,15 +3,13 @@ extends BaseMiniGame
 
 @onready var finish_line: AnimatedSprite2D = $FinishLine
 @onready var runner: AnimatedSprite2D = $Runner
-@onready var music: AudioStreamPlayer = $Music
-@onready var win_sfx: AudioStreamPlayer = $WinSFX
-@onready var lose_sfx: AudioStreamPlayer = $LoseSFX
 
 @export var SPEED: int = 180
 @export var SLOW_SPEED: int = 50
 @export var FINISH_LINE_X_POS: int = 800
 @export var instruction: String = "Run!"
 @export var direction_input: String = "move_right"
+
 
 func move_runner(speed_delta: float) -> void:
 	var old_pos = runner.position
@@ -49,7 +47,6 @@ func _process_playing_state(delta: float) -> void:
 ## WIN STATE
 
 func _on_start_win_state() -> void:
-	win_sfx.play()
 	finish_line.play("broken")
 	runner.play("win")
 	
@@ -59,5 +56,4 @@ func _process_win_state(delta: float) -> void:
 ## LOSE STATE
 
 func _on_start_lose_state() -> void:
-	lose_sfx.play()
 	runner.play("lose")

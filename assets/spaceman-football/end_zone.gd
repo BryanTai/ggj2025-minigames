@@ -8,6 +8,5 @@ extends Sprite2D
 
 func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	print("johnmadden")
-	audio_stream_player_2d.play()
 	
 	pass # Replace with function body.
