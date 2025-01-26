@@ -80,7 +80,6 @@ func _process(delta: float) -> void:
 # A signal from the MiniGameManager that time has run out
 ## TODO: Override this function if your MiniGame checks the win condition on TimeOut
 func _on_timeout() -> void:
-	print(bubble.scale.x)
 	if bubble.scale.x > 1:
 		trigger_game_win()
 	else:
@@ -171,8 +170,10 @@ func _process_win_state(delta: float) -> void:
 ## LOSE STATE
 
 # Called once when entering the LOSE state
-#func _on_start_lose_state() -> void:
-#	pass
+func _on_start_lose_state() -> void:
+	bubs.frame = 2 if bubble.visible else 3
+	bubble.position = Vector2(528, 700)
+	pass
 
 var lose_modulate_timer: float = 0
 # Called every frame while minigame is in the LOSE state
