@@ -1,7 +1,7 @@
 extends Node2D
 
-var goodvibes = ["slimes", "bubs", "anime"]
-var badvibes = ["twitter", "taxes", "low batteries"]
+var goodvibes = ["slimes", "bubs", "anime", "kitties", "ponies","coffee", "baking", "Pride"]
+var badvibes = ["twitter", "taxes", "HOAs", "overtime", "migraines", "landlords", "hangnails", "karens"]
 var isbad = false
 @onready var vabel: Label = $vabel
 

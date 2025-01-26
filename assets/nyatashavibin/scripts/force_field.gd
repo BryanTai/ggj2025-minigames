@@ -20,7 +20,7 @@ func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		look_at(get_global_mouse_position())
-		rotation += 45
+		rotation += 45.5
 
 func _on_nyatasha_hurtbox_2d_area_entered(area: Area2D) -> void:
 	print(area.name)
