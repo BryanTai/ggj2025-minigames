@@ -6,18 +6,20 @@ extends BaseMiniGame
 @onready var label: Label = $Label
 @onready var animated_sprite_2d: AnimatedSprite2D = $Background/AnimatedSprite2D
 @onready var player_2d: Area2D = $Player2D
+@onready var rock_rumble_sfx: AudioStreamPlayer = $RockRumbleSFX
 
 
-
-const MIN_WAIT_SEC: float = 2.0
-const MAX_WAIT_SEC: float = 4.0
+const MIN_WAIT_SEC: float = 1.5
+const MAX_WAIT_SEC: float = 3.5
 
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super() ## Do not remove this super() call!
-	instruction_text = "REACT!" 
+	instruction_text = "STEAL THE IDOL!" 
+	#disable_minigame_during_intro_and_outro=false
+	
 	var wait_seconds = rng.randf_range(MIN_WAIT_SEC, MAX_WAIT_SEC) # Pick a random time to wait
 	waiting_timer.wait_time = wait_seconds
 	waiting_timer.timeout.connect(start_window_timer) # Connect to first timer's timeout signal
@@ -38,6 +40,7 @@ func _process(delta: float) -> void:
 		if(window_timer.is_stopped()):
 			animated_sprite_2d.play("Loss")
 			player_2d.queue_free()
+			rock_rumble_sfx.queue_free()
 			label.text = "Missed!"
 			trigger_game_lose()
 		else:
@@ -49,7 +52,11 @@ func _process(delta: float) -> void:
 func start_window_timer() -> void:
 	label.text = "NOW!"
 	animated_sprite_2d.play("Shake")
+	rock_rumble_sfx.play()
 	window_timer.start()
 	
 func on_window_timeout() -> void:
 	label.text = "Too late..."
+	rock_rumble_sfx.queue_free()
+	animated_sprite_2d.play("Loss")
+	trigger_game_win()
