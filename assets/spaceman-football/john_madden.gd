@@ -1,4 +1,5 @@
 extends BaseMiniGame
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -9,4 +10,5 @@ func _ready() -> void:
 
 
 func _on_area_2d_body_shape_entered(_body_rid: RID, _body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+	audio_stream_player.play()
 	trigger_game_win()

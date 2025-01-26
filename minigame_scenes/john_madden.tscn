@@ -175,6 +175,10 @@ position = Vector2(76, 193)
 scale = Vector2(0.904908, 0.826087)
 texture = ExtResource("11_uh25t")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_asbpu")
+volume_db = 5.0
+
 [connection signal="body_shape_entered" from="Moon/EndZone/Area2D" to="." method="_on_area_2d_body_shape_entered"]
 [connection signal="body_shape_entered" from="Moon/EndZone/Area2D" to="Moon/EndZone" method="_on_area_2d_body_shape_entered"]
 
