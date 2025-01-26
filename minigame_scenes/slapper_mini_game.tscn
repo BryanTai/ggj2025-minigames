@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://36a4l2owmo15"]
+[gd_scene load_steps=60 format=3 uid="uid://citw2ido4jovv"]
 
 [ext_resource type="Script" path="res://assets/slapper_minigame/slapper_mini_game.gd" id="1_s2el2"]
 [ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="2_4gcar"]
@@ -277,7 +277,7 @@ sprite_frames = SubResource("SpriteFrames_qjt3o")
 autoplay = "default"
 
 [node name="PowerMeter" type="Node2D" parent="."]
-position = Vector2(782, 131)
+position = Vector2(540, 131)
 scale = Vector2(0.61, 0.61)
 
 [node name="Sprite2D" type="Sprite2D" parent="PowerMeter"]
