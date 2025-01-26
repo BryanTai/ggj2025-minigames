@@ -46,7 +46,7 @@
 extends BaseMiniGame
 
 @onready var label = $Label
-@onready var bubbles = $Bubbles
+#@onready var bubbles = $Bubbles
 @onready var milk = $Milk
 @onready var audio = $AudioStreamPlayer
 @onready var bubs_neutral = $BubsNeutral
@@ -64,16 +64,16 @@ var filled_amount: float = 0.0
 const FILL_RATE: float = 30.0
 const DRAIN_RATE: float = 15.0
 const REQUIRED_FILL_TO_WIN: float = 100.0
-const MILK_MOVE_AMOUNT: float = 250.0
+const MILK_MOVE_AMOUNT: float = 300.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	instruction_text = "Froth!" # This text will display during the PREPARING phase
 	super() ## Do not remove this super() call!
 	
-	bubbles_initial_pos = bubbles.position
+	#bubbles_initial_pos = bubbles.position
 	milk_initial_pos = milk.position
-	bubbles_target_pos = bubbles.position - Vector2(0, MILK_MOVE_AMOUNT)
+	#bubbles_target_pos = bubbles.position - Vector2(0, MILK_MOVE_AMOUNT)
 	milk_target_pos = milk.position - Vector2(0, MILK_MOVE_AMOUNT)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -85,12 +85,12 @@ func _process(delta: float) -> void:
 		return
 	
 	if Input.is_action_pressed("fire"):
-		bubbles.visible = true
+		#bubbles.visible = true
 		filled_amount += FILL_RATE * delta
 		if not audio.playing:
 			audio.play(last_audio_position)
 	else:
-		bubbles.visible = false
+		#bubbles.visible = false
 		filled_amount -= DRAIN_RATE * delta
 		if audio.playing:
 			last_audio_position = audio.get_playback_position()
@@ -103,7 +103,7 @@ func _process(delta: float) -> void:
 	
 	var alpha = filled_amount / REQUIRED_FILL_TO_WIN
 	milk.position = milk_initial_pos.lerp(milk_target_pos, alpha)
-	bubbles.position = bubbles_initial_pos.lerp(bubbles_target_pos, alpha)  
+	#bubbles.position = bubbles_initial_pos.lerp(bubbles_target_pos, alpha)  
 	
 	label.text = "%f" % filled_amount
 	
