@@ -59,4 +59,4 @@ func on_window_timeout() -> void:
 	label.text = "Too late..."
 	rock_rumble_sfx.queue_free()
 	animated_sprite_2d.play("Loss")
-	trigger_game_win()
+	trigger_game_lose()
