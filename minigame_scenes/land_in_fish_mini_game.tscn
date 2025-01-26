@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgt0xohvxog05"]
+
+[ext_resource type="Script" path="res://assets/land_in_fish_mini_game/Scripts/land_in_fish_mini_game.gd" id="1_pojm1"]
+[ext_resource type="Texture2D" uid="uid://bjlelmiai6ymt" path="res://assets/bubble_pop_mini_game/Animations/BubsIdle.png" id="2_asgnj"]
+[ext_resource type="Texture2D" uid="uid://iv1tv5f3kgxi" path="res://assets/sprites/icon.svg" id="3_rqe2w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2qye"]
+size = Vector2(60, 150)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qeyl5"]
+
+[sub_resource type="Gradient" id="Gradient_wq3pw"]
+colors = PackedColorArray(0, 0, 0, 1, 0.854881, 0.466736, 7.70092e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6siyr"]
+gradient = SubResource("Gradient_wq3pw")
+fill_from = Vector2(1, 1)
+
+[node name="LandInFishMiniGame" type="Node2D"]
+script = ExtResource("1_pojm1")
+
+[node name="Bubs" type="Node2D" parent="."]
+position = Vector2(503, 46)
+
+[node name="BubsSprite" type="Sprite2D" parent="Bubs"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_asgnj")
+hframes = 2
+vframes = 2
+
+[node name="Area2D" type="Area2D" parent="Bubs"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bubs/Area2D"]
+shape = SubResource("RectangleShape2D_n2qye")
+
+[node name="Bucket" type="Node2D" parent="."]
+
+[node name="BucketSprite" type="Sprite2D" parent="Bucket"]
+position = Vector2(509, 903)
+texture = ExtResource("3_rqe2w")
+
+[node name="Groud" type="Area2D" parent="."]
+position = Vector2(509, 981)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Groud"]
+shape = SubResource("WorldBoundaryShape2D_qeyl5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Groud"]
+scale = Vector2(16.535, 1)
+texture = SubResource("GradientTexture2D_6siyr")
+offset = Vector2(0, 32)
