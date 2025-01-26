@@ -1,0 +1,210 @@
+[gd_scene load_steps=15 format=3 uid="uid://b26hnmgyynv85"]
+
+[ext_resource type="Texture2D" uid="uid://dysaa3p8dhmfb" path="res://assets/nyatashavibin/sprites/Shield_BG_Base.png" id="1_snt5f"]
+[ext_resource type="Texture2D" uid="uid://dxkd5rvycaxjq" path="res://assets/nyatashavibin/sprites/nyatasha1.png" id="1_w3w5k"]
+[ext_resource type="Texture2D" uid="uid://bpfavjedktm3n" path="res://assets/nyatashavibin/sprites/nyatasha2.png" id="2_55jik"]
+[ext_resource type="Script" path="res://assets/nyatashavibin/scripts/force_field.gd" id="2_i76j0"]
+[ext_resource type="Texture2D" uid="uid://bhsqftfib3msw" path="res://assets/nyatashavibin/sprites/Shield_Frame01.png" id="5_oa7to"]
+[ext_resource type="Texture2D" uid="uid://o8pc3658wo87" path="res://assets/nyatashavibin/sprites/Shield_Frame02.png" id="6_wm1ad"]
+[ext_resource type="Texture2D" uid="uid://d7cfd11r18le" path="res://assets/nyatashavibin/sprites/Shield_Frame03.png" id="7_pa3kc"]
+
+[sub_resource type="Animation" id="Animation_et2ra"]
+resource_name = "scale"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.966667, 1, 1.43333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.238, 0.238), Vector2(0.238, 0.188), Vector2(0.238, 0.238), Vector2(0.238, 0.238), Vector2(0.238, 0.188), Vector2(0.238, 0.238)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.966667, 1.43333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 15), Vector2(0, 0), Vector2(0, 15), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.433333, 0.466667, 0.966667, 1, 1.43333, 1.46667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_55jik"), ExtResource("2_55jik"), ExtResource("1_w3w5k"), ExtResource("1_w3w5k"), ExtResource("2_55jik"), ExtResource("2_55jik"), ExtResource("1_w3w5k"), ExtResource("1_w3w5k")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_lcrud"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_w3w5k")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.033, 0.033)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3nutb"]
+_data = {
+"RESET": SubResource("Animation_lcrud"),
+"scale": SubResource("Animation_et2ra")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_og63l"]
+
+[sub_resource type="Animation" id="Animation_nv1wf"]
+resource_name = "shieldin"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_oa7to"), ExtResource("6_wm1ad"), ExtResource("7_pa3kc")]
+}
+
+[sub_resource type="Animation" id="Animation_hrcfb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_oa7to")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4b1mn"]
+_data = {
+"RESET": SubResource("Animation_hrcfb"),
+"shieldin": SubResource("Animation_nv1wf")
+}
+
+[node name="Nyatasha" type="Node2D"]
+scale = Vector2(0.913709, 0.913709)
+
+[node name="bg_shield" type="Sprite2D" parent="."]
+scale = Vector2(0.34017, 0.34017)
+texture = ExtResource("1_snt5f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.033, 0.033)
+texture = ExtResource("1_w3w5k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3nutb")
+}
+autoplay = "scale"
+
+[node name="nyatashaHurtbox2D" type="Area2D" parent="."]
+scale = Vector2(0.770963, 0.770963)
+
+[node name="nyatashaHurtbox" type="CollisionShape2D" parent="nyatashaHurtbox2D"]
+scale = Vector2(5.07481, 5.07481)
+shape = SubResource("CircleShape2D_og63l")
+
+[node name="ForceField" type="Node2D" parent="."]
+scale = Vector2(0.9, 0.9)
+script = ExtResource("2_i76j0")
+
+[node name="Sprite2D" type="Sprite2D" parent="ForceField"]
+modulate = Color(1, 1, 1, 0.929412)
+rotation = -0.545957
+scale = Vector2(0.397135, 0.397135)
+texture = ExtResource("5_oa7to")
+
+[node name="nyatashaHitbox2D" type="Area2D" parent="ForceField"]
+scale = Vector2(0.774918, 0.774918)
+
+[node name="nyatashaHitbox" type="CollisionPolygon2D" parent="ForceField/nyatashaHitbox2D"]
+position = Vector2(101, -17)
+rotation = 3.13865
+polygon = PackedVector2Array(26.6183, -13.6384, 40.7107, 32.3697, 64.7271, 53.2349, 98.6256, 63.1846, 131.478, 56.7146, 154.503, 42.5546, 177.634, -7.72179, 150.18, 23.9363, 130.435, 39.2004, 99.7684, 46.7713, 74.6125, 41.2251, 50.5896, 22.5488)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ForceField"]
+libraries = {
+"": SubResource("AnimationLibrary_4b1mn")
+}
+autoplay = "shieldin"
+
+[connection signal="area_entered" from="nyatashaHurtbox2D" to="ForceField" method="_on_nyatasha_hurtbox_2d_area_entered"]
+[connection signal="area_entered" from="ForceField/nyatashaHitbox2D" to="ForceField" method="_on_nyatasha_hitbox_2d_area_entered"]
