@@ -1,5 +1,5 @@
-class_name LarkBubble
-extends Area2D
+class_name LarkBubble extends Area2D
+
 const SPEED: int = 150
 var iscat: bool = false
 

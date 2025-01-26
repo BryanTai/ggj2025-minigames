@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://assets/larkBubblePopper/scripts/lark_bubble_popper.gd" id="1_1jim0"]
 [ext_resource type="Texture2D" uid="uid://cux82leek0bwc" path="res://assets/larkBubblePopper/sprites/tubble.png" id="2_3jpfo"]
 [ext_resource type="AudioStream" uid="uid://q3aa6saqui6n" path="res://assets/larkBubblePopper/larkpop.ogg" id="3_u3g84"]
-[ext_resource type="PackedScene" uid="uid://cdjvde087p6tv" path="res://assets/larkBubblePopper/scenes/gozi_cursor_larkscene.tscn" id="4_600vh"]
+[ext_resource type="PackedScene" path="res://assets/larkBubblePopper/scenes/gozi_cursor_larkscene.tscn" id="4_600vh"]
 
 [node name="larkBubblePopper" type="Node2D"]
 script = ExtResource("1_1jim0")
