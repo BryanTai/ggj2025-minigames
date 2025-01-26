@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bdkub5ss571b1" path="res://assets/bubble_pop_mini_game/Sprites/Cloud_2.png" id="4_7r7ux"]
 [ext_resource type="Texture2D" uid="uid://cp6asf4pbvlop" path="res://assets/bubble_pop_mini_game/Sprites/Cat_Sun.png" id="4_nis75"]
 [ext_resource type="Texture2D" uid="uid://nerc1ru3ul3l" path="res://assets/bubble_pop_mini_game/Sprites/Sun_no_cat.png" id="5_wtird"]
-[ext_resource type="Texture2D" uid="uid://g2tr34tqgxis" path="res://assets/bubble_pop_mini_game/Sprites/Foreground.png" id="6_kr4ug"]
 [ext_resource type="Texture2D" uid="uid://bjlelmiai6ymt" path="res://assets/bubble_pop_mini_game/Animations/BubsIdle.png" id="7_cgdxp"]
+[ext_resource type="Texture2D" uid="uid://cwqmif0drntgu" path="res://assets/bubble_pop_mini_game/Sprites/Foreground_Clean_Distance.png" id="7_kw2ea"]
 [ext_resource type="AudioStream" uid="uid://c1wamm8sw3swq" path="res://assets/bubble_pop_mini_game/SFX/balloon-blow.mp3" id="9_wq600"]
 [ext_resource type="AudioStream" uid="uid://cwm7qox5b4r6h" path="res://assets/bubble_pop_mini_game/SFX/balloon-pop.mp3" id="10_eu57b"]
 [ext_resource type="AudioStream" uid="uid://qwaiqqvv25d0" path="res://assets/bubble_pop_mini_game/SFX/air_leak.mp3" id="11_ic3tx"]
@@ -116,7 +116,7 @@ autoplay = "default"
 [node name="Foreground" type="Sprite2D" parent="Environment"]
 position = Vector2(501, 493)
 scale = Vector2(1.019, 1.019)
-texture = ExtResource("6_kr4ug")
+texture = ExtResource("7_kw2ea")
 
 [node name="Bubs" type="Sprite2D" parent="."]
 position = Vector2(518, 668)

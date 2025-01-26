@@ -25,6 +25,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="minigames"
 
+[editor]
+
+export/convert_text_resources_to_binary=false
+
 [filesystem]
 
 import/blender/enabled=false

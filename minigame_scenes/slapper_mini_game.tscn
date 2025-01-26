@@ -1,0 +1,308 @@
+[gd_scene load_steps=60 format=3 uid="uid://36a4l2owmo15"]
+
+[ext_resource type="Script" path="res://assets/slapper_minigame/slapper_mini_game.gd" id="1_s2el2"]
+[ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="2_4gcar"]
+[ext_resource type="Texture2D" uid="uid://oc062qr4kx58" path="res://assets/slapper_minigame/Sprites/ButtSmack_0000.png" id="3_vpknk"]
+[ext_resource type="Texture2D" uid="uid://crj88r85nteln" path="res://assets/slapper_minigame/Sprites/ButtSmack_0001.png" id="4_qfkjq"]
+[ext_resource type="Script" path="res://assets/slapper_minigame/cursor.gd" id="4_ts80q"]
+[ext_resource type="Texture2D" uid="uid://d1yqyc6vtxj2i" path="res://assets/slapper_minigame/Sprites/ButtSmack_0002.png" id="5_utt4r"]
+[ext_resource type="Texture2D" uid="uid://blfwf6wce15eg" path="res://assets/slapper_minigame/Sprites/ButtSmack_0003.png" id="6_43ucq"]
+[ext_resource type="Texture2D" uid="uid://cb3andng4lort" path="res://assets/slapper_minigame/Sprites/ButtSmack_0004.png" id="7_6v81a"]
+[ext_resource type="Texture2D" uid="uid://dwfqirwskw57a" path="res://assets/slapper_minigame/Sprites/ButtSmack_0005.png" id="8_recim"]
+[ext_resource type="Texture2D" uid="uid://0ded30ntpixk" path="res://assets/slapper_minigame/Sprites/ButtSmack_0006.png" id="9_ejsvs"]
+[ext_resource type="Texture2D" uid="uid://dtn6w1ber7bw5" path="res://assets/slapper_minigame/Sprites/ButtSmack_0007.png" id="10_bhrh2"]
+[ext_resource type="Texture2D" uid="uid://ri23xm63pgxj" path="res://assets/slapper_minigame/Sprites/ButtSmack_0008.png" id="11_k0bnc"]
+[ext_resource type="Texture2D" uid="uid://dubpsdm2463c4" path="res://assets/slapper_minigame/Sprites/ButtSmack_0009.png" id="12_hwyy4"]
+[ext_resource type="Texture2D" uid="uid://cv8nblkfkeqip" path="res://assets/slapper_minigame/Sprites/ButtSmack_0010.png" id="13_pk3fq"]
+[ext_resource type="Texture2D" uid="uid://djhd0ofcnsoox" path="res://assets/slapper_minigame/Sprites/ButtSmack_0011.png" id="14_fmb0k"]
+[ext_resource type="Texture2D" uid="uid://df0r6o6baj77f" path="res://assets/slapper_minigame/Sprites/ButtSmack_0012.png" id="15_gda5k"]
+[ext_resource type="Texture2D" uid="uid://cveii8hy2dcjv" path="res://assets/slapper_minigame/Sprites/ButtSmack_0013.png" id="16_h1c7c"]
+[ext_resource type="Texture2D" uid="uid://cmlywnmsecamn" path="res://assets/slapper_minigame/Sprites/ButtSmack_0014.png" id="17_1g7kq"]
+[ext_resource type="Texture2D" uid="uid://bv72dmavn14ir" path="res://assets/slapper_minigame/Sprites/ButtSmack_0015.png" id="18_jhiya"]
+[ext_resource type="Texture2D" uid="uid://dx0ohj6hfxkrv" path="res://assets/slapper_minigame/Sprites/ButtSmack_0016.png" id="19_1ghxp"]
+[ext_resource type="Texture2D" uid="uid://3l01t8tuokg5" path="res://assets/slapper_minigame/Sprites/ButtSmack_0017.png" id="20_jjj4k"]
+[ext_resource type="Texture2D" uid="uid://bqllgi5d36biu" path="res://assets/slapper_minigame/Sprites/ButtSmack_0018.png" id="21_ahei4"]
+[ext_resource type="Texture2D" uid="uid://bdkianlufrpxc" path="res://assets/slapper_minigame/Sprites/ButtSmack_0019.png" id="22_t5h7v"]
+[ext_resource type="Texture2D" uid="uid://b5xkkhc83vtuf" path="res://assets/slapper_minigame/Sprites/ButtSmack_0020.png" id="23_rxbnf"]
+[ext_resource type="Texture2D" uid="uid://c2rmm2256dyhr" path="res://assets/slapper_minigame/Sprites/ButtSmack_0021.png" id="24_ugqh2"]
+[ext_resource type="Texture2D" uid="uid://c3t3oeb6786q2" path="res://assets/slapper_minigame/Sprites/ButtSmack_0022.png" id="25_wmoxi"]
+[ext_resource type="Texture2D" uid="uid://dg73q6mvr0hqy" path="res://assets/slapper_minigame/Sprites/ButtSmack_0023.png" id="26_nlvel"]
+[ext_resource type="Texture2D" uid="uid://bo54o2i2m4u00" path="res://assets/slapper_minigame/Sprites/ButtSmack_0024.png" id="27_3u6kv"]
+[ext_resource type="Texture2D" uid="uid://c4g7f40bagl4d" path="res://assets/slapper_minigame/Sprites/ButtSmack_0025.png" id="28_r8fwi"]
+[ext_resource type="Texture2D" uid="uid://cwcjlc7r70h5t" path="res://assets/slapper_minigame/Sprites/ButtSmack_0026.png" id="29_jbljs"]
+[ext_resource type="Texture2D" uid="uid://b1hsmrcvptyf8" path="res://assets/slapper_minigame/Sprites/ButtSmack_0027.png" id="30_exckq"]
+[ext_resource type="Texture2D" uid="uid://bip8wlj0gaaj" path="res://assets/slapper_minigame/Sprites/ButtSmack_0028.png" id="31_tsbkq"]
+[ext_resource type="Texture2D" uid="uid://onr0nm5pewcn" path="res://assets/slapper_minigame/Sprites/ButtSmack_0029.png" id="32_evccl"]
+[ext_resource type="Texture2D" uid="uid://dgso7bfooqjdy" path="res://assets/slapper_minigame/Sprites/ButtSmack_0030.png" id="33_wkshk"]
+[ext_resource type="Texture2D" uid="uid://de1hjpqvvjy81" path="res://assets/slapper_minigame/Sprites/ButtSmack_0031.png" id="34_ehegj"]
+[ext_resource type="Texture2D" uid="uid://3pagga7wcl2g" path="res://assets/slapper_minigame/Sprites/ButtSmack_0032.png" id="35_ts2u3"]
+[ext_resource type="Texture2D" uid="uid://frm1lro4d7df" path="res://assets/slapper_minigame/Sprites/ButtSmack_0033.png" id="36_mw38a"]
+[ext_resource type="Texture2D" uid="uid://cncuf7ob456lp" path="res://assets/slapper_minigame/Sprites/ButtSmack_0034.png" id="37_m7uv8"]
+[ext_resource type="Texture2D" uid="uid://c1170lmkvdiyy" path="res://assets/slapper_minigame/Sprites/ButtSmack_0035.png" id="38_b63d4"]
+[ext_resource type="Texture2D" uid="uid://cst3mbqgaphwb" path="res://assets/slapper_minigame/Sprites/ButtSmack_0036.png" id="39_5n7h3"]
+[ext_resource type="Texture2D" uid="uid://dmo8iva8raq2n" path="res://assets/slapper_minigame/Sprites/ButtSmack_0037.png" id="40_0ej5h"]
+[ext_resource type="Texture2D" uid="uid://dgjqhcdk2spa7" path="res://assets/slapper_minigame/Sprites/ButtSmack_0038.png" id="41_ye2uj"]
+[ext_resource type="Texture2D" uid="uid://cq1katgbvnpw6" path="res://assets/slapper_minigame/Sprites/ButtSmack_0039.png" id="42_t1yxu"]
+[ext_resource type="Texture2D" uid="uid://ckgkrnvyk2lpv" path="res://assets/slapper_minigame/Sprites/ButtSmack_0040.png" id="43_c10n1"]
+[ext_resource type="Texture2D" uid="uid://hsy0cioe5jm5" path="res://assets/slapper_minigame/Sprites/ButtSmack_0041.png" id="44_t6vsq"]
+[ext_resource type="Texture2D" uid="uid://bccyptyooml8n" path="res://assets/slapper_minigame/Sprites/ButtSmack_0042.png" id="45_yyrmt"]
+[ext_resource type="Texture2D" uid="uid://chqsjrsn5nufi" path="res://assets/slapper_minigame/Sprites/ButtSmack_0043.png" id="46_1pm7g"]
+[ext_resource type="Texture2D" uid="uid://56g5mx2gn5mt" path="res://assets/slapper_minigame/Sprites/ButtSmack_0044.png" id="47_xm6c5"]
+[ext_resource type="Texture2D" uid="uid://ch1hj2lnjw63p" path="res://assets/slapper_minigame/Sprites/ButtSmack_0045.png" id="48_21g2q"]
+[ext_resource type="Texture2D" uid="uid://c654chp62yb6e" path="res://assets/slapper_minigame/Sprites/ButtSmack_0046.png" id="49_w72gr"]
+[ext_resource type="Texture2D" uid="uid://cc5qhlrrbr7mn" path="res://assets/slapper_minigame/Sprites/ButtSmack_0047.png" id="50_fm4cc"]
+[ext_resource type="Texture2D" uid="uid://djrpgvi8i7teu" path="res://assets/slapper_minigame/Sprites/Meter.png" id="51_7epdb"]
+[ext_resource type="PackedScene" uid="uid://cpkmd3o0k84m5" path="res://assets/slapper_minigame/Scenes/cursor.tscn" id="51_tyflv"]
+[ext_resource type="Texture2D" uid="uid://bjej3k3xlurqj" path="res://assets/slapper_minigame/Sprites/Arrow.png" id="52_p2l0n"]
+[ext_resource type="Texture2D" uid="uid://ym7uuqpqc3g7" path="res://assets/slapper_minigame/Sprites/LimpSpicy.png" id="53_350cb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjt3o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vpknk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 48.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vpknk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qfkjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_utt4r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_43ucq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6v81a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_recim")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ejsvs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_bhrh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_k0bnc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hwyy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_pk3fq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fmb0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_gda5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_h1c7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_1g7kq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_jhiya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1ghxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_jjj4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ahei4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_t5h7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_rxbnf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ugqh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_wmoxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_nlvel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_3u6kv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_r8fwi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_jbljs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_exckq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_tsbkq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_evccl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_wkshk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_ehegj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_ts2u3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_mw38a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_m7uv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_b63d4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_5n7h3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_0ej5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_ye2uj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_t1yxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_c10n1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_t6vsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_yyrmt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_1pm7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_xm6c5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_21g2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_w72gr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_fm4cc")
+}],
+"loop": false,
+"name": &"smack",
+"speed": 48.0
+}]
+
+[sub_resource type="Animation" id="Animation_2ema0"]
+resource_name = "Power"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.5708, 1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_adgtm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kea0f"]
+_data = {
+"Power": SubResource("Animation_2ema0"),
+"RESET": SubResource("Animation_adgtm")
+}
+
+[node name="slapper_mini_game" type="Node2D"]
+script = ExtResource("1_s2el2")
+instruction_text = "SMACK"
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(0.391832, 0.811489, 0.92406, 1)
+offset_left = -11.0
+offset_top = -9.0
+offset_right = 29.0
+offset_bottom = 31.0
+scale = Vector2(26.1272, 25.8733)
+texture = ExtResource("2_4gcar")
+
+[node name="Butt" type="Node2D" parent="."]
+position = Vector2(510, 504)
+scale = Vector2(0.81, 0.81)
+
+[node name="Butt_AnimatedSprite2D" type="AnimatedSprite2D" parent="Butt"]
+position = Vector2(0, -2.46914)
+sprite_frames = SubResource("SpriteFrames_qjt3o")
+autoplay = "default"
+
+[node name="PowerMeter" type="Node2D" parent="."]
+position = Vector2(782, 131)
+scale = Vector2(0.61, 0.61)
+
+[node name="Sprite2D" type="Sprite2D" parent="PowerMeter"]
+texture = ExtResource("51_7epdb")
+
+[node name="PowerArm" type="Node2D" parent="PowerMeter"]
+position = Vector2(-1.63934, 55.7377)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PowerMeter/PowerArm"]
+libraries = {
+"": SubResource("AnimationLibrary_kea0f")
+}
+autoplay = "Power"
+
+[node name="Sprite2D" type="Sprite2D" parent="PowerMeter/PowerArm"]
+position = Vector2(0, -77.0492)
+texture = ExtResource("52_p2l0n")
+
+[node name="PowerLabel" type="Node2D" parent="PowerMeter"]
+
+[node name="Sprite2D" type="Sprite2D" parent="PowerMeter/PowerLabel"]
+position = Vector2(0, 44.2623)
+texture = ExtResource("53_350cb")
+
+[node name="Cursor" parent="." instance=ExtResource("51_tyflv")]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("4_ts80q")
+player_speed = 400

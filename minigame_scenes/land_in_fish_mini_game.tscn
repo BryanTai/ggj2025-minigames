@@ -1,0 +1,108 @@
+[gd_scene load_steps=14 format=3 uid="uid://dgt0xohvxog05"]
+
+[ext_resource type="Script" path="res://assets/land_in_fish_mini_game/Scripts/land_in_fish_mini_game.gd" id="1_pojm1"]
+[ext_resource type="AudioStream" uid="uid://dr4tu88k5n2cw" path="res://assets/bubble_pop_mini_game/SFX/Bubble Blowing Dog Minigame.wav" id="2_1g4sx"]
+[ext_resource type="Texture2D" uid="uid://csbmmdur7wy60" path="res://assets/land_in_fish_mini_game/Sprites/Boat_Dock_background_clean.png" id="2_kryb3"]
+[ext_resource type="Texture2D" uid="uid://d4j1fcl3kdkku" path="res://assets/land_in_fish_mini_game/Sprites/BubsFishHunt.png" id="3_y7lo2"]
+[ext_resource type="Texture2D" uid="uid://btog62p7b7c18" path="res://assets/bubble_pop_mini_game/Sprites/BubbleGum.png" id="4_15kl4"]
+[ext_resource type="Texture2D" uid="uid://c1i4i2uorqasr" path="res://assets/land_in_fish_mini_game/Sprites/Dock_Post.png" id="4_jvluq"]
+[ext_resource type="AudioStream" uid="uid://cwm7qox5b4r6h" path="res://assets/bubble_pop_mini_game/SFX/balloon-pop.mp3" id="7_yx0ne"]
+
+[sub_resource type="Gradient" id="Gradient_sg8xc"]
+colors = PackedColorArray(0.722333, 1, 0.66, 1, 0.184314, 0.823529, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2edc5"]
+gradient = SubResource("Gradient_sg8xc")
+width = 1000
+height = 1000
+fill_from = Vector2(1, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qeyl5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p383t"]
+size = Vector2(100, 25.26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paghk"]
+size = Vector2(13.44, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2qye"]
+size = Vector2(60, 150)
+
+[node name="LandInFishMiniGame" type="Node2D"]
+script = ExtResource("1_pojm1")
+minigame_music = Array[AudioStreamWAV]([ExtResource("2_1g4sx")])
+
+[node name="SkyGradient" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_2edc5")
+offset = Vector2(500, 500)
+
+[node name="BoatDockBackgroundClean" type="Sprite2D" parent="."]
+position = Vector2(500, 500)
+texture = ExtResource("2_kryb3")
+
+[node name="Groud" type="Area2D" parent="."]
+position = Vector2(500, 842.26)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Groud"]
+shape = SubResource("WorldBoundaryShape2D_qeyl5")
+
+[node name="Bucket" type="Node2D" parent="."]
+position = Vector2(511, 795.87)
+
+[node name="BucketSprite" type="Sprite2D" parent="Bucket"]
+position = Vector2(-4, -34)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_y7lo2")
+hframes = 2
+vframes = 2
+frame = 3
+
+[node name="CollisionCenter" type="Node2D" parent="Bucket"]
+position = Vector2(4.56, 47.47)
+
+[node name="WinZone" type="Area2D" parent="Bucket/CollisionCenter"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bucket/CollisionCenter/WinZone"]
+shape = SubResource("RectangleShape2D_p383t")
+debug_color = Color(1.15514e-06, 0.640355, 0.351155, 0.42)
+
+[node name="TippedZone" type="Area2D" parent="Bucket/CollisionCenter"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bucket/CollisionCenter/TippedZone"]
+position = Vector2(80, 0)
+shape = SubResource("RectangleShape2D_paghk")
+debug_color = Color(0.873894, 0.000445498, 0.839749, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bucket/CollisionCenter/TippedZone"]
+position = Vector2(-80, 0)
+shape = SubResource("RectangleShape2D_paghk")
+debug_color = Color(0.873894, 0.000445498, 0.839749, 0.42)
+
+[node name="Bubs" type="Node2D" parent="."]
+position = Vector2(503, 46)
+
+[node name="BubsSprite" type="Sprite2D" parent="Bubs"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_y7lo2")
+hframes = 2
+vframes = 2
+
+[node name="BubbleCover" type="Sprite2D" parent="Bubs/BubsSprite"]
+texture = ExtResource("4_15kl4")
+
+[node name="Area2D" type="Area2D" parent="Bubs"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bubs/Area2D"]
+shape = SubResource("RectangleShape2D_n2qye")
+
+[node name="WindChangeTimer" type="Timer" parent="."]
+wait_time = 0.8
+autostart = true
+
+[node name="DockPost" type="Sprite2D" parent="."]
+position = Vector2(78, 902)
+texture = ExtResource("4_jvluq")
+
+[node name="BubblePopSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_yx0ne")
+volume_db = 10.0

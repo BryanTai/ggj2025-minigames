@@ -64,7 +64,9 @@ var all_mini_game_count: int
 var unplayed_mini_game_indexes: Array
 
 var lives: int
+var wins: int
 
+@export
 var minigame_name_override: String = "" #replace with a full name e.g. "meteor_mini_game.tscn"
 
 var show_good_transition: bool = true
@@ -79,8 +81,8 @@ func cache_all_mini_game_names() -> void:
 		all_mini_game_count = all_mini_game_names.size()
 		unplayed_mini_game_indexes = range(all_mini_game_count)
 		unplayed_mini_game_indexes.shuffle()
-		#for str in all_mini_game_names:
-		#	print(str)
+		for str in all_mini_game_names:
+			print(str)
 	else:
 		print("ERROR: Cannot find MiniGame folder!")
 
@@ -88,7 +90,8 @@ func cache_all_bubbleware_clips() -> void:
 	
 	var dir = DirAccess.open(BUBBLEWARE_VOICE_CLIPS_PATH)
 	if dir:
-		audio_bubbleware_list = Array(filter_bubbleware_voice_names(dir.get_files()))
+		var test_array = filter_bubbleware_voice_names(dir.get_files())
+		audio_bubbleware_list = Array(test_array)
 		print("Bubbleare voice clips: ")
 		print(audio_bubbleware_list)
 	else:
@@ -116,12 +119,21 @@ func filter_mini_game_names(names: PackedStringArray) -> PackedStringArray:
 func filter_bubbleware_voice_names(names: PackedStringArray) -> PackedStringArray:
 	
 	var good_names: Array[String]
+	print("Filter Bubbleware Voice Names")
 	for filename in names:
-		var filetype = filename.split(".")
-		if(filetype[filetype.size()-1] == "wav"):
+		print(filename)
+		filename = sanitize_filename(filename) # This is a workaround for the build
+		print("Sanitized name: " + filename)
+		if(filename.ends_with("wav")):
 			print("Adding " + filename)
 			good_names.append(filename)
 	return good_names
+
+func sanitize_filename(filename: String) -> String:
+	if(filename.ends_with(".import")): # and ResourceLoader.exists(filename.trim_suffix(".import"))):
+		return filename.trim_suffix(".import")
+	else:
+		return filename
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -130,7 +142,8 @@ func _ready() -> void:
 	overlay_mini_game.visible = false
 	instruction_banner.visible = false
 	transition_animated_sprite.visible = false
-	lives = 5 ## TODO Set the lives from the Menu scene!
+	lives = 5
+	wins = 0
 	cache_all_mini_game_names()
 	cache_all_bubbleware_clips()
 	animation_player.play(ANIM_INTRO) # Start the Intro
@@ -215,11 +228,12 @@ func play_transition_sprites(show_good: bool) -> void:
 	transition_animated_sprite.visible = true
 	if(show_good):
 		transition_animated_sprite.play("bubs_yeah")
-		
+		# TODO: show wins here
 		# Need to check if the lose>win jingle is playing, and it to play rather than the transition on top of it
 		audio_transition.stream = audio_transition_win.pick_random()
 		audio_transition.play()
 	else:
+		## TODO Show life loss animation here
 		transition_animated_sprite.play("bubs_no")
 		audio_transition.stream = audio_transition_lose.pick_random()
 		audio_transition.play()
@@ -243,9 +257,9 @@ func _on_mini_game_timer_timeout() -> void:
 ## ... or when the current_mini_game signals the Manager that the player reached a Win/Lose state
 func _on_mini_game_finished(is_win: bool) -> void:
 	mini_game_timer.stop()
-	# TODO: Track wins and loses here!
 	show_good_transition = is_win
 	if (is_win == true):
+		wins += 1
 		instruction_label.text = "WINNER!"
 	else:
 		lose_life()

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://3ykgnfggrv57"]
+
+[ext_resource type="Script" path="res://assets/nyatashavibin/scripts/vript.gd" id="1_idc47"]
+[ext_resource type="Texture2D" uid="uid://c7oty2mkkm5ck" path="res://assets/nyatashavibin/sprites/GoodBub.png" id="2_4vc1h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rqucl"]
+
+[node name="Vibe" type="Node2D"]
+script = ExtResource("1_idc47")
+
+[node name="vubble" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.470588)
+scale = Vector2(0.452618, 0.452618)
+texture = ExtResource("2_4vc1h")
+
+[node name="vabel" type="Label" parent="."]
+offset_left = -77.0
+offset_top = -59.0
+offset_right = 76.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="vibebox" type="Area2D" parent="."]
+scale = Vector2(6.89368, 6.89368)
+
+[node name="vibecollissionshape" type="CollisionShape2D" parent="vibebox"]
+shape = SubResource("CircleShape2D_rqucl")
