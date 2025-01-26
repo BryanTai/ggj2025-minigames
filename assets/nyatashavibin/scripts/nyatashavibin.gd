@@ -59,7 +59,7 @@ extends BaseMiniGame
 func _ready() -> void:
 	instruction_text = "Block bad vibes" # This text will display during the PREPARING phase
 	super() ## Do not remove this super() call!
-	## Put any logic you'd like to happen at the beginning of your minigame here!
+	disable_minigame_during_intro_and_outro = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -135,3 +135,7 @@ func _on_timeout() -> void:
 # Called every frame while minigame is in the LOSE state
 #func _process_lose_state(delta: float) -> void:
 #	pass
+
+
+func _on_nyatasha_got_hurt() -> void:
+	trigger_game_lose()

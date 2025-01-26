@@ -8,6 +8,57 @@
 [ext_resource type="Texture2D" uid="uid://o8pc3658wo87" path="res://assets/nyatashavibin/sprites/Shield_Frame02.png" id="6_wm1ad"]
 [ext_resource type="Texture2D" uid="uid://d7cfd11r18le" path="res://assets/nyatashavibin/sprites/Shield_Frame03.png" id="7_pa3kc"]
 
+[sub_resource type="Animation" id="Animation_lcrud"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_w3w5k")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.033, 0.033)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_et2ra"]
 resource_name = "scale"
 length = 2.0
@@ -61,7 +112,15 @@ tracks/3/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_lcrud"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3nutb"]
+_data = {
+"RESET": SubResource("Animation_lcrud"),
+"scale": SubResource("Animation_et2ra")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_og63l"]
+
+[sub_resource type="Animation" id="Animation_hrcfb"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -73,52 +132,8 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_w3w5k")]
+"values": [ExtResource("5_oa7to")]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.033, 0.033)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:flip_h")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3nutb"]
-_data = {
-"RESET": SubResource("Animation_lcrud"),
-"scale": SubResource("Animation_et2ra")
-}
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_og63l"]
 
 [sub_resource type="Animation" id="Animation_nv1wf"]
 resource_name = "shieldin"
@@ -135,21 +150,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [ExtResource("5_oa7to"), ExtResource("6_wm1ad"), ExtResource("7_pa3kc")]
-}
-
-[sub_resource type="Animation" id="Animation_hrcfb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("5_oa7to")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4b1mn"]

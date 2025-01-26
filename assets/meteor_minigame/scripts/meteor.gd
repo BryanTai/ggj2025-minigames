@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 func _test_function() -> void:
 	pass
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(_area: Area2D) -> void:
 	var explosion_resource = load("res://assets/meteor_minigame/scenes/explosion.tscn")
 	var explosion = explosion_resource.instantiate()
 	explosion.set_position(global_position)

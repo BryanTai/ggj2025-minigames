@@ -71,7 +71,8 @@ var minigame_name_override: String = "" #replace with a full name e.g. "meteor_m
 var show_good_transition: bool = true
 
 ## Fired if the mini_game_timer runs out before the current_mini_game responds
-signal mini_game_timeout
+## ATTENTION: Not currently used anywhere in the code
+# signal mini_game_timeout
 
 func cache_all_mini_game_names() -> void:
 	var dir = DirAccess.open(MINI_GAME_FOLDER_PATH)
@@ -80,8 +81,8 @@ func cache_all_mini_game_names() -> void:
 		all_mini_game_count = all_mini_game_names.size()
 		unplayed_mini_game_indexes = range(all_mini_game_count)
 		unplayed_mini_game_indexes.shuffle()
-		for str in all_mini_game_names:
-			print(str)
+		for minigame_str in all_mini_game_names:
+			print(minigame_str)
 	else:
 		print("ERROR: Cannot find MiniGame folder!")
 
@@ -150,7 +151,7 @@ func _ready() -> void:
 	animation_player.play(ANIM_INTRO) # Start the Intro
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(current_manager_state == ManagerStates.PLAYING):
 		update_timer()
 		overlay_mini_game.adjust_time_bar_length(mini_game_timer.time_left)
@@ -203,7 +204,8 @@ func set_manager_state(new_state: ManagerStates) -> void:
 	if(current_manager_state == new_state):
 		return
 	
-	var old_state = current_manager_state
+	# ATTENTION: This is never used
+	# var old_state = current_manager_state
 	current_manager_state = new_state
 	
 	## On Start State
@@ -214,7 +216,7 @@ func set_manager_state(new_state: ManagerStates) -> void:
 			play_transition_sprites(show_good_transition)
 			animation_player.play(ANIM_TRANSITION)
 		ManagerStates.PREPARING:
-			set_timer_text(str(TIME_LIMIT as int))
+			set_timer_text(str(floor(TIME_LIMIT)))
 			timer_label.visible = true
 			create_next_mini_game()
 			overlay_mini_game.visible = true

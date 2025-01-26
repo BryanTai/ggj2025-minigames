@@ -8,10 +8,10 @@ signal play_button_pressed
 
 var already_pressed = false
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	is_hovering = true
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	is_hovering = false
 
 func _process(_delta:float):

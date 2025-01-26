@@ -17,7 +17,7 @@ func _on_start_preparing_state() -> void:
 func _on_start_playing_state() -> void:
 	player_2d.process_mode = Node.PROCESS_MODE_INHERIT
 
-func on_goal_collided(area: Area2D) -> void:
+func on_goal_collided(_area: Area2D) -> void:
 	trigger_game_win()
 	
 func _on_start_win_state() -> void:

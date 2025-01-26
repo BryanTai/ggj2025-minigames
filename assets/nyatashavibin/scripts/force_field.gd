@@ -1,5 +1,7 @@
 extends Node2D
 
+signal nyatasha_got_hurt
+@onready var nyatasha: Node2D = $".."
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -7,7 +9,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	if(direction != 0):
 		rotation += direction * 0.05
@@ -18,8 +20,8 @@ func _process(delta: float) -> void:
 func _on_nyatasha_hurtbox_2d_area_entered(area: Area2D) -> void:
 	print(area.name)
 	if(area.get_parent().isbad):
-		get_parent().get_parent().trigger_game_lose()
-		get_parent().queue_free()
+		nyatasha_got_hurt.emit()
+		nyatasha.visible = false # change this line for death animation?
 	else:
 		area.get_parent().queue_free()
 
