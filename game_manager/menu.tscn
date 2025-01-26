@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d0bi4ye0gwyva"]
+[gd_scene load_steps=27 format=3 uid="uid://d0bi4ye0gwyva"]
 
 [ext_resource type="Script" path="res://assets/game_manager/scripts/menu.gd" id="1_5rt6y"]
 [ext_resource type="Texture2D" uid="uid://dsm7ltmwlrnk3" path="res://assets/game_manager/Sprites/coverart.png" id="2_l5ndu"]
@@ -13,8 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://c1o0w3j6vdxtx" path="res://assets/game_manager/Sprites/a.png" id="14_d66pr"]
 [ext_resource type="Texture2D" uid="uid://bcqoraqhttwnj" path="res://assets/game_manager/Sprites/r.png" id="15_lgft4"]
 [ext_resource type="AudioStream" uid="uid://bu8ck5ri0iwke" path="res://assets/audio/Bubbleware Collab.wav" id="16_nqigu"]
+[ext_resource type="Texture2D" uid="uid://c7bhx2coyxd5g" path="res://assets/game_manager/Sprites/volume_button_press.png" id="17_0fv2p"]
 [ext_resource type="AudioStream" uid="uid://dy471hcu6ecl1" path="res://assets/audio/Main Menu - Bubs!.wav" id="17_nyvre"]
 [ext_resource type="PackedScene" path="res://game_manager/sound_controls.tscn" id="18_0d1dl"]
+[ext_resource type="Texture2D" uid="uid://bl5obygomgsr8" path="res://assets/game_manager/Sprites/volume_button_hover.png" id="18_c6gim"]
 [ext_resource type="Texture2D" uid="uid://cjkr33ip3jtpx" path="res://assets/game_manager/Sprites/volume_button.png" id="19_6fdhp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_diiml"]
@@ -91,52 +93,72 @@ shape = SubResource("CircleShape2D_5i8d4")
 
 [node name="B1" parent="Bubbleware" instance=ExtResource("9_ve6p2")]
 position = Vector2(95, 118)
+collision_layer = 2
+collision_mask = 3
 gravity_scale = 0.01
 
 [node name="U" parent="Bubbleware" instance=ExtResource("9_ve6p2")]
 position = Vector2(184, 111)
+collision_layer = 2
+collision_mask = 3
 
 [node name="Sprite2D" parent="Bubbleware/U" index="0"]
 texture = ExtResource("10_7gpa8")
 
 [node name="B2" parent="Bubbleware" instance=ExtResource("9_ve6p2")]
 position = Vector2(271, 100)
+collision_layer = 2
+collision_mask = 3
 
 [node name="B3" parent="Bubbleware" instance=ExtResource("9_ve6p2")]
 position = Vector2(360, 100)
+collision_layer = 2
+collision_mask = 3
 
 [node name="L" parent="Bubbleware" instance=ExtResource("9_ve6p2")]
 position = Vector2(447, 98)
+collision_layer = 2
+collision_mask = 3
 
 [node name="Sprite2D" parent="Bubbleware/L" index="0"]
 texture = ExtResource("11_jlcun")
 
 [node name="E" parent="Bubbleware" instance=ExtResource("9_ve6p2")]
 position = Vector2(535, 100)
+collision_layer = 2
+collision_mask = 3
 
 [node name="Sprite2D" parent="Bubbleware/E" index="0"]
 texture = ExtResource("12_pbq4t")
 
 [node name="W" parent="Bubbleware" instance=ExtResource("9_ve6p2")]
 position = Vector2(631, 105)
+collision_layer = 2
+collision_mask = 3
 
 [node name="Sprite2D" parent="Bubbleware/W" index="0"]
 texture = ExtResource("13_guciv")
 
 [node name="A" parent="Bubbleware" instance=ExtResource("9_ve6p2")]
 position = Vector2(729, 103)
+collision_layer = 2
+collision_mask = 3
 
 [node name="Sprite2D" parent="Bubbleware/A" index="0"]
 texture = ExtResource("14_d66pr")
 
 [node name="R" parent="Bubbleware" instance=ExtResource("9_ve6p2")]
 position = Vector2(819, 104)
+collision_layer = 2
+collision_mask = 3
 
 [node name="Sprite2D" parent="Bubbleware/R" index="0"]
 texture = ExtResource("15_lgft4")
 
 [node name="E2" parent="Bubbleware" instance=ExtResource("9_ve6p2")]
 position = Vector2(905, 110)
+collision_layer = 2
+collision_mask = 3
 
 [node name="Sprite2D" parent="Bubbleware/E2" index="0"]
 texture = ExtResource("12_pbq4t")
@@ -179,10 +201,12 @@ offset_bottom = 984.0
 rotation = -0.438138
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("19_6fdhp")
-texture_pressed = ExtResource("19_6fdhp")
-texture_hover = ExtResource("19_6fdhp")
+texture_pressed = ExtResource("17_0fv2p")
+texture_hover = ExtResource("18_c6gim")
 texture_disabled = ExtResource("19_6fdhp")
 texture_focused = ExtResource("19_6fdhp")
+ignore_texture_size = true
+stretch_mode = 0
 
 [connection signal="play_button_pressed" from="Play Button" to="." method="_on_play_button_pressed"]
 [connection signal="finished" from="BubbleWareVoices" to="." method="_on_bubble_ware_voices_finished"]

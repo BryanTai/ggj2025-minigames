@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://db3gq2wyr3qre"]
+[gd_scene load_steps=10 format=3 uid="uid://db3gq2wyr3qre"]
 
 [ext_resource type="Script" path="res://assets/nyatashavibin/scripts/nyatashavibin.gd" id="1_ie52s"]
 [ext_resource type="PackedScene" uid="uid://b26hnmgyynv85" path="res://assets/nyatashavibin/scenes/nyatasha.tscn" id="2_5qugs"]
+[ext_resource type="AudioStream" uid="uid://do3jsysvigrra" path="res://assets/nyatashavibin/sounds/peace-and-tranquility.wav" id="2_sgju8"]
 [ext_resource type="Texture2D" uid="uid://b2vsupj7pt0wr" path="res://assets/nyatashavibin/sprites/NyatashaVibesBG.png" id="2_uter4"]
 [ext_resource type="Texture2D" uid="uid://ok17mgfa3xda" path="res://assets/nyatashavibin/sprites/NyatashaVibesBG_02.png" id="3_u342j"]
 [ext_resource type="PackedScene" uid="uid://drct0hm30gyi3" path="res://assets/nyatashavibin/scenes/vibemaker.tscn" id="4_ukaup"]
@@ -45,6 +46,7 @@ _data = {
 
 [node name="nyatashavibin" type="Node2D"]
 script = ExtResource("1_ie52s")
+minigame_music = Array[AudioStreamWAV]([ExtResource("2_sgju8")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(503, 556)
