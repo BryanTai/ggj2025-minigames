@@ -19,6 +19,12 @@ fill_from = Vector2(1, 1)
 [node name="LandInFishMiniGame" type="Node2D"]
 script = ExtResource("1_pojm1")
 
+[node name="Bucket" type="Node2D" parent="."]
+position = Vector2(518, 909)
+
+[node name="BucketSprite" type="Sprite2D" parent="Bucket"]
+texture = ExtResource("3_rqe2w")
+
 [node name="Bubs" type="Node2D" parent="."]
 position = Vector2(503, 46)
 
@@ -33,12 +39,6 @@ vframes = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bubs/Area2D"]
 shape = SubResource("RectangleShape2D_n2qye")
 
-[node name="Bucket" type="Node2D" parent="."]
-
-[node name="BucketSprite" type="Sprite2D" parent="Bucket"]
-position = Vector2(509, 903)
-texture = ExtResource("3_rqe2w")
-
 [node name="Groud" type="Area2D" parent="."]
 position = Vector2(509, 981)
 
@@ -49,3 +49,7 @@ shape = SubResource("WorldBoundaryShape2D_qeyl5")
 scale = Vector2(16.535, 1)
 texture = SubResource("GradientTexture2D_6siyr")
 offset = Vector2(0, 32)
+
+[node name="WindChangeTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true

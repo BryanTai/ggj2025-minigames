@@ -61,6 +61,12 @@ func _ready() -> void:
 	super() ## Do not remove this super() call!
 	## Put any logic you'd like to happen at the beginning of your minigame here!
 	$Bubs/Area2D.area_entered.connect(_on_bubs_area_entered)
+	$WindChangeTimer.timeout.connect(_on_wind_change_timer_timeout)
+	_on_wind_change_timer_timeout() # Trgger the wind change initially.
+	
+	const EDGE_BUFFER_SIZE: float = 30 # pixels
+	var canvas_x: float = get_viewport().get_size().x
+	$Bucket.position.x = randf_range(0 + EDGE_BUFFER_SIZE, canvas_x - EDGE_BUFFER_SIZE)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -77,6 +83,15 @@ func _process(delta: float) -> void:
 func _on_bubs_area_entered(area: Area2D) -> void:
 	call_deferred("trigger_game_win")
 	pass
+
+func _on_wind_change_timer_timeout() -> void:
+	var tween = get_tree().create_tween()
+	var new_wind_strenth = [1, -1].pick_random() * randf_range(0.5, 1)
+	tween.tween_property(self, "wind_strength", new_wind_strenth, 0.1)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.play()
+
 
 # A signal from the MiniGameManager that time has run out
 ## TODO: Override this function if your MiniGame checks the win condition on TimeOut
@@ -110,14 +125,17 @@ func _on_bubs_area_entered(area: Area2D) -> void:
 #func _on_start_playing_state() -> void:
 #	pass
 
-const FALL_SPEED = 200 # pixel per second
-const SHUFFLE_SPEED = 300
+const FALL_SPEED: int = 200 # pixel per second
+const SHUFFLE_SPEED: int = 300
+
+var wind_strength: float = 0
+const WIND_MAX_SPEED: int = 200
 # Called every frame while minigame is in the PLAYING state
 func _process_playing_state(delta: float) -> void:
 	# Falling.
 	bubs.position.y += 200 * delta
 	
-	# Moving Lef tto Right.
+	# Moving Lef to Right.
 	var direction := Input.get_axis("move_left", "move_right")
 	# use keyboard/joystick input
 	if(direction != 0):
@@ -126,14 +144,17 @@ func _process_playing_state(delta: float) -> void:
 	# use mouse_input
 	if(direction == 0 and mouse_priority):
 		direction = 1
-		if target_x_pos < position.x:
+		if target_x_pos < bubs.position.x:
 			direction = -1
-		if abs(target_x_pos - position.x) < mouse_x_buffer:
+		if abs(target_x_pos - bubs.position.x) < mouse_x_buffer:
 			direction = 0
-			
-	bubs.position.x += (direction * SHUFFLE_SPEED * delta)
 	
-	pass
+	
+	# Wind Influence.
+	var wind_influence = wind_strength * WIND_MAX_SPEED * delta
+	
+	bubs.position.x += (direction * SHUFFLE_SPEED * delta) + wind_influence
+	
 
 # Called once when the PLAYING state ends (e.g. Win or Lose)
 #func _on_end_playing_state() -> void:
@@ -161,7 +182,7 @@ func _process_playing_state(delta: float) -> void:
 
 var target_x_pos: float
 var mouse_priority: bool = false
-var mouse_x_buffer: float = 10.0
+var mouse_x_buffer: float = 30.0
 
 ## Match the player to the mouse if mouse movement is detected
 func _input(event):
