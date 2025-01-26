@@ -124,17 +124,17 @@ position = Vector2(760, 647)
 position = Vector2(206, 448)
 
 [node name="PlayerHoshi" type="CharacterBody2D" parent="."]
+position = Vector2(269, 686)
 script = ExtResource("2_xgue8")
 
 [node name="HoshiRunSprite2D" type="AnimatedSprite2D" parent="PlayerHoshi"]
-position = Vector2(307, 681)
+position = Vector2(-22.4, -3.40002)
 scale = Vector2(0.3, 0.3)
 sprite_frames = ExtResource("2_uluvg")
 autoplay = "default"
 
 [node name="HoshiFaceCollider" type="CollisionPolygon2D" parent="PlayerHoshi"]
-visible = false
-position = Vector2(330, 662)
+position = Vector2(0.600006, -22.4)
 scale = Vector2(0.208053, 0.194016)
 polygon = PackedVector2Array(376.667, 80, 193.333, 86.6666, 56.6666, 33.3334, -6.66663, -133.333, 20, -273.333, 176.667, -386.667, 353.333, -390, 490, -283.333, 496.667, -63.3334)
 
