@@ -1,11 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgt0xohvxog05"]
+[gd_scene load_steps=10 format=3 uid="uid://dgt0xohvxog05"]
 
 [ext_resource type="Script" path="res://assets/land_in_fish_mini_game/Scripts/land_in_fish_mini_game.gd" id="1_pojm1"]
 [ext_resource type="Texture2D" uid="uid://bjlelmiai6ymt" path="res://assets/bubble_pop_mini_game/Animations/BubsIdle.png" id="2_asgnj"]
-[ext_resource type="Texture2D" uid="uid://iv1tv5f3kgxi" path="res://assets/sprites/icon.svg" id="3_rqe2w"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2qye"]
-size = Vector2(60, 150)
+[ext_resource type="Texture2D" uid="uid://b4c7jkwk18lq8" path="res://assets/land_in_fish_mini_game/Sprites/Bucket.png" id="2_tq28u"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qeyl5"]
 
@@ -16,14 +13,58 @@ colors = PackedColorArray(0, 0, 0, 1, 0.854881, 0.466736, 7.70092e-07, 1)
 gradient = SubResource("Gradient_wq3pw")
 fill_from = Vector2(1, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p383t"]
+size = Vector2(140, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paghk"]
+size = Vector2(13.44, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2qye"]
+size = Vector2(60, 150)
+
 [node name="LandInFishMiniGame" type="Node2D"]
 script = ExtResource("1_pojm1")
+
+[node name="Groud" type="Area2D" parent="."]
+position = Vector2(509, 981)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Groud"]
+shape = SubResource("WorldBoundaryShape2D_qeyl5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Groud"]
+scale = Vector2(16.535, 1)
+texture = SubResource("GradientTexture2D_6siyr")
+offset = Vector2(0, 32)
 
 [node name="Bucket" type="Node2D" parent="."]
 position = Vector2(518, 909)
 
 [node name="BucketSprite" type="Sprite2D" parent="Bucket"]
-texture = ExtResource("3_rqe2w")
+scale = Vector2(0.635, 0.635)
+texture = ExtResource("2_tq28u")
+
+[node name="CollisionCenter" type="Node2D" parent="Bucket"]
+position = Vector2(4.56, 0)
+
+[node name="WinZone" type="Area2D" parent="Bucket/CollisionCenter"]
+position = Vector2(0, 78)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bucket/CollisionCenter/WinZone"]
+shape = SubResource("RectangleShape2D_p383t")
+debug_color = Color(1.15514e-06, 0.640355, 0.351155, 0.42)
+
+[node name="TippedZone" type="Area2D" parent="Bucket/CollisionCenter"]
+position = Vector2(0, 78)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bucket/CollisionCenter/TippedZone"]
+position = Vector2(80, 0)
+shape = SubResource("RectangleShape2D_paghk")
+debug_color = Color(0.873894, 0.000445498, 0.839749, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bucket/CollisionCenter/TippedZone"]
+position = Vector2(-80, 0)
+shape = SubResource("RectangleShape2D_paghk")
+debug_color = Color(0.873894, 0.000445498, 0.839749, 0.42)
 
 [node name="Bubs" type="Node2D" parent="."]
 position = Vector2(503, 46)
@@ -39,17 +80,6 @@ vframes = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bubs/Area2D"]
 shape = SubResource("RectangleShape2D_n2qye")
 
-[node name="Groud" type="Area2D" parent="."]
-position = Vector2(509, 981)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Groud"]
-shape = SubResource("WorldBoundaryShape2D_qeyl5")
-
-[node name="Sprite2D" type="Sprite2D" parent="Groud"]
-scale = Vector2(16.535, 1)
-texture = SubResource("GradientTexture2D_6siyr")
-offset = Vector2(0, 32)
-
 [node name="WindChangeTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.8
 autostart = true

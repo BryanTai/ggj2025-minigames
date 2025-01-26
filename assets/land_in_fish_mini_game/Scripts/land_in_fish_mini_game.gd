@@ -55,6 +55,7 @@ extends BaseMiniGame
 
 @onready var bubs: Node2D = $Bubs
 
+var canvas_x: float = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	instruction_text = "Land in the Fish Bucket!" # This text will display during the PREPARING phase
@@ -65,7 +66,7 @@ func _ready() -> void:
 	_on_wind_change_timer_timeout() # Trgger the wind change initially.
 	
 	const EDGE_BUFFER_SIZE: float = 30 # pixels
-	var canvas_x: float = get_viewport().get_size().x
+	canvas_x = get_viewport().get_size().x
 	$Bucket.position.x = randf_range(0 + EDGE_BUFFER_SIZE, canvas_x - EDGE_BUFFER_SIZE)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -81,13 +82,18 @@ func _process(delta: float) -> void:
 		#trigger_game_win()
 
 func _on_bubs_area_entered(area: Area2D) -> void:
-	call_deferred("trigger_game_win")
+	print(area.name)
+	if area.name == 'WinZone':
+		return call_deferred("trigger_game_win")
+	elif area.name == 'TippedZone':
+		print("Bucket Tipped.")
+	call_deferred("trigger_game_lose")
 	pass
 
 func _on_wind_change_timer_timeout() -> void:
 	var tween = get_tree().create_tween()
 	var new_wind_strenth = [1, -1].pick_random() * randf_range(0.5, 1)
-	tween.tween_property(self, "wind_strength", new_wind_strenth, 0.1)
+	tween.tween_property(self, "wind_strength", new_wind_strenth, 0.4)
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.play()
@@ -149,11 +155,11 @@ func _process_playing_state(delta: float) -> void:
 		if abs(target_x_pos - bubs.position.x) < mouse_x_buffer:
 			direction = 0
 	
-	
 	# Wind Influence.
 	var wind_influence = wind_strength * WIND_MAX_SPEED * delta
 	
 	bubs.position.x += (direction * SHUFFLE_SPEED * delta) + wind_influence
+	bubs.position.x = clamp(bubs.position.x, 0, canvas_x)
 	
 
 # Called once when the PLAYING state ends (e.g. Win or Lose)
@@ -162,9 +168,10 @@ func _process_playing_state(delta: float) -> void:
 
 ## WIN STATE
 
-# Called once when entering the WIN state
-#func _on_start_win_state() -> void:
-#	pass
+ #Called once when entering the WIN state
+func _on_start_win_state() -> void:
+	$Bubs/BubsSprite.frame = 1
+	pass
 
 # Called every frame while minigame is in the WIN state
 #func _process_win_state(delta: float) -> void:
@@ -173,8 +180,9 @@ func _process_playing_state(delta: float) -> void:
 ## LOSE STATE
 
 # Called once when entering the LOSE state
-#func _on_start_lose_state() -> void:
-#	pass
+func _on_start_lose_state() -> void:
+	$Bubs/BubsSprite.frame = 2
+	pass
 
 # Called every frame while minigame is in the LOSE state
 #func _process_lose_state(delta: float) -> void:
