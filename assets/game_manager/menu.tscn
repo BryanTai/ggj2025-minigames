@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://dli3m33ylt1gw"]
+
+[ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="1_jp5rh"]
+[ext_resource type="PackedScene" uid="uid://dki2osks6amsv" path="res://assets/gozi_bubblewrap_minigame/scenes/gozi_cursor.tscn" id="2_3diy3"]
+[ext_resource type="Script" path="res://assets/game_manager/option select.gd" id="3_ojbqg"]
+[ext_resource type="Texture2D" uid="uid://dr5iej3pi8agr" path="res://assets/game_manager/start-button-normal.png" id="3_uj565"]
+[ext_resource type="Texture2D" uid="uid://b68rifcdey8yi" path="res://assets/game_manager/start-button-press.png" id="4_g0bll"]
+[ext_resource type="Texture2D" uid="uid://dedx3gx80j45h" path="res://assets/game_manager/start-button-mouseover.png" id="6_qrwpx"]
+[ext_resource type="Texture2D" uid="uid://cikk8qxs5fdfm" path="res://assets/game_manager/b.png" id="7_38itm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_280nt"]
+radius = 67.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4nta3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_g0bll")
+}],
+"loop": true,
+"name": &"click",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_uj565")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_qrwpx")
+}],
+"loop": true,
+"name": &"hover",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bisf"]
+size = Vector2(160.682, 161.216)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1fsj3"]
+radius = 54.1479
+
+[node name="Main Menu" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.514448, 0.726878, 0.893422, 1)
+z_index = -1
+offset_left = -4.0
+offset_top = -6.0
+offset_right = 1012.0
+offset_bottom = 1014.0
+texture = ExtResource("1_jp5rh")
+metadata/_edit_lock_ = true
+
+[node name="Cursor" parent="." instance=ExtResource("2_3diy3")]
+position = Vector2(-4, -6)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Cursor"]
+position = Vector2(0, 49)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor/RigidBody2D"]
+shape = SubResource("CircleShape2D_280nt")
+
+[node name="Option A" type="Area2D" parent="."]
+script = ExtResource("3_ojbqg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Option A"]
+position = Vector2(505, 544)
+sprite_frames = SubResource("SpriteFrames_4nta3")
+autoplay = "default"
+frame_progress = 0.187867
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Option A"]
+position = Vector2(566.226, 552.667)
+rotation = 1.43761
+shape = SubResource("RectangleShape2D_6bisf")
+
+[node name="BUBBLEWARE" type="Node" parent="."]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="BUBBLEWARE"]
+position = Vector2(269, 126)
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="BUBBLEWARE/RigidBody2D"]
+texture = ExtResource("7_38itm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BUBBLEWARE/RigidBody2D"]
+shape = SubResource("CircleShape2D_1fsj3")
