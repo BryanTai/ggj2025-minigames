@@ -1,18 +1,87 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx4jaq5v2ei40"]
+[gd_scene load_steps=10 format=3 uid="uid://dx4jaq5v2ei40"]
 
 [ext_resource type="Script" path="res://assets/gozi_traffic_minigame/scripts/gozi_traffic_minigame.gd" id="1_7xnaa"]
-[ext_resource type="Texture2D" uid="uid://cj3srdpgkeflt" path="res://assets/gozi_traffic_minigame/sprites/background_TEMP.png" id="1_o0uq3"]
+[ext_resource type="Texture2D" uid="uid://dqdl7l3rcmuv8" path="res://assets/gozi_traffic_minigame/sprites/car1.png" id="2_p2fry"]
 [ext_resource type="PackedScene" uid="uid://crq0fv08ly02p" path="res://assets/gozi_traffic_minigame/scenes/gozi_traffic_player.tscn" id="2_r8pwn"]
+[ext_resource type="Texture2D" uid="uid://ck7yguw6ov4f5" path="res://assets/gozi_traffic_minigame/sprites/car2.png" id="3_en4vq"]
+[ext_resource type="Texture2D" uid="uid://kn6o8utmsskf" path="res://assets/gozi_traffic_minigame/sprites/car5.png" id="4_4cub6"]
+[ext_resource type="Texture2D" uid="uid://vpfc5eye6s6p" path="res://assets/gozi_traffic_minigame/sprites/car4.png" id="5_0w5la"]
+[ext_resource type="Texture2D" uid="uid://cwual56h16782" path="res://assets/gozi_traffic_minigame/sprites/background.png" id="7_kfcnw"]
+[ext_resource type="Texture2D" uid="uid://cx8myw6xmkcqm" path="res://assets/gozi_traffic_minigame/sprites/car6.png" id="8_4objq"]
+[ext_resource type="Texture2D" uid="uid://bflp34tyyntsh" path="res://assets/gozi_traffic_minigame/sprites/car3.png" id="9_rvhuu"]
 
 [node name="Traffic Minigame" type="Node2D"]
 script = ExtResource("1_7xnaa")
+
+[node name="cars3 the prequel" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(-88, 649)
+
+[node name="Car7" type="Sprite2D" parent="cars3 the prequel"]
+position = Vector2(376, 171)
+texture = ExtResource("9_rvhuu")
+
+[node name="Car1" type="Sprite2D" parent="cars3 the prequel"]
+position = Vector2(616, 165)
+texture = ExtResource("2_p2fry")
+
+[node name="Car2" type="Sprite2D" parent="cars3 the prequel"]
+position = Vector2(84, 154)
+texture = ExtResource("3_en4vq")
+
+[node name="Car8" type="Sprite2D" parent="cars3 the prequel"]
+position = Vector2(830, 166)
+texture = ExtResource("5_0w5la")
+
+[node name="Car9" type="Sprite2D" parent="cars3 the prequel"]
+position = Vector2(1082, 166)
+texture = ExtResource("8_4objq")
 
 [node name="Player" parent="." instance=ExtResource("2_r8pwn")]
 position = Vector2(700, 675)
 player_speed = 800
 
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -1
+[node name="cars2 the sequel" type="Node2D" parent="."]
 position = Vector2(500, 500)
-texture = ExtResource("1_o0uq3")
+
+[node name="Car6" type="Sprite2D" parent="cars2 the sequel"]
+position = Vector2(-81, 176)
+texture = ExtResource("8_4objq")
+
+[node name="Car3" type="Sprite2D" parent="cars2 the sequel"]
+position = Vector2(474, 179)
+texture = ExtResource("9_rvhuu")
+
+[node name="Car4" type="Sprite2D" parent="cars2 the sequel"]
+position = Vector2(-314, 163)
+texture = ExtResource("5_0w5la")
+
+[node name="Car5" type="Sprite2D" parent="cars2 the sequel"]
+position = Vector2(-588, 149)
+texture = ExtResource("4_4cub6")
+
+[node name="cars1 the movie" type="Node2D" parent="."]
+z_index = -1
+position = Vector2(700, 675)
+
+[node name="Car1" type="Sprite2D" parent="cars1 the movie"]
+position = Vector2(-593, -167)
+texture = ExtResource("2_p2fry")
+
+[node name="Car2" type="Sprite2D" parent="cars1 the movie"]
+position = Vector2(-337, -168)
+texture = ExtResource("3_en4vq")
+
+[node name="Car5" type="Sprite2D" parent="cars1 the movie"]
+position = Vector2(-23, -169)
+texture = ExtResource("4_4cub6")
+
+[node name="Car4" type="Sprite2D" parent="cars1 the movie"]
+position = Vector2(237, -159)
+texture = ExtResource("5_0w5la")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(500, 500)
+texture = ExtResource("7_kfcnw")
 metadata/_edit_lock_ = true

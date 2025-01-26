@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctk7w4mvd0kb8"
-path="res://.godot/imported/playercar_TEMP.png-035b4fe13291e5dd6471a839e054ce5e.ctex"
+uid="uid://cx8myw6xmkcqm"
+path="res://.godot/imported/car6.png-3945ecc2d74a181f1ee62191377dd568.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gozi_traffic_minigame/sprites/playercar_TEMP.png"
-dest_files=["res://.godot/imported/playercar_TEMP.png-035b4fe13291e5dd6471a839e054ce5e.ctex"]
+source_file="res://assets/gozi_traffic_minigame/sprites/car6.png"
+dest_files=["res://.godot/imported/car6.png-3945ecc2d74a181f1ee62191377dd568.ctex"]
 
 [params]
 

@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 	if(horizontal_direction != 0):
 		var old_pos = position
 		var new_x = old_pos.x + (horizontal_direction * player_speed * delta);
-		set_position(Vector2(clamp(new_x, 660, 750), old_pos.y))
+		set_position(Vector2(clamp(new_x, 680, 730), old_pos.y))
 		mouse_priority = false
 	
 	# This handles Vertical movement
@@ -17,10 +17,10 @@ func _process(delta: float) -> void:
 	if(vertical_direction != 0):
 		var old_pos = position
 		var new_y = old_pos.y + (vertical_direction * player_speed * delta);
-		set_position(Vector2(old_pos.x, (clamp(new_y, 660, 690))))
+		set_position(Vector2(old_pos.x, (clamp(new_y, 660, 680))))
 		mouse_priority = false
 		
 	elif target_pos and mouse_priority:
-		target_pos.x = clamp(target_pos.x, 660, 750)
-		target_pos.y = clamp(target_pos.y, 660, 690)
+		target_pos.x = clamp(target_pos.x, 680, 730)
+		target_pos.y = clamp(target_pos.y, 660, 680)
 		global_position = global_position.move_toward(target_pos, player_speed * delta)

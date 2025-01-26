@@ -1,21 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://crq0fv08ly02p"]
+[gd_scene load_steps=4 format=3 uid="uid://crq0fv08ly02p"]
 
 [ext_resource type="Script" path="res://assets/gozi_traffic_minigame/scripts/gozi_traffic_player.gd" id="1_2ip5r"]
-[ext_resource type="Texture2D" uid="uid://ctk7w4mvd0kb8" path="res://assets/gozi_traffic_minigame/sprites/playercar_TEMP.png" id="1_linay"]
+[ext_resource type="Texture2D" uid="uid://bfuf22o0rg3wf" path="res://assets/gozi_traffic_minigame/sprites/playercar.png" id="2_c5bxq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w2d3q"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_linay")
+"texture": ExtResource("2_c5bxq")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n211a"]
-size = Vector2(224, 99)
 
 [node name="Player" type="Area2D"]
 script = ExtResource("1_2ip5r")
@@ -23,9 +20,5 @@ player_speed = 500
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_w2d3q")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -0.5)
-shape = SubResource("RectangleShape2D_n211a")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
