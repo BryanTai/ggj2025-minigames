@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b26hnmgyynv85"]
+[gd_scene load_steps=17 format=3 uid="uid://b26hnmgyynv85"]
 
 [ext_resource type="Texture2D" uid="uid://dysaa3p8dhmfb" path="res://assets/nyatashavibin/sprites/Shield_BG_Base.png" id="1_snt5f"]
 [ext_resource type="Texture2D" uid="uid://dxkd5rvycaxjq" path="res://assets/nyatashavibin/sprites/nyatasha1.png" id="1_w3w5k"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bhsqftfib3msw" path="res://assets/nyatashavibin/sprites/Shield_Frame01.png" id="5_oa7to"]
 [ext_resource type="Texture2D" uid="uid://o8pc3658wo87" path="res://assets/nyatashavibin/sprites/Shield_Frame02.png" id="6_wm1ad"]
 [ext_resource type="Texture2D" uid="uid://d7cfd11r18le" path="res://assets/nyatashavibin/sprites/Shield_Frame03.png" id="7_pa3kc"]
+[ext_resource type="AudioStream" uid="uid://1p30sjwywavn" path="res://assets/nyatashavibin/sounds/BubblePositive.wav" id="8_qxo2c"]
+[ext_resource type="AudioStream" uid="uid://bm0e7kanm6cot" path="res://assets/nyatashavibin/sounds/BubbleNegative.wav" id="9_u1qt4"]
 
 [sub_resource type="Animation" id="Animation_lcrud"]
 length = 0.001
@@ -205,6 +207,14 @@ libraries = {
 "": SubResource("AnimationLibrary_4b1mn")
 }
 autoplay = "shieldin"
+
+[node name="goodpop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_qxo2c")
+bus = &"SFX"
+
+[node name="badpop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_u1qt4")
+bus = &"SFX"
 
 [connection signal="area_entered" from="nyatashaHurtbox2D" to="ForceField" method="_on_nyatasha_hurtbox_2d_area_entered"]
 [connection signal="area_entered" from="ForceField/nyatashaHitbox2D" to="ForceField" method="_on_nyatasha_hitbox_2d_area_entered"]
