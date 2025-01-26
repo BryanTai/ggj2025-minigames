@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dkfi11o6yoyvt"]
+[gd_scene load_steps=31 format=3 uid="uid://dkfi11o6yoyvt"]
 
 [ext_resource type="Script" path="res://assets/game_manager/scripts/mini_game_manager.gd" id="1_r0ho1"]
 [ext_resource type="Texture2D" uid="uid://b4xw4ybhjdfs2" path="res://assets/game_manager/bubs_yeah_no_transitions/BubNO0001.png" id="2_qcany"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://b6ekvqqnfabf3" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0009.png" id="17_n5l0v"]
 [ext_resource type="Texture2D" uid="uid://u2cufodo4a5m" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0010.png" id="18_lv2kq"]
 [ext_resource type="Texture2D" uid="uid://dbbf1spmmuc6k" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0011.png" id="19_w8oat"]
+[ext_resource type="Texture2D" uid="uid://bwo23tynkk5dg" path="res://assets/ball_cup_minigame/ball.png" id="23_7cpmk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uxhkx"]
 animations = [{
@@ -410,13 +411,42 @@ text = "Credits!"
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -78.0
+offset_left = -155.0
 offset_top = 13.0
-offset_right = -12.0
-offset_bottom = 36.0
+offset_right = -22.0
+offset_bottom = 67.0
 grow_horizontal = 0
-text = "Lives: 88"
+theme_override_colors/font_color = Color(0.921569, 0.784314, 0.309804, 1)
+theme_override_colors/font_shadow_color = Color(0.0352941, 0.482353, 0.792157, 1)
+theme_override_colors/font_outline_color = Color(0.588235, 0.709804, 0.792157, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 11
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/font = ExtResource("5_jmnhc")
+theme_override_font_sizes/font_size = 50
+text = "LIVES"
 horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="MiniGameOverlay/Lives"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MiniGameOverlay/Lives"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_top = 68.865
+offset_bottom = 108.865
+grow_horizontal = 0
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="MiniGameOverlay/Lives/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("23_7cpmk")
 
 [node name="InstructionBanner" type="Control" parent="MiniGameOverlay"]
 layout_mode = 3
