@@ -21,7 +21,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="Curve" id="Curve_01fgg"]
-_data = [Vector2(0, 0.0181499), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.497658), 0.0, 0.0, 0, 0, Vector2(0.997024, 0.855386), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_8bvy8"]
@@ -76,7 +76,7 @@ texture = ExtResource("5_pnktf")
 [node name="BubbleEmitter" type="GPUParticles2D" parent="."]
 z_index = -5
 material = SubResource("CanvasItemMaterial_cap1f")
-position = Vector2(565, 764)
+position = Vector2(565, 780)
 emitting = false
 amount = 40
 process_material = SubResource("ParticleProcessMaterial_3x8d2")
