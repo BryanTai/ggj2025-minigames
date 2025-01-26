@@ -227,6 +227,8 @@ texture_pressed = ExtResource("19_6fdhp")
 texture_hover = ExtResource("19_6fdhp")
 texture_disabled = ExtResource("19_6fdhp")
 texture_focused = ExtResource("19_6fdhp")
+ignore_texture_size = true
+stretch_mode = 0
 
 [connection signal="area_entered" from="Play Button" to="Play Button" method="_on_area_entered"]
 [connection signal="area_exited" from="Play Button" to="Play Button" method="_on_area_exited"]
