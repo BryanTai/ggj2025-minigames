@@ -65,6 +65,7 @@ var unplayed_mini_game_indexes: Array
 
 var lives: int
 
+@export
 var minigame_name_override: String = "" #replace with a full name e.g. "meteor_mini_game.tscn"
 
 var show_good_transition: bool = true

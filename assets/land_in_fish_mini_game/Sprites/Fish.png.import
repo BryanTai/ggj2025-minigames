@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kydpyylc4i36"
-path="res://.godot/imported/Button.png-cbb2ec09eb11e5cb62caa3ea6fee8f41.ctex"
+uid="uid://osce74cc04yv"
+path="res://.godot/imported/Fish.png-a5f8344a8800edebcfc4f548191e03de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game_manager/Button.png"
-dest_files=["res://.godot/imported/Button.png-cbb2ec09eb11e5cb62caa3ea6fee8f41.ctex"]
+source_file="res://assets/land_in_fish_mini_game/Sprites/Fish.png"
+dest_files=["res://.godot/imported/Fish.png-a5f8344a8800edebcfc4f548191e03de.ctex"]
 
 [params]
 

@@ -43,6 +43,7 @@ func create_bubble():
 	var randomcat = randi_range(1,100)
 	if(randomcat > 82 && hasWon == false):
 		bubbleinstance.iscat = true
+		catBubbleCount += 1
 		bubbleinstance.load_cat_sprite()
 
 func _on_timeout() -> void:

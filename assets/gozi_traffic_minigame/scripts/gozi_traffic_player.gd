@@ -1,9 +1,14 @@
 extends Player2D
 
+@onready var honk_player: AudioStreamPlayer = $HonkPlayer
+
 func _process(delta: float) -> void:
 	if(not movement_enabled):
 		return
-	
+		
+	if Input.is_action_just_pressed("fire"):
+		honk_player.play()
+		
 	# This handles Horizontal movement
 	var horizontal_direction := Input.get_axis("move_left", "move_right")
 	if(horizontal_direction != 0):

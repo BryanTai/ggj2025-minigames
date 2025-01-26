@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd34jeriom2i3"
-path="res://.godot/imported/bg.png-cf62fcc1de45c65b8085ba5e3401683c.ctex"
+uid="uid://csbmmdur7wy60"
+path="res://.godot/imported/Boat_Dock_background_clean.png-7efe661259dcfbfc9f0e25b5e50b91aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/heist_bubbles/bg.png"
-dest_files=["res://.godot/imported/bg.png-cf62fcc1de45c65b8085ba5e3401683c.ctex"]
+source_file="res://assets/land_in_fish_mini_game/Sprites/Boat_Dock_background_clean.png"
+dest_files=["res://.godot/imported/Boat_Dock_background_clean.png-7efe661259dcfbfc9f0e25b5e50b91aa.ctex"]
 
 [params]
 

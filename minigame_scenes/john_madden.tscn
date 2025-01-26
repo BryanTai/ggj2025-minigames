@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://kbwn2tk0b8dh"]
+[gd_scene load_steps=16 format=3 uid="uid://kbwn2tk0b8dh"]
 
 [ext_resource type="Script" path="res://assets/spaceman-football/john_madden.gd" id="1_knw8r"]
 [ext_resource type="Texture2D" uid="uid://bjqq1w0y6u53k" path="res://assets/spaceman-football/Assets/Blank.png" id="2_24p4v"]
@@ -7,7 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://wgr38mrl0our" path="res://assets/spaceman-football/Assets/DECtalk_-_Daisy_Bell.wav" id="3_qf50f"]
 [ext_resource type="Texture2D" uid="uid://ctltorcumbrya" path="res://assets/spaceman-football/Assets/Moon.png" id="4_ba2rj"]
 [ext_resource type="Texture2D" uid="uid://csa3atlupqwak" path="res://assets/spaceman-football/Assets/End Zone.png" id="5_20wie"]
-[ext_resource type="Script" path="res://assets/spaceman-football/end_zone.gd" id="6_f7mwa"]
 [ext_resource type="PackedScene" uid="uid://6pyc2et2hpr6" path="res://assets/spaceman-football/spaceman.tscn" id="8_53fnv"]
 [ext_resource type="PackedScene" uid="uid://bt3akspj7jvwu" path="res://assets/spaceman-football/football.tscn" id="9_4bns3"]
 [ext_resource type="Texture2D" uid="uid://deiy4lxon5jds" path="res://assets/spaceman-football/Assets/End Zone Front.png" id="11_uh25t"]
@@ -138,7 +137,6 @@ texture = ExtResource("4_ba2rj")
 position = Vector2(142.812, 446.978)
 scale = Vector2(0.808359, 0.808358)
 texture = ExtResource("5_20wie")
-script = ExtResource("6_f7mwa")
 
 [node name="Area2D" type="Area2D" parent="Moon/EndZone"]
 collision_layer = 2

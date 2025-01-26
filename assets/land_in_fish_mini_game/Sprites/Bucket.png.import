@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cikk8qxs5fdfm"
-path="res://.godot/imported/b.png-039ce14532881cdb92780710df18d112.ctex"
+uid="uid://b4c7jkwk18lq8"
+path="res://.godot/imported/Bucket.png-a6bd1f8461b7e53eb8e20e144fcb5571.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game_manager/b.png"
-dest_files=["res://.godot/imported/b.png-039ce14532881cdb92780710df18d112.ctex"]
+source_file="res://assets/land_in_fish_mini_game/Sprites/Bucket.png"
+dest_files=["res://.godot/imported/Bucket.png-a6bd1f8461b7e53eb8e20e144fcb5571.ctex"]
 
 [params]
 

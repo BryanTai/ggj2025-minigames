@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cme4wt1wtfsgf"
-path="res://.godot/imported/win.png-566abc3de7c9d45312669457ad869f85.ctex"
+uid="uid://kydpyylc4i36"
+path="res://.godot/imported/Button.png-c0e465f1f52011b4e8331dda1662501f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/heist_bubbles/win.png"
-dest_files=["res://.godot/imported/win.png-566abc3de7c9d45312669457ad869f85.ctex"]
+source_file="res://assets/game_manager/Sprites/Button.png"
+dest_files=["res://.godot/imported/Button.png-c0e465f1f52011b4e8331dda1662501f.ctex"]
 
 [params]
 

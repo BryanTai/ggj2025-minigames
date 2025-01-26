@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g2tr34tqgxis"
-path="res://.godot/imported/Foreground.png-5a0f1dd31b3f4c164d2568846a90d115.ctex"
+uid="uid://d4j1fcl3kdkku"
+path="res://.godot/imported/BubsFishHunt.png-5f281f5f09ce692ed0364fdb62841e68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bubble_pop_mini_game/Sprites/Foreground.png"
-dest_files=["res://.godot/imported/Foreground.png-5a0f1dd31b3f4c164d2568846a90d115.ctex"]
+source_file="res://assets/land_in_fish_mini_game/Sprites/BubsFishHunt.png"
+dest_files=["res://.godot/imported/BubsFishHunt.png-5f281f5f09ce692ed0364fdb62841e68.ctex"]
 
 [params]
 

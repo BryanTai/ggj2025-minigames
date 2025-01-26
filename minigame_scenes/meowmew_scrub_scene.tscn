@@ -233,6 +233,7 @@ limit_bottom = 700
 libraries = {
 "": SubResource("AnimationLibrary_5upt0")
 }
+speed_scale = 1.5
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://crq0fv08ly02p"]
+[gd_scene load_steps=6 format=3 uid="uid://crq0fv08ly02p"]
 
 [ext_resource type="Script" path="res://assets/gozi_traffic_minigame/scripts/gozi_traffic_player.gd" id="1_2ip5r"]
 [ext_resource type="Texture2D" uid="uid://bfuf22o0rg3wf" path="res://assets/gozi_traffic_minigame/sprites/playercar.png" id="2_c5bxq"]
+[ext_resource type="AudioStream" uid="uid://cf7vrwp42j44y" path="res://assets/gozi_traffic_minigame/audio/automobile-honk-1-170423.wav" id="3_gbr8c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w2d3q"]
 animations = [{
@@ -14,11 +15,20 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tb2rt"]
+
 [node name="Player" type="Area2D"]
 script = ExtResource("1_2ip5r")
 player_speed = 500
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_w2d3q")
+
+[node name="HonkPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gbr8c")
+pitch_scale = 1.25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tb2rt")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -15,7 +15,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	if smooch_mini_game.current_state == 0:
+	if smooch_mini_game.current_state < 2:
 		if timer == 40:
 			value = randf_range(-.9, .9)
 			print (timer)

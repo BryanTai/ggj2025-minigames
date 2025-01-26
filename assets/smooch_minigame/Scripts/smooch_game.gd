@@ -4,7 +4,9 @@ extends BaseMiniGame
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
+	## Set this flag to "false" in your MiniGame if you don't want everything disabled outside of the PLAYING state
+	disable_minigame_during_intro_and_outro = false
+	super()
 	pass
 
 
@@ -14,7 +16,7 @@ func _process(delta: float) -> void:
 
 
 func _on_player_area_entered(area: Area2D) -> void:
-	if area.get("name") == "Player":
+	if area.get("name") == "Smoocher":
 		trigger_game_win()
 		print ("win")
 	else:

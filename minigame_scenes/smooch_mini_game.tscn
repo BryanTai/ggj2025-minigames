@@ -136,6 +136,7 @@ libraries = {
 }
 
 [node name="FailWall" type="Area2D" parent="."]
+position = Vector2(-78, 0)
 script = ExtResource("7_gjmf2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FailWall"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="minigames"
-run/main_scene="res://game_manager/mini_game_manager.tscn"
+run/main_scene="res://game_manager/menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://assets/sprites/icon.svg"
 
@@ -20,6 +20,10 @@ config/icon="res://assets/sprites/icon.svg"
 window/size/viewport_width=1000
 window/size/viewport_height=1000
 window/stretch/mode="viewport"
+
+[dotnet]
+
+project/assembly_name="minigames"
 
 [filesystem]
 
