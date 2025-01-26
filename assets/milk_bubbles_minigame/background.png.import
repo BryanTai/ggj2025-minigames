@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7xpa7ia61wmv"
-path="res://.godot/imported/cup_mask_bottom.png-81592a40ad8b175b2ba2818ec2d2658b.ctex"
+uid="uid://bj3x62vtwhkk5"
+path="res://.godot/imported/background.png-2756f3fc242433286ef262ef22d8aff5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/milk_bubbles_minigame/cup_mask_bottom.png"
-dest_files=["res://.godot/imported/cup_mask_bottom.png-81592a40ad8b175b2ba2818ec2d2658b.ctex"]
+source_file="res://assets/milk_bubbles_minigame/background.png"
+dest_files=["res://.godot/imported/background.png-2756f3fc242433286ef262ef22d8aff5.ctex"]
 
 [params]
 
