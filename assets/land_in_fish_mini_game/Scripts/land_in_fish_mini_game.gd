@@ -82,12 +82,13 @@ func _process(delta: float) -> void:
 		#trigger_game_win()
 
 func _on_bubs_area_entered(area: Area2D) -> void:
-	print(area.name)
-	if area.name == 'WinZone':
+	if area.name == 'WinZone' and $Bubs/BubsSprite.frame == 0:
+		$Bubs/BubsSprite.visible = false
 		return call_deferred("trigger_game_win")
 	elif area.name == 'TippedZone':
 		print("Bucket Tipped.")
-	call_deferred("trigger_game_lose")
+	if $Bubs/BubsSprite.visible:
+		call_deferred("trigger_game_lose")
 	pass
 
 func _on_wind_change_timer_timeout() -> void:
@@ -158,19 +159,24 @@ func _process_playing_state(delta: float) -> void:
 	# Wind Influence.
 	var wind_influence = wind_strength * WIND_MAX_SPEED * delta
 	
+	$Bubs/BubsSprite.set_rotation_degrees(wind_strength * -25)
+	
 	bubs.position.x += (direction * SHUFFLE_SPEED * delta) + wind_influence
 	bubs.position.x = clamp(bubs.position.x, 0, canvas_x)
 	
 
 # Called once when the PLAYING state ends (e.g. Win or Lose)
-#func _on_end_playing_state() -> void:
-#	pass
+func _on_end_playing_state() -> void:
+	$BubblePopSFX.play()
+	$Bubs/BubsSprite/BubbleCover.visible = false
+	pass
 
 ## WIN STATE
 
  #Called once when entering the WIN state
 func _on_start_win_state() -> void:
-	$Bubs/BubsSprite.frame = 2
+	$Bubs/BubsSprite.visible = false
+	$Bucket/BucketSprite.frame = 2
 	pass
 
 # Called every frame while minigame is in the WIN state
@@ -182,6 +188,7 @@ func _on_start_win_state() -> void:
 # Called once when entering the LOSE state
 func _on_start_lose_state() -> void:
 	$Bubs/BubsSprite.frame = 1
+	$Bubs/BubsSprite.set_rotation_degrees(0)
 	pass
 
 # Called every frame while minigame is in the LOSE state

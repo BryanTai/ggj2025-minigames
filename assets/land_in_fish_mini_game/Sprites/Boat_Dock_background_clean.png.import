@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g2tr34tqgxis"
-path="res://.godot/imported/Foreground.png-5a0f1dd31b3f4c164d2568846a90d115.ctex"
+uid="uid://csbmmdur7wy60"
+path="res://.godot/imported/Boat_Dock_background_clean.png-7efe661259dcfbfc9f0e25b5e50b91aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bubble_pop_mini_game/Sprites/Foreground.png"
-dest_files=["res://.godot/imported/Foreground.png-5a0f1dd31b3f4c164d2568846a90d115.ctex"]
+source_file="res://assets/land_in_fish_mini_game/Sprites/Boat_Dock_background_clean.png"
+dest_files=["res://.godot/imported/Boat_Dock_background_clean.png-7efe661259dcfbfc9f0e25b5e50b91aa.ctex"]
 
 [params]
 
