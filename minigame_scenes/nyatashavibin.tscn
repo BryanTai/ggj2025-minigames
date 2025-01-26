@@ -87,6 +87,11 @@ position = Vector2(77, 679)
 [node name="Vibemaker8" parent="." instance=ExtResource("4_ukaup")]
 position = Vector2(49, 362)
 
+[node name="spawntimer" type="Timer" parent="."]
+wait_time = 0.8
+autostart = true
+
 [connection signal="nyatasha_got_hurt" from="Nyatasha/ForceField" to="." method="_on_nyatasha_got_hurt"]
+[connection signal="timeout" from="spawntimer" to="." method="_on_spawntimer_timeout"]
 
 [editable path="Nyatasha"]

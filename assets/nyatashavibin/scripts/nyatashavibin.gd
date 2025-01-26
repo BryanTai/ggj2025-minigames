@@ -54,18 +54,20 @@
 extends BaseMiniGame
 
 @onready var spawners = [$Vibemaker,$Vibemaker2,$Vibemaker3,$Vibemaker4,$Vibemaker5,$Vibemaker6,$Vibemaker7,$Vibemaker8]
+@onready var spawntimer: Timer = $spawntimer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	instruction_text = "Block bad vibes" # This text will display during the PREPARING phase
 	super() ## Do not remove this super() call!
+	spawntimer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta) ## This line will process the State machine! DO NOT REMOVE
 	## Use this _process function for your game logic!
-	if(Engine.get_frames_drawn() %100 == 0):
-		spawners.pick_random().spawnVibe()
+
+		
 		#spawners[randi_range(0, spawners.size()-1)].spawnVibe()
 	# Here's an example
 	## TODO: Use these 2 functions to trigger WIN or LOSE
@@ -73,7 +75,8 @@ func _process(delta: float) -> void:
 	#	trigger_game_lose()
 	#else:
 	#	trigger_game_win()
-
+func _on_spawntimer_timeout() -> void:
+	spawners.pick_random().spawnVibe()
 
 # A signal from the MiniGameManager that time has run out
 ## TODO: Override this function if your MiniGame checks the win condition on TimeOut
