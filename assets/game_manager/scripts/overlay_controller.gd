@@ -6,11 +6,22 @@ const BUBBLE_DEFAULT_PITCH: float = 0.6
 @onready var bubble_pop: AudioStreamPlayer = $TimerLabel/BubblePop
 @onready var bubble_timer: Timer = $TimerLabel/TimerBubbles/BubbleTimer
 @onready var timer_bubbles: Control = $TimerLabel/TimerBubbles
+@onready var lives_left: HBoxContainer = $Lives/LifeNodes/LivesLeft
 
 var max_time: float
 var bubble_pitch: float = 0.6
 var current_bubble: int = 0
+var lives: int = 5
 
+func remove_a_life() -> void:
+	if lives > 0:
+		lives -= 1
+		lives_left.get_child(lives).visible = false
+	
+func reset_lives() -> void:
+	for life: TextureRect in lives_left.get_children():
+		life.visible = true
+		
 func reset_time_bar() -> void:
 	time_bar.value = time_bar.max_value
 	bubble_pop.pitch_scale = BUBBLE_DEFAULT_PITCH

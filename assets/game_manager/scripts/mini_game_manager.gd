@@ -31,7 +31,6 @@ var current_manager_state: ManagerStates = ManagerStates.INTRO
 @onready var timer_label: Label = $MiniGameOverlay/TimerLabel
 @onready var instruction_label: Label = $MiniGameOverlay/InstructionBanner/InstructionLabel
 @onready var instruction_banner: Control = $MiniGameOverlay/InstructionBanner
-@onready var lives_label: Label = $MiniGameOverlay/Lives
 
 ## Sounds and music
 @onready var audio_mini_game_result: 	AudioStreamPlayer = $Audio_MiniGameResult
@@ -140,6 +139,7 @@ func _ready() -> void:
 	## Manager starts in the INTRO state
 	mini_game_timer.wait_time = TIME_LIMIT
 	overlay_mini_game.max_time = TIME_LIMIT
+	overlay_mini_game.reset_lives()
 	overlay_mini_game.visible = false
 	instruction_banner.visible = false
 	transition_animated_sprite.visible = false
@@ -273,6 +273,7 @@ func _on_mini_game_finished(is_win: bool) -> void:
 
 func lose_life() -> void:
 	lives -= 1
+	overlay_mini_game.remove_a_life()
 	if lives <= 0:
 		print("GAME OVER!")
 

@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://duxk37of61njc"]
+[gd_scene load_steps=11 format=3 uid="uid://duxk37of61njc"]
 
 [ext_resource type="Script" path="res://assets/game_manager/scripts/overlay_controller.gd" id="1_jlp17"]
 [ext_resource type="FontFile" uid="uid://blbfoi2bjrbw1" path="res://assets/fonts/SuperFrog-Yqy1q.ttf" id="1_x5n1t"]
-[ext_resource type="Texture2D" uid="uid://bwo23tynkk5dg" path="res://assets/ball_cup_minigame/ball.png" id="2_womy3"]
 [ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="3_pnuir"]
 [ext_resource type="Texture2D" uid="uid://dd6r85yh7ixjm" path="res://assets/game_manager/Sprites/time_bar_bg.png" id="5_hb1v0"]
 [ext_resource type="Texture2D" uid="uid://bghaxxtd8xc1n" path="res://assets/game_manager/Sprites/time_bar_glow.png" id="6_0vv1m"]
 [ext_resource type="Texture2D" uid="uid://bamcwlhtl8pht" path="res://assets/game_manager/Sprites/time_bar.png" id="7_cldms"]
 [ext_resource type="Texture2D" uid="uid://do7dfuxtec1hb" path="res://assets/game_manager/Sprites/timer_bubble.png" id="8_xajih"]
+[ext_resource type="Texture2D" uid="uid://c8mnr8g3hvb6v" path="res://assets/game_manager/Sprites/life_bg.png" id="9_1ap06"]
 [ext_resource type="AudioStream" uid="uid://bb8882iygehxq" path="res://assets/bubble_chomp/Sounds/PopSFX2.mp3" id="9_2y7e0"]
+[ext_resource type="Texture2D" uid="uid://bua8mf2yhlmax" path="res://assets/game_manager/Sprites/life_full.png" id="10_7gl7l"]
 
 [node name="MiniGameOverlay" type="CanvasLayer"]
 script = ExtResource("1_jlp17")
@@ -19,47 +20,6 @@ offset_top = 10.0
 offset_right = 356.0
 offset_bottom = 99.0
 text = "Credits!"
-
-[node name="Lives" type="Label" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -155.0
-offset_top = 13.0
-offset_right = -22.0
-offset_bottom = 67.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0.921569, 0.784314, 0.309804, 1)
-theme_override_colors/font_shadow_color = Color(0.0352941, 0.482353, 0.792157, 1)
-theme_override_colors/font_outline_color = Color(0.588235, 0.709804, 0.792157, 1)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 3
-theme_override_constants/outline_size = 11
-theme_override_constants/shadow_outline_size = 20
-theme_override_fonts/font = ExtResource("1_x5n1t")
-theme_override_font_sizes/font_size = 50
-text = "LIVES"
-horizontal_alignment = 2
-
-[node name="TextureRect" type="TextureRect" parent="Lives"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Lives"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_top = 68.865
-offset_bottom = 108.865
-grow_horizontal = 0
-alignment = 2
-
-[node name="TextureRect" type="TextureRect" parent="Lives/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_womy3")
 
 [node name="InstructionBanner" type="Control" parent="."]
 layout_mode = 3
@@ -189,5 +149,89 @@ texture = ExtResource("8_xajih")
 stream = ExtResource("9_2y7e0")
 pitch_scale = 0.6
 bus = &"SFX"
+
+[node name="Lives" type="VBoxContainer" parent="."]
+layout_direction = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -197.0
+offset_top = 7.0
+offset_right = 179.0
+offset_bottom = 121.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+theme_override_constants/separation = 10
+
+[node name="LivesLabel" type="Label" parent="Lives"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.921569, 0.784314, 0.309804, 1)
+theme_override_colors/font_shadow_color = Color(0.0352941, 0.482353, 0.792157, 1)
+theme_override_colors/font_outline_color = Color(0.588235, 0.709804, 0.792157, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 11
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/font = ExtResource("1_x5n1t")
+theme_override_font_sizes/font_size = 50
+text = "LIVES"
+horizontal_alignment = 1
+
+[node name="LifeNodes" type="Control" parent="Lives"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="LifeBackgrounds" type="HBoxContainer" parent="Lives/LifeNodes"]
+layout_direction = 3
+layout_mode = 2
+offset_right = 376.0
+offset_bottom = 60.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="LifeBG1" type="TextureRect" parent="Lives/LifeNodes/LifeBackgrounds"]
+layout_mode = 2
+texture = ExtResource("9_1ap06")
+
+[node name="LifeBG2" type="TextureRect" parent="Lives/LifeNodes/LifeBackgrounds"]
+layout_mode = 2
+texture = ExtResource("9_1ap06")
+
+[node name="LifeBG3" type="TextureRect" parent="Lives/LifeNodes/LifeBackgrounds"]
+layout_mode = 2
+texture = ExtResource("9_1ap06")
+
+[node name="LifeBG4" type="TextureRect" parent="Lives/LifeNodes/LifeBackgrounds"]
+layout_mode = 2
+texture = ExtResource("9_1ap06")
+
+[node name="LifeBG5" type="TextureRect" parent="Lives/LifeNodes/LifeBackgrounds"]
+layout_mode = 2
+texture = ExtResource("9_1ap06")
+
+[node name="LivesLeft" type="HBoxContainer" parent="Lives/LifeNodes"]
+layout_direction = 3
+layout_mode = 2
+offset_right = 376.0
+
+[node name="Life1" type="TextureRect" parent="Lives/LifeNodes/LivesLeft"]
+layout_mode = 2
+texture = ExtResource("10_7gl7l")
+
+[node name="Life2" type="TextureRect" parent="Lives/LifeNodes/LivesLeft"]
+layout_mode = 2
+texture = ExtResource("10_7gl7l")
+
+[node name="Life3" type="TextureRect" parent="Lives/LifeNodes/LivesLeft"]
+layout_mode = 2
+texture = ExtResource("10_7gl7l")
+
+[node name="Life4" type="TextureRect" parent="Lives/LifeNodes/LivesLeft"]
+layout_mode = 2
+texture = ExtResource("10_7gl7l")
+
+[node name="Life5" type="TextureRect" parent="Lives/LifeNodes/LivesLeft"]
+layout_mode = 2
+texture = ExtResource("10_7gl7l")
 
 [connection signal="timeout" from="TimerLabel/TimerBubbles/BubbleTimer" to="." method="_on_bubble_timer_timeout"]
