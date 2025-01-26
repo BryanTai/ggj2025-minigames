@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://d2wmcjdj0gqja"]
+[gd_scene load_steps=21 format=3 uid="uid://d2wmcjdj0gqja"]
 
 [ext_resource type="Script" path="res://assets/bubble_pop_mini_game/Scripts/bubble_pop_mini_game.gd" id="1_uis2h"]
 [ext_resource type="Texture2D" uid="uid://btog62p7b7c18" path="res://assets/bubble_pop_mini_game/Sprites/BubbleGum.png" id="2_4k6uw"]
+[ext_resource type="AudioStream" uid="uid://dr4tu88k5n2cw" path="res://assets/bubble_pop_mini_game/SFX/Bubble Blowing Dog Minigame.wav" id="2_fstf3"]
 [ext_resource type="Texture2D" uid="uid://tqmel6fblah2" path="res://assets/bubble_pop_mini_game/Sprites/Cloud_1.png" id="3_82ktx"]
 [ext_resource type="Texture2D" uid="uid://bdkub5ss571b1" path="res://assets/bubble_pop_mini_game/Sprites/Cloud_2.png" id="4_7r7ux"]
 [ext_resource type="Texture2D" uid="uid://cp6asf4pbvlop" path="res://assets/bubble_pop_mini_game/Sprites/Cat_Sun.png" id="4_nis75"]
@@ -83,6 +84,7 @@ turbulence_noise_strength = 0.15
 
 [node name="bubble_pop_mini_game" type="Node2D"]
 script = ExtResource("1_uis2h")
+minigame_music = Array[AudioStreamWAV]([ExtResource("2_fstf3")])
 
 [node name="Environment" type="Node2D" parent="."]
 
