@@ -60,7 +60,6 @@ func _ready() -> void:
 	instruction_text = "Blow!" # This text will display during the PREPARING phase
 	super() ## Do not remove this super() call!
 	## Put any logic you'd like to happen at the beginning of your minigame here!
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -111,13 +110,25 @@ func _on_timeout() -> void:
 #func _on_start_playing_state() -> void:
 #	pass
 
+func _on_mouth_timer_timeout() -> void:
+	print("triggerd")
+
+var mouth_timer_counter: float = 0
+const MOUTH_MAX_TIME: float = 0.25
 const max_bubble_scale: float = 3.0
 # Called every frame while minigame is in the PLAYING state
 func _process_playing_state(delta: float) -> void:
 	if Input.is_action_just_pressed("fire"):
+		bubs.frame = 1
+		mouth_timer_counter = MOUTH_MAX_TIME
 		bubble.scale *= 1.2
 	else:
 		bubble.scale *= pow(0.7, delta) # Make this Frame independent.
+	
+	if mouth_timer_counter > 0:
+		mouth_timer_counter -= delta
+		if mouth_timer_counter <= 0:
+			bubs.frame = 0
 	
 	# Modulate the bubble color as it get closer to the targeted value.
 	var size_difference: float = 1 - clamp(max_bubble_scale - bubble.scale.x, 0, 1)
@@ -125,7 +136,6 @@ func _process_playing_state(delta: float) -> void:
 	
 	# Pop the bubble if it's too big.
 	if (bubble.scale.x > max_bubble_scale):
-		print('Bubble Popped.')
 		popped_particle.position = bubble.position
 		popped_particle.modulate = Color.ORANGE
 		popped_particle.emitting = true
@@ -133,8 +143,9 @@ func _process_playing_state(delta: float) -> void:
 		trigger_game_lose()
 
 # Called once when the PLAYING state ends (e.g. Win or Lose)
-#func _on_end_playing_state() -> void:
-#	pass
+func _on_end_playing_state() -> void:
+	bubs.frame = 0
+	pass
 
 ## WIN STATE
 
@@ -162,5 +173,5 @@ var lose_modulate_timer: float = 0
 func _process_lose_state(delta: float) -> void:
 	lose_modulate_timer += delta
 	popped_particle.modulate = lerp(Color.ORANGE, Color.WHITE, sqrt(lose_modulate_timer))
-	bubble.scale *= pow(0.2, delta)
+	bubble.scale *= pow(0.1, delta)
 	pass
