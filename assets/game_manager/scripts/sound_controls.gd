@@ -11,10 +11,12 @@ extends CanvasLayer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func slide_in() -> void:
-	animation_player.play("slide_in")
+	if not visible:
+		animation_player.play("slide_in")
 	
 func slide_out() -> void:
-	animation_player.play("slide_out")
+	if visible:
+		animation_player.play("slide_out")
 
 func _ready() -> void:
 	master_slider.value = db_to_linear(AudioServer.get_bus_volume_db(0))

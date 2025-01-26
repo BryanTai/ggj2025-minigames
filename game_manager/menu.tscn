@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d0bi4ye0gwyva"]
+[gd_scene load_steps=30 format=3 uid="uid://b454m7v44683q"]
 
 [ext_resource type="Script" path="res://assets/game_manager/scripts/menu.gd" id="1_5rt6y"]
 [ext_resource type="Texture2D" uid="uid://dsm7ltmwlrnk3" path="res://assets/game_manager/Sprites/coverart.png" id="2_l5ndu"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://bcqoraqhttwnj" path="res://assets/game_manager/Sprites/r.png" id="15_lgft4"]
 [ext_resource type="AudioStream" uid="uid://bu8ck5ri0iwke" path="res://assets/audio/Bubbleware Collab.wav" id="16_nqigu"]
 [ext_resource type="AudioStream" uid="uid://dy471hcu6ecl1" path="res://assets/audio/Main Menu - Bubs!.wav" id="17_nyvre"]
+[ext_resource type="PackedScene" uid="uid://dv0fmgdc8q6bc" path="res://game_manager/sound_controls.tscn" id="18_0d1dl"]
+[ext_resource type="Texture2D" uid="uid://cjkr33ip3jtpx" path="res://assets/game_manager/Sprites/volume_button.png" id="19_6fdhp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4nta3"]
 animations = [{
@@ -115,6 +117,7 @@ shape = SubResource("RectangleShape2D_6bisf")
 [node name="BUBBLEWARE" type="Node" parent="."]
 
 [node name="Cursor" type="RigidBody2D" parent="."]
+z_index = 10
 position = Vector2(238, 753)
 gravity_scale = 0.0
 script = ExtResource("7_b46p4")
@@ -203,9 +206,27 @@ shape = SubResource("WorldBoundaryShape2D_wax61")
 [node name="BubbleWareVoices" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_nqigu")
 autoplay = true
+bus = &"Voice"
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_nyvre")
+bus = &"Music"
+
+[node name="SoundControls" parent="." instance=ExtResource("18_0d1dl")]
+
+[node name="TextureButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 564.0
+offset_top = 884.0
+offset_right = 664.0
+offset_bottom = 984.0
+rotation = -0.438138
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("19_6fdhp")
+texture_pressed = ExtResource("19_6fdhp")
+texture_hover = ExtResource("19_6fdhp")
+texture_disabled = ExtResource("19_6fdhp")
+texture_focused = ExtResource("19_6fdhp")
 
 [connection signal="area_entered" from="Play Button" to="Play Button" method="_on_area_entered"]
 [connection signal="area_exited" from="Play Button" to="Play Button" method="_on_area_exited"]
@@ -213,6 +234,7 @@ stream = ExtResource("17_nyvre")
 [connection signal="body_exited" from="Play Button" to="Play Button" method="_on_body_exited"]
 [connection signal="play_button_pressed" from="Play Button" to="." method="_on_play_button_pressed"]
 [connection signal="finished" from="BubbleWareVoices" to="." method="_on_bubble_ware_voices_finished"]
+[connection signal="pressed" from="TextureButton" to="SoundControls" method="slide_in"]
 
 [editable path="Bubbleware/U"]
 [editable path="Bubbleware/B2"]
