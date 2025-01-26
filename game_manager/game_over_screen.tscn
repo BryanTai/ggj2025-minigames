@@ -38,7 +38,7 @@ scale = Vector2(0.714592, 0.714592)
 sprite_frames = SubResource("SpriteFrames_jajcq")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.403486
+frame_progress = 0.0720751
 
 [node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = 14
