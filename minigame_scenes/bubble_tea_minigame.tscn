@@ -1,10 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://dpex23wfr4epm"]
+[gd_scene load_steps=21 format=3 uid="uid://dpex23wfr4epm"]
 
 [ext_resource type="Script" path="res://assets/bubble_tea_minigame/bubble_tea_minigame.gd" id="1_kx8rs"]
 [ext_resource type="Texture2D" uid="uid://cq0pkt04o62u6" path="res://assets/bubble_tea_minigame/sprites/straw.png" id="2_1v5ug"]
 [ext_resource type="Script" path="res://assets/bubble_tea_minigame/straw_controller.gd" id="2_p87lq"]
 [ext_resource type="Texture2D" uid="uid://d4k22k27tgcuy" path="res://assets/bubble_tea_minigame/sprites/straw_shadow.png" id="3_1j1tc"]
 [ext_resource type="Texture2D" uid="uid://bctgkieryg735" path="res://assets/bubble_tea_minigame/sprites/bubble_cup.png" id="4_au8d0"]
+[ext_resource type="Texture2D" uid="uid://bofr23b2vngl7" path="res://assets/bubble_tea_minigame/sprites/tea_drop.png" id="6_emuac"]
+[ext_resource type="Texture2D" uid="uid://c35ki257nxajc" path="res://assets/bubble_tea_minigame/sprites/splash.png" id="7_uoue7"]
+[ext_resource type="Texture2D" uid="uid://cyhls80lwwa5l" path="res://assets/bubble_tea_minigame/sprites/bubbles.png" id="8_jma18"]
+[ext_resource type="Texture2D" uid="uid://bbjgtho7jk0p5" path="res://assets/bubble_tea_minigame/sprites/bent_straw.png" id="9_r3fka"]
+[ext_resource type="Texture2D" uid="uid://dhr7mufpd4gn3" path="res://assets/bubble_tea_minigame/sprites/bubble_cup_spill.png" id="10_h00um"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pcs0o"]
 size = Vector2(9, 7)
@@ -12,20 +17,28 @@ size = Vector2(9, 7)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bf6ie"]
 size = Vector2(5, 13)
 
-[sub_resource type="Animation" id="Animation_338ym"]
-resource_name = "STAB"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TheStraw/Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7, 0.8),
-"transitions": PackedFloat32Array(0.3, 1, 1),
-"update": 0,
-"values": [Vector2(0, -448), Vector2(0, -500), Vector2(0, -248)]
-}
+[sub_resource type="Curve" id="Curve_onkko"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.35434, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_a5h6s"]
+curve = SubResource("Curve_onkko")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2orvt"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 75.0
+initial_velocity_max = 75.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_a5h6s")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wy4ik"]
+polygon = PackedVector2Array(66, 383, 428, 383, 428, 403, 66, 403)
 
 [sub_resource type="Animation" id="Animation_25o5s"]
 length = 0.001
@@ -41,10 +54,247 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, -448)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TheStraw/Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_1v5ug")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TheStraw/Sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BubbleCup:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_au8d0")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BubbleCup:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BubbleCup:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(284, 397)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BubbleCup/Liquid:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BubbleCup/Liquid:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BubbleCup/Liquid:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BubbleCup/Liquid:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(158.785, -20.8901)]
+}
+
+[sub_resource type="Animation" id="Animation_338ym"]
+resource_name = "STAB"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TheStraw/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8),
+"transitions": PackedFloat32Array(0.3, 1, 1),
+"update": 0,
+"values": [Vector2(0, -448), Vector2(0, -500), Vector2(0, -248)]
+}
+
+[sub_resource type="Animation" id="Animation_0a8bi"]
+resource_name = "SPILL"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TheStraw/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_r3fka")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TheStraw/Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.2, 0.1),
+"update": 0,
+"values": [-0.174533, -0.523599]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BubbleCup:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_h00um")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BubbleCup:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.174533]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BubbleCup:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(284, 435)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BubbleCup/Liquid:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BubbleCup/Liquid:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.2)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BubbleCup/Liquid:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.174533]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BubbleCup/Liquid:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(158.785, -20.8901), Vector2(178, -10)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kub2j"]
 _data = {
 "RESET": SubResource("Animation_25o5s"),
+"SPILL": SubResource("Animation_0a8bi"),
 "STAB": SubResource("Animation_338ym")
 }
 
@@ -53,8 +303,8 @@ texture_filter = 1
 script = ExtResource("1_kx8rs")
 
 [node name="TheStraw" type="CharacterBody2D" parent="."]
-z_index = 1
-position = Vector2(256, 358)
+z_index = 2
+position = Vector2(251, 380)
 script = ExtResource("2_p87lq")
 
 [node name="StrawCollider" type="CollisionShape2D" parent="TheStraw"]
@@ -73,20 +323,45 @@ limit_left = 0
 limit_top = 0
 
 [node name="BubbleCup" type="Sprite2D" parent="."]
-position = Vector2(248, 424)
+position = Vector2(284, 397)
 texture = ExtResource("4_au8d0")
 
 [node name="Area2D" type="Area2D" parent="BubbleCup"]
+position = Vector2(-33, -17)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BubbleCup/Area2D"]
-position = Vector2(1, -43)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_bf6ie")
+
+[node name="TeaDropEmitter" type="GPUParticles2D" parent="BubbleCup"]
+z_index = 3
+position = Vector2(1, -43)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_2orvt")
+texture = ExtResource("6_emuac")
+lifetime = 3.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+
+[node name="Liquid" type="Sprite2D" parent="BubbleCup"]
+visible = false
+position = Vector2(158.785, -20.8901)
+texture = ExtResource("7_uoue7")
+
+[node name="Bubbles" type="Sprite2D" parent="BubbleCup"]
+visible = false
+position = Vector2(176.802, -28.1286)
+texture = ExtResource("8_jma18")
 
 [node name="CoverCollider" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CoverCollider"]
 polygon = PackedVector2Array(245, 348, 341, 354, 418, 373, 418, 394, 345, 413, 165, 414, 78, 392, 78, 373, 167, 352, 245, 348, 245, 332, 43, 331, 43, 447, 461, 447, 461, 331, 245, 332)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="CoverCollider"]
+occluder = SubResource("OccluderPolygon2D_wy4ik")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
