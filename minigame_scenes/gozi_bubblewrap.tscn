@@ -1,0 +1,143 @@
+[gd_scene load_steps=6 format=3 uid="uid://de4t4qun8vndl"]
+
+[ext_resource type="Script" path="res://assets/gozi_bubblewrap_minigame/scripts/gozi_bubblewrap.gd" id="1_qi1y3"]
+[ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="2_ou43r"]
+[ext_resource type="PackedScene" uid="uid://dki2osks6amsv" path="res://assets/gozi_bubblewrap_minigame/scenes/gozi_cursor.tscn" id="2_q8uq6"]
+[ext_resource type="PackedScene" uid="uid://c7ynph8jjsloo" path="res://assets/gozi_bubblewrap_minigame/scenes/gozi_bubblewrap_bubble.tscn" id="3_diu7g"]
+[ext_resource type="AudioStream" uid="uid://cogpq6sico50a" path="res://assets/gozi_bubblewrap_minigame/audio/Game Jam (BubbleWare) - Bubblers.wav" id="5_ltawf"]
+
+[node name="Bubblewrap" type="Node2D"]
+position = Vector2(-4, -4)
+script = ExtResource("1_qi1y3")
+minigame_music = Array[AudioStreamWAV]([ExtResource("5_ltawf")])
+
+[node name="Cursor" parent="." instance=ExtResource("2_q8uq6")]
+position = Vector2(712, 378)
+
+[node name="Bubbles" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="0" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(115, 122)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="1" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(307, 122)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="2" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(499, 122)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="3" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(691, 122)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="4" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(883, 122)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="5" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(203, 306)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="6" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(395, 306)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="7" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(587, 306)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="8" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(779, 306)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="9" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(115, 490)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="10" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(307, 490)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="11" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(499, 490)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="12" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(691, 490)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="13" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(883, 490)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="14" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(203, 674)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="15" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(395, 674)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="16" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(587, 674)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="17" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(779, 674)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="18" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(115, 866)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="19" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(307, 866)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="20" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(499, 866)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="21" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(691, 866)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="22" parent="Bubbles" instance=ExtResource("3_diu7g")]
+position = Vector2(883, 866)
+scale = Vector2(0.85, 0.85)
+metadata/_edit_group_ = true
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.514448, 0.726878, 0.893422, 1)
+z_index = -1
+offset_left = -4.0
+offset_top = -6.0
+offset_right = 1012.0
+offset_bottom = 1014.0
+texture = ExtResource("2_ou43r")
+metadata/_edit_lock_ = true

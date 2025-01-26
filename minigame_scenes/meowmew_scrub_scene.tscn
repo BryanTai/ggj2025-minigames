@@ -1,0 +1,347 @@
+[gd_scene load_steps=21 format=3 uid="uid://cese21al22lj8"]
+
+[ext_resource type="Script" path="res://assets/meowmew_scrub_minigame/scripts/scrub_minigame_manager.gd" id="1_nkljr"]
+[ext_resource type="Texture2D" uid="uid://c8fg54q4d84gj" path="res://assets/meowmew_scrub_minigame/sprites/scrubber.png" id="2_bbyiu"]
+[ext_resource type="Texture2D" uid="uid://dtarj5rfk5nux" path="res://assets/meowmew_scrub_minigame/sprites/bubble_spritesheet.png" id="2_heyip"]
+[ext_resource type="Script" path="res://assets/meowmew_scrub_minigame/scripts/scrubber_controller.gd" id="2_wqp0i"]
+[ext_resource type="Texture2D" uid="uid://cmayo6sc5glcn" path="res://assets/meowmew_scrub_minigame/sprites/bubz_sad.png" id="5_nebqs"]
+[ext_resource type="Texture2D" uid="uid://cvj5hx7ap30sg" path="res://assets/meowmew_scrub_minigame/sprites/spot_1.png" id="6_7hvu7"]
+[ext_resource type="Texture2D" uid="uid://c1xv8b4bryasl" path="res://assets/meowmew_scrub_minigame/sprites/spot_2.png" id="7_bhpnw"]
+[ext_resource type="Texture2D" uid="uid://clxxy4nx2dnhg" path="res://assets/meowmew_scrub_minigame/sprites/spot_3.png" id="8_7rxbk"]
+[ext_resource type="Texture2D" uid="uid://cl0jh8htxsv7t" path="res://assets/meowmew_scrub_minigame/sprites/spot_5.png" id="10_g4v6g"]
+[ext_resource type="Texture2D" uid="uid://cdr5sri07vl4k" path="res://assets/meowmew_scrub_minigame/sprites/spot_6.png" id="11_qqd8l"]
+[ext_resource type="Texture2D" uid="uid://k5v4ewtsbogm" path="res://assets/meowmew_scrub_minigame/sprites/spot_8.png" id="13_gcws4"]
+[ext_resource type="Texture2D" uid="uid://dhgdg36olvmdg" path="res://assets/meowmew_scrub_minigame/sprites/spot_9.png" id="14_3e54n"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rkcnj"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mdm41"]
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+damping_min = 0.75
+damping_max = 0.75
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8cjjh"]
+radius = 21.0238
+
+[sub_resource type="Animation" id="Animation_6d5gd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scrubber/BubbleEmitter:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13, 9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scrubber/Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scrubber/HeckinBubbleEmitter:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scrubber/HeckinBubbleEmitter:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13, 9)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Scrubber/Sprite:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mcv5x"]
+resource_name = "already_clean"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scrubber/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(10, 0), Vector2(-10, 0), Vector2(10, 0), Vector2(-10, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scrubber/Sprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.3, 0.3),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ehsgo"]
+resource_name = "scrubscrubscrub"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scrubber/BubbleEmitter:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(13, 9), Vector2(43, 9), Vector2(-17, 9), Vector2(43, 9), Vector2(13, 9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scrubber/Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(30, 0), Vector2(-30, 0), Vector2(30, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scrubber/HeckinBubbleEmitter:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scrubber/HeckinBubbleEmitter:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(13, 9), Vector2(43, 9), Vector2(-17, 9), Vector2(43, 9), Vector2(13, 9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5upt0"]
+_data = {
+"RESET": SubResource("Animation_6d5gd"),
+"already_clean": SubResource("Animation_mcv5x"),
+"scrubscrubscrub": SubResource("Animation_ehsgo")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mnmd"]
+radius = 16.0312
+
+[node name="MeowmewScrubScene" type="Node2D"]
+script = ExtResource("1_nkljr")
+
+[node name="Scrubber" type="CharacterBody2D" parent="."]
+z_index = 1
+texture_filter = 1
+position = Vector2(320, 139)
+motion_mode = 1
+script = ExtResource("2_wqp0i")
+
+[node name="HeckinBubbleEmitter" type="GPUParticles2D" parent="Scrubber"]
+material = SubResource("CanvasItemMaterial_rkcnj")
+position = Vector2(13, 9)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_mdm41")
+texture = ExtResource("2_heyip")
+lifetime = 1.8
+speed_scale = 2.0
+
+[node name="BubbleEmitter" type="GPUParticles2D" parent="Scrubber"]
+material = SubResource("CanvasItemMaterial_rkcnj")
+position = Vector2(13, 9)
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_mdm41")
+texture = ExtResource("2_heyip")
+lifetime = 1.8
+speed_scale = 2.0
+
+[node name="Sprite" type="Sprite2D" parent="Scrubber"]
+texture = ExtResource("2_bbyiu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scrubber"]
+position = Vector2(5, 3)
+shape = SubResource("CircleShape2D_8cjjh")
+
+[node name="GameCam" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 700
+limit_bottom = 700
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5upt0")
+}
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0352941, 0.482353, 0.792157, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Background"]
+custom_minimum_size = Vector2(0, 300)
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -219.0
+offset_top = 401.0
+offset_right = 190.0
+offset_bottom = 904.0
+grow_horizontal = 2
+rotation = -0.112387
+color = Color(0.588235, 0.709804, 0.792157, 1)
+
+[node name="Bubz" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="Sprite" type="Sprite2D" parent="Bubz"]
+position = Vector2(296, 182)
+texture = ExtResource("5_nebqs")
+
+[node name="DirtSpots" type="Node2D" parent="Bubz"]
+
+[node name="DirtSpot1" type="Area2D" parent="Bubz/DirtSpots"]
+visible = false
+position = Vector2(178, 105)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bubz/DirtSpots/DirtSpot1"]
+position = Vector2(7, -1)
+shape = SubResource("CircleShape2D_7mnmd")
+
+[node name="Sprite" type="Sprite2D" parent="Bubz/DirtSpots/DirtSpot1"]
+texture = ExtResource("6_7hvu7")
+
+[node name="DirtSpot2" type="Area2D" parent="Bubz/DirtSpots"]
+visible = false
+position = Vector2(188, 184)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bubz/DirtSpots/DirtSpot2"]
+shape = SubResource("CircleShape2D_7mnmd")
+
+[node name="Sprite" type="Sprite2D" parent="Bubz/DirtSpots/DirtSpot2"]
+texture = ExtResource("7_bhpnw")
+
+[node name="DirtSpot3" type="Area2D" parent="Bubz/DirtSpots"]
+visible = false
+position = Vector2(278, 166)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bubz/DirtSpots/DirtSpot3"]
+shape = SubResource("CircleShape2D_7mnmd")
+
+[node name="Sprite" type="Sprite2D" parent="Bubz/DirtSpots/DirtSpot3"]
+texture = ExtResource("8_7rxbk")
+
+[node name="DirtSpot5" type="Area2D" parent="Bubz/DirtSpots"]
+visible = false
+position = Vector2(338, 267)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bubz/DirtSpots/DirtSpot5"]
+shape = SubResource("CircleShape2D_7mnmd")
+
+[node name="Sprite" type="Sprite2D" parent="Bubz/DirtSpots/DirtSpot5"]
+texture = ExtResource("10_g4v6g")
+
+[node name="DirtSpot6" type="Area2D" parent="Bubz/DirtSpots"]
+visible = false
+position = Vector2(359, 188)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bubz/DirtSpots/DirtSpot6"]
+shape = SubResource("CircleShape2D_7mnmd")
+
+[node name="Sprite" type="Sprite2D" parent="Bubz/DirtSpots/DirtSpot6"]
+texture = ExtResource("11_qqd8l")
+
+[node name="DirtSpot8" type="Area2D" parent="Bubz/DirtSpots"]
+visible = false
+position = Vector2(438, 186)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bubz/DirtSpots/DirtSpot8"]
+shape = SubResource("CircleShape2D_7mnmd")
+
+[node name="Sprite" type="Sprite2D" parent="Bubz/DirtSpots/DirtSpot8"]
+texture = ExtResource("13_gcws4")
+
+[node name="DirtSpot9" type="Area2D" parent="Bubz/DirtSpots"]
+visible = false
+position = Vector2(264, 250)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bubz/DirtSpots/DirtSpot9"]
+shape = SubResource("CircleShape2D_7mnmd")
+
+[node name="Sprite" type="Sprite2D" parent="Bubz/DirtSpots/DirtSpot9"]
+texture = ExtResource("14_3e54n")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="Scrubber" method="_on_animation_player_animation_finished"]
