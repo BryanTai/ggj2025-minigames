@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://qjqu56f6heob"]
+[gd_scene load_steps=20 format=3 uid="uid://qjqu56f6heob"]
 
 [ext_resource type="Script" path="res://assets/heist_bubble_minigame/bubble_heist.gd" id="1_aop8y"]
 [ext_resource type="Texture2D" uid="uid://s2v02s008osr" path="res://assets/heist_bubble_minigame/Loss 1000.png" id="2_ygfdr"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://68cloj2rvohn" path="res://assets/heist_bubble_minigame/Shake4.png" id="6_y0odv"]
 [ext_resource type="Texture2D" uid="uid://j2hhktk7usgc" path="res://assets/heist_bubble_minigame/win 1000.png" id="7_faogt"]
 [ext_resource type="Texture2D" uid="uid://4b23x5judnyg" path="res://assets/heist_bubble_minigame/bg 1000.png" id="8_sv8vr"]
+[ext_resource type="FontFile" uid="uid://blbfoi2bjrbw1" path="res://assets/fonts/SuperFrog-Yqy1q.ttf" id="9_h0d2a"]
 [ext_resource type="PackedScene" uid="uid://dx0l072o54u81" path="res://assets/heist_bubble_minigame/bubdiana_cursor.tscn" id="9_yfmtj"]
 [ext_resource type="AudioStream" uid="uid://crn4srh2e56ob" path="res://assets/heist_bubble_minigame/earth-rumble-6953.mp3" id="10_5lmpl"]
 
@@ -113,6 +114,9 @@ offset_left = 326.0
 offset_top = 246.0
 offset_right = 416.0
 offset_bottom = 269.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_h0d2a")
 theme_override_font_sizes/font_size = 100
 text = "Steal the Idol"
 
