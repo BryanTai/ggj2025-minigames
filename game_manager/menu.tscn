@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://d0bi4ye0gwyva"]
+[gd_scene load_steps=28 format=3 uid="uid://d0bi4ye0gwyva"]
 
 [ext_resource type="Script" path="res://assets/game_manager/scripts/menu.gd" id="1_5rt6y"]
 [ext_resource type="Texture2D" uid="uid://dsm7ltmwlrnk3" path="res://assets/game_manager/Sprites/coverart.png" id="2_l5ndu"]
 [ext_resource type="PackedScene" path="res://assets/game_manager/Scenes/play_button.tscn" id="3_0y1my"]
+[ext_resource type="Texture2D" uid="uid://pjjy8edp6ui4" path="res://assets/game_manager/Sprites/bubbles-corner.png" id="3_5p4ew"]
 [ext_resource type="Script" path="res://assets/game_manager/scripts/menucursor.gd" id="7_b46p4"]
 [ext_resource type="Texture2D" uid="uid://cqdp5x2dgb40t" path="res://assets/game_manager/animations/gozi_cursor.png" id="8_kuwba"]
 [ext_resource type="PackedScene" uid="uid://ced8tygwinyqc" path="res://assets/game_manager/Scenes/Letter.tscn" id="9_ve6p2"]
@@ -68,8 +69,12 @@ z_index = -1
 position = Vector2(500, 500)
 texture = ExtResource("2_l5ndu")
 
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+position = Vector2(300, 362)
+texture = ExtResource("3_5p4ew")
+
 [node name="Play Button" parent="." instance=ExtResource("3_0y1my")]
-position = Vector2(879, 870)
+position = Vector2(858, 869)
 
 [node name="BUBBLEWARE" type="Node" parent="."]
 
