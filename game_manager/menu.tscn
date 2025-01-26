@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b454m7v44683q"]
+[gd_scene load_steps=28 format=3 uid="uid://d0bi4ye0gwyva"]
 
 [ext_resource type="Script" path="res://assets/game_manager/scripts/menu.gd" id="1_5rt6y"]
 [ext_resource type="Texture2D" uid="uid://dsm7ltmwlrnk3" path="res://assets/game_manager/Sprites/coverart.png" id="2_l5ndu"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c1o0w3j6vdxtx" path="res://assets/game_manager/Sprites/a.png" id="14_d66pr"]
 [ext_resource type="Texture2D" uid="uid://bcqoraqhttwnj" path="res://assets/game_manager/Sprites/r.png" id="15_lgft4"]
 [ext_resource type="AudioStream" uid="uid://bu8ck5ri0iwke" path="res://assets/audio/Bubbleware Collab.wav" id="16_nqigu"]
+[ext_resource type="AudioStream" uid="uid://dy471hcu6ecl1" path="res://assets/audio/Main Menu - Bubs!.wav" id="17_nyvre"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4nta3"]
 animations = [{
@@ -199,15 +200,19 @@ shape = SubResource("WorldBoundaryShape2D_0pcj8")
 position = Vector2(1010, 491)
 shape = SubResource("WorldBoundaryShape2D_wax61")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BubbleWareVoices" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_nqigu")
 autoplay = true
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_nyvre")
 
 [connection signal="area_entered" from="Play Button" to="Play Button" method="_on_area_entered"]
 [connection signal="area_exited" from="Play Button" to="Play Button" method="_on_area_exited"]
 [connection signal="body_entered" from="Play Button" to="Play Button" method="_on_body_entered"]
 [connection signal="body_exited" from="Play Button" to="Play Button" method="_on_body_exited"]
 [connection signal="play_button_pressed" from="Play Button" to="." method="_on_play_button_pressed"]
+[connection signal="finished" from="BubbleWareVoices" to="." method="_on_bubble_ware_voices_finished"]
 
 [editable path="Bubbleware/U"]
 [editable path="Bubbleware/B2"]

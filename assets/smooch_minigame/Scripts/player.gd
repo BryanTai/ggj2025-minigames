@@ -6,36 +6,37 @@ extends Area2D
 
 @export var player_speed: int = 200 #TODO: Adjust this speed as you see fit
 
-var target_pos: Vector2
+var target_y_pos: float
+var mouse_priority: bool = false
+var mouse_y_buffer: float = 10.0
 
 func _ready() -> void:
 	position = Vector2(50, 300)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# This handles Horizontal movement
-	#var horizontal_direction := Input.get_axis("move_left", "move_right")
-	#if(horizontal_direction != 0):
-		#var old_pos = position
-		#var new_x = old_pos.x + (horizontal_direction * player_speed * delta);
-		#set_position(Vector2(new_x, old_pos.y))
-	
 	# This handles Vertical movement
 	var vertical_direction := Input.get_axis("move_up", "move_down")
 	
 	if smooch_mini_game.current_state < 2:
+		
+		# Use keyboard controls
 		if(vertical_direction != 0):
-			var old_pos = position
-			var new_y = old_pos.y + (vertical_direction * player_speed * delta);
-			set_position(Vector2(old_pos.x, new_y))
-	
-	# This will move the character player towards the mouse cursor
-	# ATTENTION: Replace "player_speed" with whatever speed you have in your minigame!
-	#elif target_pos:
-		#global_position = global_position.move_toward(target_pos, player_speed * delta)
+			mouse_priority = false
+			target_y_pos = position.y
+		# Use mouse controls
+		elif(mouse_priority == true):
+			vertical_direction = 1
+			if target_y_pos < position.y:
+				vertical_direction = -1
+			if abs(target_y_pos - position.y) < mouse_y_buffer:
+				vertical_direction = 0
 
-## Defines a target_pos variable to match the mouse cursor's position if mouse
-## movement is detected.
+		var new_y = position.y + (vertical_direction * player_speed * delta);
+		set_position(Vector2(position.x, new_y))
+
+## Read the y position of the cursor if mouse is moved
 func _input(event):
 	if event is InputEventMouseMotion:
-		target_pos = event.position
+		mouse_priority = true
+		target_y_pos = event.position.y
