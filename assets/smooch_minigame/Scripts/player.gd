@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 	# This handles Vertical movement
 	var vertical_direction := Input.get_axis("move_up", "move_down")
 	
-	if smooch_mini_game.current_state == 0:
+	if smooch_mini_game.current_state < 2:
 		if(vertical_direction != 0):
 			var old_pos = position
 			var new_y = old_pos.y + (vertical_direction * player_speed * delta);

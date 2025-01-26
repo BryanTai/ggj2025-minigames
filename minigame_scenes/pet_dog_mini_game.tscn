@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bxbsq3nj0h10e"]
+[gd_scene load_steps=16 format=3 uid="uid://c5iliqshl0ga8"]
 
 [ext_resource type="Script" path="res://assets/pet_dog_minigame/pet_dog_mini_game.gd" id="1_fj8nd"]
 [ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="2_xttkd"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cymx4ud3awath"]
+[gd_scene load_steps=27 format=3 uid="uid://dm7sxw0qqq843"]
 
 [ext_resource type="Script" path="res://assets/runner_minigame/scripts/runner_mini_game.gd" id="1_3qc1h"]
 [ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="2_6vrve"]
