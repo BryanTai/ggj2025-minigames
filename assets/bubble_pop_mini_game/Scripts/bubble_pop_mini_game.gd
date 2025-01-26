@@ -51,6 +51,9 @@ extends BaseMiniGame
 @onready var bubble: Sprite2D = $Bubble
 @onready var bubs: Sprite2D = $Bubs
 @onready var popped_particle: GPUParticles2D = $PoppedParticle
+@onready var balloon_blow_sfx: AudioStreamPlayer = $BalloonBlow
+@onready var balloon_pop_sfx: AudioStreamPlayer = $BalloonPop
+@onready var air_leak_sfx: AudioStreamPlayer = $AirLeak
 
 func _init() -> void:
 	disable_minigame_during_intro_and_outro = false
@@ -107,11 +110,9 @@ func _on_timeout() -> void:
 ## PLAYING STATE
 
 # Called once when entering the PLAYING state (e.g. once the player gains control)
-#func _on_start_playing_state() -> void:
-#	pass
-
-func _on_mouth_timer_timeout() -> void:
-	print("triggerd")
+func _on_start_playing_state() -> void:
+	air_leak_sfx.play()
+	pass
 
 var mouth_timer_counter: float = 0
 const MOUTH_MAX_TIME: float = 0.25
@@ -122,6 +123,8 @@ func _process_playing_state(delta: float) -> void:
 		bubs.frame = 1
 		mouth_timer_counter = MOUTH_MAX_TIME
 		bubble.scale *= 1.2
+		balloon_blow_sfx.pitch_scale = lerp(0.8, 1.2, bubble.scale.x / max_bubble_scale)
+		balloon_blow_sfx.play()
 	else:
 		bubble.scale *= pow(0.7, delta) # Make this Frame independent.
 	
@@ -136,6 +139,8 @@ func _process_playing_state(delta: float) -> void:
 	
 	# Pop the bubble if it's too big.
 	if (bubble.scale.x > max_bubble_scale):
+		balloon_pop_sfx.play()
+		air_leak_sfx.stop()
 		popped_particle.position = bubble.position
 		popped_particle.modulate = Color.ORANGE
 		popped_particle.emitting = true
@@ -150,8 +155,9 @@ func _on_end_playing_state() -> void:
 ## WIN STATE
 
 # Called once when entering the WIN state
-#func _on_start_win_state() -> void:
-	#pass
+func _on_start_win_state() -> void:
+	air_leak_sfx.stop()
+	pass
 
 var float_speed = 500
 
@@ -173,5 +179,7 @@ var lose_modulate_timer: float = 0
 func _process_lose_state(delta: float) -> void:
 	lose_modulate_timer += delta
 	popped_particle.modulate = lerp(Color.ORANGE, Color.WHITE, sqrt(lose_modulate_timer))
+	air_leak_sfx.volume_db = 5
+	air_leak_sfx.pitch_scale = 1.2
 	bubble.scale *= pow(0.1, delta)
 	pass

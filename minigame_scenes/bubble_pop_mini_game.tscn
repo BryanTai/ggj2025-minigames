@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d2wmcjdj0gqja"]
+[gd_scene load_steps=20 format=3 uid="uid://d2wmcjdj0gqja"]
 
 [ext_resource type="Script" path="res://assets/bubble_pop_mini_game/Scripts/bubble_pop_mini_game.gd" id="1_uis2h"]
 [ext_resource type="Texture2D" uid="uid://btog62p7b7c18" path="res://assets/bubble_pop_mini_game/Sprites/BubbleGum.png" id="2_4k6uw"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://nerc1ru3ul3l" path="res://assets/bubble_pop_mini_game/Sprites/Sun_no_cat.png" id="5_wtird"]
 [ext_resource type="Texture2D" uid="uid://g2tr34tqgxis" path="res://assets/bubble_pop_mini_game/Sprites/Foreground.png" id="6_kr4ug"]
 [ext_resource type="Texture2D" uid="uid://bjlelmiai6ymt" path="res://assets/bubble_pop_mini_game/Animations/BubsIdle.png" id="7_cgdxp"]
+[ext_resource type="AudioStream" uid="uid://c1wamm8sw3swq" path="res://assets/bubble_pop_mini_game/SFX/balloon-blow.mp3" id="9_wq600"]
+[ext_resource type="AudioStream" uid="uid://cwm7qox5b4r6h" path="res://assets/bubble_pop_mini_game/SFX/balloon-pop.mp3" id="10_eu57b"]
+[ext_resource type="AudioStream" uid="uid://qwaiqqvv25d0" path="res://assets/bubble_pop_mini_game/SFX/air_leak.mp3" id="11_ic3tx"]
 
 [sub_resource type="Gradient" id="Gradient_41yin"]
 colors = PackedColorArray(0.722333, 1, 0.66, 1, 0.184314, 0.823529, 1, 1)
@@ -132,3 +135,14 @@ process_material = SubResource("ParticleProcessMaterial_xhui0")
 texture = ExtResource("2_4k6uw")
 one_shot = true
 explosiveness = 1.0
+
+[node name="BalloonBlow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_wq600")
+volume_db = -8.0
+
+[node name="BalloonPop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_eu57b")
+
+[node name="AirLeak" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ic3tx")
+parameters/looping = true
