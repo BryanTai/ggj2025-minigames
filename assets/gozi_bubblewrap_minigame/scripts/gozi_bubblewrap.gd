@@ -29,7 +29,7 @@ func _on_start_playing_state():
 	cursor.movement_enabled = true
 
 # manually check every frame if all of the bubbles are popped LOLOLOL
-func _process_playing_state(delta: float) -> void:
+func _process_playing_state(_delta: float) -> void:
 	if $"Bubbles/2/AnimatedSprite2D".animation == "popped2" and $"Bubbles/8/AnimatedSprite2D".animation == "popped2" and $"Bubbles/10/AnimatedSprite2D".animation == "popped2" and $"Bubbles/16/AnimatedSprite2D".animation == "popped2" and $"Bubbles/22/AnimatedSprite2D".animation == "popped2":
 		trigger_game_win()
 		

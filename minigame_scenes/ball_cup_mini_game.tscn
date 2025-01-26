@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cagtsb40t1ygf"]
+[gd_scene load_steps=13 format=3 uid="uid://bto4npb0ab8ut"]
 
 [ext_resource type="Script" path="res://assets/ball_cup_minigame/ball_cup_mini_game.gd" id="1_q15iu"]
 [ext_resource type="Texture2D" uid="uid://5kjdlnt2flew" path="res://assets/ball_cup_minigame/table.png" id="2_prrn3"]

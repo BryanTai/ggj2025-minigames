@@ -31,7 +31,6 @@ var current_manager_state: ManagerStates = ManagerStates.INTRO
 @onready var timer_label: Label = $MiniGameOverlay/TimerLabel
 @onready var instruction_label: Label = $MiniGameOverlay/InstructionBanner/InstructionLabel
 @onready var instruction_banner: Control = $MiniGameOverlay/InstructionBanner
-@onready var lives_label: Label = $MiniGameOverlay/Lives
 
 ## Sounds and music
 @onready var audio_mini_game_result: 	AudioStreamPlayer = $Audio_MiniGameResult
@@ -64,6 +63,7 @@ var all_mini_game_count: int
 var unplayed_mini_game_indexes: Array
 
 var lives: int
+var wins: int
 
 @export
 var minigame_name_override: String = "" #replace with a full name e.g. "meteor_mini_game.tscn"
@@ -71,7 +71,8 @@ var minigame_name_override: String = "" #replace with a full name e.g. "meteor_m
 var show_good_transition: bool = true
 
 ## Fired if the mini_game_timer runs out before the current_mini_game responds
-signal mini_game_timeout
+## ATTENTION: Not currently used anywhere in the code
+# signal mini_game_timeout
 
 func cache_all_mini_game_names() -> void:
 	var dir = DirAccess.open(MINI_GAME_FOLDER_PATH)
@@ -80,8 +81,8 @@ func cache_all_mini_game_names() -> void:
 		all_mini_game_count = all_mini_game_names.size()
 		unplayed_mini_game_indexes = range(all_mini_game_count)
 		unplayed_mini_game_indexes.shuffle()
-		#for str in all_mini_game_names:
-		#	print(str)
+		for minigame_str in all_mini_game_names:
+			print(minigame_str)
 	else:
 		print("ERROR: Cannot find MiniGame folder!")
 
@@ -89,7 +90,8 @@ func cache_all_bubbleware_clips() -> void:
 	
 	var dir = DirAccess.open(BUBBLEWARE_VOICE_CLIPS_PATH)
 	if dir:
-		audio_bubbleware_list = Array(filter_bubbleware_voice_names(dir.get_files()))
+		var test_array = filter_bubbleware_voice_names(dir.get_files())
+		audio_bubbleware_list = Array(test_array)
 		print("Bubbleare voice clips: ")
 		print(audio_bubbleware_list)
 	else:
@@ -117,29 +119,42 @@ func filter_mini_game_names(names: PackedStringArray) -> PackedStringArray:
 func filter_bubbleware_voice_names(names: PackedStringArray) -> PackedStringArray:
 	
 	var good_names: Array[String]
+	print("Filter Bubbleware Voice Names")
 	for filename in names:
-		var filetype = filename.split(".")
-		if(filetype[filetype.size()-1] == "wav"):
+		print(filename)
+		filename = sanitize_filename(filename) # This is a workaround for the build
+		print("Sanitized name: " + filename)
+		if(filename.ends_with("wav")):
 			print("Adding " + filename)
 			good_names.append(filename)
 	return good_names
+
+func sanitize_filename(filename: String) -> String:
+	if(filename.ends_with(".import")): # and ResourceLoader.exists(filename.trim_suffix(".import"))):
+		return filename.trim_suffix(".import")
+	else:
+		return filename
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	## Manager starts in the INTRO state
 	mini_game_timer.wait_time = TIME_LIMIT
+	overlay_mini_game.max_time = TIME_LIMIT
+	overlay_mini_game.reset_lives()
 	overlay_mini_game.visible = false
 	instruction_banner.visible = false
 	transition_animated_sprite.visible = false
-	lives = 5 ## TODO Set the lives from the Menu scene!
+	lives = 5
+	wins = 0
 	cache_all_mini_game_names()
 	cache_all_bubbleware_clips()
 	animation_player.play(ANIM_INTRO) # Start the Intro
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(current_manager_state == ManagerStates.PLAYING):
 		update_timer()
+		overlay_mini_game.adjust_time_bar_length(mini_game_timer.time_left)
 	
 func update_timer() -> void:
 	set_timer_text(str((mini_game_timer.time_left + 1) as int))
@@ -169,6 +184,7 @@ func load_next_mini_game() -> void:
 func create_next_mini_game() -> void:
 	current_mini_game = current_mini_game_resource.instantiate() as BaseMiniGame
 	current_mini_game.run_testing_mode = false
+	overlay_mini_game.reset_time_bar()
 	add_child(current_mini_game)
 	current_mini_game.game_finished.connect(_on_mini_game_finished)
 	current_mini_game.result_jingle.connect(_on_jingle_result)
@@ -181,13 +197,15 @@ func start_current_mini_game() -> void:
 	current_mini_game.start_playing_game()
 	mini_game_timer.wait_time = TIME_LIMIT
 	mini_game_timer.start()
+	overlay_mini_game.start_bubble_popper_timer()
 
 ## Manages
 func set_manager_state(new_state: ManagerStates) -> void:
 	if(current_manager_state == new_state):
 		return
 	
-	var old_state = current_manager_state
+	# ATTENTION: This is never used
+	# var old_state = current_manager_state
 	current_manager_state = new_state
 	
 	## On Start State
@@ -198,7 +216,7 @@ func set_manager_state(new_state: ManagerStates) -> void:
 			play_transition_sprites(show_good_transition)
 			animation_player.play(ANIM_TRANSITION)
 		ManagerStates.PREPARING:
-			set_timer_text(str(TIME_LIMIT as int))
+			set_timer_text(str(floor(TIME_LIMIT)))
 			timer_label.visible = true
 			create_next_mini_game()
 			overlay_mini_game.visible = true
@@ -216,11 +234,12 @@ func play_transition_sprites(show_good: bool) -> void:
 	transition_animated_sprite.visible = true
 	if(show_good):
 		transition_animated_sprite.play("bubs_yeah")
-		
+		# TODO: show wins here
 		# Need to check if the lose>win jingle is playing, and it to play rather than the transition on top of it
 		audio_transition.stream = audio_transition_win.pick_random()
 		audio_transition.play()
 	else:
+		## TODO Show life loss animation here
 		transition_animated_sprite.play("bubs_no")
 		audio_transition.stream = audio_transition_lose.pick_random()
 		audio_transition.play()
@@ -244,9 +263,10 @@ func _on_mini_game_timer_timeout() -> void:
 ## ... or when the current_mini_game signals the Manager that the player reached a Win/Lose state
 func _on_mini_game_finished(is_win: bool) -> void:
 	mini_game_timer.stop()
-	# TODO: Track wins and loses here!
+	overlay_mini_game.stop_bubble_popper_timer()
 	show_good_transition = is_win
 	if (is_win == true):
+		wins += 1
 		instruction_label.text = "WINNER!"
 	else:
 		lose_life()
@@ -255,6 +275,7 @@ func _on_mini_game_finished(is_win: bool) -> void:
 
 func lose_life() -> void:
 	lives -= 1
+	overlay_mini_game.remove_a_life()
 	if lives <= 0:
 		print("GAME OVER!")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dx4jaq5v2ei40"]
+[gd_scene load_steps=11 format=3 uid="uid://dx4jaq5v2ei40"]
 
 [ext_resource type="Script" path="res://assets/gozi_traffic_minigame/scripts/gozi_traffic_minigame.gd" id="1_7xnaa"]
 [ext_resource type="Texture2D" uid="uid://dqdl7l3rcmuv8" path="res://assets/gozi_traffic_minigame/sprites/car1.png" id="2_p2fry"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cwual56h16782" path="res://assets/gozi_traffic_minigame/sprites/background.png" id="7_kfcnw"]
 [ext_resource type="Texture2D" uid="uid://cx8myw6xmkcqm" path="res://assets/gozi_traffic_minigame/sprites/car6.png" id="8_4objq"]
 [ext_resource type="Texture2D" uid="uid://bflp34tyyntsh" path="res://assets/gozi_traffic_minigame/sprites/car3.png" id="9_rvhuu"]
+[ext_resource type="AudioStream" uid="uid://caeonty64ktjl" path="res://assets/gozi_traffic_minigame/audio/Traffic Minigame.wav" id="10_maip8"]
 
 [node name="Traffic Minigame" type="Node2D"]
 script = ExtResource("1_7xnaa")
@@ -85,3 +86,9 @@ z_index = -2
 position = Vector2(500, 500)
 texture = ExtResource("7_kfcnw")
 metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_maip8")
+volume_db = 6.533
+autoplay = true
+bus = &"SFX"

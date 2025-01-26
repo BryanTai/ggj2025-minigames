@@ -64,7 +64,7 @@ func _on_start_playing_state() -> void:
 	hand_cursor.get_node("Heart_Emitter").emitting = false
 	
 	# Spawn/enable dialogue options
-	var _option_angle_offset 			= int(360 / selectable_options.get_child_count())
+	var _option_angle_offset 			= floor(360 / selectable_options.get_child_count())
 	var _option_angle_random_offset 	= rng.randf() * 360
 	var _option_angle_random_variance 	= 75
 	selectable_options.visible = true

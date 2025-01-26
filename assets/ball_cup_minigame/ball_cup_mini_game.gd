@@ -15,7 +15,7 @@ var cup_positions: Array[Vector2]
 var hand_positions: Array[Vector2]
 
 var ball_index: int
-var hand_index: int
+var hand_index: int = 0
 
 var swaps_made: int
 @export var total_swaps: int = 5
@@ -27,6 +27,7 @@ func _ready() -> void:
 	init_positions()
 	super()
 	set_ball_position(1)
+	set_hand_position(1)
 
 func _on_start_playing_state():
 	animation_player.play("intro")

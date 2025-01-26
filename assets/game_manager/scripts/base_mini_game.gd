@@ -13,8 +13,11 @@ class_name BaseMiniGame extends Node2D
 ## ([code]FALSE[/code]).
 signal game_finished(is_win: bool)
 
-signal result_jingle(result)	# Pass along a pre-loaded audio jingle asset to play for the result
-signal minigame_music_signal(music)	# Pass along a pre-loaded music asset to play during the minigame
+# Pass along a pre-loaded audio jingle asset to play for the result
+signal result_jingle(result)	
+# Pass along a pre-loaded music asset to play during the minigame
+# ATTENTION: Not currently used in the code
+# signal minigame_music_signal(music)	
 
 ## These are the numerous states we'll use.
 enum MiniGameState { 

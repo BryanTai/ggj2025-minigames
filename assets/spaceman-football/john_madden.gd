@@ -8,7 +8,5 @@ func _ready() -> void:
 	super()
 
 
-func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	
+func _on_area_2d_body_shape_entered(_body_rid: RID, _body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	trigger_game_win()
-	pass # Replace with function body.

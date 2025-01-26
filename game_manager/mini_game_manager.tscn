@@ -1,13 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://dkfi11o6yoyvt"]
+[gd_scene load_steps=29 format=3 uid="uid://dkfi11o6yoyvt"]
 
 [ext_resource type="Script" path="res://assets/game_manager/scripts/mini_game_manager.gd" id="1_r0ho1"]
 [ext_resource type="Texture2D" uid="uid://b4xw4ybhjdfs2" path="res://assets/game_manager/bubs_yeah_no_transitions/BubNO0001.png" id="2_qcany"]
 [ext_resource type="Animation" uid="uid://dlylawv2xg63i" path="res://assets/game_manager/animations/intro_manager.res" id="2_s3k0j"]
 [ext_resource type="Texture2D" uid="uid://dc7g2rpoihs2q" path="res://assets/game_manager/bubs_yeah_no_transitions/BubNO0002.png" id="3_8uaqb"]
 [ext_resource type="Animation" uid="uid://c60mvn7pt2t66" path="res://assets/game_manager/animations/transition_mini_game.res" id="3_maxh3"]
-[ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="4_ayn3l"]
 [ext_resource type="Texture2D" uid="uid://dc8bi564068j0" path="res://assets/game_manager/bubs_yeah_no_transitions/BubNO0003.png" id="4_k4cif"]
-[ext_resource type="FontFile" uid="uid://blbfoi2bjrbw1" path="res://assets/fonts/SuperFrog-Yqy1q.ttf" id="5_jmnhc"]
 [ext_resource type="Texture2D" uid="uid://gu8ijcp2qalm" path="res://assets/game_manager/bubs_yeah_no_transitions/BubNO0004.png" id="5_rcblu"]
 [ext_resource type="Texture2D" uid="uid://dq0e0vbe5alef" path="res://assets/game_manager/bubs_yeah_no_transitions/BubNO0005.png" id="6_vmt14"]
 [ext_resource type="Texture2D" uid="uid://e0btsw8dp2aw" path="res://assets/game_manager/bubs_yeah_no_transitions/BubNO0006.png" id="7_vnr20"]
@@ -23,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://b6ekvqqnfabf3" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0009.png" id="17_n5l0v"]
 [ext_resource type="Texture2D" uid="uid://u2cufodo4a5m" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0010.png" id="18_lv2kq"]
 [ext_resource type="Texture2D" uid="uid://dbbf1spmmuc6k" path="res://assets/game_manager/bubs_yeah_no_transitions/BubYEAH0011.png" id="19_w8oat"]
+[ext_resource type="PackedScene" uid="uid://duxk37of61njc" path="res://game_manager/mini_game_overlay.tscn" id="22_qy411"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uxhkx"]
 animations = [{
@@ -397,92 +396,19 @@ text = "Cool Transition!"
 wait_time = 5.0
 one_shot = true
 
-[node name="MiniGameOverlay" type="CanvasLayer" parent="."]
-
-[node name="Credits" type="Label" parent="MiniGameOverlay"]
-offset_left = 15.0
-offset_top = 10.0
-offset_right = 356.0
-offset_bottom = 99.0
-text = "Credits!"
-
-[node name="Lives" type="Label" parent="MiniGameOverlay"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -78.0
-offset_top = 13.0
-offset_right = -12.0
-offset_bottom = 36.0
-grow_horizontal = 0
-text = "Lives: 88"
-horizontal_alignment = 2
-
-[node name="InstructionBanner" type="Control" parent="MiniGameOverlay"]
-layout_mode = 3
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Background" type="TextureRect" parent="MiniGameOverlay/InstructionBanner"]
-modulate = Color(0.0316, 0.474, 0.79, 0.423529)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-texture = ExtResource("4_ayn3l")
-
-[node name="InstructionLabel" type="Label" parent="MiniGameOverlay/InstructionBanner"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -41.5
-offset_bottom = 41.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.921569, 0.784314, 0.309804, 1)
-theme_override_colors/font_shadow_color = Color(0.0352941, 0.482353, 0.792157, 1)
-theme_override_colors/font_outline_color = Color(0.588235, 0.709804, 0.792157, 1)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 3
-theme_override_constants/outline_size = 11
-theme_override_constants/shadow_outline_size = 20
-theme_override_fonts/font = ExtResource("5_jmnhc")
-theme_override_font_sizes/font_size = 72
-text = "WINNER!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TimerLabel" type="Label" parent="MiniGameOverlay"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -21.5
-offset_top = -23.0
-offset_right = 21.5
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 64
-text = "TIME: 5"
+[node name="MiniGameOverlay" parent="." instance=ExtResource("22_qy411")]
 
 [node name="Audio_MiniGameResult" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="Audio_MiniGameMusic" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 
 [node name="Audio_Bubbleware" type="AudioStreamPlayer" parent="."]
+bus = &"Voice"
 
 [node name="Audio_Transition" type="AudioStreamPlayer" parent="."]
+bus = &"Voice"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_finished"]
 [connection signal="timeout" from="MiniGameTimer" to="." method="_on_mini_game_timer_timeout"]

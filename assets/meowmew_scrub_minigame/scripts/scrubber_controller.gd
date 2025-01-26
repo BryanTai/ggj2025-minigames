@@ -57,5 +57,5 @@ func _on_dirt_spot_entered(_body: Node2D, dirt_spot: Area2D) -> void:
 func _on_dirt_spot_exited(_body: Node2D) -> void:
 	hovered_spot = null
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	is_scrubbing = false

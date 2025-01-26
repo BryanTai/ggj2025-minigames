@@ -11,7 +11,7 @@ func _on_timeout() -> void:
 	trigger_game_win()
 
 # If a Meteor collides with the Ground, we lose
-func _on_collision(area: Area2D) -> void:
+func _on_collision(_area: Area2D) -> void:
 	trigger_game_lose()
 	
 func _on_end_playing_state() -> void:

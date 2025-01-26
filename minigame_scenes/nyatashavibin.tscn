@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://db3gq2wyr3qre"]
+
+[ext_resource type="Script" path="res://assets/nyatashavibin/scripts/nyatashavibin.gd" id="1_ie52s"]
+[ext_resource type="PackedScene" uid="uid://b26hnmgyynv85" path="res://assets/nyatashavibin/scenes/nyatasha.tscn" id="2_5qugs"]
+[ext_resource type="Texture2D" uid="uid://b2vsupj7pt0wr" path="res://assets/nyatashavibin/sprites/NyatashaVibesBG.png" id="2_uter4"]
+[ext_resource type="Texture2D" uid="uid://ok17mgfa3xda" path="res://assets/nyatashavibin/sprites/NyatashaVibesBG_02.png" id="3_u342j"]
+[ext_resource type="PackedScene" uid="uid://drct0hm30gyi3" path="res://assets/nyatashavibin/scenes/vibemaker.tscn" id="4_ukaup"]
+
+[sub_resource type="Animation" id="Animation_rfep4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_uter4")]
+}
+
+[sub_resource type="Animation" id="Animation_4baj1"]
+resource_name = "bg_change"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_uter4"), ExtResource("3_u342j")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d1qvr"]
+_data = {
+"RESET": SubResource("Animation_rfep4"),
+"bg_change": SubResource("Animation_4baj1")
+}
+
+[node name="nyatashavibin" type="Node2D"]
+script = ExtResource("1_ie52s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(503, 556)
+scale = Vector2(1.40044, 1.40044)
+texture = ExtResource("2_uter4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_d1qvr")
+}
+autoplay = "bg_change"
+
+[node name="Nyatasha" parent="." instance=ExtResource("2_5qugs")]
+position = Vector2(511, 537)
+scale = Vector2(2.15835, 2.15835)
+
+[node name="Vibemaker" parent="." instance=ExtResource("4_ukaup")]
+position = Vector2(317, 62)
+
+[node name="Vibemaker2" parent="." instance=ExtResource("4_ukaup")]
+position = Vector2(667, 62)
+
+[node name="Vibemaker3" parent="." instance=ExtResource("4_ukaup")]
+position = Vector2(959, 359)
+
+[node name="Vibemaker4" parent="." instance=ExtResource("4_ukaup")]
+position = Vector2(956, 710)
+
+[node name="Vibemaker5" parent="." instance=ExtResource("4_ukaup")]
+position = Vector2(682, 984)
+
+[node name="Vibemaker6" parent="." instance=ExtResource("4_ukaup")]
+position = Vector2(377, 973)
+
+[node name="Vibemaker7" parent="." instance=ExtResource("4_ukaup")]
+position = Vector2(77, 679)
+
+[node name="Vibemaker8" parent="." instance=ExtResource("4_ukaup")]
+position = Vector2(49, 362)
+
+[connection signal="nyatasha_got_hurt" from="Nyatasha/ForceField" to="." method="_on_nyatasha_got_hurt"]
+
+[editable path="Nyatasha"]

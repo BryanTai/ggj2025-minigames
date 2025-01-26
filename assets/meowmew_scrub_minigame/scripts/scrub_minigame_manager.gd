@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
-
+	disable_minigame_during_intro_and_outro = false
 
 #func _on_timeout() -> void:
 #	trigger_game_lose()
@@ -73,6 +73,7 @@ func _on_start_preparing_state() -> void:
 func _on_start_win_state() -> void:
 	super()
 	sprite.texture = BUBZ_WIN
+	animation_player.play("scrubbo_doneso")
 
 # Called every frame while minigame is in the WIN state
 #func _process_win_state(delta: float) -> void:
@@ -80,9 +81,8 @@ func _on_start_win_state() -> void:
 
 ## LOSE STATE
 
-# Called once when entering the LOSE state
-#func _on_start_lose_state() -> void:
-#	pass
+func _on_start_lose_state() -> void:
+	animation_player.play("scrubbo_doneso")
 
 # Called every frame while minigame is in the LOSE state
 #func _process_lose_state(delta: float) -> void:
