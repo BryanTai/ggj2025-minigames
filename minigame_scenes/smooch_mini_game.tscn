@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cu6dxv2wg0awq"]
+[gd_scene load_steps=13 format=3 uid="uid://cu6dxv2wg0awq"]
 
 [ext_resource type="Script" path="res://assets/smooch_minigame/Scripts/player.gd" id="1_2nl2m"]
 [ext_resource type="Script" path="res://assets/smooch_minigame/Scripts/smooch_game.gd" id="1_fx5vo"]
@@ -46,43 +46,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_dtjc7"]
-resource_name = "Left"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1084, 333), Vector2(322, 343)]
-}
-
-[sub_resource type="Animation" id="Animation_du7a6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1084, 333)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_eweds"]
-_data = {
-"Left": SubResource("Animation_dtjc7"),
-"RESET": SubResource("Animation_du7a6")
-}
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yyk27"]
 normal = Vector2(1, 0)
 
@@ -129,11 +92,6 @@ position = Vector2(71, 49)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_3npj8")
 autoplay = "default"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Smoocher"]
-libraries = {
-"": SubResource("AnimationLibrary_eweds")
-}
 
 [node name="FailWall" type="Area2D" parent="."]
 position = Vector2(-78, 0)
