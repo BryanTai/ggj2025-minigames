@@ -5,7 +5,7 @@ func _ready() -> void:
 	instruction_text = "WAIT!" # This text will display during the PREPARING phase
 	super() ## Do not remove this super() call!
 	## Put any logic you'd like to happen at the beginning of your minigame here!
-
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta) ## This line will process the State machine! DO NOT REMOVE
@@ -41,8 +41,8 @@ func _on_timeout() -> void:
 ## PLAYING STATE
 
 # Called once when entering the PLAYING state (e.g. once the player gains control)
-#func _on_start_playing_state() -> void:
-#	pass
+func _on_start_playing_state() -> void:
+	$AudioStreamPlayer.play()
 
 # Called every frame while minigame is in the PLAYING state
 #func _process_playing_state(delta: float) -> void:
