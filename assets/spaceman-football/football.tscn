@@ -16,10 +16,10 @@ gravity_scale = 0.3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.49652, 0.799683)
-scale = Vector2(0.651065, 0.651065)
+scale = Vector2(0.995515, 0.959575)
 texture = ExtResource("1_ekhui")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.503479, 1.79968)
-scale = Vector2(7.47437, -3.58006)
+scale = Vector2(11.7239, -5.45087)
 shape = SubResource("CapsuleShape2D_toefs")

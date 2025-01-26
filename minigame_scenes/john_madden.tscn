@@ -127,6 +127,7 @@ scale = Vector2(0.137988, 0.159949)
 texture = ExtResource("2_24p4v")
 
 [node name="Moon" type="StaticBody2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Moon Surface" type="Sprite2D" parent="Moon"]
 position = Vector2(587, 779)
