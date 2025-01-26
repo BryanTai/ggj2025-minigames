@@ -15,6 +15,10 @@ run/main_scene="res://game_manager/menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://assets/sprites/icon.svg"
 
+[autoload]
+
+ScoreKeeper="*res://assets/game_manager/scripts/score_keeper.gd"
+
 [display]
 
 window/size/viewport_width=1000
