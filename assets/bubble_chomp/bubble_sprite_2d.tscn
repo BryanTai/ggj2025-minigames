@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://djs1rr5saf3gd"]
+
+[ext_resource type="SpriteFrames" uid="uid://e8wwnov3lorb" path="res://assets/bubble_chomp/bubble_sprite_frames.tres" id="1_hpjk6"]
+[ext_resource type="Script" path="res://assets/bubble_chomp/bubble_sprite_2d.gd" id="2_y3dq0"]
+[ext_resource type="AudioStream" uid="uid://bb8882iygehxq" path="res://assets/bubble_chomp/Sounds/PopSFX2.mp3" id="3_lld3y"]
+[ext_resource type="AudioStream" uid="uid://c377qi6tgw2c0" path="res://assets/bubble_chomp/Sounds/cartoon-chomp-sound-effect-edited.mp3" id="4_lebjv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nu7cs"]
+
+[node name="BubbleIdleSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = ExtResource("1_hpjk6")
+autoplay = "default"
+frame = 1
+frame_progress = 0.338412
+script = ExtResource("2_y3dq0")
+
+[node name="BubbleRigidBody" type="Area2D" parent="."]
+
+[node name="sfx_bubblePop" type="AudioStreamPlayer2D" parent="BubbleRigidBody"]
+stream = ExtResource("3_lld3y")
+
+[node name="BubbleColliderShape" type="CollisionShape2D" parent="BubbleRigidBody"]
+visible = false
+position = Vector2(15, 55)
+scale = Vector2(27, 27)
+shape = SubResource("CircleShape2D_nu7cs")
+
+[node name="bubblePop_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lld3y")
+
+[node name="chomp_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lebjv")
+volume_db = -24.11
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="body_entered" from="BubbleRigidBody" to="." method="bubble_body_entered"]

@@ -1,0 +1,171 @@
+[gd_scene load_steps=10 format=3 uid="uid://dj4tgo75hg8sv"]
+
+[ext_resource type="Script" path="res://assets/bubble_chomp/bubble_chomp.gd" id="1_nbxvd"]
+[ext_resource type="SpriteFrames" uid="uid://cwnm7nwugbddv" path="res://assets/bubble_chomp/grassA_sprite_frames.tres" id="2_ms8ev"]
+[ext_resource type="AudioStream" uid="uid://bp47cibjwl2td" path="res://assets/bubble_chomp/Sounds/BubbleDog Minigame.wav" id="2_pau31"]
+[ext_resource type="SpriteFrames" uid="uid://4rfim341ajc" path="res://assets/bubble_chomp/hoshi_sprite_frames.tres" id="2_uluvg"]
+[ext_resource type="Script" path="res://assets/bubble_chomp/player_hoshi.gd" id="2_xgue8"]
+[ext_resource type="SpriteFrames" uid="uid://bg6ohjx1k8pya" path="res://assets/bubble_chomp/grassB_sprite_frames.tres" id="3_hj3fi"]
+[ext_resource type="SpriteFrames" uid="uid://cnj71ufnkalds" path="res://assets/bubble_chomp/grassC_sprite_frames.tres" id="4_gt6l5"]
+[ext_resource type="PackedScene" uid="uid://djs1rr5saf3gd" path="res://assets/bubble_chomp/bubble_sprite_2d.tscn" id="4_qxmv3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xiiu"]
+size = Vector2(46.7476, 20)
+
+[node name="bubble_chomp" type="Node2D"]
+position = Vector2(-6, 0)
+script = ExtResource("1_nbxvd")
+minigame_music = Array[AudioStreamWAV]([ExtResource("2_pau31")])
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -37.0
+offset_top = -20.0
+offset_right = 766.0
+offset_bottom = 719.0
+scale = Vector2(1.34705, 1.41677)
+color = Color(0.869553, 0.92, 0.8556, 1)
+
+[node name="GrassASprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(364, 848)
+scale = Vector2(0.6, 0.6)
+sprite_frames = ExtResource("2_ms8ev")
+autoplay = "default"
+
+[node name="GrassASprite5" type="AnimatedSprite2D" parent="."]
+position = Vector2(659, 276)
+scale = Vector2(0.6, 0.6)
+sprite_frames = ExtResource("2_ms8ev")
+autoplay = "default"
+
+[node name="GrassASprite2" type="AnimatedSprite2D" parent="."]
+position = Vector2(809, 723)
+scale = Vector2(0.6, 0.6)
+sprite_frames = ExtResource("2_ms8ev")
+autoplay = "default"
+
+[node name="GrassASprite3" type="AnimatedSprite2D" parent="."]
+position = Vector2(696, 439)
+scale = Vector2(0.6, 0.6)
+sprite_frames = ExtResource("2_ms8ev")
+autoplay = "default"
+
+[node name="GrassASprite6" type="AnimatedSprite2D" parent="."]
+position = Vector2(172, 329)
+scale = Vector2(0.6, 0.6)
+sprite_frames = ExtResource("2_ms8ev")
+autoplay = "default"
+
+[node name="GrassASprite4" type="AnimatedSprite2D" parent="."]
+position = Vector2(264, 255)
+scale = Vector2(0.6, 0.6)
+sprite_frames = ExtResource("2_ms8ev")
+autoplay = "default"
+
+[node name="GrassBSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(783, 901)
+scale = Vector2(0.6, 0.6)
+sprite_frames = ExtResource("3_hj3fi")
+autoplay = "default"
+
+[node name="GrassBSprite3" type="AnimatedSprite2D" parent="."]
+position = Vector2(207, 780)
+scale = Vector2(0.6, 0.6)
+sprite_frames = ExtResource("3_hj3fi")
+autoplay = "default"
+
+[node name="GrassBSprite2" type="AnimatedSprite2D" parent="."]
+position = Vector2(445, 505)
+scale = Vector2(0.6, 0.6)
+sprite_frames = ExtResource("3_hj3fi")
+autoplay = "default"
+
+[node name="GrassCSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(687.6, 843.6)
+scale = Vector2(0.6, 0.6)
+sprite_frames = ExtResource("4_gt6l5")
+autoplay = "default"
+
+[node name="GrassCSprite5" type="AnimatedSprite2D" parent="."]
+position = Vector2(774, 171)
+scale = Vector2(0.6, 0.6)
+sprite_frames = ExtResource("4_gt6l5")
+autoplay = "default"
+
+[node name="GrassCSprite4" type="AnimatedSprite2D" parent="."]
+position = Vector2(525, 227)
+scale = Vector2(0.6, 0.6)
+sprite_frames = ExtResource("4_gt6l5")
+autoplay = "default"
+
+[node name="GrassCSprite3" type="AnimatedSprite2D" parent="."]
+position = Vector2(322, 452)
+scale = Vector2(0.6, 0.6)
+sprite_frames = ExtResource("4_gt6l5")
+autoplay = "default"
+
+[node name="GrassCSprite2" type="AnimatedSprite2D" parent="."]
+position = Vector2(884, 512)
+scale = Vector2(0.6, 0.6)
+sprite_frames = ExtResource("4_gt6l5")
+autoplay = "default"
+frame_progress = 0.341453
+
+[node name="BubbleIdleSprite2D" parent="." instance=ExtResource("4_qxmv3")]
+position = Vector2(220, 197)
+
+[node name="BubbleIdleSprite2D2" parent="." instance=ExtResource("4_qxmv3")]
+position = Vector2(466, 355)
+
+[node name="BubbleIdleSprite2D3" parent="." instance=ExtResource("4_qxmv3")]
+position = Vector2(772, 279)
+
+[node name="BubbleIdleSprite2D4" parent="." instance=ExtResource("4_qxmv3")]
+position = Vector2(760, 647)
+
+[node name="BubbleIdleSprite2D5" parent="." instance=ExtResource("4_qxmv3")]
+position = Vector2(206, 448)
+
+[node name="PlayerHoshi" type="CharacterBody2D" parent="."]
+position = Vector2(269, 686)
+script = ExtResource("2_xgue8")
+
+[node name="HoshiRunSprite2D" type="AnimatedSprite2D" parent="PlayerHoshi"]
+position = Vector2(-22.4, -3.40002)
+scale = Vector2(0.3, 0.3)
+sprite_frames = ExtResource("2_uluvg")
+autoplay = "default"
+
+[node name="HoshiFaceCollider" type="CollisionPolygon2D" parent="PlayerHoshi"]
+position = Vector2(0.600006, -22.4)
+scale = Vector2(0.208053, 0.194016)
+polygon = PackedVector2Array(376.667, 80, 193.333, 86.6666, 56.6666, 33.3334, -6.66663, -133.333, 20, -273.333, 176.667, -386.667, 353.333, -390, 490, -283.333, 496.667, -63.3334)
+
+[node name="WorldBoundaryX" type="StaticBody2D" parent="."]
+position = Vector2(-2, -6)
+scale = Vector2(0.949319, 0.9979)
+
+[node name="WallLeft" type="CollisionShape2D" parent="WorldBoundaryX"]
+position = Vector2(-26.3346, 485.019)
+rotation = 1.5708
+scale = Vector2(24.444, -3.34273)
+shape = SubResource("RectangleShape2D_7xiiu")
+
+[node name="WallRight" type="CollisionShape2D" parent="WorldBoundaryX"]
+position = Vector2(1101.84, 498.046)
+rotation = 1.5708
+scale = Vector2(24.444, -3.34273)
+shape = SubResource("RectangleShape2D_7xiiu")
+
+[node name="WorldBoundaryY" type="StaticBody2D" parent="."]
+position = Vector2(-2, -6)
+scale = Vector2(0.949319, 0.9979)
+
+[node name="WallLower" type="CollisionShape2D" parent="WorldBoundaryY"]
+position = Vector2(525.64, 1014.13)
+scale = Vector2(24.444, -3.34273)
+shape = SubResource("RectangleShape2D_7xiiu")
+
+[node name="WallUpper" type="CollisionShape2D" parent="WorldBoundaryY"]
+position = Vector2(529.854, 6.01263)
+scale = Vector2(24.444, -3.34273)
+shape = SubResource("RectangleShape2D_7xiiu")

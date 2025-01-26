@@ -1,11 +1,15 @@
+class_name RunnerMiniGame
 extends BaseMiniGame
 
 @onready var finish_line: AnimatedSprite2D = $FinishLine
 @onready var runner: AnimatedSprite2D = $Runner
 
-const SPEED: int = 180
-const SLOW_SPEED: int = 50
-const FINISH_LINE_X_POS: int = 900
+@export var SPEED: int = 180
+@export var SLOW_SPEED: int = 50
+@export var FINISH_LINE_X_POS: int = 800
+@export var instruction: String = "Run!"
+@export var direction_input: String = "move_right"
+
 
 func move_runner(speed_delta: float) -> void:
 	var old_pos = runner.position
@@ -19,9 +23,9 @@ func move_runner(speed_delta: float) -> void:
 
 func _on_start_preparing_state() -> void:
 	disable_minigame_during_intro_and_outro = false
-	instruction_text = "Run!"
+	instruction_text = instruction
 	finish_line.play("intact")
-	runner.play("lose")
+	runner.play("idle")
 
 ## PLAYING STATE
 
@@ -29,13 +33,15 @@ func _on_start_playing_state() -> void:
 	runner.play("idle")
 
 func _process_playing_state(delta: float) -> void:
-	if(Input.get_action_strength("move_right") > 0 or Input.get_action_strength("fire") > 0):
+	if(Input.get_action_strength(direction_input) > 0 or Input.get_action_strength("fire") > 0):
 		move_runner(SPEED * delta)
 		runner.play("running")
 	else:
 		runner.play("idle")
 		
-	if(runner.position.x > FINISH_LINE_X_POS):
+	if(direction_input == "move_right" and runner.position.x > FINISH_LINE_X_POS):
+		trigger_game_win()
+	if(direction_input == "move_left" and runner.position.x < FINISH_LINE_X_POS):
 		trigger_game_win()
 
 ## WIN STATE

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d3j8eq27ymoq2"
+path="res://.godot/imported/BubbleDog Minigame.wav-7e65caf371c52dd08fc6d889c7bf1ee4.sample"
+
+[deps]
+
+source_file="res://assets/bubble_chomp/grass_sprites/BubbleDog Minigame.wav"
+dest_files=["res://.godot/imported/BubbleDog Minigame.wav-7e65caf371c52dd08fc6d889c7bf1ee4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck26t85ajm2r2"]
+[gd_scene load_steps=6 format=3 uid="uid://c6y3xor1sc83c"]
 
 [ext_resource type="Script" path="res://assets/meteor_minigame/scripts/meteor_mini_game.gd" id="1_xb775"]
 [ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="2_3m15i"]
@@ -131,7 +131,7 @@ scale = Vector2(-3.18054, 4.60115)
 shape = SubResource("RectangleShape2D_y8n48")
 
 [node name="Meteor" parent="." instance=ExtResource("3_13vih")]
-position = Vector2(112, -451)
+position = Vector2(118, -645)
 
 [node name="Meteor2" parent="." instance=ExtResource("3_13vih")]
 position = Vector2(459, 53)
@@ -143,9 +143,16 @@ position = Vector2(887, -181)
 position = Vector2(688, -100)
 
 [node name="Meteor5" parent="." instance=ExtResource("3_13vih")]
-position = Vector2(367, -559)
+position = Vector2(373, -753)
+
+[node name="Meteor6" parent="." instance=ExtResource("3_13vih")]
+position = Vector2(674, -884)
+
+[node name="Meteor7" parent="." instance=ExtResource("3_13vih")]
+position = Vector2(929, -992)
 
 [node name="Gun" parent="." instance=ExtResource("4_x7ttd")]
 position = Vector2(589, 835)
+gun_speed = 600
 
 [connection signal="area_entered" from="Ground/Area2D" to="." method="_on_collision"]

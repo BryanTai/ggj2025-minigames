@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://crccpjflcamy3"
+path="res://.godot/imported/cole wario excellent 1.wav-474a3c3e1d65d910ff79c2d983a5bac3.sample"
+
+[deps]
+
+source_file="res://assets/audio/cole wario excellent 1.wav"
+dest_files=["res://.godot/imported/cole wario excellent 1.wav-474a3c3e1d65d910ff79c2d983a5bac3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

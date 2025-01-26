@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://5p5vpgs12uxv"
+path="res://.godot/imported/suchi bubbleware 1.wav-8d7f877173c880f22dca58bfa083e8ad.sample"
+
+[deps]
+
+source_file="res://assets/audio/bubbleware_voices/suchi bubbleware 1.wav"
+dest_files=["res://.godot/imported/suchi bubbleware 1.wav-8d7f877173c880f22dca58bfa083e8ad.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://cnj71ufnkalds"]
+
+[ext_resource type="Texture2D" uid="uid://gmg83afttt1e" path="res://assets/bubble_chomp/grass_sprites/GrassC_01.png" id="1_kylo0"]
+[ext_resource type="Texture2D" uid="uid://dmwjok6rvduvu" path="res://assets/bubble_chomp/grass_sprites/GrassC_02.png" id="2_gjuqr"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kylo0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gjuqr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]

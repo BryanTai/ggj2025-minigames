@@ -1,9 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://cymx4ud3awath"]
+[gd_scene load_steps=27 format=3 uid="uid://dm7sxw0qqq843"]
 
 [ext_resource type="Script" path="res://assets/runner_minigame/scripts/runner_mini_game.gd" id="1_3qc1h"]
 [ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="2_6vrve"]
 [ext_resource type="Texture2D" uid="uid://b3xfof151s1un" path="res://assets/runner_minigame/RunnerSprites.png" id="3_pb7it"]
 [ext_resource type="Texture2D" uid="uid://csjdsw14v0whg" path="res://assets/runner_minigame/finishline.png" id="3_qyrvt"]
+[ext_resource type="AudioStream" uid="uid://b7bbekqqsmqsr" path="res://assets/runner_minigame/audio/running_game_loop_125BPM.wav" id="5_pfq46"]
+[ext_resource type="AudioStream" uid="uid://bdciq7ombo3hd" path="res://assets/runner_minigame/audio/running_game_loop_135BPM.wav" id="5_slqpg"]
+[ext_resource type="AudioStream" uid="uid://sy2o4yjccaul" path="res://assets/runner_minigame/audio/running_game_loop_145BPM.wav" id="6_8svn6"]
+[ext_resource type="AudioStream" uid="uid://b0ig6iykmfmkl" path="res://assets/runner_minigame/audio/running_game_win.wav" id="6_82bde"]
+[ext_resource type="AudioStream" uid="uid://bbykuvne7bsfv" path="res://assets/runner_minigame/audio/running_game_lose.wav" id="7_skg66"]
 
 [sub_resource type="Theme" id="Theme_3f26n"]
 
@@ -144,6 +149,9 @@ animations = [{
 [node name="RunnerMiniGame" type="Node2D"]
 script = ExtResource("1_3qc1h")
 instruction_text = "Test!"
+minigame_sfx_win = Array[AudioStreamWAV]([ExtResource("6_82bde")])
+minigame_sfx_lose = Array[AudioStreamWAV]([ExtResource("7_skg66")])
+minigame_music = Array[AudioStreamWAV]([ExtResource("5_pfq46"), ExtResource("5_slqpg"), ExtResource("6_8svn6")])
 
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color(2.47873e-06, 0.473586, 0.142933, 1)

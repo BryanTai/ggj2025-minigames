@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bu8ck5ri0iwke"
+path="res://.godot/imported/Bubbleware Collab.wav-98c46b6da3b6daa99772eb9abeda36bb.sample"
+
+[deps]
+
+source_file="res://assets/audio/Bubbleware Collab.wav"
+dest_files=["res://.godot/imported/Bubbleware Collab.wav-98c46b6da3b6daa99772eb9abeda36bb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

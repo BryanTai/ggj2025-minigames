@@ -13,6 +13,9 @@ class_name BaseMiniGame extends Node2D
 ## ([code]FALSE[/code]).
 signal game_finished(is_win: bool)
 
+signal result_jingle(result)	# Pass along a pre-loaded audio jingle asset to play for the result
+signal minigame_music_signal(music)	# Pass along a pre-loaded music asset to play during the minigame
+
 ## These are the numerous states we'll use.
 enum MiniGameState { 
 	PREPARING, ## The state that the minigame first loads in, shows the instructions.
@@ -29,6 +32,19 @@ var current_state: MiniGameState = MiniGameState.PREPARING
 
 ## Set this flag to "false" in your MiniGame if you don't want everything disabled outside of the PLAYING state
 var disable_minigame_during_intro_and_outro = true
+
+## Sounds and music overrides for minigames. 
+# To set your own music, drag and drop your files onto the "BaseMiniGame" script slots of the same names in the INSPECTOR panel
+# You can set your own using these variables, otherise it will use the generic ones
+# The "lose_then_win" is played when a game is lost but then won shortly after. Cuts out any previous result sfx
+@export var minigame_sfx_win: Array[AudioStreamWAV] = [preload("res://assets/audio/win_sfx_1.wav")]
+@export var minigame_sfx_lose: Array[AudioStreamWAV] = [preload("res://assets/audio/lose_sfx_1.wav")]
+@export var minigame_sfx_lose_then_win: Array[AudioStreamWAV] = [preload("res://assets/audio/cole wario you lose you win 1.wav")]
+@export var minigame_music: Array[AudioStreamWAV] = [
+	preload("res://assets/audio/loop_1_125BPM.wav"),
+	preload("res://assets/audio/loop_1_135BPM.wav"),
+	preload("res://assets/audio/loop_1_145BPM.wav")
+]
 
 ## This will automatically be disabled by the mini_game_manager
 var run_testing_mode = true
@@ -100,11 +116,22 @@ func _on_timeout() -> void:
 ## Notifies the Game Manager that the WIN condition has been met.
 func trigger_game_win() -> void:
 	game_finished.emit(true)
+	
+	# Play win jingle
+	# Favor overrides, otherwise use generics
+	var _sound_to_play = null
+	if current_state == MiniGameState.LOSE:	# Game was lost but now we won
+		_sound_to_play = minigame_sfx_lose_then_win.pick_random()
+	else:
+		_sound_to_play = minigame_sfx_win.pick_random()
+	
+	result_jingle.emit(_sound_to_play)
 	set_mini_game_state(MiniGameState.WIN)
 
 ## Notifies the Game Manager that the WIN condition was [b]NOT[/b] met.
 func trigger_game_lose() -> void:
 	game_finished.emit(false)
+	result_jingle.emit(minigame_sfx_lose.pick_random())
 	set_mini_game_state(MiniGameState.LOSE)
 
 # STATE MACHINE FUNCTIONS
@@ -165,7 +192,7 @@ func _on_start_preparing_state() -> void:
 ## contain any special code beyond the default instructions BEFORE the game starts.
 ## [br]
 ## e.g. Kirby crashing into the stage on his shooting star.
-func _process_preparing_state(delta: float) -> void:
+func _process_preparing_state(_delta: float) -> void:
 	pass
 
 ## Called once when the PREPARING state ends. Could be used to trigger some animation
@@ -185,7 +212,7 @@ func _on_start_playing_state() -> void:
 
 ## Called every frame while minigame is in the PLAYING state. This is where the 
 ## meat of the mini-game should be!
-func _process_playing_state(delta: float) -> void:
+func _process_playing_state(_delta: float) -> void:
 	pass
 
 ## Called once when the PLAYING state ends. You could trigger any number of things
@@ -204,7 +231,7 @@ func _on_start_win_state() -> void:
 	pass
 
 ## Called every frame while minigame is in the WIN state.
-func _process_win_state(delta: float) -> void:
+func _process_win_state(_delta: float) -> void:
 	pass
 
 # LOSE STATE
@@ -214,5 +241,5 @@ func _on_start_lose_state() -> void:
 	pass
 
 ## Called every frame while minigame is in the LOSE state.
-func _process_lose_state(delta: float) -> void:
+func _process_lose_state(_delta: float) -> void:
 	pass

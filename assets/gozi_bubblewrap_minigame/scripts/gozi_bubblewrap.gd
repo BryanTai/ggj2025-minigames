@@ -9,30 +9,29 @@
 # i tried really hard to do the randomness thing but i gotta get something out the door. U_U
 
 extends BaseMiniGame
+@onready var cursor: Player2D = $Cursor
 
 func _ready() -> void:
 	instruction_text = "RELAX!" 
-
-func _process(delta: float) -> void:
-	super(delta) ## This line will process the State machine! DO NOT REMOVE
+	disable_minigame_during_intro_and_outro = false # This will allow the music and animations to play in the intro/outro
+	super()
 
 # this sets the poppable bubbles to be whole.
-func _process_preparing_state(delta: float) -> void:
+func _on_start_preparing_state() -> void:
+	cursor.movement_enabled = false
 	$"Bubbles/2/AnimatedSprite2D".animation = "whole1"
-	#$"Bubbles/2/AnimatedSprite2D/Area2D/CollisionShape2D".set_process(true)
 	$"Bubbles/8/AnimatedSprite2D".animation = "whole1"
-	#$"Bubbles/8/CollisionShape2D".disabled = false
 	$"Bubbles/10/AnimatedSprite2D".animation = "whole1"
-	#$"Bubbles/10/CollisionShape2D".disabled = false
 	$"Bubbles/16/AnimatedSprite2D".animation = "whole1"
-	#$"Bubbles/16/CollisionShape2D".disabled = false
 	$"Bubbles/22/AnimatedSprite2D".animation = "whole1"
-	#$"Bubbles/22/CollisionShape2D".disabled = false
+	
+func _on_start_playing_state():
+	cursor.movement_enabled = true
 
 # manually check every frame if all of the bubbles are popped LOLOLOL
 func _process_playing_state(delta: float) -> void:
 	if $"Bubbles/2/AnimatedSprite2D".animation == "popped2" and $"Bubbles/8/AnimatedSprite2D".animation == "popped2" and $"Bubbles/10/AnimatedSprite2D".animation == "popped2" and $"Bubbles/16/AnimatedSprite2D".animation == "popped2" and $"Bubbles/22/AnimatedSprite2D".animation == "popped2":
 		trigger_game_win()
 		
-	
-	
+func _on_end_playing_state():
+	cursor.movement_enabled = false

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1puk4bdx210x"]
+
+[ext_resource type="Texture2D" uid="uid://bv1lorljgkywq" path="res://assets/ball_cup_minigame/cup.png" id="1_1x7kp"]
+
+[node name="Cup" type="Node2D"]
+z_index = 3
+position = Vector2(252, 337)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.609922, 0.609922)
+texture = ExtResource("1_1x7kp")
