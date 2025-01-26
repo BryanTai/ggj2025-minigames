@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhpbfugr3ae8s"]
+[gd_scene load_steps=7 format=3 uid="uid://dwk86165hh4yk"]
 
 [ext_resource type="Script" path="res://assets/captain_soda_minigame/captain_soda_mini_game.gd" id="1_koy0k"]
 [ext_resource type="AudioStream" uid="uid://b2smyw588ed0g" path="res://assets/captain_soda_minigame/BGM_W3C2_Win.wav" id="2_vl0qx"]
@@ -28,6 +28,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_1cesq")
 
 [node name="GunSound" type="AudioStreamPlayer" parent="CaptainSoda"]
+bus = &"SFX"
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -36,7 +37,10 @@ texture = ExtResource("5_1cesq")
 [node name="CaptainSodaMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_puxod")
 autoplay = true
+bus = &"Music"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="EnemyDeath" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

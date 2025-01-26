@@ -258,8 +258,8 @@ func _on_start_playing_state() -> void:
 	#pass
 
 # Called once when the PLAYING state ends (e.g. Win or Lose)
-#func _on_end_playing_state() -> void:
-#	pass
+func _on_end_playing_state() -> void:
+	captain_soda_music.stop()
 
 ## WIN STATE
 
