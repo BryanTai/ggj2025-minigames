@@ -65,6 +65,7 @@ const FILL_RATE: float = 30.0
 const DRAIN_RATE: float = 15.0
 const REQUIRED_FILL_TO_WIN: float = 100.0
 const MILK_MOVE_AMOUNT: float = 300.0
+const BUBBLE_CUTOFF_RATIO: float = 0.7
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -85,12 +86,10 @@ func _process(delta: float) -> void:
 		return
 	
 	if Input.is_action_pressed("fire"):
-		bubbles.emitting = true
 		filled_amount += FILL_RATE * delta
 		if not audio.playing:
 			audio.play(last_audio_position)
 	else:
-		bubbles.emitting = false
 		filled_amount -= DRAIN_RATE * delta
 		if audio.playing:
 			last_audio_position = audio.get_playback_position()
@@ -100,6 +99,9 @@ func _process(delta: float) -> void:
 		filled_amount = 0
 	elif filled_amount >= REQUIRED_FILL_TO_WIN:
 		filled_amount = REQUIRED_FILL_TO_WIN
+	
+	var should_bubbles_emit = Input.is_action_pressed("fire") && filled_amount <= (REQUIRED_FILL_TO_WIN * BUBBLE_CUTOFF_RATIO)
+	bubbles.emitting = should_bubbles_emit
 	
 	var alpha = filled_amount / REQUIRED_FILL_TO_WIN
 	milk.position = milk_initial_pos.lerp(milk_target_pos, alpha)

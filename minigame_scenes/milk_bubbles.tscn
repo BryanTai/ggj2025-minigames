@@ -30,9 +30,12 @@ curve = SubResource("Curve_01fgg")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3x8d2"]
 lifetime_randomness = 0.15
 particle_flag_disable_z = true
-direction = Vector3(0.33, -1, 0)
-spread = 58.352
-initial_velocity_max = 115.6
+emission_shape = 3
+emission_box_extents = Vector3(200, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 9.89
+initial_velocity_min = 61.83
+initial_velocity_max = 145.16
 gravity = Vector3(0, 0, 0)
 scale_max = 2.0
 scale_curve = SubResource("CurveTexture_8bvy8")
@@ -75,11 +78,11 @@ z_index = -5
 material = SubResource("CanvasItemMaterial_cap1f")
 position = Vector2(565, 764)
 emitting = false
-amount = 30
+amount = 40
 process_material = SubResource("ParticleProcessMaterial_3x8d2")
 texture = ExtResource("6_7qwgk")
 lifetime = 1.4
-speed_scale = 2.37
+speed_scale = 1.5
 randomness = 0.05
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
