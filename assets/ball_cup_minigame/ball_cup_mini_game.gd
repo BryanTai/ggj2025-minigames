@@ -15,7 +15,7 @@ var cup_positions: Array[Vector2]
 var hand_positions: Array[Vector2]
 
 var ball_index: int
-var hand_index: int
+var hand_index: int = 0
 
 var swaps_made: int
 @export var total_swaps: int = 5
