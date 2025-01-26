@@ -228,13 +228,16 @@ func set_manager_state(new_state: ManagerStates) -> void:
 		ManagerStates.PLAYING:
 			start_current_mini_game()
 		ManagerStates.ENDING:
-			animation_player.play(ANIM_END)
+			if(lives > 0):
+				animation_player.play(ANIM_END)
+			else:
+				end_the_game()
+	
 
 func play_transition_sprites(show_good: bool) -> void:
 	transition_animated_sprite.visible = true
 	if(show_good):
 		transition_animated_sprite.play("bubs_yeah")
-		# TODO: show wins here
 		# Need to check if the lose>win jingle is playing, and it to play rather than the transition on top of it
 		audio_transition.stream = audio_transition_win.pick_random()
 		audio_transition.play()
@@ -276,8 +279,10 @@ func _on_mini_game_finished(is_win: bool) -> void:
 func lose_life() -> void:
 	lives -= 1
 	overlay_mini_game.remove_a_life()
-	if lives <= 0:
-		print("GAME OVER!")
+
+## All lives lost, create the new GameOver scene
+func end_the_game() -> void:
+	get_tree().change_scene_to_file("res://game_manager/game_over_screen.tscn")
 
 # Plays a jingle when a game ends
 func _on_jingle_result (jingle) -> void:
@@ -290,8 +295,6 @@ func _on_jingle_result (jingle) -> void:
 	if jingle != null:
 		audio_mini_game_result.stream = jingle
 		audio_mini_game_result.play()
-	
-	pass
 
 func play_music(music) -> void:
 	
@@ -299,5 +302,3 @@ func play_music(music) -> void:
 		audio_mini_game_music.stop()
 		audio_mini_game_music.stream = music
 		audio_mini_game_music.play()
-	
-	pass
