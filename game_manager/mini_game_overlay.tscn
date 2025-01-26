@@ -123,6 +123,7 @@ offset_bottom = 135.0
 texture = ExtResource("8_xajih")
 
 [node name="Bubble2" type="TextureRect" parent="TimerLabel/TimerBubbles"]
+layout_mode = 0
 offset_left = 142.5
 offset_top = 65.0
 offset_right = 212.5
@@ -130,6 +131,7 @@ offset_bottom = 135.0
 texture = ExtResource("8_xajih")
 
 [node name="Bubble3" type="TextureRect" parent="TimerLabel/TimerBubbles"]
+layout_mode = 0
 offset_left = 6.5
 offset_top = 65.0
 offset_right = 76.5
@@ -137,6 +139,7 @@ offset_bottom = 135.0
 texture = ExtResource("8_xajih")
 
 [node name="Bubble4" type="TextureRect" parent="TimerLabel/TimerBubbles"]
+layout_mode = 0
 offset_left = -127.5
 offset_top = 65.0
 offset_right = -57.5
