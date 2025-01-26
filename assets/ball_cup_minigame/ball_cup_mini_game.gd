@@ -27,6 +27,7 @@ func _ready() -> void:
 	init_positions()
 	super()
 	set_ball_position(1)
+	set_hand_position(1)
 
 func _on_start_playing_state():
 	animation_player.play("intro")
