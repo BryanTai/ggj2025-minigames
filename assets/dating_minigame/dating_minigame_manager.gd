@@ -11,10 +11,10 @@ extends BaseMiniGame
 @onready var audio_win				= $AudioWin
 @onready var audio_lose				= $AudioLose
 
-@onready var minigame_sound_win 	= preload("res://assets/dating_minigame/KAWAII DESU.wav")
-@onready var minigame_sound_lose 	= preload("res://assets/dating_minigame/NOT KAWAII DESU.wav")
-@onready var minigame_music			= null
-@onready var minigame_sound_lose_then_win = null
+#@onready var minigame_sound_win 	= preload("res://assets/dating_minigame/KAWAII DESU.wav")
+#@onready var minigame_sound_lose 	= preload("res://assets/dating_minigame/NOT KAWAII DESU.wav")
+#@onready var minigame_music			= null
+#@onready var minigame_sound_lose_then_win = null
 
 var rng = RandomNumberGenerator.new()
 var rotation_direction = [1, -1].pick_random()

@@ -13,6 +13,9 @@ class_name BaseMiniGame extends Node2D
 ## ([code]FALSE[/code]).
 signal game_finished(is_win: bool)
 
+signal result_jingle(result)	# Pass along a pre-loaded audio jingle asset to play for the result
+signal minigame_music_signal(music)	# Pass along a pre-loaded music asset to play during the minigame
+
 ## These are the numerous states we'll use.
 enum MiniGameState { 
 	PREPARING, ## The state that the minigame first loads in, shows the instructions.
@@ -30,6 +33,19 @@ var current_state: MiniGameState = MiniGameState.PREPARING
 ## Set this flag to "false" in your MiniGame if you don't want everything disabled outside of the PLAYING state
 var disable_minigame_during_intro_and_outro = true
 
+## Sounds and music overrides for minigames. 
+# You can set your own using these variables, otherise it will use the generic ones
+# The "lose_then_win" is played when a game is lost but then won shortly after. Cuts out any previous result sfx
+@onready var minigame_sfx_win 				= preload("res://assets/audio/win_sfx_1.wav")
+@onready var minigame_sfx_lose 				= preload("res://assets/audio/lose_sfx_1.wav")
+@onready var minigame_sfx_lose_then_win 	= preload("res://assets/audio/cole wario you lose you win 1.wav")
+
+@onready var minigame_music 				= [
+	preload("res://assets/audio/loop_1_125BPM.wav"),
+	preload("res://assets/audio/loop_1_135BPM.wav"),
+	preload("res://assets/audio/loop_1_145BPM.wav")
+].pick_random()
+
 ## This will automatically be disabled by the mini_game_manager
 var run_testing_mode = true
 var test_label : Label
@@ -40,6 +56,7 @@ var test_playing_timer : Timer
 func _ready() -> void:
 	_on_start_preparing_state()
 	start_test_intro_timer()
+	minigame_music_signal.emit(minigame_music)
 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -100,11 +117,22 @@ func _on_timeout() -> void:
 ## Notifies the Game Manager that the WIN condition has been met.
 func trigger_game_win() -> void:
 	game_finished.emit(true)
+	
+	# Play win jingle
+	# Favor overrides, otherwise use generics
+	var _sound_to_play = null
+	if current_state == MiniGameState.LOSE:	# Game was lost but now we won
+		_sound_to_play = minigame_sfx_lose_then_win
+	else:
+		_sound_to_play = minigame_sfx_win
+	
+	result_jingle.emit(_sound_to_play)
 	set_mini_game_state(MiniGameState.WIN)
 
 ## Notifies the Game Manager that the WIN condition was [b]NOT[/b] met.
 func trigger_game_lose() -> void:
 	game_finished.emit(false)
+	result_jingle.emit(minigame_sfx_lose)
 	set_mini_game_state(MiniGameState.LOSE)
 
 # STATE MACHINE FUNCTIONS

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bbb75bv7gk3br"
+path="res://.godot/imported/cole wario 2.wav-3bc172adf84b278f8c3493e9e225d09e.sample"
+
+[deps]
+
+source_file="res://assets/audio/bubbleware_voices/cole wario 2.wav"
+dest_files=["res://.godot/imported/cole wario 2.wav-3bc172adf84b278f8c3493e9e225d09e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

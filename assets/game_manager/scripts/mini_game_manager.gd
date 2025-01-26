@@ -4,6 +4,7 @@ extends Node2D
 const TIME_LIMIT: float = 5.0
 const PREPARE_TIME: float = 1.0
 const MINI_GAME_FOLDER_PATH: String = "res://minigame_scenes/"
+const BUBBLEWARE_VOICE_CLIPS_PATH: String = "res://assets/audio/bubbleware_voices/"
 
 const ANIM_INTRO = "intro_manager"
 const ANIM_TRANSITION = "bubs_yeah"
@@ -31,6 +32,27 @@ var current_manager_state: ManagerStates = ManagerStates.INTRO
 @onready var instruction_label: Label = $MiniGameOverlay/InstructionBanner/InstructionLabel
 @onready var instruction_banner: Control = $MiniGameOverlay/InstructionBanner
 
+## Sounds and music
+@onready var audio_mini_game_result: 	AudioStreamPlayer = $Audio_MiniGameResult
+@onready var audio_mini_game_music: 	AudioStreamPlayer = $Audio_MiniGameMusic
+@onready var audio_bubbleware: 			AudioStreamPlayer = $Audio_Bubbleware
+@onready var audio_transition: 			AudioStreamPlayer = $Audio_Transition
+
+# List of win/lost transition sounds
+var audio_transition_win = [
+	preload("res://assets/audio/cole wario excellent 1.wav"),
+	preload("res://assets/audio/cole wario win 1.wav")
+]
+var audio_transition_lose = [
+	preload("res://assets/audio/cole thwomp 1.wav"),
+	preload("res://assets/audio/cole wario lose 1.wav"),
+	preload("res://assets/audio/cole wario lose 2.wav")
+]
+
+# All bubble clips, pulled directly from the folder
+var audio_bubbleware_list: Array
+
+
 var rng = RandomNumberGenerator.new()
 
 var current_mini_game: BaseMiniGame
@@ -55,6 +77,17 @@ func cache_all_mini_game_names() -> void:
 		#	print(str)
 	else:
 		print("ERROR: Cannot find MiniGame folder!")
+
+func cache_all_bubbleware_clips() -> void:
+	
+	var dir = DirAccess.open(BUBBLEWARE_VOICE_CLIPS_PATH)
+	if dir:
+		audio_bubbleware_list = Array(dir.get_files())
+		print("Bubbleare voice clips: ")
+		print(audio_bubbleware_list)
+	else:
+		print("ERROR: Cannot find Bubbleare voices folder!")
+	
 
 # Filters out any non-scene files from the Minigames folder
 func filter_mini_game_names(names: PackedStringArray) -> PackedStringArray:
@@ -81,6 +114,7 @@ func _ready() -> void:
 	instruction_banner.visible = false
 	transition_animated_sprite.visible = false
 	cache_all_mini_game_names()
+	cache_all_bubbleware_clips()
 	animation_player.play(ANIM_INTRO) # Start the Intro
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -106,6 +140,7 @@ func pick_next_mini_game_name() -> String:
 func load_next_mini_game() -> void:
 	if(current_mini_game != null):
 		current_mini_game.queue_free() # Delete the previous minigame
+		audio_mini_game_music.stop()
 	
 	var filepath = MINI_GAME_FOLDER_PATH + pick_next_mini_game_name()
 	current_mini_game_resource = load(filepath)
@@ -116,6 +151,8 @@ func create_next_mini_game() -> void:
 	current_mini_game.run_testing_mode = false
 	add_child(current_mini_game)
 	current_mini_game.game_finished.connect(_on_mini_game_finished)
+	current_mini_game.result_jingle.connect(_on_jingle_result)
+	current_mini_game.minigame_music_signal.connect(_on_music)
 	instruction_label.text = current_mini_game.instruction_text
 
 ## Gives control to the Player
@@ -146,6 +183,10 @@ func set_manager_state(new_state: ManagerStates) -> void:
 			create_next_mini_game()
 			overlay_mini_game.visible = true
 			animation_player.play(ANIM_INSTRUCTION)
+			
+			# Play bubbleware voice clip
+			audio_bubbleware.stream = load(BUBBLEWARE_VOICE_CLIPS_PATH + audio_bubbleware_list.pick_random())
+			audio_bubbleware.play()
 		ManagerStates.PLAYING:
 			start_current_mini_game()
 		ManagerStates.ENDING:
@@ -155,8 +196,14 @@ func play_transition_sprites(show_good: bool) -> void:
 	transition_animated_sprite.visible = true
 	if(show_good):
 		transition_animated_sprite.play("bubs_yeah")
+		
+		# Need to check if the lose>win jingle is playing, and it to play rather than the transition on top of it
+		audio_transition.stream = audio_transition_win.pick_random()
+		audio_transition.play()
 	else:
 		transition_animated_sprite.play("bubs_no")
+		audio_transition.stream = audio_transition_lose.pick_random()
+		audio_transition.play()
 
 func _on_animation_player_finished(anim_name: StringName) -> void:
 	## On End State
@@ -184,3 +231,25 @@ func _on_mini_game_finished(is_win: bool) -> void:
 	else:
 		instruction_label.text = "LOSER!"
 	set_manager_state(ManagerStates.ENDING)
+
+# Plays a jingle when a game ends
+func _on_jingle_result (jingle) -> void:
+	
+	# Cancel any currently playing result
+	audio_mini_game_result.stop()
+	
+	# Play jingle on result
+	if jingle != null:
+		audio_mini_game_result.stream = jingle
+		audio_mini_game_result.play()
+	
+	pass
+
+func _on_music(music) -> void:
+	
+	if music != null:
+		audio_mini_game_music.stop()
+		audio_mini_game_music.stream = music
+		audio_mini_game_music.play()
+	
+	pass
