@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmffnu67ake3r"
-path="res://.godot/imported/hand.png-0ad4f3ff01375e7707b2cdf6f5a25e65.ctex"
+path="res://.godot/imported/hand.png-34e09afa554cb1716c9d2a288f01bfb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/heist_bubbles/hand.png"
-dest_files=["res://.godot/imported/hand.png-0ad4f3ff01375e7707b2cdf6f5a25e65.ctex"]
+source_file="res://assets/heist_bubble_minigame/hand.png"
+dest_files=["res://.godot/imported/hand.png-34e09afa554cb1716c9d2a288f01bfb5.ctex"]
 
 [params]
 
