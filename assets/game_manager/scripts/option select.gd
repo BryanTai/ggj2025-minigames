@@ -1,10 +1,12 @@
 extends Area2D
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-
+@onready var animated_sprite_2d = $AnimatedSprite2D
 var is_hovering = false
 
-@onready var animated_sprite_2d = $AnimatedSprite2D
+signal play_button_pressed
+
+var already_pressed = false
 
 func _on_body_entered(body: Node2D) -> void:
 	is_hovering = true
@@ -12,12 +14,13 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_body_exited(body: Node2D) -> void:
 	is_hovering = false
 
-
 func _process(_delta:float):
 #Animate the Button
-	if (is_hovering==true and Input.is_action_pressed("fire")):
+	if (not already_pressed and is_hovering==true and Input.is_action_pressed("fire")):
 		animated_sprite_2d.animation=("click")
+		play_button_pressed.emit()
 		print ("click! bubbleware")
+		already_pressed = true
 	elif is_hovering == true:
 		animated_sprite_2d.animation=("hover")
 	else:
