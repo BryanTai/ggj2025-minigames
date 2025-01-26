@@ -61,6 +61,7 @@ var current_mini_game_resource: Resource # Next minigames are loaded during the 
 
 var all_mini_game_names: PackedStringArray
 var all_mini_game_count: int
+var unplayed_mini_game_indexes: Array
 
 var lives: int
 
@@ -76,6 +77,8 @@ func cache_all_mini_game_names() -> void:
 	if dir:
 		all_mini_game_names = filter_mini_game_names(dir.get_files())
 		all_mini_game_count = all_mini_game_names.size()
+		unplayed_mini_game_indexes = range(all_mini_game_count)
+		unplayed_mini_game_indexes.shuffle()
 		#for str in all_mini_game_names:
 		#	print(str)
 	else:
@@ -144,13 +147,14 @@ func set_timer_text(time_text: String) -> void:
 	timer_label.text = "TIME: " + time_text 
 
 func pick_next_mini_game_name() -> String:
-	#TODO Once we have more minigames, create a buffer Queue to reduce chances of repeats
-	var next_index = rng.randi_range(0, all_mini_game_count - 1)
+	if(unplayed_mini_game_indexes.is_empty()):
+		unplayed_mini_game_indexes = range(all_mini_game_count)
+		unplayed_mini_game_indexes.shuffle()
+	
+	var next_index = unplayed_mini_game_indexes.pop_back()
+	#var next_index = rng.randi_range(0, all_mini_game_count - 1)
 	return all_mini_game_names[next_index]
-	#if(next_index % 2 == 1):
-		#return "runner_mini_game.tscn"
-	#else:
-	#	return "moonwalk_mini_game.tscn"
+
 ## Loads up the next randomly picked minigame in the background
 func load_next_mini_game() -> void:
 	if(current_mini_game != null):
