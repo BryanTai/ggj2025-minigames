@@ -53,18 +53,37 @@
 
 extends BaseMiniGame
 
-
+# Instantiate
 var rng = RandomNumberGenerator.new()
-
-var EnemyPrefab = preload("res://assets/captain_soda_minigame/CaptainSoda_Enemy.tscn")
-
-# Nodes
-@onready var captain_soda: Node2D = $CaptainSoda
-@onready var captain_soda_music: AudioStreamPlayer = $CaptainSodaMusic
-
 
 # Parameters
 var rotation_lerp_speed = 0.05
+var gun_sound_list = [
+	preload("res://assets/captain_soda_minigame/sfx bubble pop 1.wav"),
+	preload("res://assets/captain_soda_minigame/sfx bubble pop 2.wav"),
+	preload("res://assets/captain_soda_minigame/sfx bubble pop 3.wav"),
+	preload("res://assets/captain_soda_minigame/sfx bubble pop 4.wav"),
+	preload("res://assets/captain_soda_minigame/sfx bubble pop 5.wav")
+]
+var enemies_to_spawn = randi_range(3, 7)
+var enemy_death_sounds = [
+	preload("res://assets/captain_soda_minigame/sfx enemy bomb 2.wav"),
+	preload("res://assets/captain_soda_minigame/sfx enemy die 1.wav")
+]
+
+# Object assets
+var obj_Enemy 	= preload("res://assets/captain_soda_minigame/CaptainSoda_Enemy.tscn")
+var obj_bullet 	= preload("res://assets/captain_soda_minigame/CaptainSoda_Bullet.tscn")
+
+# Nodes
+@onready var captain_soda: Node2D 					= $CaptainSoda
+@onready var gun_sound: AudioStreamPlayer 			= $CaptainSoda/GunSound
+@onready var captain_soda_music: AudioStreamPlayer 	= $CaptainSodaMusic
+@onready var projectiles: Node2D 					= $Projectiles
+@onready var enemies: Node2D = $Enemies
+@onready var enemy_death: AudioStreamPlayer = $EnemyDeath
+
+
 
 var _mouse_target_pos = null
 func _input(event):
@@ -81,9 +100,16 @@ func _ready() -> void:
 	super() ## Do not remove this super() call!
 	## Put any logic you'd like to happen at the beginning of your minigame here!
 	
+	
 	# Randomize music track start position
-	var _track_length = captain_soda_music.stream.get_length()
-	captain_soda_music.seek(_track_length * randf())
+	# Randomly choose either to play the music or the game intro
+	if rng.randf() <= 0.75:
+		var _track_length = captain_soda_music.stream.get_length()
+		captain_soda_music.seek(_track_length * randf())
+	else:
+		captain_soda_music.stream = load("res://assets/captain_soda_minigame/Captain_Soda_-_TItle_Screen_-_v1.2_DEMO_legal_sfx.wav")
+		captain_soda_music.play()
+		pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -95,11 +121,10 @@ func _process(delta: float) -> void:
 	# Input
 	# Rotate current angle X degrees to target position
 	
-	var direction := Vector2(Input.get_axis("move_left", "move_right"), 0.0)
-	
 	# Move cursor around
 	# Favor keyboard over mouse
 	var _target_angle = null
+	var direction := Vector2(Input.get_axis("move_left", "move_right"), 0.0)
 	if direction:
 		_mouse_target_pos = null
 		#print("keyboard direction: " + str(direction))
@@ -110,10 +135,6 @@ func _process(delta: float) -> void:
 		#print("Mouse angle: " + str(_target_angle))
 		pass
 		
-	
-	
-	# Move cursor
-	
 	
 	
 	
@@ -136,10 +157,37 @@ func _process(delta: float) -> void:
 		else:
 			captain_soda.scale.y = 1
 	
-	# shoot bubbles on press
 	
+	
+	# shoot bubbles on press
+	if Input.is_action_just_pressed("fire"):
+		var _bullet = obj_bullet.instantiate()
+		projectiles.add_child(_bullet)
+		_bullet.global_position = captain_soda.get_node("Sprite2D").global_position
+		_bullet.move_angle = captain_soda.rotation
+		gun_sound.stream = gun_sound_list.pick_random()
+		gun_sound.play()
+		pass
 	
 
+
+func on_enemy_dead(enemy_name):
+	
+	# Play sound
+	print("Enemy diead. Enemy name: " + enemy_name)
+	
+	if enemy_name == "Bomb":
+		enemy_death.stream = enemy_death_sounds[0]
+	else:
+		enemy_death.stream = enemy_death_sounds[1]
+	enemy_death.play()
+	
+	# Check if all enemies are dead
+	print("Remaining enemies: " + str(enemies.get_child_count()))
+	if enemies.get_child_count() == 0:
+		trigger_game_win()
+	
+	pass
 
 # A signal from the MiniGameManager that time has run out
 ## TODO: Override this function if your MiniGame checks the win condition on TimeOut
@@ -173,6 +221,35 @@ func _process(delta: float) -> void:
 func _on_start_playing_state() -> void:
 	
 	# Spawn a random amount of enemies on random positions
+	print("Spawning " + str(enemies_to_spawn) + " enemies")
+	for enemy_index in enemies_to_spawn:
+		
+		# Spawn enemy
+		var _enemy = obj_Enemy.instantiate()
+		enemies.add_child(_enemy)
+		_enemy.connect("enemy_died", on_enemy_dead)
+		
+		# Position enemy in room
+		# Make sure they're at least a distance away from the player
+		var _min_spawn_distance = 150
+		var _spawn_position = null
+		while _spawn_position == null:
+			
+			var _new_spawn_pos = Vector2(randf_range(100, 900), randf_range(100, 900))
+			var _distance_to_player = _new_spawn_pos.distance_to(captain_soda.global_position)
+			#print("Enemy check spawn pos: " + str(_new_spawn_pos) + ", distance to player: " + str(_distance_to_player))
+			
+			if _distance_to_player >= _min_spawn_distance:
+				_spawn_position = _new_spawn_pos
+			pass
+		
+		_enemy.global_position = _spawn_position
+		
+		
+		
+		
+		
+		pass
 	
 	pass
 

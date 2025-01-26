@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://xf5rwo211lx4"
+path="res://.godot/imported/Gibbtall BubbleWare01.wav-0d6678e84394246a9056716751c36e91.sample"
+
+[deps]
+
+source_file="res://assets/audio/bubbleware_voices/Gibbtall BubbleWare01.wav"
+dest_files=["res://.godot/imported/Gibbtall BubbleWare01.wav-0d6678e84394246a9056716751c36e91.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

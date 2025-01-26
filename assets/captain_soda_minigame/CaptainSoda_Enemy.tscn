@@ -1,3 +1,51 @@
-[gd_scene format=3 uid="uid://t5tdkeemkis7"]
+[gd_scene load_steps=7 format=3 uid="uid://t5tdkeemkis7"]
+
+[ext_resource type="Script" path="res://assets/captain_soda_minigame/captain_soda_enemy.gd" id="1_qyxwj"]
+[ext_resource type="Texture2D" uid="uid://bj7layvc0almf" path="res://assets/captain_soda_minigame/Ghost.png" id="2_j44ff"]
+[ext_resource type="Texture2D" uid="uid://b5o68uas5vaa5" path="res://assets/captain_soda_minigame/Bomb.png" id="3_1o5du"]
+[ext_resource type="Texture2D" uid="uid://dpdahuhlbw5bn" path="res://assets/captain_soda_minigame/Mother.png" id="4_5vjbo"]
+[ext_resource type="Texture2D" uid="uid://vqypn14qppk0" path="res://assets/captain_soda_minigame/Spinner.png" id="5_5mk1h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2m0q3"]
+radius = 122.016
 
 [node name="CaptainSodaEnemy" type="Node2D"]
+position = Vector2(436, 325)
+script = ExtResource("1_qyxwj")
+
+[node name="Ghost" type="Node2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+
+[node name="Ghost" type="Sprite2D" parent="Ghost"]
+position = Vector2(0, -18)
+texture = ExtResource("2_j44ff")
+
+[node name="Bomb" type="Node2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+
+[node name="Bomb" type="Sprite2D" parent="Bomb"]
+texture = ExtResource("3_1o5du")
+
+[node name="Mother" type="Node2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+
+[node name="Mother" type="Sprite2D" parent="Mother"]
+scale = Vector2(1.46, 1.46)
+texture = ExtResource("4_5vjbo")
+
+[node name="Spinner" type="Node2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+
+[node name="Spinner" type="Sprite2D" parent="Spinner"]
+scale = Vector2(1.19, 1.19)
+texture = ExtResource("5_5mk1h")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2m0q3")

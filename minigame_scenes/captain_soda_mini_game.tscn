@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhpbfugr3ae8s"]
+
+[ext_resource type="Script" path="res://assets/captain_soda_minigame/captain_soda_mini_game.gd" id="1_koy0k"]
+[ext_resource type="AudioStream" uid="uid://b2smyw588ed0g" path="res://assets/captain_soda_minigame/BGM_W3C2_Win.wav" id="2_vl0qx"]
+[ext_resource type="AudioStream" uid="uid://dfpgpus1bqgfw" path="res://assets/captain_soda_minigame/Game_Over.wav" id="3_itkc1"]
+[ext_resource type="Texture2D" uid="uid://eae7oys7ctxc" path="res://assets/captain_soda_minigame/CaptainSoda_2024-04-02_12-32-41.png" id="4_jf50j"]
+[ext_resource type="Texture2D" uid="uid://bg0pw8it5k0bx" path="res://assets/captain_soda_minigame/Bubble-Gun.png" id="5_1cesq"]
+[ext_resource type="AudioStream" uid="uid://ck7ujxhwmeqoh" path="res://assets/captain_soda_minigame/BGM_W3C1.wav" id="6_puxod"]
+
+[node name="Captain_Soda_minigame" type="Node2D"]
+script = ExtResource("1_koy0k")
+minigame_sfx_win = Array[AudioStreamWAV]([ExtResource("2_vl0qx")])
+minigame_sfx_lose = Array[AudioStreamWAV]([ExtResource("3_itkc1")])
+minigame_music = Array[AudioStreamWAV]([])
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Environment"]
+position = Vector2(560, 504)
+texture = ExtResource("4_jf50j")
+
+[node name="CaptainSoda" type="Node2D" parent="."]
+position = Vector2(566, 706)
+
+[node name="Sprite2D" type="Sprite2D" parent="CaptainSoda"]
+position = Vector2(90, -8)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_1cesq")
+
+[node name="GunSound" type="AudioStreamPlayer" parent="CaptainSoda"]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="CaptainSodaMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_puxod")
+autoplay = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="EnemyDeath" type="AudioStreamPlayer" parent="."]
