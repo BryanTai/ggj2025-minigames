@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://jlpcu5o2nwbp"
+path="res://.godot/imported/sfx bubble pop 4.wav-3fdb3b736b4158bf3c7cc4eab79ca011.sample"
+
+[deps]
+
+source_file="res://assets/captain_soda_minigame/sfx bubble pop 4.wav"
+dest_files=["res://.godot/imported/sfx bubble pop 4.wav-3fdb3b736b4158bf3c7cc4eab79ca011.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

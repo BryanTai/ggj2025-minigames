@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://j3athb1c2j6r"
+path="res://.godot/imported/sfx player die 1.wav-0a22ef3303f321e12e8a473a59fa41b6.sample"
+
+[deps]
+
+source_file="res://assets/captain_soda_minigame/sfx player die 1.wav"
+dest_files=["res://.godot/imported/sfx player die 1.wav-0a22ef3303f321e12e8a473a59fa41b6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
