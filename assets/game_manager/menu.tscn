@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dli3m33ylt1gw"]
+[gd_scene load_steps=26 format=3 uid="uid://dli3m33ylt1gw"]
 
 [ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="1_jp5rh"]
 [ext_resource type="Script" path="res://assets/game_manager/menucursor.gd" id="2_55bup"]
@@ -14,8 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://wnkcqc86as6x" path="res://assets/game_manager/Sprites/w.png" id="12_es2ye"]
 [ext_resource type="Texture2D" uid="uid://c1o0w3j6vdxtx" path="res://assets/game_manager/Sprites/a.png" id="13_4yibl"]
 [ext_resource type="Texture2D" uid="uid://bcqoraqhttwnj" path="res://assets/game_manager/Sprites/r.png" id="14_7wglg"]
-[ext_resource type="AudioStream" uid="uid://cjeerfls55rf7" path="res://assets/audio/bubbleware_voices/Bubbleware Collab.mp3" id="15_boc6j"]
-[ext_resource type="Script" path="res://assets/game_manager/Scripts/audio_stream_player_2d.gd" id="16_cqhiq"]
+[ext_resource type="AudioStream" uid="uid://bu8ck5ri0iwke" path="res://assets/audio/Bubbleware Collab.wav" id="15_boc6j"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4nta3"]
 animations = [{
@@ -202,10 +201,9 @@ shape = SubResource("WorldBoundaryShape2D_0pcj8")
 position = Vector2(1010, 491)
 shape = SubResource("WorldBoundaryShape2D_wax61")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_boc6j")
-volume_db = 5.0
-script = ExtResource("16_cqhiq")
+autoplay = true
 
 [connection signal="area_entered" from="Play Button" to="Play Button" method="_on_area_entered"]
 [connection signal="area_exited" from="Play Button" to="Play Button" method="_on_area_exited"]
