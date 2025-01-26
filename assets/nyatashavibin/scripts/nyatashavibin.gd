@@ -59,7 +59,6 @@ extends BaseMiniGame
 func _ready() -> void:
 	instruction_text = "Block bad vibes" # This text will display during the PREPARING phase
 	super() ## Do not remove this super() call!
-	disable_minigame_during_intro_and_outro = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
