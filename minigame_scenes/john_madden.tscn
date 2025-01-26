@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://kbwn2tk0b8dh"]
+[gd_scene load_steps=16 format=3 uid="uid://btdti77ug0b7n"]
 
 [ext_resource type="Script" path="res://assets/spaceman-football/john_madden.gd" id="1_knw8r"]
 [ext_resource type="Texture2D" uid="uid://bjqq1w0y6u53k" path="res://assets/spaceman-football/Assets/Blank.png" id="2_24p4v"]
