@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cn0wt4jrg07mq"
+path="res://.godot/imported/Ben Bubbleware Clean.mp3-1a95406efa33e87d135171c1cfea2717.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/bubbleware_voices/Ben Bubbleware Clean.mp3"
+dest_files=["res://.godot/imported/Ben Bubbleware Clean.mp3-1a95406efa33e87d135171c1cfea2717.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
