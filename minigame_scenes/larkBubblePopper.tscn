@@ -32,3 +32,5 @@ wait_time = 0.75
 autostart = true
 
 [connection signal="timeout" from="BubbleSpawnCountdown" to="." method="_on_bubble_spawn_countdown_timeout"]
+
+[editable path="Player2D"]
