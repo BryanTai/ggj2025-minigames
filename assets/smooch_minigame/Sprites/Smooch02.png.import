@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcqoraqhttwnj"
-path="res://.godot/imported/r.png-227f60c5b6d214c89bcd7fdf4972e14e.ctex"
+uid="uid://dx2m6vb24seb2"
+path="res://.godot/imported/Smooch02.png-cb1ad84f2731304b4667d2bdf3e83733.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game_manager/r.png"
-dest_files=["res://.godot/imported/r.png-227f60c5b6d214c89bcd7fdf4972e14e.ctex"]
+source_file="res://assets/smooch_minigame/Sprites/Smooch02.png"
+dest_files=["res://.godot/imported/Smooch02.png-cb1ad84f2731304b4667d2bdf3e83733.ctex"]
 
 [params]
 

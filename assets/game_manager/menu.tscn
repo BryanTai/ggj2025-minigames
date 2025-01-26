@@ -1,44 +1,21 @@
-[gd_scene load_steps=17 format=3 uid="uid://dli3m33ylt1gw"]
+[gd_scene load_steps=27 format=3 uid="uid://dli3m33ylt1gw"]
 
 [ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="1_jp5rh"]
-[ext_resource type="PackedScene" uid="uid://dki2osks6amsv" path="res://assets/gozi_bubblewrap_minigame/scenes/gozi_cursor.tscn" id="2_3diy3"]
 [ext_resource type="Script" path="res://assets/game_manager/menucursor.gd" id="2_55bup"]
 [ext_resource type="Texture2D" uid="uid://cqdp5x2dgb40t" path="res://assets/game_manager/animations/gozi_cursor.png" id="3_kquf5"]
 [ext_resource type="Script" path="res://assets/game_manager/scripts/option select.gd" id="3_ojbqg"]
 [ext_resource type="Texture2D" uid="uid://dr5iej3pi8agr" path="res://assets/game_manager/start-button-normal.png" id="3_uj565"]
 [ext_resource type="Texture2D" uid="uid://b68rifcdey8yi" path="res://assets/game_manager/start-button-press.png" id="4_g0bll"]
 [ext_resource type="Texture2D" uid="uid://dedx3gx80j45h" path="res://assets/game_manager/start-button-mouseover.png" id="6_qrwpx"]
-[ext_resource type="Texture2D" uid="uid://cikk8qxs5fdfm" path="res://assets/game_manager/b.png" id="7_38itm"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_diiml"]
-atlas = ExtResource("3_kquf5")
-region = Rect2(300, 0, 300, 300)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0kvjb"]
-atlas = ExtResource("3_kquf5")
-region = Rect2(0, 0, 300, 300)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_37y6f"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_diiml")
-}],
-"loop": true,
-"name": &"click",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0kvjb")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5i8d4"]
-radius = 58.0775
+[ext_resource type="PackedScene" uid="uid://ced8tygwinyqc" path="res://assets/game_manager/Scenes/Letter.tscn" id="8_14nmo"]
+[ext_resource type="Texture2D" uid="uid://blme74t6bc3kk" path="res://assets/game_manager/Sprites/u.png" id="9_sopr6"]
+[ext_resource type="Texture2D" uid="uid://dqne0aqvdhu7u" path="res://assets/game_manager/Sprites/l.png" id="10_dekan"]
+[ext_resource type="Texture2D" uid="uid://dotygla8rgkvg" path="res://assets/game_manager/Sprites/e.png" id="11_m1pta"]
+[ext_resource type="Texture2D" uid="uid://wnkcqc86as6x" path="res://assets/game_manager/Sprites/w.png" id="12_es2ye"]
+[ext_resource type="Texture2D" uid="uid://c1o0w3j6vdxtx" path="res://assets/game_manager/Sprites/a.png" id="13_4yibl"]
+[ext_resource type="Texture2D" uid="uid://bcqoraqhttwnj" path="res://assets/game_manager/Sprites/r.png" id="14_7wglg"]
+[ext_resource type="AudioStream" uid="uid://cjeerfls55rf7" path="res://assets/audio/bubbleware_voices/Bubbleware Collab.mp3" id="15_boc6j"]
+[ext_resource type="Script" path="res://assets/game_manager/Scripts/audio_stream_player_2d.gd" id="16_cqhiq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4nta3"]
 animations = [{
@@ -70,8 +47,46 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6bisf"]
 size = Vector2(160.682, 161.216)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1fsj3"]
-radius = 54.1479
+[sub_resource type="AtlasTexture" id="AtlasTexture_diiml"]
+atlas = ExtResource("3_kquf5")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kvjb"]
+atlas = ExtResource("3_kquf5")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_37y6f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_diiml")
+}],
+"loop": true,
+"name": &"click",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kvjb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5i8d4"]
+radius = 58.0775
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jho10"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dg8hl"]
+normal = Vector2(-0.00335569, 0.999994)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0pcj8"]
+normal = Vector2(0.999967, -0.00812981)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wax61"]
+normal = Vector2(-1, -0.000935453)
 
 [node name="Main Menu" type="Node2D"]
 
@@ -85,66 +100,123 @@ offset_bottom = 1014.0
 texture = ExtResource("1_jp5rh")
 metadata/_edit_lock_ = true
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-visible = false
-position = Vector2(-4, -6)
-gravity_scale = 0.0
-script = ExtResource("2_55bup")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
-scale = Vector2(0.63644, 0.63644)
-sprite_frames = SubResource("SpriteFrames_37y6f")
-animation = &"click"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(-14, 6)
-shape = SubResource("CircleShape2D_5i8d4")
-
-[node name="Cursor" parent="." instance=ExtResource("2_3diy3")]
-position = Vector2(-4, -6)
-disable_mode = 2
-collision_mask = 3
-
-[node name="Option A" type="Area2D" parent="."]
+[node name="Play Button" type="Area2D" parent="."]
+position = Vector2(239, 271)
 script = ExtResource("3_ojbqg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Option A"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Play Button"]
 position = Vector2(505, 544)
 sprite_frames = SubResource("SpriteFrames_4nta3")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Option A"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Play Button"]
 position = Vector2(566.226, 552.667)
 rotation = 1.43761
 shape = SubResource("RectangleShape2D_6bisf")
 
 [node name="BUBBLEWARE" type="Node" parent="."]
 
-[node name="RigidBody2D" type="RigidBody2D" parent="BUBBLEWARE"]
-position = Vector2(269, 126)
-collision_layer = 3
-collision_mask = 3
+[node name="Cursor" type="RigidBody2D" parent="."]
+position = Vector2(238, 753)
 gravity_scale = 0.0
+script = ExtResource("2_55bup")
 
-[node name="Sprite2D" type="Sprite2D" parent="BUBBLEWARE/RigidBody2D"]
-texture = ExtResource("7_38itm")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cursor"]
+scale = Vector2(0.63644, 0.63644)
+sprite_frames = SubResource("SpriteFrames_37y6f")
+animation = &"click"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BUBBLEWARE/RigidBody2D"]
-shape = SubResource("CircleShape2D_1fsj3")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
+position = Vector2(-14, 6)
+shape = SubResource("CircleShape2D_5i8d4")
 
-[node name="RigidBody2D2" type="RigidBody2D" parent="BUBBLEWARE"]
-position = Vector2(238, 405)
-collision_layer = 3
-collision_mask = 3
-gravity_scale = 0.0
+[node name="Bubbleware" type="Node" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="BUBBLEWARE/RigidBody2D2"]
-texture = ExtResource("7_38itm")
+[node name="B1" parent="Bubbleware" instance=ExtResource("8_14nmo")]
+position = Vector2(95, 118)
+gravity_scale = 0.01
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BUBBLEWARE/RigidBody2D2"]
-shape = SubResource("CircleShape2D_1fsj3")
+[node name="U" parent="Bubbleware" instance=ExtResource("8_14nmo")]
+position = Vector2(184, 111)
 
-[connection signal="area_entered" from="Option A" to="Option A" method="_on_area_entered"]
-[connection signal="area_exited" from="Option A" to="Option A" method="_on_area_exited"]
+[node name="Sprite2D" parent="Bubbleware/U" index="0"]
+texture = ExtResource("9_sopr6")
 
-[editable path="Cursor"]
+[node name="B2" parent="Bubbleware" instance=ExtResource("8_14nmo")]
+position = Vector2(271, 100)
+
+[node name="B3" parent="Bubbleware" instance=ExtResource("8_14nmo")]
+position = Vector2(360, 100)
+
+[node name="L" parent="Bubbleware" instance=ExtResource("8_14nmo")]
+position = Vector2(447, 98)
+
+[node name="Sprite2D" parent="Bubbleware/L" index="0"]
+texture = ExtResource("10_dekan")
+
+[node name="E" parent="Bubbleware" instance=ExtResource("8_14nmo")]
+position = Vector2(535, 100)
+
+[node name="Sprite2D" parent="Bubbleware/E" index="0"]
+texture = ExtResource("11_m1pta")
+
+[node name="W" parent="Bubbleware" instance=ExtResource("8_14nmo")]
+position = Vector2(631, 105)
+
+[node name="Sprite2D" parent="Bubbleware/W" index="0"]
+texture = ExtResource("12_es2ye")
+
+[node name="A" parent="Bubbleware" instance=ExtResource("8_14nmo")]
+position = Vector2(729, 103)
+
+[node name="Sprite2D" parent="Bubbleware/A" index="0"]
+texture = ExtResource("13_4yibl")
+
+[node name="R" parent="Bubbleware" instance=ExtResource("8_14nmo")]
+position = Vector2(819, 104)
+
+[node name="Sprite2D" parent="Bubbleware/R" index="0"]
+texture = ExtResource("14_7wglg")
+
+[node name="E2" parent="Bubbleware" instance=ExtResource("8_14nmo")]
+position = Vector2(905, 110)
+
+[node name="Sprite2D" parent="Bubbleware/E2" index="0"]
+texture = ExtResource("11_m1pta")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Bottom Boundry" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(498, 1013)
+shape = SubResource("WorldBoundaryShape2D_jho10")
+
+[node name="Top Boundry" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(547, -5)
+shape = SubResource("WorldBoundaryShape2D_dg8hl")
+
+[node name="Left Boundry" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-5, 312)
+shape = SubResource("WorldBoundaryShape2D_0pcj8")
+
+[node name="Right Boundry" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1010, 491)
+shape = SubResource("WorldBoundaryShape2D_wax61")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_boc6j")
+volume_db = 5.0
+script = ExtResource("16_cqhiq")
+
+[connection signal="area_entered" from="Play Button" to="Play Button" method="_on_area_entered"]
+[connection signal="area_exited" from="Play Button" to="Play Button" method="_on_area_exited"]
+[connection signal="body_entered" from="Play Button" to="Play Button" method="_on_body_entered"]
+[connection signal="body_exited" from="Play Button" to="Play Button" method="_on_body_exited"]
+
+[editable path="Bubbleware/U"]
+[editable path="Bubbleware/B2"]
+[editable path="Bubbleware/L"]
+[editable path="Bubbleware/E"]
+[editable path="Bubbleware/W"]
+[editable path="Bubbleware/A"]
+[editable path="Bubbleware/R"]
+[editable path="Bubbleware/E2"]

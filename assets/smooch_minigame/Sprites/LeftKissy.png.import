@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kydpyylc4i36"
-path="res://.godot/imported/Button.png-cbb2ec09eb11e5cb62caa3ea6fee8f41.ctex"
+uid="uid://d04o4glr0knh8"
+path="res://.godot/imported/LeftKissy.png-a3cce0cc7d6f3ea8f21a4242ac24faed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game_manager/Button.png"
-dest_files=["res://.godot/imported/Button.png-cbb2ec09eb11e5cb62caa3ea6fee8f41.ctex"]
+source_file="res://assets/smooch_minigame/Sprites/LeftKissy.png"
+dest_files=["res://.godot/imported/LeftKissy.png-a3cce0cc7d6f3ea8f21a4242ac24faed.ctex"]
 
 [params]
 

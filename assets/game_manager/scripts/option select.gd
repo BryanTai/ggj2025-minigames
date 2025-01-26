@@ -1,17 +1,15 @@
 extends Area2D
 
-@onready var cursor: Area2D = $"../Cursor"
-
-
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 var is_hovering = false
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
-func _on_area_entered(collision_shape_2d):
+func _on_body_entered(body: Node2D) -> void:
 	is_hovering = true
 
-func _on_area_exited(collision_shape_2d):
+func _on_body_exited(body: Node2D) -> void:
 	is_hovering = false
 
 

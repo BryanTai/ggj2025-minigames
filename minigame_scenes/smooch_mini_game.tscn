@@ -1,0 +1,148 @@
+[gd_scene load_steps=16 format=3 uid="uid://cu6dxv2wg0awq"]
+
+[ext_resource type="Script" path="res://assets/smooch_minigame/Scripts/player.gd" id="1_2nl2m"]
+[ext_resource type="Script" path="res://assets/smooch_minigame/Scripts/smooch_game.gd" id="1_fx5vo"]
+[ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="2_bm2tb"]
+[ext_resource type="Script" path="res://assets/smooch_minigame/Scripts/smoocher.gd" id="2_h7a7e"]
+[ext_resource type="Texture2D" uid="uid://dw13agfhmql25" path="res://assets/smooch_minigame/Sprites/Smooch01.png" id="3_h5dxc"]
+[ext_resource type="Texture2D" uid="uid://dx2m6vb24seb2" path="res://assets/smooch_minigame/Sprites/Smooch02.png" id="4_c0sbn"]
+[ext_resource type="Texture2D" uid="uid://bt1pwjvr7jdml" path="res://assets/smooch_minigame/Sprites/Smooch03.png" id="5_1wiga"]
+[ext_resource type="Script" path="res://assets/smooch_minigame/Scripts/fail_wall.gd" id="7_gjmf2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5u1o0"]
+size = Vector2(54.25, 67.3125)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xul0o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_h5dxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c0sbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1wiga")
+}],
+"loop": true,
+"name": &"smooch",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3npj8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_h5dxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c0sbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1wiga")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_dtjc7"]
+resource_name = "Left"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1084, 333), Vector2(322, 343)]
+}
+
+[sub_resource type="Animation" id="Animation_du7a6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1084, 333)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eweds"]
+_data = {
+"Left": SubResource("Animation_dtjc7"),
+"RESET": SubResource("Animation_du7a6")
+}
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yyk27"]
+normal = Vector2(1, 0)
+
+[node name="SmoochMiniGame" type="Node2D"]
+script = ExtResource("1_fx5vo")
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(0.988268, 0.60489, 0.807909, 1)
+offset_left = -11.0
+offset_top = -9.0
+offset_right = 29.0
+offset_bottom = 31.0
+scale = Vector2(26.1272, 25.8733)
+texture = ExtResource("2_bm2tb")
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2(196, 135)
+script = ExtResource("1_2nl2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(96, 276)
+shape = SubResource("RectangleShape2D_5u1o0")
+
+[node name="SmoochSprite" type="AnimatedSprite2D" parent="Player"]
+z_index = 5
+position = Vector2(-78, 216)
+scale = Vector2(-0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_xul0o")
+animation = &"smooch"
+autoplay = "smooch"
+frame_progress = 0.792495
+
+[node name="Smoocher" type="Area2D" parent="."]
+position = Vector2(1084, 333)
+script = ExtResource("2_h7a7e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Smoocher"]
+position = Vector2(-111.864, 105.682)
+shape = SubResource("RectangleShape2D_5u1o0")
+
+[node name="SmoochSprite" type="AnimatedSprite2D" parent="Smoocher"]
+z_index = 5
+position = Vector2(71, 49)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_3npj8")
+autoplay = "default"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Smoocher"]
+libraries = {
+"": SubResource("AnimationLibrary_eweds")
+}
+
+[node name="FailWall" type="Area2D" parent="."]
+script = ExtResource("7_gjmf2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FailWall"]
+position = Vector2(134, 0)
+shape = SubResource("WorldBoundaryShape2D_yyk27")
+
+[connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
+[connection signal="body_entered" from="Player" to="." method="_on_player_body_entered"]
+[connection signal="area_shape_entered" from="Smoocher" to="." method="_on_smoocher_area_shape_entered"]
+[connection signal="area_entered" from="FailWall" to="." method="_on_fail_wall_area_entered"]
