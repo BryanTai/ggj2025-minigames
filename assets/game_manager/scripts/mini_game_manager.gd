@@ -63,7 +63,6 @@ var all_mini_game_count: int
 var unplayed_mini_game_indexes: Array
 
 var lives: int
-var wins: int
 
 @export
 var minigame_name_override: String = "" #replace with a full name e.g. "meteor_mini_game.tscn"
@@ -145,7 +144,7 @@ func _ready() -> void:
 	instruction_banner.visible = false
 	transition_animated_sprite.visible = false
 	lives = 5
-	wins = 0
+	ScoreKeeper.wins = 0
 	cache_all_mini_game_names()
 	cache_all_bubbleware_clips()
 	animation_player.play(ANIM_INTRO) # Start the Intro
@@ -269,7 +268,7 @@ func _on_mini_game_finished(is_win: bool) -> void:
 	overlay_mini_game.stop_bubble_popper_timer()
 	show_good_transition = is_win
 	if (is_win == true):
-		wins += 1
+		ScoreKeeper.wins += 1
 		instruction_label.text = "WINNER!"
 	else:
 		lose_life()

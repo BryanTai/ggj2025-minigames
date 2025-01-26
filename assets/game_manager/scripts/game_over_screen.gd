@@ -2,10 +2,8 @@ class_name GameOverScreen extends Node2D
 
 @onready var score_number: Label = $ScoreLabel/ScoreNumber
 
-var final_score: int = 0
-
 func _ready() -> void:
-	score_number.text = str(final_score)
+	score_number.text = str(ScoreKeeper.wins)
 
 # Listen for button signal to restart game
 func _on_play_button_pressed() -> void:
