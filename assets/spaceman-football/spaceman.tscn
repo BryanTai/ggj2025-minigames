@@ -60,17 +60,15 @@ animations = [{
 }]
 
 [node name="Spaceman" type="CharacterBody2D"]
-position = Vector2(151, 610)
 script = ExtResource("1_0xghc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-151.004, -618.3)
 scale = Vector2(0.37397, 0.37397)
 sprite_frames = SubResource("SpriteFrames_rdpbm")
 animation = &"run"
 autoplay = "run"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-143.004, -541.3)
+position = Vector2(10, 76)
 scale = Vector2(1.03028, 1.00253)
 polygon = PackedVector2Array(77, 27, 11, -61, 17, -123, 9.71022, -136.355, 0.974715, -141.343, -7.76079, -143.338, -16.4963, -143.338, -28, -142, -37.8498, -138.35, -47, -129, -48, -111, -39, 25)

@@ -15,42 +15,37 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta * 0.5
-
+		animated_sprite_2d.play("jump")
+		
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("fire") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	var direction: float
 	
 	if mouse_priority:
-		if target_pos.x < position.x:
-			direction = -1
+		if absf(position.x - target_pos.x) < 3:
+			direction = 0
 		else:
-			direction = 1
+			direction = clamp(position.x - target_pos.x, -1, 1) * -1
 	else:
 		direction = Input.get_axis("move_left", "move_right")
 
-	#Animate the Space man
-	if direction >0:
-		animated_sprite_2d.flip_h = false
-	elif direction <0:
-		animated_sprite_2d.flip_h = true
-		
+	animated_sprite_2d.flip_h = direction < 0
+	
 	if is_on_floor():
-		if direction ==0:
-			animated_sprite_2d.play("idle")
-		else:
-			animated_sprite_2d.play("run")
-	else:
-		animated_sprite_2d.play("jump")
+		animated_sprite_2d.play("run")
+		animated_sprite_2d.play("idle")
 		
 		
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	if direction:
 		velocity.x = direction * SPEED
+		if is_on_floor():
+			animated_sprite_2d.play("run")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		if is_on_floor():
+			animated_sprite_2d.play("idle")
 
 	move_and_slide()
 
@@ -61,6 +56,8 @@ func _physics_process(delta: float) -> void:
 			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouse:
 		target_pos = event.position
 		mouse_priority = true
+	else:
+		mouse_priority = false

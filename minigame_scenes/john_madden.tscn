@@ -164,7 +164,7 @@ shape = SubResource("WorldBoundaryShape2D_ssxh4")
 shape = SubResource("WorldBoundaryShape2D_aiwr2")
 
 [node name="Spaceman" parent="." instance=ExtResource("8_53fnv")]
-position = Vector2(1014, 1202)
+position = Vector2(446, 657)
 
 [node name="Football" parent="." instance=ExtResource("9_4bns3")]
 position = Vector2(525, 300)
