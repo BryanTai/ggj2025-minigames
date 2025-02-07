@@ -1,12 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5iliqshl0ga8"]
+[gd_scene load_steps=17 format=3 uid="uid://c5iliqshl0ga8"]
 
 [ext_resource type="Script" path="res://assets/pet_dog_minigame/pet_dog_mini_game.gd" id="1_fj8nd"]
 [ext_resource type="Texture2D" uid="uid://bddw251wrh3mw" path="res://assets/game_manager/blank.png" id="2_xttkd"]
 [ext_resource type="Texture2D" uid="uid://beri4vjxwykjs" path="res://assets/pet_dog_minigame/sprites/grass1.png" id="3_qp8lh"]
 [ext_resource type="Texture2D" uid="uid://dllqy47gb6qmo" path="res://assets/pet_dog_minigame/sprites/grass2.png" id="4_5a300"]
+[ext_resource type="Script" path="res://templates/player_2d.gd" id="5_cf8kv"]
 [ext_resource type="Texture2D" uid="uid://dyj7fbinjbp64" path="res://assets/pet_dog_minigame/sprites/player_glove.png" id="5_gymck"]
-[ext_resource type="PackedScene" uid="uid://dpxwtxunvlmyf" path="res://templates/player_2d.tscn" id="5_lh2mh"]
 [ext_resource type="Texture2D" uid="uid://fuh5e00ldekf" path="res://assets/pet_dog_minigame/sprites/dog_kirby.png" id="6_hy361"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b0i5r"]
+radius = 71.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6f0np"]
 radius = 87.023
@@ -125,12 +128,18 @@ texture = ExtResource("4_5a300")
 position = Vector2(943, 948)
 texture = ExtResource("3_qp8lh")
 
-[node name="Player2D" parent="." instance=ExtResource("5_lh2mh")]
+[node name="Player2D" type="Area2D" parent="."]
+z_index = 5
 position = Vector2(103, 70)
+script = ExtResource("5_cf8kv")
+player_speed = 250
 
-[node name="Sprite2D" parent="Player2D" index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="Player2D"]
 scale = Vector2(0.274067, 0.274067)
 texture = ExtResource("5_gymck")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2D"]
+shape = SubResource("CircleShape2D_b0i5r")
 
 [node name="Goal" type="Area2D" parent="."]
 position = Vector2(826, 807)
@@ -144,5 +153,3 @@ scale = Vector2(0.391908, 0.391908)
 sprite_frames = SubResource("SpriteFrames_xywjn")
 animation = &"idle"
 autoplay = "idle"
-
-[editable path="Player2D"]
