@@ -9,6 +9,7 @@ const SPEED = 300.0
 var is_scrubbing := false
 var hovered_spot: Area2D
 var target_pos: Vector2
+var mouse_priority: bool = false
 
 func _ready() -> void:
 	for spot: Area2D in dirt_spots.get_children():
@@ -43,7 +44,7 @@ func _do_scrubbing_action() -> void:
 	if hovered_spot:
 		animation_player.play("scrubscrubscrub")
 		var tween = get_tree().create_tween()
-		tween.tween_property(hovered_spot, "modulate", Color.TRANSPARENT, 1)
+		tween.tween_property(hovered_spot, "modulate", Color.TRANSPARENT, 0.5)
 		tween.tween_callback(dirt_spot_cleared.emit)
 		tween.tween_callback(hovered_spot.queue_free)
 		

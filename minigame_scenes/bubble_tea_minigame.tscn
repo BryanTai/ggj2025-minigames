@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dpex23wfr4epm"]
+[gd_scene load_steps=18 format=3 uid="uid://dpex23wfr4epm"]
 
 [ext_resource type="Script" path="res://assets/bubble_tea_minigame/bubble_tea_minigame.gd" id="1_kx8rs"]
 [ext_resource type="Texture2D" uid="uid://cq0pkt04o62u6" path="res://assets/bubble_tea_minigame/sprites/straw.png" id="2_1v5ug"]
@@ -17,28 +17,9 @@ size = Vector2(9, 7)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bf6ie"]
 size = Vector2(5, 13)
 
-[sub_resource type="Curve" id="Curve_onkko"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.35434, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_y11gd"]
+_data = [Vector2(0.392523, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.83132, 0.0, 0, 0]
 point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_a5h6s"]
-curve = SubResource("Curve_onkko")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2orvt"]
-lifetime_randomness = 0.2
-particle_flag_disable_z = true
-direction = Vector3(0, -1, 0)
-initial_velocity_min = 75.0
-initial_velocity_max = 75.0
-gravity = Vector3(0, 98, 0)
-scale_min = 0.5
-scale_curve = SubResource("CurveTexture_a5h6s")
-collision_mode = 1
-collision_friction = 0.0
-collision_bounce = 1.0
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wy4ik"]
-polygon = PackedVector2Array(66, 383, 428, 383, 428, 403, 66, 403)
 
 [sub_resource type="Animation" id="Animation_25o5s"]
 length = 0.001
@@ -333,17 +314,21 @@ position = Vector2(-33, -17)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_bf6ie")
 
-[node name="TeaDropEmitter" type="GPUParticles2D" parent="BubbleCup"]
+[node name="TeaDropEmitter" type="CPUParticles2D" parent="BubbleCup"]
 z_index = 3
 position = Vector2(-33, -17)
 emitting = false
-amount = 10
-process_material = SubResource("ParticleProcessMaterial_2orvt")
-texture = ExtResource("6_emuac")
-lifetime = 3.0
+amount = 20
+lifetime = 0.5
 one_shot = true
-speed_scale = 3.0
+speed_scale = 2.0
 explosiveness = 1.0
+texture = ExtResource("6_emuac")
+direction = Vector2(0, -1)
+spread = 30.0
+initial_velocity_min = 250.0
+initial_velocity_max = 350.0
+scale_amount_curve = SubResource("Curve_y11gd")
 
 [node name="Liquid" type="Sprite2D" parent="BubbleCup"]
 visible = false
@@ -359,9 +344,6 @@ texture = ExtResource("8_jma18")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CoverCollider"]
 polygon = PackedVector2Array(245, 348, 341, 354, 418, 373, 418, 394, 345, 413, 165, 414, 78, 392, 78, 373, 167, 352, 245, 348, 245, 332, 43, 331, 43, 447, 461, 447, 461, 331, 245, 332)
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="CoverCollider"]
-occluder = SubResource("OccluderPolygon2D_wy4ik")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

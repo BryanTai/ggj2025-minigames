@@ -4,7 +4,7 @@ signal stabbed_in_the_center
 
 @onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
 @onready var sprite: Sprite2D = $Sprite
-@onready var tea_drop_emitter: GPUParticles2D = $"../BubbleCup/TeaDropEmitter"
+@onready var tea_drop_emitter: CPUParticles2D = $"../BubbleCup/TeaDropEmitter"
 @onready var straw_shadow: Sprite2D = $StrawShadow
 
 const SPEED = 50.0
@@ -15,6 +15,8 @@ const BENT_STRAW = preload("res://assets/bubble_tea_minigame/sprites/bent_straw.
 
 var is_stabbing := false
 var is_perfectly_aligned := false
+var mouse_priority := false
+var mouse_pos := Vector2.ZERO
 
 func display_win_animation() -> void:
 	sprite.texture = PIERCE_STRAW
@@ -28,7 +30,7 @@ func display_lose_animation() -> void:
 func _ready() -> void:
 	position = start_pos
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("fire") and not is_stabbing:
 		_do_stabby_stab()
 		is_stabbing = true
@@ -39,7 +41,12 @@ func _physics_process(_delta: float) -> void:
 	if is_stabbing:
 		return
 		
-	var direction := Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
+	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	if mouse_priority:
+		direction.x = clampi(int(mouse_pos.x - global_position.x), -1, 1)
+		direction.y = clampi(int(mouse_pos.y - global_position.y), -1, 1)
+	
 	if direction:
 		velocity = direction * SPEED
 	else:
@@ -66,3 +73,10 @@ func _wiggle_straw() -> void:
 	tween.tween_property(self, "position", current_pos + Vector2(-6, 0), 0.05)
 	tween.tween_property(self, "position", current_pos + Vector2(6, 0), 0.05)
 	tween.tween_property(self, "position", current_pos, 0.05)
+	
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouse:
+		mouse_priority = true
+		mouse_pos = event.global_position / 2
+	else:
+		mouse_priority = false
