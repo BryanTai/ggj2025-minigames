@@ -66,7 +66,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5i8d4"]
-radius = 58.0775
+radius = 36.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jho10"]
 
@@ -156,11 +156,11 @@ gravity_scale = 0.0
 script = ExtResource("7_b46p4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cursor"]
+position = Vector2(15, 15)
 scale = Vector2(0.63644, 0.63644)
 sprite_frames = SubResource("SpriteFrames_37y6f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
-position = Vector2(-14, 6)
 shape = SubResource("CircleShape2D_5i8d4")
 
 [node name="Bubbleware" type="Node" parent="."]
@@ -274,6 +274,7 @@ offset_top = 639.0
 offset_right = 896.0
 offset_bottom = 693.0
 scale = Vector2(1.51505, 1.51505)
+focus_mode = 0
 action_mode = 0
 texture_normal = ExtResource("17_5o815")
 texture_hover = ExtResource("18_qr1un")
@@ -285,6 +286,7 @@ offset_top = 884.0
 offset_right = 664.0
 offset_bottom = 984.0
 rotation = -0.438138
+focus_mode = 0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("19_6fdhp")
 texture_pressed = ExtResource("17_0fv2p")
