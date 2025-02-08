@@ -66,7 +66,7 @@ func _ready() -> void:
 	_on_wind_change_timer_timeout() # Trgger the wind change initially.
 	
 	const EDGE_BUFFER_SIZE: float = 100 # pixels
-	canvas_x = get_viewport().get_size().x
+	canvas_x = 1000
 	$Bucket.position.x = randf_range(0 + EDGE_BUFFER_SIZE, canvas_x - EDGE_BUFFER_SIZE)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

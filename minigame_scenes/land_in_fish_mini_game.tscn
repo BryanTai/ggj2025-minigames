@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgt0xohvxog05"]
+[gd_scene load_steps=14 format=3 uid="uid://d2jq7yvckb3as"]
 
 [ext_resource type="Script" path="res://assets/land_in_fish_mini_game/Scripts/land_in_fish_mini_game.gd" id="1_pojm1"]
 [ext_resource type="AudioStream" uid="uid://dr4tu88k5n2cw" path="res://assets/bubble_pop_mini_game/SFX/Bubble Blowing Dog Minigame.wav" id="2_1g4sx"]
