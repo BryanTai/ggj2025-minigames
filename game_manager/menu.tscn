@@ -158,7 +158,6 @@ script = ExtResource("7_b46p4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cursor"]
 scale = Vector2(0.63644, 0.63644)
 sprite_frames = SubResource("SpriteFrames_37y6f")
-animation = &"click"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
 position = Vector2(-14, 6)
@@ -275,6 +274,7 @@ offset_top = 639.0
 offset_right = 896.0
 offset_bottom = 693.0
 scale = Vector2(1.51505, 1.51505)
+action_mode = 0
 texture_normal = ExtResource("17_5o815")
 texture_hover = ExtResource("18_qr1un")
 
