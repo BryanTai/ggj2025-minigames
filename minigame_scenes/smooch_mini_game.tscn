@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cu6dxv2wg0awq"]
+[gd_scene load_steps=12 format=3 uid="uid://cu6dxv2wg0awq"]
 
 [ext_resource type="Script" path="res://assets/smooch_minigame/Scripts/player.gd" id="1_2nl2m"]
 [ext_resource type="Script" path="res://assets/smooch_minigame/Scripts/smooch_game.gd" id="1_fx5vo"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dw13agfhmql25" path="res://assets/smooch_minigame/Sprites/Smooch01.png" id="3_h5dxc"]
 [ext_resource type="Texture2D" uid="uid://dx2m6vb24seb2" path="res://assets/smooch_minigame/Sprites/Smooch02.png" id="4_c0sbn"]
 [ext_resource type="Texture2D" uid="uid://bt1pwjvr7jdml" path="res://assets/smooch_minigame/Sprites/Smooch03.png" id="5_1wiga"]
-[ext_resource type="Script" path="res://assets/smooch_minigame/Scripts/fail_wall.gd" id="7_gjmf2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5u1o0"]
 size = Vector2(54.25, 67.3125)
@@ -66,12 +65,11 @@ position = Vector2(196, 135)
 script = ExtResource("1_2nl2m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(96, 276)
+position = Vector2(185, 60)
 shape = SubResource("RectangleShape2D_5u1o0")
 
 [node name="SmoochSprite" type="AnimatedSprite2D" parent="Player"]
 z_index = 5
-position = Vector2(-78, 216)
 scale = Vector2(-0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_xul0o")
 animation = &"smooch"
@@ -95,7 +93,6 @@ autoplay = "default"
 
 [node name="FailWall" type="Area2D" parent="."]
 position = Vector2(-78, 0)
-script = ExtResource("7_gjmf2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FailWall"]
 position = Vector2(134, 0)

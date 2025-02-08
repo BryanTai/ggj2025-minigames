@@ -8,7 +8,6 @@ extends BaseMiniGame
 
 const HAND_Y_POS = 725
 const BALL_Y_OFFSET = 70
-const MOUSE_X_BUFFER = 50
 
 var cups: Array[Node]
 var cup_positions: Array[Vector2]
@@ -60,7 +59,7 @@ func swap_all_cups():
 		
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if(anim_name == "intro" or swaps_made < total_swaps):
-		make_random_swap()
+		swapping_timer.start()
 	else:
 		on_all_swaps_complete()
 	
@@ -116,9 +115,13 @@ func _process(delta: float) -> void:
 func _input(event):
 	if event is InputEventMouseMotion:
 		var mouse_x = event.position.x
-		if (mouse_x < cup_positions[0].x + MOUSE_X_BUFFER):
+		if mouse_x < 333:
 			set_hand_position(0) #left column
-		elif (mouse_x < cup_positions[2].x - MOUSE_X_BUFFER):
-			set_hand_position(1) #middle column
+		elif mouse_x > 666:
+			set_hand_position(2) #middle column
 		else:
-			set_hand_position(2) #right column
+			set_hand_position(1) #right column
+
+
+func _on_swapping_timer_timeout() -> void:
+	make_random_swap()

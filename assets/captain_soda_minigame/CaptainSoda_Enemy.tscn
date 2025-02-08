@@ -9,8 +9,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_2m0q3"]
 radius = 122.016
 
-[node name="CaptainSodaEnemy" type="Node2D"]
+[node name="CaptainSodaEnemy" type="Area2D"]
 position = Vector2(436, 325)
+collision_layer = 2
 script = ExtResource("1_qyxwj")
 
 [node name="Ghost" type="Node2D" parent="."]
@@ -44,8 +45,6 @@ scale = Vector2(0.5, 0.5)
 scale = Vector2(1.19, 1.19)
 texture = ExtResource("5_5mk1h")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_2m0q3")

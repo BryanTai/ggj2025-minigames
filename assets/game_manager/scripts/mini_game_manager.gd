@@ -69,6 +69,7 @@ var lives: int
 var minigame_name_override: String = "" #replace with a full name e.g. "meteor_mini_game.tscn"
 
 var show_good_transition: bool = true
+var is_intro: bool = true
 
 ## Fired if the mini_game_timer runs out before the current_mini_game responds
 ## ATTENTION: Not currently used anywhere in the code
@@ -195,7 +196,8 @@ func create_next_mini_game() -> void:
 	add_child(current_mini_game)
 	current_mini_game.game_finished.connect(_on_mini_game_finished)
 	current_mini_game.result_jingle.connect(_on_jingle_result)
-	play_music(current_mini_game.minigame_music.pick_random())
+	if current_mini_game.minigame_music.size() > 0:
+		play_music(current_mini_game.minigame_music.pick_random())
 	instruction_label.text = current_mini_game.instruction_text
 
 ## Gives control to the Player
@@ -221,12 +223,20 @@ func set_manager_state(new_state: ManagerStates) -> void:
 			instructions_image.visible = false
 			timer_label.visible = false
 			load_next_mini_game()
-			play_transition_sprites(show_good_transition)
-			animation_player.play(ANIM_TRANSITION)
+			if is_intro:
+				is_intro = false
+				set_manager_state(ManagerStates.PREPARING)
+			else: 
+				play_transition_sprites(show_good_transition)
+				animation_player.play(ANIM_TRANSITION)
+			if not lives:
+				await animation_player.animation_finished
+				end_the_game()
 		ManagerStates.PREPARING:
 			set_timer_text(str(floor(TIME_LIMIT)))
 			timer_label.visible = true
-			create_next_mini_game()
+			if lives:
+				create_next_mini_game()
 			overlay_mini_game.visible = true
 			animation_player.play(ANIM_INSTRUCTION)
 			
@@ -236,10 +246,7 @@ func set_manager_state(new_state: ManagerStates) -> void:
 		ManagerStates.PLAYING:
 			start_current_mini_game()
 		ManagerStates.ENDING:
-			if(lives > 0):
-				animation_player.play(ANIM_END)
-			else:
-				end_the_game()
+			animation_player.play(ANIM_END)
 	
 
 func play_transition_sprites(show_good: bool) -> void:

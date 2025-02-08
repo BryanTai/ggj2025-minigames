@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://delqhm3j5k3xu"]
+[gd_scene load_steps=44 format=3 uid="uid://cpfkimtia31ls"]
 
 [ext_resource type="Script" path="res://assets/jump_minigame/Scripts/jump_mini_game.gd" id="1_pv12p"]
 [ext_resource type="Texture2D" uid="uid://cchsnjs1op0si" path="res://assets/jump_minigame/Sprites/Skybox.png" id="2_lj35e"]
@@ -116,6 +116,21 @@ _data = {
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4tjsq"]
 
+[sub_resource type="Animation" id="Animation_bg0ia"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(409, 918)]
+}
+
 [sub_resource type="Animation" id="Animation_10bln"]
 resource_name = "new_animation"
 length = 6.0
@@ -130,21 +145,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1300, 954), Vector2(-1300, 954)]
-}
-
-[sub_resource type="Animation" id="Animation_bg0ia"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(409, 918)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_256ov"]
@@ -214,23 +214,9 @@ animations = [{
 "speed": 48.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_61lvw"]
-radius = 67.1193
-
-[sub_resource type="Animation" id="Animation_3a76p"]
-resource_name = "rotate"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.881391, 1.91986]
-}
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fofqg"]
+radius = 51.0
+height = 158.0
 
 [sub_resource type="Animation" id="Animation_82mw4"]
 length = 0.001
@@ -247,6 +233,21 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_3a76p"]
+resource_name = "rotate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.881391, 1.91986]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xavh7"]
 _data = {
 "RESET": SubResource("Animation_82mw4"),
@@ -254,7 +255,25 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21wcl"]
-size = Vector2(768, 989)
+size = Vector2(100, 989)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gt7ex"]
+size = Vector2(146, 972)
+
+[sub_resource type="Animation" id="Animation_6sk7a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2008, 976)]
+}
 
 [sub_resource type="Animation" id="Animation_5attn"]
 resource_name = "new_animation"
@@ -272,29 +291,14 @@ tracks/0/keys = {
 "values": [Vector2(2200, 895.61), Vector2(152, 895.61)]
 }
 
-[sub_resource type="Animation" id="Animation_6sk7a"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2008, 976)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vamjx"]
 _data = {
 "RESET": SubResource("Animation_6sk7a"),
 "new_animation": SubResource("Animation_5attn")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_c3nrj"]
-radius = 124.471
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52yug"]
+size = Vector2(75.3654, 211.024)
 
 [node name="Jump" type="Node2D"]
 script = ExtResource("1_pv12p")
@@ -352,33 +356,39 @@ autoplay = "new_animation"
 [node name="Bubs" type="CharacterBody2D" parent="."]
 position = Vector2(166, 737)
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("3_0xj0w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bubs"]
 position = Vector2(-8, -3)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_x2slt")
-animation = &"jump"
+animation = &"run"
 autoplay = "run"
-frame_progress = 0.608513
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bubs"]
-shape = SubResource("CircleShape2D_61lvw")
+shape = SubResource("CapsuleShape2D_fofqg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Bubs"]
 libraries = {
 "": SubResource("AnimationLibrary_xavh7")
 }
+speed_scale = 1.5
 
-[node name="BackWall" type="StaticBody2D" parent="."]
-position = Vector2(1300, 954)
+[node name="Walls" type="StaticBody2D" parent="."]
+position = Vector2(-383, 456)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BackWall"]
-position = Vector2(-1661, -504.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(334, 0)
 shape = SubResource("RectangleShape2D_21wcl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1460, 29)
+shape = SubResource("RectangleShape2D_gt7ex")
 
 [node name="Fist" type="AnimatableBody2D" parent="."]
 position = Vector2(2008, 976)
+collision_layer = 4
 collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Fist"]
@@ -387,9 +397,7 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("21_r4ggd")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fist"]
-position = Vector2(-187.143, -245.714)
-scale = Vector2(3.005, -375.106)
-polygon = PackedVector2Array(-69.8041, -0.143122, -110.826, -0.12722, -149.202, -0.0980651, -166.736, -0.0503578, -189.232, 0.0503578, -202.134, 0.116618, -208.42, 0.153724, -216.69, 0.159025, -258.705, 0.111317, -262.344, 0.0954149, -263.337, 0.0636098, -263.006, 0.0344554, -268.961, 0, -273.261, -0.0344553, -274.916, -0.0715611, -273.592, -0.108667, -265.983, -0.156374, -268.299, -0.188179, -268.63, -0.246488, -261.021, -0.413464, -246.134, -0.551286, -221.653, -0.678505, 203.127, -0.728863, 376.81, 0.25709, 354.314, 0.294196, 320.569, 0.328651, 295.427, 0.318049, 262.013, 0.262391, 238.194, 0.185529, 225.953, 0.113968, 202.796, 0.0874636, 165.082, 0.0715611, 148.21, 0.0689107, 126.044, 0.00795126, 110.496, -0.0238537, 78.0747, -0.00265038, 47.308, 0.00795126, 14.8871, -0.0397562, -19.1879, -0.0901139, -45.323, -0.145773)
+polygon = PackedVector2Array(-983, -290, -830, -309, -675, -220, -641, -210, -539, -200, -358, -190, -31, -252, 139, -239, 185, -247, 267, -272, 355, -276, 449, -281, 503, -295, 541, -319, 596, -343, 659, -359, 790, -373, 789, 52, -901, -10)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Fist"]
 libraries = {
@@ -398,13 +406,13 @@ libraries = {
 autoplay = "new_animation"
 
 [node name="Killzone" type="Area2D" parent="Fist"]
-position = Vector2(-884, -136.61)
-rotation = -0.497419
+position = Vector2(-900, -144)
 scale = Vector2(0.889, 1.27)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fist/Killzone"]
-shape = SubResource("CircleShape2D_c3nrj")
+position = Vector2(-83.802, -4.72455)
+shape = SubResource("RectangleShape2D_52yug")
 
 [connection signal="area_entered" from="Fist/Killzone" to="." method="_on_killzone_area_entered"]
 [connection signal="body_entered" from="Fist/Killzone" to="." method="_on_killzone_body_entered"]

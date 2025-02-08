@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c7bhx2coyxd5g" path="res://assets/game_manager/Sprites/volume_button_press.png" id="17_0fv2p"]
 [ext_resource type="Texture2D" uid="uid://c6walexcolfxf" path="res://assets/game_manager/Sprites/credits_button.png" id="17_5o815"]
 [ext_resource type="AudioStream" uid="uid://dy471hcu6ecl1" path="res://assets/audio/Main Menu - Bubs!.wav" id="17_nyvre"]
-[ext_resource type="PackedScene" path="res://game_manager/sound_controls.tscn" id="18_0d1dl"]
+[ext_resource type="PackedScene" uid="uid://dv0fmgdc8q6bc" path="res://game_manager/sound_controls.tscn" id="18_0d1dl"]
 [ext_resource type="Texture2D" uid="uid://bl5obygomgsr8" path="res://assets/game_manager/Sprites/volume_button_hover.png" id="18_c6gim"]
 [ext_resource type="Texture2D" uid="uid://ckj81fx6ouig2" path="res://assets/game_manager/Sprites/credits_button_hover.png" id="18_qr1un"]
 [ext_resource type="Texture2D" uid="uid://cjkr33ip3jtpx" path="res://assets/game_manager/Sprites/volume_button.png" id="19_6fdhp"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://66h0po0030v2"]
+[gd_scene load_steps=15 format=3 uid="uid://66h0po0030v2"]
 
 [ext_resource type="Script" path="res://assets/game_manager/scripts/game_over_screen.gd" id="1_6etbs"]
 [ext_resource type="Texture2D" uid="uid://3xm36t3yy5js" path="res://assets/game_manager/bubs_death_sprites/BubsDeath_0000.png" id="2_bbyv6"]
@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cb6ulgevuov4q" path="res://assets/game_manager/bubs_death_sprites/BubsDeath_0002.png" id="4_ro2dd"]
 [ext_resource type="Texture2D" uid="uid://d274fwkwa15od" path="res://assets/game_manager/bubs_death_sprites/BubsDeath_0003.png" id="5_1vi0j"]
 [ext_resource type="PackedScene" uid="uid://dul6ywxfmt60s" path="res://assets/game_manager/Scenes/play_button.tscn" id="5_j26cv"]
-[ext_resource type="PackedScene" uid="uid://dki2osks6amsv" path="res://assets/gozi_bubblewrap_minigame/scenes/gozi_cursor.tscn" id="6_cgcjf"]
+[ext_resource type="Script" path="res://assets/game_manager/scripts/menucursor.gd" id="8_lrfjq"]
+[ext_resource type="Texture2D" uid="uid://cqdp5x2dgb40t" path="res://assets/game_manager/animations/gozi_cursor.png" id="9_fqo3q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jajcq"]
 animations = [{
@@ -28,6 +29,36 @@ animations = [{
 "name": &"idle",
 "speed": 24.0
 }]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diiml"]
+atlas = ExtResource("9_fqo3q")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kvjb"]
+atlas = ExtResource("9_fqo3q")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oc4ug"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_diiml")
+}],
+"loop": true,
+"name": &"click",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kvjb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_050nt"]
+radius = 58.0775
 
 [node name="GameOverScreen" type="Node2D"]
 script = ExtResource("1_6etbs")
@@ -114,7 +145,19 @@ vertical_alignment = 1
 [node name="Play Button" parent="." instance=ExtResource("5_j26cv")]
 position = Vector2(750, 325)
 
-[node name="Cursor" parent="." instance=ExtResource("6_cgcjf")]
-position = Vector2(82, 65)
+[node name="Cursor" type="RigidBody2D" parent="."]
+z_index = 10
+position = Vector2(238, 753)
+gravity_scale = 0.0
+script = ExtResource("8_lrfjq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cursor"]
+scale = Vector2(0.63644, 0.63644)
+sprite_frames = SubResource("SpriteFrames_oc4ug")
+animation = &"click"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
+position = Vector2(-14, 6)
+shape = SubResource("CircleShape2D_050nt")
 
 [connection signal="play_button_pressed" from="Play Button" to="." method="_on_play_button_pressed"]

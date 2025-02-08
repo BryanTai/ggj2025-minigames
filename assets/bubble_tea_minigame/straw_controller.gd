@@ -30,7 +30,7 @@ func display_lose_animation() -> void:
 func _ready() -> void:
 	position = start_pos
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("fire") and not is_stabbing:
 		_do_stabby_stab()
 		is_stabbing = true

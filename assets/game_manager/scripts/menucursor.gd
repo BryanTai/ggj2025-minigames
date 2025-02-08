@@ -9,20 +9,15 @@ var is_using_mouse: bool = false
 
 func _process(delta):
 	
-	var direction := Vector2(Input.get_axis("move_left", "move_right"), \
-							 Input.get_axis("move_up","move_down"))
-	
-	if direction and is_using_mouse:
-		is_using_mouse = false
+	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	if Input.is_action_pressed("fire"):
 		animated_sprite_2d.animation = "click"
 	else:
 		animated_sprite_2d.animation = "default"
-	
 
 	if direction:
-		linear_velocity=direction *SPEED
+		linear_velocity = direction *SPEED
 	elif is_using_mouse:
 		global_position = global_position.move_toward(mouse_pos, delta * SPEED)
 	else:
@@ -33,3 +28,5 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouse_pos = event.position
 		is_using_mouse = true
+	else:
+		is_using_mouse = false

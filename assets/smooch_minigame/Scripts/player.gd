@@ -8,7 +8,7 @@ extends Area2D
 
 var target_y_pos: float
 var mouse_priority: bool = false
-var mouse_y_buffer: float = 10.0
+var mouse_y_buffer: float = 5.0
 
 func _ready() -> void:
 	position = Vector2(50, 300)
@@ -20,12 +20,7 @@ func _process(delta: float) -> void:
 	
 	if smooch_mini_game.current_state < 2:
 		
-		# Use keyboard controls
-		if(vertical_direction != 0):
-			mouse_priority = false
-			target_y_pos = position.y
-		# Use mouse controls
-		elif(mouse_priority == true):
+		if mouse_priority:
 			vertical_direction = 1
 			if target_y_pos < position.y:
 				vertical_direction = -1
@@ -40,3 +35,5 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		mouse_priority = true
 		target_y_pos = event.position.y
+	else:
+		mouse_priority = false

@@ -9,6 +9,7 @@
 
 [node name="Captain_Soda_minigame" type="Node2D"]
 script = ExtResource("1_koy0k")
+instruction_text = "SHOOT THE TARGETS!!"
 minigame_sfx_win = Array[AudioStreamWAV]([ExtResource("2_vl0qx")])
 minigame_sfx_lose = Array[AudioStreamWAV]([ExtResource("3_itkc1")])
 minigame_music = Array[AudioStreamWAV]([])

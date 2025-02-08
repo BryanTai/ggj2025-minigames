@@ -12,7 +12,8 @@ func _on_timeout() -> void:
 
 # If a Meteor collides with the Ground, we lose
 func _on_collision(_area: Area2D) -> void:
-	trigger_game_lose()
+	if current_state == MiniGameState.PLAYING:
+		trigger_game_lose()
 	
 func _on_end_playing_state() -> void:
 	# Win or lose, disable the Gun controls

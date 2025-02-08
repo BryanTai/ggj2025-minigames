@@ -6,7 +6,7 @@ extends Node2D
 func _ready() -> void:
 	credits_background.visible = false
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("fire")):
 		credits_background.visible = false
 

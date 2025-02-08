@@ -114,14 +114,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta) ## This line will process the State machine! DO NOT REMOVE
-	## Use this _process function for your game logic!
 	
+	#check if win state is achieved
+	if enemies.get_child_count() < 1 and current_state == MiniGameState.PLAYING:
+		trigger_game_win()
 	
-	
-	# Input
-	# Rotate current angle X degrees to target position
-	
-	# Move cursor around
 	# Favor keyboard over mouse
 	var _target_angle = null
 	var direction := Vector2(Input.get_axis("move_left", "move_right"), 0.0)
@@ -140,15 +137,8 @@ func _process(delta: float) -> void:
 	
 	# Rotate gun
 	if _target_angle != null:
-		
-		#print("Target angle: " + str(_target_angle))
-		#print("Current Captain rotation angle: " + str(rad_to_deg(captain_soda.rotation)))
-		#var _difference = _target_angle - rad_to_deg(captain_soda.rotation)
-		#var _aim_angle = min(rotation_speed * delta, abs(_difference)) * sign(_difference)
 		var _aim_angle = lerp_angle(captain_soda.rotation, deg_to_rad(_target_angle), rotation_lerp_speed)
-		#print("Additional angle: " + str(_aim_angle))
 		captain_soda.rotation = _aim_angle
-		
 		
 		# Set gun flip
 		var _angle_flip_check = fmod(abs(rad_to_deg(captain_soda.rotation)), 360.0)
@@ -156,9 +146,7 @@ func _process(delta: float) -> void:
 			captain_soda.scale.y = -1
 		else:
 			captain_soda.scale.y = 1
-	
-	
-	
+
 	# shoot bubbles on press
 	if Input.is_action_just_pressed("fire"):
 		var _bullet = obj_bullet.instantiate()
@@ -167,63 +155,19 @@ func _process(delta: float) -> void:
 		_bullet.move_angle = captain_soda.rotation
 		gun_sound.stream = gun_sound_list.pick_random()
 		gun_sound.play()
-		pass
-	
-
 
 func on_enemy_dead(enemy_name):
-	
-	# Play sound
-	print("Enemy diead. Enemy name: " + enemy_name)
-	
 	if enemy_name == "Bomb":
 		enemy_death.stream = enemy_death_sounds[0]
 	else:
 		enemy_death.stream = enemy_death_sounds[1]
 	enemy_death.play()
 	
-	# Check if all enemies are dead
-	print("Remaining enemies: " + str(enemies.get_child_count()))
-	if enemies.get_child_count() == 0:
-		trigger_game_win()
-	
-	pass
-
-# A signal from the MiniGameManager that time has run out
-## TODO: Override this function if your MiniGame checks the win condition on TimeOut
-#func _on_timeout() -> void:
-#	trigger_game_lose()
-
-
-### STATE SPECIFIC FUNCTIONS
-# Add your game logic to these functions! See README at the top of this file for more info
-# You probably won't need all of them so feel free to delete unused ones
-
 ## PREPARE STATE
 
-# Called at the beginning of the game
-#func _on_start_preparing_state() -> void:
-#	# By default, this disables all Nodes in the minigame. Overwrite this if you want something else
-#	pass
-
-# Called every frame while minigame is in the PREPARING state
-#func _process_preparing_state(delta: float) -> void:
-#	pass
-
-# Called once when the PREPARING state ends
-#func _on_end_preparing_state() -> void:
-#	# By default, this enables all disabled Nodes in the minigame
-#	pass
-
-## PLAYING STATE
-
-# Called once when entering the PLAYING state (e.g. once the player gains control)
-func _on_start_playing_state() -> void:
-	
+func _on_start_preparing_state() -> void:
 	# Spawn a random amount of enemies on random positions
-	print("Spawning " + str(enemies_to_spawn) + " enemies")
 	for enemy_index in enemies_to_spawn:
-		
 		# Spawn enemy
 		var _enemy = obj_Enemy.instantiate()
 		enemies.add_child(_enemy)
@@ -234,49 +178,13 @@ func _on_start_playing_state() -> void:
 		var _min_spawn_distance = 150
 		var _spawn_position = null
 		while _spawn_position == null:
-			
 			var _new_spawn_pos = Vector2(randf_range(100, 900), randf_range(100, 900))
 			var _distance_to_player = _new_spawn_pos.distance_to(captain_soda.global_position)
-			#print("Enemy check spawn pos: " + str(_new_spawn_pos) + ", distance to player: " + str(_distance_to_player))
 			
 			if _distance_to_player >= _min_spawn_distance:
 				_spawn_position = _new_spawn_pos
-			pass
 		
 		_enemy.global_position = _spawn_position
-		
-		
-		
-		
-		
-		pass
-	
-	pass
 
-# Called every frame while minigame is in the PLAYING state
-#func _process_playing_state(delta: float) -> void:
-	#pass
-
-# Called once when the PLAYING state ends (e.g. Win or Lose)
 func _on_end_playing_state() -> void:
 	captain_soda_music.stop()
-
-## WIN STATE
-
-# Called once when entering the WIN state
-#func _on_start_win_state() -> void:
-#	pass
-
-# Called every frame while minigame is in the WIN state
-#func _process_win_state(delta: float) -> void:
-#	pass
-
-## LOSE STATE
-
-# Called once when entering the LOSE state
-#func _on_start_lose_state() -> void:
-#	pass
-
-# Called every frame while minigame is in the LOSE state
-#func _process_lose_state(delta: float) -> void:
-#	pass
